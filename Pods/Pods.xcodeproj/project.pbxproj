@@ -1,0 +1,868 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10B499C9C647CB071F8FE9537D50215F /* SwiftKeychainWrapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A45F17AB10A2E847D4E4B5D6644878 /* SwiftKeychainWrapper-dummy.m */; };
+		134F7BA260427F892A0E08C9EB843D99 /* Pods-VirtualNurseUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D373C445C5A72752506CA59AA57D600 /* Pods-VirtualNurseUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E5FD1F6A5C0BAA54BB7F23CFBA4B9BE /* Pods-VirtualNurse-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 026E1BDAA996DA233699AEA32BC8BC58 /* Pods-VirtualNurse-dummy.m */; };
+		278CA2F869E3A51DC613B279B0FE3D73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		33F58EBB887C6CCF0FAB6A053E545F60 /* Pods-VirtualNurseTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C3779216462D0FE8B018975FC5787C /* Pods-VirtualNurseTests-dummy.m */; };
+		684BB64518C5A9B4BC7DCF5F4B128177 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21F52E816D401B1E03FCC639291FDF /* KeychainItemAccessibility.swift */; };
+		6E4240C182A219B0781340A6C6B20BCD /* SwiftKeychainWrapper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5640FCC51E59D41C3E4D69C3E27FF191 /* SwiftKeychainWrapper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C465CA1131F958FE23A405BF7822E2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		AA466A83FEA33010C09FD3C0A7105CEC /* Pods-VirtualNurseTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CE6B420787B5FB0A29D01DDB4DE2FC /* Pods-VirtualNurseTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC6AB4E9917EDCAF34AD07CC2ABE296B /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02DE889CB219027DCFB3F28689F86D7 /* KeychainWrapper.swift */; };
+		B25A54CEA55BCD0C5861D25B45F7C246 /* Pods-VirtualNurseUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F30BCA8611CC868F58CBFFBDB80B06D /* Pods-VirtualNurseUITests-dummy.m */; };
+		BA48FEB641E1B9064D9034E2C4DE0AE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		C423C53B0BDC3CD1C3E94504FA6F526F /* Pods-VirtualNurse-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6862DDE2B31581F210B8A847F38A3FA0 /* Pods-VirtualNurse-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F55528CA085DD0D202A51918D4732C31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		FE38163F95D17D7A59878EE570CCF191 /* SwiftKeychainWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = B1A90FBA3C2B1F114C7F29C2C41D5389 /* SwiftKeychainWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B01971F7E6F54FC0C50A99C9D7BC9D6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65D608726CF4D1F597D1ECE9E244D4EB;
+			remoteInfo = SwiftKeychainWrapper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0132EB3B81883D4D8EA2090EE4623C0A /* Pods-VirtualNurse-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VirtualNurse-frameworks.sh"; sourceTree = "<group>"; };
+		026E1BDAA996DA233699AEA32BC8BC58 /* Pods-VirtualNurse-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VirtualNurse-dummy.m"; sourceTree = "<group>"; };
+		12C3779216462D0FE8B018975FC5787C /* Pods-VirtualNurseTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VirtualNurseTests-dummy.m"; sourceTree = "<group>"; };
+		16BCCF5A366E464EC9E04EAFF60288CD /* Pods-VirtualNurseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VirtualNurseTests.release.xcconfig"; sourceTree = "<group>"; };
+		19A8C0E6BD0CCFC9E5985664262AFCA5 /* Pods_VirtualNurseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VirtualNurseUITests.framework; path = "Pods-VirtualNurseUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CED403A4B7D037C78D96E53A324A07D /* Pods-VirtualNurseUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VirtualNurseUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		3D373C445C5A72752506CA59AA57D600 /* Pods-VirtualNurseUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VirtualNurseUITests-umbrella.h"; sourceTree = "<group>"; };
+		3F30BCA8611CC868F58CBFFBDB80B06D /* Pods-VirtualNurseUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VirtualNurseUITests-dummy.m"; sourceTree = "<group>"; };
+		54F05C5E8C06B260A99690C86ACE1A1C /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftKeychainWrapper.framework; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5640FCC51E59D41C3E4D69C3E27FF191 /* SwiftKeychainWrapper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftKeychainWrapper-umbrella.h"; sourceTree = "<group>"; };
+		5A21F52E816D401B1E03FCC639291FDF /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainItemAccessibility.swift; path = SwiftKeychainWrapper/KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		5F8E8346759C4CFC31268A8AF06610C7 /* Pods-VirtualNurseTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VirtualNurseTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		62A45F17AB10A2E847D4E4B5D6644878 /* SwiftKeychainWrapper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftKeychainWrapper-dummy.m"; sourceTree = "<group>"; };
+		64C3C785BB6A55B1667DB3071A28A3B6 /* Pods_VirtualNurse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VirtualNurse.framework; path = "Pods-VirtualNurse.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6862DDE2B31581F210B8A847F38A3FA0 /* Pods-VirtualNurse-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VirtualNurse-umbrella.h"; sourceTree = "<group>"; };
+		6910B269A5F39406BDA9E50DFF0A8A0A /* Pods-VirtualNurse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VirtualNurse.release.xcconfig"; sourceTree = "<group>"; };
+		6BA214EAB1C6556DB3120543FCEF9947 /* Pods-VirtualNurseTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-VirtualNurseTests.modulemap"; sourceTree = "<group>"; };
+		7362A4D14B044E934774813728B3A15B /* Pods-VirtualNurse-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VirtualNurse-acknowledgements.markdown"; sourceTree = "<group>"; };
+		80062091865ACAC3E46566372F3153BA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		846C0F0B1431A818285C4D64B1545729 /* SwiftKeychainWrapper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftKeychainWrapper-prefix.pch"; sourceTree = "<group>"; };
+		8F223B6B7FD833611658377941B16C6F /* Pods-VirtualNurseUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VirtualNurseUITests-resources.sh"; sourceTree = "<group>"; };
+		92E1072F7CEC7F54F59F04EE47053F22 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9AEBEBBBE3FB13A92C4FF14B6AAD87E4 /* Pods-VirtualNurse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VirtualNurse.debug.xcconfig"; sourceTree = "<group>"; };
+		A3CE6B420787B5FB0A29D01DDB4DE2FC /* Pods-VirtualNurseTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VirtualNurseTests-umbrella.h"; sourceTree = "<group>"; };
+		A5D0DB3D54DDB467DBA1745A9199186B /* Pods_VirtualNurseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_VirtualNurseTests.framework; path = "Pods-VirtualNurseTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5DF2432B4E497F80A381E3D35546EA5 /* Pods-VirtualNurseUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VirtualNurseUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A6CD9D4ED9E8A8F85504C873D5062937 /* Pods-VirtualNurseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VirtualNurseUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AAA443312303D19F5A525726B280188A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF3ECD365087809C262178C3ED6D6113 /* Pods-VirtualNurseUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VirtualNurseUITests-frameworks.sh"; sourceTree = "<group>"; };
+		B1A90FBA3C2B1F114C7F29C2C41D5389 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftKeychainWrapper.h; path = SwiftKeychainWrapper/SwiftKeychainWrapper.h; sourceTree = "<group>"; };
+		B7A0898D766C85B1671FD814E7F77503 /* Pods-VirtualNurse-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VirtualNurse-acknowledgements.plist"; sourceTree = "<group>"; };
+		BD9DF2003B54E2D4C3BA7E4E335C4157 /* Pods-VirtualNurse-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VirtualNurse-resources.sh"; sourceTree = "<group>"; };
+		CEA977BAB68D6B552516E339E0AC4899 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D02DE889CB219027DCFB3F28689F86D7 /* KeychainWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = SwiftKeychainWrapper/KeychainWrapper.swift; sourceTree = "<group>"; };
+		D7DD6394BC85F294BA4F7D3A7D438F9C /* Pods-VirtualNurseUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-VirtualNurseUITests.modulemap"; sourceTree = "<group>"; };
+		D9722501656E664CF19E39BCEC807AAF /* Pods-VirtualNurse.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-VirtualNurse.modulemap"; sourceTree = "<group>"; };
+		E9B6FEA953B48BCC475BFA4EF120EC62 /* Pods-VirtualNurseTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VirtualNurseTests-resources.sh"; sourceTree = "<group>"; };
+		EE0DB164A1F7F071368D8578373E8ED6 /* Pods-VirtualNurseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VirtualNurseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F194D311B8B315AF5F4F433CF65096C0 /* SwiftKeychainWrapper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftKeychainWrapper.xcconfig; sourceTree = "<group>"; };
+		F3B324AE3700C160B4A7A8497FC6F27D /* SwiftKeychainWrapper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftKeychainWrapper.modulemap; sourceTree = "<group>"; };
+		F7189524711CA80A69CD99D25E9BBE72 /* Pods-VirtualNurseTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VirtualNurseTests-frameworks.sh"; sourceTree = "<group>"; };
+		F78A0DAA89FBFD9DECC905A4643E35D0 /* Pods-VirtualNurseTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VirtualNurseTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		FA82231CE643AFBD8CCC1C36C4090094 /* Pods-VirtualNurseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VirtualNurseTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		47B9E14F6E1A8F2A0E5A37D691A455D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F55528CA085DD0D202A51918D4732C31 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CEBC2596EAC88955D443897DBAD8061 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				278CA2F869E3A51DC613B279B0FE3D73 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1791B296744116A557F3FE735ED4E9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C465CA1131F958FE23A405BF7822E2B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEB707E6C71207A5718160727904B9A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA48FEB641E1B9064D9034E2C4DE0AE4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18C5A923B7442CC114EA04954D37B9A2 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				98717310360B0636980A3E1B177BDA05 /* Pods-VirtualNurse */,
+				98A3DD8FBA7F63C7B39FA2CF88EF26DD /* Pods-VirtualNurseTests */,
+				AC9723D5064EB487C20C3290A07F7423 /* Pods-VirtualNurseUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		6480D6626D4CBD1A4695A4864A832D69 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				92E1072F7CEC7F54F59F04EE47053F22 /* Info.plist */,
+				F3B324AE3700C160B4A7A8497FC6F27D /* SwiftKeychainWrapper.modulemap */,
+				F194D311B8B315AF5F4F433CF65096C0 /* SwiftKeychainWrapper.xcconfig */,
+				62A45F17AB10A2E847D4E4B5D6644878 /* SwiftKeychainWrapper-dummy.m */,
+				846C0F0B1431A818285C4D64B1545729 /* SwiftKeychainWrapper-prefix.pch */,
+				5640FCC51E59D41C3E4D69C3E27FF191 /* SwiftKeychainWrapper-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftKeychainWrapper";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				A0DC98CF63826F78B027F4AD3A6E1A4D /* Pods */,
+				C505E05DF7F6D7FF7AB7FAB044B1DACE /* Products */,
+				18C5A923B7442CC114EA04954D37B9A2 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		98717310360B0636980A3E1B177BDA05 /* Pods-VirtualNurse */ = {
+			isa = PBXGroup;
+			children = (
+				CEA977BAB68D6B552516E339E0AC4899 /* Info.plist */,
+				D9722501656E664CF19E39BCEC807AAF /* Pods-VirtualNurse.modulemap */,
+				7362A4D14B044E934774813728B3A15B /* Pods-VirtualNurse-acknowledgements.markdown */,
+				B7A0898D766C85B1671FD814E7F77503 /* Pods-VirtualNurse-acknowledgements.plist */,
+				026E1BDAA996DA233699AEA32BC8BC58 /* Pods-VirtualNurse-dummy.m */,
+				0132EB3B81883D4D8EA2090EE4623C0A /* Pods-VirtualNurse-frameworks.sh */,
+				BD9DF2003B54E2D4C3BA7E4E335C4157 /* Pods-VirtualNurse-resources.sh */,
+				6862DDE2B31581F210B8A847F38A3FA0 /* Pods-VirtualNurse-umbrella.h */,
+				9AEBEBBBE3FB13A92C4FF14B6AAD87E4 /* Pods-VirtualNurse.debug.xcconfig */,
+				6910B269A5F39406BDA9E50DFF0A8A0A /* Pods-VirtualNurse.release.xcconfig */,
+			);
+			name = "Pods-VirtualNurse";
+			path = "Target Support Files/Pods-VirtualNurse";
+			sourceTree = "<group>";
+		};
+		98A3DD8FBA7F63C7B39FA2CF88EF26DD /* Pods-VirtualNurseTests */ = {
+			isa = PBXGroup;
+			children = (
+				80062091865ACAC3E46566372F3153BA /* Info.plist */,
+				6BA214EAB1C6556DB3120543FCEF9947 /* Pods-VirtualNurseTests.modulemap */,
+				5F8E8346759C4CFC31268A8AF06610C7 /* Pods-VirtualNurseTests-acknowledgements.markdown */,
+				F78A0DAA89FBFD9DECC905A4643E35D0 /* Pods-VirtualNurseTests-acknowledgements.plist */,
+				12C3779216462D0FE8B018975FC5787C /* Pods-VirtualNurseTests-dummy.m */,
+				F7189524711CA80A69CD99D25E9BBE72 /* Pods-VirtualNurseTests-frameworks.sh */,
+				E9B6FEA953B48BCC475BFA4EF120EC62 /* Pods-VirtualNurseTests-resources.sh */,
+				A3CE6B420787B5FB0A29D01DDB4DE2FC /* Pods-VirtualNurseTests-umbrella.h */,
+				FA82231CE643AFBD8CCC1C36C4090094 /* Pods-VirtualNurseTests.debug.xcconfig */,
+				16BCCF5A366E464EC9E04EAFF60288CD /* Pods-VirtualNurseTests.release.xcconfig */,
+			);
+			name = "Pods-VirtualNurseTests";
+			path = "Target Support Files/Pods-VirtualNurseTests";
+			sourceTree = "<group>";
+		};
+		A0DC98CF63826F78B027F4AD3A6E1A4D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0CAC6EA9F0C2F55BADB6FB344332372 /* SwiftKeychainWrapper */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC9723D5064EB487C20C3290A07F7423 /* Pods-VirtualNurseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AAA443312303D19F5A525726B280188A /* Info.plist */,
+				D7DD6394BC85F294BA4F7D3A7D438F9C /* Pods-VirtualNurseUITests.modulemap */,
+				A5DF2432B4E497F80A381E3D35546EA5 /* Pods-VirtualNurseUITests-acknowledgements.markdown */,
+				2CED403A4B7D037C78D96E53A324A07D /* Pods-VirtualNurseUITests-acknowledgements.plist */,
+				3F30BCA8611CC868F58CBFFBDB80B06D /* Pods-VirtualNurseUITests-dummy.m */,
+				AF3ECD365087809C262178C3ED6D6113 /* Pods-VirtualNurseUITests-frameworks.sh */,
+				8F223B6B7FD833611658377941B16C6F /* Pods-VirtualNurseUITests-resources.sh */,
+				3D373C445C5A72752506CA59AA57D600 /* Pods-VirtualNurseUITests-umbrella.h */,
+				EE0DB164A1F7F071368D8578373E8ED6 /* Pods-VirtualNurseUITests.debug.xcconfig */,
+				A6CD9D4ED9E8A8F85504C873D5062937 /* Pods-VirtualNurseUITests.release.xcconfig */,
+			);
+			name = "Pods-VirtualNurseUITests";
+			path = "Target Support Files/Pods-VirtualNurseUITests";
+			sourceTree = "<group>";
+		};
+		B0CAC6EA9F0C2F55BADB6FB344332372 /* SwiftKeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				5A21F52E816D401B1E03FCC639291FDF /* KeychainItemAccessibility.swift */,
+				D02DE889CB219027DCFB3F28689F86D7 /* KeychainWrapper.swift */,
+				B1A90FBA3C2B1F114C7F29C2C41D5389 /* SwiftKeychainWrapper.h */,
+				6480D6626D4CBD1A4695A4864A832D69 /* Support Files */,
+			);
+			name = SwiftKeychainWrapper;
+			path = SwiftKeychainWrapper;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C505E05DF7F6D7FF7AB7FAB044B1DACE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64C3C785BB6A55B1667DB3071A28A3B6 /* Pods_VirtualNurse.framework */,
+				A5D0DB3D54DDB467DBA1745A9199186B /* Pods_VirtualNurseTests.framework */,
+				19A8C0E6BD0CCFC9E5985664262AFCA5 /* Pods_VirtualNurseUITests.framework */,
+				54F05C5E8C06B260A99690C86ACE1A1C /* SwiftKeychainWrapper.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		10E43DF87C9B86E2FAE9EB8B6121E8EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C423C53B0BDC3CD1C3E94504FA6F526F /* Pods-VirtualNurse-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		284E73B7226BD8E0E897C0708278B18F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA466A83FEA33010C09FD3C0A7105CEC /* Pods-VirtualNurseTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		33A2D7728783BD56621132A908369590 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				134F7BA260427F892A0E08C9EB843D99 /* Pods-VirtualNurseUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D00A4AB8E818EA2D663F9E0698D794AA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E4240C182A219B0781340A6C6B20BCD /* SwiftKeychainWrapper-umbrella.h in Headers */,
+				FE38163F95D17D7A59878EE570CCF191 /* SwiftKeychainWrapper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		226086D984E645B22106B6819E01C2CC /* Pods-VirtualNurse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DC99F582B2243A9EEEE1A32BB51708A /* Build configuration list for PBXNativeTarget "Pods-VirtualNurse" */;
+			buildPhases = (
+				6A716B5914E52EFE23551FD0E6825379 /* Sources */,
+				9CEBC2596EAC88955D443897DBAD8061 /* Frameworks */,
+				10E43DF87C9B86E2FAE9EB8B6121E8EE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0979E9E0902DE788FB4FB4EBE667438D /* PBXTargetDependency */,
+			);
+			name = "Pods-VirtualNurse";
+			productName = "Pods-VirtualNurse";
+			productReference = 64C3C785BB6A55B1667DB3071A28A3B6 /* Pods_VirtualNurse.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3DA5F9E20FD9C36B0927376A0217A14D /* Pods-VirtualNurseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C541F2FC05DD50EFFBCE4E9296BC811 /* Build configuration list for PBXNativeTarget "Pods-VirtualNurseUITests" */;
+			buildPhases = (
+				B6843FD9743DB6598704CF534403A068 /* Sources */,
+				D1791B296744116A557F3FE735ED4E9E /* Frameworks */,
+				33A2D7728783BD56621132A908369590 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-VirtualNurseUITests";
+			productName = "Pods-VirtualNurseUITests";
+			productReference = 19A8C0E6BD0CCFC9E5985664262AFCA5 /* Pods_VirtualNurseUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		65D608726CF4D1F597D1ECE9E244D4EB /* SwiftKeychainWrapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 954ADAE60561B28BD0A55A0A0102828E /* Build configuration list for PBXNativeTarget "SwiftKeychainWrapper" */;
+			buildPhases = (
+				E776B2A2E7413C254BFC2116E967631E /* Sources */,
+				47B9E14F6E1A8F2A0E5A37D691A455D2 /* Frameworks */,
+				D00A4AB8E818EA2D663F9E0698D794AA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftKeychainWrapper;
+			productName = SwiftKeychainWrapper;
+			productReference = 54F05C5E8C06B260A99690C86ACE1A1C /* SwiftKeychainWrapper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FB84AB74750048D72F3434FEADD2EF5E /* Pods-VirtualNurseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2555648AC21452DA7F8A16B9EB479B4D /* Build configuration list for PBXNativeTarget "Pods-VirtualNurseTests" */;
+			buildPhases = (
+				715C63E5C7A10CBEAA464E4B62BE78E8 /* Sources */,
+				DEB707E6C71207A5718160727904B9A0 /* Frameworks */,
+				284E73B7226BD8E0E897C0708278B18F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-VirtualNurseTests";
+			productName = "Pods-VirtualNurseTests";
+			productReference = A5D0DB3D54DDB467DBA1745A9199186B /* Pods_VirtualNurseTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = C505E05DF7F6D7FF7AB7FAB044B1DACE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				226086D984E645B22106B6819E01C2CC /* Pods-VirtualNurse */,
+				FB84AB74750048D72F3434FEADD2EF5E /* Pods-VirtualNurseTests */,
+				3DA5F9E20FD9C36B0927376A0217A14D /* Pods-VirtualNurseUITests */,
+				65D608726CF4D1F597D1ECE9E244D4EB /* SwiftKeychainWrapper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A716B5914E52EFE23551FD0E6825379 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E5FD1F6A5C0BAA54BB7F23CFBA4B9BE /* Pods-VirtualNurse-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		715C63E5C7A10CBEAA464E4B62BE78E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33F58EBB887C6CCF0FAB6A053E545F60 /* Pods-VirtualNurseTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6843FD9743DB6598704CF534403A068 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25A54CEA55BCD0C5861D25B45F7C246 /* Pods-VirtualNurseUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E776B2A2E7413C254BFC2116E967631E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				684BB64518C5A9B4BC7DCF5F4B128177 /* KeychainItemAccessibility.swift in Sources */,
+				AC6AB4E9917EDCAF34AD07CC2ABE296B /* KeychainWrapper.swift in Sources */,
+				10B499C9C647CB071F8FE9537D50215F /* SwiftKeychainWrapper-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0979E9E0902DE788FB4FB4EBE667438D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftKeychainWrapper;
+			target = 65D608726CF4D1F597D1ECE9E244D4EB /* SwiftKeychainWrapper */;
+			targetProxy = B01971F7E6F54FC0C50A99C9D7BC9D6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		243B0731AB25BA9532778176EAD0B8B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AEBEBBBE3FB13A92C4FF14B6AAD87E4 /* Pods-VirtualNurse.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-VirtualNurse/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VirtualNurse/Pods-VirtualNurse.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_VirtualNurse;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2A3771B0779AD1010DC43DF55C227234 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F194D311B8B315AF5F4F433CF65096C0 /* SwiftKeychainWrapper.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftKeychainWrapper/SwiftKeychainWrapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftKeychainWrapper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftKeychainWrapper/SwiftKeychainWrapper.modulemap";
+				PRODUCT_NAME = SwiftKeychainWrapper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		34024C82370EDF3F83AD86E9CC981C3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16BCCF5A366E464EC9E04EAFF60288CD /* Pods-VirtualNurseTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-VirtualNurseTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VirtualNurseTests/Pods-VirtualNurseTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_VirtualNurseTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4E39CA1AC956AE4B675B1AE903B0A00D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6910B269A5F39406BDA9E50DFF0A8A0A /* Pods-VirtualNurse.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-VirtualNurse/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VirtualNurse/Pods-VirtualNurse.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_VirtualNurse;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		742640A73A04A5C28A745D79A5C28A2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6CD9D4ED9E8A8F85504C873D5062937 /* Pods-VirtualNurseUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-VirtualNurseUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VirtualNurseUITests/Pods-VirtualNurseUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_VirtualNurseUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7C07ED8089F70A31B83996A8910D7F18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		98F29E7567052F62660DDD7069ADF73C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		AE0010ABAD1AC1F16EE18EB3574F537C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F194D311B8B315AF5F4F433CF65096C0 /* SwiftKeychainWrapper.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftKeychainWrapper/SwiftKeychainWrapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftKeychainWrapper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftKeychainWrapper/SwiftKeychainWrapper.modulemap";
+				PRODUCT_NAME = SwiftKeychainWrapper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D7FD1F32337884992B201B7603FF07F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE0DB164A1F7F071368D8578373E8ED6 /* Pods-VirtualNurseUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-VirtualNurseUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VirtualNurseUITests/Pods-VirtualNurseUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_VirtualNurseUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F8B56B20D4F8F809E3DBF9311AFA7A16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA82231CE643AFBD8CCC1C36C4090094 /* Pods-VirtualNurseTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-VirtualNurseTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VirtualNurseTests/Pods-VirtualNurseTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_VirtualNurseTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2555648AC21452DA7F8A16B9EB479B4D /* Build configuration list for PBXNativeTarget "Pods-VirtualNurseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8B56B20D4F8F809E3DBF9311AFA7A16 /* Debug */,
+				34024C82370EDF3F83AD86E9CC981C3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C07ED8089F70A31B83996A8910D7F18 /* Debug */,
+				98F29E7567052F62660DDD7069ADF73C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DC99F582B2243A9EEEE1A32BB51708A /* Build configuration list for PBXNativeTarget "Pods-VirtualNurse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				243B0731AB25BA9532778176EAD0B8B0 /* Debug */,
+				4E39CA1AC956AE4B675B1AE903B0A00D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C541F2FC05DD50EFFBCE4E9296BC811 /* Build configuration list for PBXNativeTarget "Pods-VirtualNurseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7FD1F32337884992B201B7603FF07F6 /* Debug */,
+				742640A73A04A5C28A745D79A5C28A2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		954ADAE60561B28BD0A55A0A0102828E /* Build configuration list for PBXNativeTarget "SwiftKeychainWrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A3771B0779AD1010DC43DF55C227234 /* Debug */,
+				AE0010ABAD1AC1F16EE18EB3574F537C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
