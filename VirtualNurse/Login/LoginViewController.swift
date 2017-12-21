@@ -10,13 +10,14 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    //GITHUB WORKS
+    
     //MARK:Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var appLogo: UIImageView!
     
     @IBOutlet weak var usernameTxtField: UITextField!
     @IBOutlet weak var passwordTxtField: UITextField!
-    
     var hasLoggedIn = true;
     
     override func viewDidLoad() {
