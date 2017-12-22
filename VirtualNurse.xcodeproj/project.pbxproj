@@ -10,6 +10,10 @@
 		1A25FAA0E1E8DCD46B6D9B72 /* Pods_VirtualNurse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A45DFAECE5C072917E3BA8 /* Pods_VirtualNurse.framework */; };
 		22D33914EC2917044372804F /* Pods_VirtualNurseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FFC722CCE747C0420CB9A7 /* Pods_VirtualNurseUITests.framework */; };
 		255730761FEC360A004050CC /* PatientDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255730751FEC360A004050CC /* PatientDataManager.swift */; };
+		25D2F6DA1FED01640075ACBD /* VNStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D2F6D91FED01640075ACBD /* VNStoryboard.storyboard */; };
+		25D2F6DC1FED017C0075ACBD /* MedicationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D2F6DB1FED017C0075ACBD /* MedicationStoryboard.storyboard */; };
+		25D2F6DE1FED019C0075ACBD /* MonitoringStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D2F6DD1FED019C0075ACBD /* MonitoringStoryboard.storyboard */; };
+		25D2F6E11FED01B00075ACBD /* AppointmentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D2F6E01FED01B00075ACBD /* AppointmentStoryboard.storyboard */; };
 		25FE9C3E1FEA5FDE00437BD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE9C3D1FEA5FDE00437BD6 /* AppDelegate.swift */; };
 		25FE9C431FEA5FDE00437BD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25FE9C411FEA5FDE00437BD6 /* Main.storyboard */; };
 		25FE9C451FEA5FDE00437BD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25FE9C441FEA5FDE00437BD6 /* Assets.xcassets */; };
@@ -50,6 +54,10 @@
 /* Begin PBXFileReference section */
 		05EC101D574FE10F1C0565D9 /* Pods-VirtualNurseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseUITests/Pods-VirtualNurseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		255730751FEC360A004050CC /* PatientDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDataManager.swift; sourceTree = "<group>"; };
+		25D2F6D91FED01640075ACBD /* VNStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VNStoryboard.storyboard; sourceTree = "<group>"; };
+		25D2F6DB1FED017C0075ACBD /* MedicationStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MedicationStoryboard.storyboard; sourceTree = "<group>"; };
+		25D2F6DD1FED019C0075ACBD /* MonitoringStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MonitoringStoryboard.storyboard; sourceTree = "<group>"; };
+		25D2F6E01FED01B00075ACBD /* AppointmentStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppointmentStoryboard.storyboard; sourceTree = "<group>"; };
 		25FE9C3A1FEA5FDE00437BD6 /* VirtualNurse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualNurse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25FE9C3D1FEA5FDE00437BD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25FE9C421FEA5FDE00437BD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -174,6 +182,7 @@
 		25FE9C6B1FEA604C00437BD6 /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
+				25D2F6DD1FED019C0075ACBD /* MonitoringStoryboard.storyboard */,
 			);
 			path = Monitoring;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 		25FE9C6C1FEA604C00437BD6 /* Virtual Nurse */ = {
 			isa = PBXGroup;
 			children = (
+				25D2F6D91FED01640075ACBD /* VNStoryboard.storyboard */,
 			);
 			path = "Virtual Nurse";
 			sourceTree = "<group>";
@@ -216,6 +226,7 @@
 		25FE9C741FEA604D00437BD6 /* Virtual Appointment */ = {
 			isa = PBXGroup;
 			children = (
+				25D2F6E01FED01B00075ACBD /* AppointmentStoryboard.storyboard */,
 			);
 			path = "Virtual Appointment";
 			sourceTree = "<group>";
@@ -234,6 +245,7 @@
 		25FE9C781FEA604D00437BD6 /* Medication */ = {
 			isa = PBXGroup;
 			children = (
+				25D2F6DB1FED017C0075ACBD /* MedicationStoryboard.storyboard */,
 			);
 			path = Medication;
 			sourceTree = "<group>";
@@ -388,8 +400,12 @@
 			files = (
 				25FE9C871FEA704800437BD6 /* HomeDashboard.storyboard in Resources */,
 				25FE9C481FEA5FDE00437BD6 /* LaunchScreen.storyboard in Resources */,
+				25D2F6DE1FED019C0075ACBD /* MonitoringStoryboard.storyboard in Resources */,
 				25FE9C451FEA5FDE00437BD6 /* Assets.xcassets in Resources */,
 				25FE9C431FEA5FDE00437BD6 /* Main.storyboard in Resources */,
+				25D2F6DC1FED017C0075ACBD /* MedicationStoryboard.storyboard in Resources */,
+				25D2F6E11FED01B00075ACBD /* AppointmentStoryboard.storyboard in Resources */,
+				25D2F6DA1FED01640075ACBD /* VNStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
