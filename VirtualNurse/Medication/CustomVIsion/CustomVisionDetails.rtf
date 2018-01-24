@@ -1,0 +1,53 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf100
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Medium;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red255\green255\blue255;\red67\green67\blue67;
+\red234\green234\blue234;\red184\green14\blue61;\red247\green238\blue241;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c100000\c100000\c100000;\cssrgb\c33333\c33333\c33333;
+\cssrgb\c93333\c93333\c93333;\cssrgb\c78039\c14510\c30588;\cssrgb\c97647\c94902\c95686;}
+\paperw12240\paperh15840\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl520\partightenfactor0
+
+\f0\fs48 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 How to use the Prediction API\
+\pard\pardeftab720\sl380\sa200\partightenfactor0
+
+\fs36 \cf2 If you have an image URL:\cb1 \
+\pard\pardeftab720\sl380\partightenfactor0
+
+\f1\fs28 \cf4 \cb5 \strokec4 https://southcentralus.api.cognitive.microsoft.com/customvision/v1.1/Prediction/655c2bbe-7d65-4f1d-a2d0-7706aa5b9d32/url?iterationId=a1b4e9b6-61fa-4ab1-8058-3eb75fe5660c\
+\pard\pardeftab720\sl320\partightenfactor0
+\cf2 \cb3 \strokec2 Set\'a0
+\f2\fs25\fsmilli12600 \cf6 \cb7 \strokec6 Prediction-Key
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0Header to :\'a0
+\f2\fs25\fsmilli12600 \cf6 \cb7 \strokec6 6074b2b8ea7a447f8199182e49f9c3a0
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\cb3 Set\'a0
+\f2\fs25\fsmilli12600 \cf6 \cb7 \strokec6 Content-Type
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0Header to :\'a0
+\f2\fs25\fsmilli12600 \cf6 \cb7 \strokec6 application/json
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\cb3 Set Body to :\'a0
+\f2\fs25\fsmilli12600 \cf6 \cb7 \strokec6 \{"Url": "<image url>"\}
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\sl380\sa200\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 If you have an image file:\cb1 \
+\pard\pardeftab720\sl380\partightenfactor0
+
+\f1\fs28 \cf4 \cb5 \strokec4 https://southcentralus.api.cognitive.microsoft.com/customvision/v1.1/Prediction/655c2bbe-7d65-4f1d-a2d0-7706aa5b9d32/image?iterationId=a1b4e9b6-61fa-4ab1-8058-3eb75fe5660c\
+\pard\pardeftab720\sl320\partightenfactor0
+\cf2 \cb3 \strokec2 Set\'a0
+\f2\fs25\fsmilli12600 \cf6 \cb7 \strokec6 Prediction-Key
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0Header to :\'a0
+\f2\fs25\fsmilli12600 \cf6 \cb7 \strokec6 6074b2b8ea7a447f8199182e49f9c3a0
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\cb3 Set\'a0
+\f2\fs25\fsmilli12600 \cf6 \cb7 \strokec6 Content-Type
+\f1\fs28 \cf2 \cb3 \strokec2 \'a0Header to :\'a0
+\f2\fs25\fsmilli12600 \cf6 \cb7 \strokec6 application/octet-stream
+\f1\fs28 \cf2 \cb1 \strokec2 \
+\cb3 Set Body to : <image file>\cb1 \
+\cb3 Remember, you can mark an iteration as Default so you can send data to it without specifying an iteration id. You can then change which iteration your app is pointing to without having to update your app.\cb1 \
+}
