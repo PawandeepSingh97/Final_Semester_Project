@@ -9,24 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A25FAA0E1E8DCD46B6D9B72 /* Pods_VirtualNurse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A45DFAECE5C072917E3BA8 /* Pods_VirtualNurse.framework */; };
 		1D2280F72018442B00AB75BD /* HomeDashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2280F62018442B00AB75BD /* HomeDashboardCollectionViewCell.swift */; };
-		1D9222B220183823003461D8 /* ViewTodayResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D92229F20183823003461D8 /* ViewTodayResultsCollectionViewCell.swift */; };
-		1D9222B320183823003461D8 /* MonitoringCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222A020183823003461D8 /* MonitoringCollectionViewCell.swift */; };
-		1D9222B420183823003461D8 /* MonitoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222A120183823003461D8 /* MonitoringViewController.swift */; };
-		1D9222B520183823003461D8 /* MonitoringDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222A320183823003461D8 /* MonitoringDashboardViewController.swift */; };
-		1D9222B620183823003461D8 /* MonitoringDashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222A420183823003461D8 /* MonitoringDashboardCollectionViewCell.swift */; };
-		1D9222B720183823003461D8 /* helperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222A620183823003461D8 /* helperClass.swift */; };
-		1D9222B820183823003461D8 /* framingham.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222A720183823003461D8 /* framingham.mlmodel */; };
-		1D9222B920183823003461D8 /* MonitoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222A820183823003461D8 /* MonitoringController.swift */; };
-		1D9222BA20183823003461D8 /* MonitoringStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D9222A920183823003461D8 /* MonitoringStoryboard.storyboard */; };
-		1D9222BB20183823003461D8 /* ViewTodayResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222AA20183823003461D8 /* ViewTodayResultsViewController.swift */; };
-		1D9222BC20183823003461D8 /* BMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222AC20183823003461D8 /* BMIViewController.swift */; };
-		1D9222BD20183823003461D8 /* CholesterolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222AD20183823003461D8 /* CholesterolViewController.swift */; };
-		1D9222BE20183823003461D8 /* CigaretteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222AE20183823003461D8 /* CigaretteViewController.swift */; };
-		1D9222BF20183823003461D8 /* BloodPressureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222AF20183823003461D8 /* BloodPressureViewController.swift */; };
-		1D9222C020183823003461D8 /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222B020183823003461D8 /* HeartRateViewController.swift */; };
-		1D9222C120183823003461D8 /* GlucoseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222B120183823003461D8 /* GlucoseViewController.swift */; };
-		1D9222C320183888003461D8 /* Monitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222C220183887003461D8 /* Monitoring.swift */; };
-		1D9222C520183898003461D8 /* MonitoringDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9222C420183898003461D8 /* MonitoringDataManager.swift */; };
 		1D9222C820183C71003461D8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9222C720183C71003461D8 /* HealthKit.framework */; };
 		22D33914EC2917044372804F /* Pods_VirtualNurseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FFC722CCE747C0420CB9A7 /* Pods_VirtualNurseUITests.framework */; };
 		2521209120059FAF0048F66B /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521209020059FAF0048F66B /* Dialog.swift */; };
@@ -48,7 +30,6 @@
 		25A58EEE201597C80084BDBB /* LoginTextFieldEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A58EED201597C80084BDBB /* LoginTextFieldEffect.swift */; };
 		25D2F6DA1FED01640075ACBD /* VNStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D2F6D91FED01640075ACBD /* VNStoryboard.storyboard */; };
 		25D2F6DC1FED017C0075ACBD /* MedicationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D2F6DB1FED017C0075ACBD /* MedicationStoryboard.storyboard */; };
-		25D2F6DE1FED019C0075ACBD /* MonitoringStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D2F6DD1FED019C0075ACBD /* MonitoringStoryboard.storyboard */; };
 		25F9A10920020B7300A98511 /* DesignableLoginField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F9A10820020B7300A98511 /* DesignableLoginField.swift */; };
 		25FE9C3E1FEA5FDE00437BD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE9C3D1FEA5FDE00437BD6 /* AppDelegate.swift */; };
 		25FE9C431FEA5FDE00437BD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25FE9C411FEA5FDE00437BD6 /* Main.storyboard */; };
@@ -70,7 +51,6 @@
 		73A1209E20184E5700F87318 /* CreateAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A1209020184E5700F87318 /* CreateAppointmentViewController.swift */; };
 		73A1209F20184E5700F87318 /* UpdateAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A1209120184E5700F87318 /* UpdateAppointmentViewController.swift */; };
 		73A120A020184E5700F87318 /* ViewAppointmentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A1209220184E5700F87318 /* ViewAppointmentStoryboard.storyboard */; };
-		73A120A120184E5700F87318 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A1209320184E5700F87318 /* Appointment.swift */; };
 		73A120A220184E5700F87318 /* ViewAppointmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A1209420184E5700F87318 /* ViewAppointmentCollectionViewCell.swift */; };
 		73A120A320184E5700F87318 /* ViewAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A1209520184E5700F87318 /* ViewAppointmentViewController.swift */; };
 		73A120A420184E5700F87318 /* CreateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A1209620184E5700F87318 /* CreateCollectionViewCell.swift */; };
@@ -98,6 +78,24 @@
 		73A120DD20184F3500F87318 /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A120CA20184F3500F87318 /* FSCalendarHeaderView.m */; };
 		73A120DE20184F3500F87318 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A120CE20184F3500F87318 /* FSCalendarTransitionCoordinator.m */; };
 		73A120DF20184F3500F87318 /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A120CF20184F3500F87318 /* FSCalendarAppearance.m */; };
+		73A120E22018587000F87318 /* MonitoringDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120E12018587000F87318 /* MonitoringDataManager.swift */; };
+		73A120F8201859DD00F87318 /* ViewTodayResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120E5201859DD00F87318 /* ViewTodayResultsCollectionViewCell.swift */; };
+		73A120F9201859DD00F87318 /* MonitoringCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120E6201859DD00F87318 /* MonitoringCollectionViewCell.swift */; };
+		73A120FA201859DD00F87318 /* MonitoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120E7201859DD00F87318 /* MonitoringViewController.swift */; };
+		73A120FB201859DD00F87318 /* MonitoringDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120E9201859DD00F87318 /* MonitoringDashboardViewController.swift */; };
+		73A120FC201859DD00F87318 /* MonitoringDashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120EA201859DD00F87318 /* MonitoringDashboardCollectionViewCell.swift */; };
+		73A120FD201859DD00F87318 /* helperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120EC201859DD00F87318 /* helperClass.swift */; };
+		73A120FE201859DD00F87318 /* framingham.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 73A120ED201859DD00F87318 /* framingham.mlmodel */; };
+		73A120FF201859DD00F87318 /* MonitoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120EE201859DD00F87318 /* MonitoringController.swift */; };
+		73A12100201859DD00F87318 /* MonitoringStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A120EF201859DD00F87318 /* MonitoringStoryboard.storyboard */; };
+		73A12101201859DD00F87318 /* ViewTodayResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120F0201859DD00F87318 /* ViewTodayResultsViewController.swift */; };
+		73A12102201859DD00F87318 /* BMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120F2201859DD00F87318 /* BMIViewController.swift */; };
+		73A12103201859DD00F87318 /* CholesterolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120F3201859DD00F87318 /* CholesterolViewController.swift */; };
+		73A12104201859DD00F87318 /* CigaretteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120F4201859DD00F87318 /* CigaretteViewController.swift */; };
+		73A12105201859DD00F87318 /* BloodPressureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120F5201859DD00F87318 /* BloodPressureViewController.swift */; };
+		73A12106201859DD00F87318 /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120F6201859DD00F87318 /* HeartRateViewController.swift */; };
+		73A12107201859DD00F87318 /* GlucoseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A120F7201859DD00F87318 /* GlucoseViewController.swift */; };
+		73A1210920185A2100F87318 /* Monitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A1210820185A2100F87318 /* Monitoring.swift */; };
 		C92E5B653558B0FDA861C9B2 /* Pods_VirtualNurseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C888169035B5CCF50C279380 /* Pods_VirtualNurseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,24 +119,6 @@
 /* Begin PBXFileReference section */
 		05EC101D574FE10F1C0565D9 /* Pods-VirtualNurseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseUITests/Pods-VirtualNurseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1D2280F62018442B00AB75BD /* HomeDashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDashboardCollectionViewCell.swift; sourceTree = "<group>"; };
-		1D92229F20183823003461D8 /* ViewTodayResultsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTodayResultsCollectionViewCell.swift; sourceTree = "<group>"; };
-		1D9222A020183823003461D8 /* MonitoringCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringCollectionViewCell.swift; sourceTree = "<group>"; };
-		1D9222A120183823003461D8 /* MonitoringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringViewController.swift; sourceTree = "<group>"; };
-		1D9222A320183823003461D8 /* MonitoringDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringDashboardViewController.swift; sourceTree = "<group>"; };
-		1D9222A420183823003461D8 /* MonitoringDashboardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringDashboardCollectionViewCell.swift; sourceTree = "<group>"; };
-		1D9222A620183823003461D8 /* helperClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = helperClass.swift; sourceTree = "<group>"; };
-		1D9222A720183823003461D8 /* framingham.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = framingham.mlmodel; sourceTree = "<group>"; };
-		1D9222A820183823003461D8 /* MonitoringController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringController.swift; sourceTree = "<group>"; };
-		1D9222A920183823003461D8 /* MonitoringStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MonitoringStoryboard.storyboard; sourceTree = "<group>"; };
-		1D9222AA20183823003461D8 /* ViewTodayResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTodayResultsViewController.swift; sourceTree = "<group>"; };
-		1D9222AC20183823003461D8 /* BMIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMIViewController.swift; sourceTree = "<group>"; };
-		1D9222AD20183823003461D8 /* CholesterolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CholesterolViewController.swift; sourceTree = "<group>"; };
-		1D9222AE20183823003461D8 /* CigaretteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CigaretteViewController.swift; sourceTree = "<group>"; };
-		1D9222AF20183823003461D8 /* BloodPressureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodPressureViewController.swift; sourceTree = "<group>"; };
-		1D9222B020183823003461D8 /* HeartRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
-		1D9222B120183823003461D8 /* GlucoseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlucoseViewController.swift; sourceTree = "<group>"; };
-		1D9222C220183887003461D8 /* Monitoring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitoring.swift; sourceTree = "<group>"; };
-		1D9222C420183898003461D8 /* MonitoringDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringDataManager.swift; sourceTree = "<group>"; };
 		1D9222C620183C71003461D8 /* VirtualNurse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VirtualNurse.entitlements; sourceTree = "<group>"; };
 		1D9222C720183C71003461D8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		2521209020059FAF0048F66B /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
@@ -160,7 +140,6 @@
 		25A58EED201597C80084BDBB /* LoginTextFieldEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldEffect.swift; sourceTree = "<group>"; };
 		25D2F6D91FED01640075ACBD /* VNStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VNStoryboard.storyboard; sourceTree = "<group>"; };
 		25D2F6DB1FED017C0075ACBD /* MedicationStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MedicationStoryboard.storyboard; sourceTree = "<group>"; };
-		25D2F6DD1FED019C0075ACBD /* MonitoringStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MonitoringStoryboard.storyboard; sourceTree = "<group>"; };
 		25F9A10820020B7300A98511 /* DesignableLoginField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableLoginField.swift; sourceTree = "<group>"; };
 		25FE9C3A1FEA5FDE00437BD6 /* VirtualNurse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualNurse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25FE9C3D1FEA5FDE00437BD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -191,7 +170,6 @@
 		73A1209020184E5700F87318 /* CreateAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAppointmentViewController.swift; sourceTree = "<group>"; };
 		73A1209120184E5700F87318 /* UpdateAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAppointmentViewController.swift; sourceTree = "<group>"; };
 		73A1209220184E5700F87318 /* ViewAppointmentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewAppointmentStoryboard.storyboard; sourceTree = "<group>"; };
-		73A1209320184E5700F87318 /* Appointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		73A1209420184E5700F87318 /* ViewAppointmentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAppointmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		73A1209520184E5700F87318 /* ViewAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAppointmentViewController.swift; sourceTree = "<group>"; };
 		73A1209620184E5700F87318 /* CreateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -236,6 +214,24 @@
 		73A120CD20184F3500F87318 /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
 		73A120CE20184F3500F87318 /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
 		73A120CF20184F3500F87318 /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
+		73A120E12018587000F87318 /* MonitoringDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringDataManager.swift; sourceTree = "<group>"; };
+		73A120E5201859DD00F87318 /* ViewTodayResultsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTodayResultsCollectionViewCell.swift; sourceTree = "<group>"; };
+		73A120E6201859DD00F87318 /* MonitoringCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringCollectionViewCell.swift; sourceTree = "<group>"; };
+		73A120E7201859DD00F87318 /* MonitoringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringViewController.swift; sourceTree = "<group>"; };
+		73A120E9201859DD00F87318 /* MonitoringDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringDashboardViewController.swift; sourceTree = "<group>"; };
+		73A120EA201859DD00F87318 /* MonitoringDashboardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringDashboardCollectionViewCell.swift; sourceTree = "<group>"; };
+		73A120EC201859DD00F87318 /* helperClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = helperClass.swift; sourceTree = "<group>"; };
+		73A120ED201859DD00F87318 /* framingham.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = framingham.mlmodel; sourceTree = "<group>"; };
+		73A120EE201859DD00F87318 /* MonitoringController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringController.swift; sourceTree = "<group>"; };
+		73A120EF201859DD00F87318 /* MonitoringStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MonitoringStoryboard.storyboard; sourceTree = "<group>"; };
+		73A120F0201859DD00F87318 /* ViewTodayResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTodayResultsViewController.swift; sourceTree = "<group>"; };
+		73A120F2201859DD00F87318 /* BMIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMIViewController.swift; sourceTree = "<group>"; };
+		73A120F3201859DD00F87318 /* CholesterolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CholesterolViewController.swift; sourceTree = "<group>"; };
+		73A120F4201859DD00F87318 /* CigaretteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CigaretteViewController.swift; sourceTree = "<group>"; };
+		73A120F5201859DD00F87318 /* BloodPressureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodPressureViewController.swift; sourceTree = "<group>"; };
+		73A120F6201859DD00F87318 /* HeartRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
+		73A120F7201859DD00F87318 /* GlucoseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlucoseViewController.swift; sourceTree = "<group>"; };
+		73A1210820185A2100F87318 /* Monitoring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitoring.swift; sourceTree = "<group>"; };
 		97FFC722CCE747C0420CB9A7 /* Pods_VirtualNurseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualNurseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34399E8B651217DC992D609 /* Pods-VirtualNurseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseTests/Pods-VirtualNurseTests.release.xcconfig"; sourceTree = "<group>"; };
 		B47553265F57198EB41746F7 /* Pods-VirtualNurseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseTests/Pods-VirtualNurseTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -273,61 +269,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1D92229D20183823003461D8 /* Monitoring */ = {
-			isa = PBXGroup;
-			children = (
-				1D92229E20183823003461D8 /* Collection View */,
-				1D9222A120183823003461D8 /* MonitoringViewController.swift */,
-				1D9222A220183823003461D8 /* Monitoring Dashboard */,
-				1D9222A520183823003461D8 /* Utils */,
-				1D9222A820183823003461D8 /* MonitoringController.swift */,
-				1D9222A920183823003461D8 /* MonitoringStoryboard.storyboard */,
-				1D9222AA20183823003461D8 /* ViewTodayResultsViewController.swift */,
-				1D9222AB20183823003461D8 /* Monitoring VC */,
-			);
-			path = Monitoring;
-			sourceTree = "<group>";
-		};
-		1D92229E20183823003461D8 /* Collection View */ = {
-			isa = PBXGroup;
-			children = (
-				1D92229F20183823003461D8 /* ViewTodayResultsCollectionViewCell.swift */,
-				1D9222A020183823003461D8 /* MonitoringCollectionViewCell.swift */,
-			);
-			path = "Collection View";
-			sourceTree = "<group>";
-		};
-		1D9222A220183823003461D8 /* Monitoring Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-				1D9222A320183823003461D8 /* MonitoringDashboardViewController.swift */,
-				1D9222A420183823003461D8 /* MonitoringDashboardCollectionViewCell.swift */,
-			);
-			path = "Monitoring Dashboard";
-			sourceTree = "<group>";
-		};
-		1D9222A520183823003461D8 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				1D9222A620183823003461D8 /* helperClass.swift */,
-				1D9222A720183823003461D8 /* framingham.mlmodel */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		1D9222AB20183823003461D8 /* Monitoring VC */ = {
-			isa = PBXGroup;
-			children = (
-				1D9222AC20183823003461D8 /* BMIViewController.swift */,
-				1D9222AD20183823003461D8 /* CholesterolViewController.swift */,
-				1D9222AE20183823003461D8 /* CigaretteViewController.swift */,
-				1D9222AF20183823003461D8 /* BloodPressureViewController.swift */,
-				1D9222B020183823003461D8 /* HeartRateViewController.swift */,
-				1D9222B120183823003461D8 /* GlucoseViewController.swift */,
-			);
-			path = "Monitoring VC";
-			sourceTree = "<group>";
-		};
 		254881F51FF64F0C00B73C40 /* Cognitive Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +319,7 @@
 				25FE9C3B1FEA5FDE00437BD6 /* Products */,
 				728CCC3488450B8C63E1BBFF /* Pods */,
 				5192024299E8ADBDCE9EF6BB /* Frameworks */,
+				73A120E02018568E00F87318 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -397,10 +339,9 @@
 				1D9222C620183C71003461D8 /* VirtualNurse.entitlements */,
 				25FE9C731FEA604D00437BD6 /* Login */,
 				25FE9C851FEA702300437BD6 /* Home Dashboard */,
-				1D92229D20183823003461D8 /* Monitoring */,
 				25FE9C6C1FEA604C00437BD6 /* Virtual Nurse */,
 				25FE9C781FEA604D00437BD6 /* Medication */,
-				25FE9C6B1FEA604C00437BD6 /* Monitoring */,
+				73A120E3201859DD00F87318 /* Monitoring */,
 				73A1208E20184E5700F87318 /* Virtual Appointment */,
 				25FE9C751FEA604D00437BD6 /* Data Managers */,
 				25FE9C701FEA604C00437BD6 /* HTTP */,
@@ -448,8 +389,8 @@
 		25FE9C6D1FEA604C00437BD6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1D9222C220183887003461D8 /* Monitoring.swift */,
 				252120962005AFB10048F66B /* AppointmentModel.swift */,
+				73A1210820185A2100F87318 /* Monitoring.swift */,
 				25FE9C811FEA67A500437BD6 /* User.swift */,
 				25FE9C6E1FEA604C00437BD6 /* Patient.swift */,
 				2587DB641FF2392F00FB3C23 /* MockMessage.swift */,
@@ -484,6 +425,7 @@
 				25FE9C771FEA604D00437BD6 /* LUISDataManager.swift */,
 				25FE9C901FEA8A8300437BD6 /* UserDataManager.swift */,
 				255730751FEC360A004050CC /* PatientDataManager.swift */,
+				73A120E12018587000F87318 /* MonitoringDataManager.swift */,
 				73A120AB20184EA500F87318 /* AppointmentDataManager.swift */,
 			);
 			path = "Data Managers";
@@ -541,7 +483,6 @@
 				73A1209020184E5700F87318 /* CreateAppointmentViewController.swift */,
 				73A1209120184E5700F87318 /* UpdateAppointmentViewController.swift */,
 				73A1209220184E5700F87318 /* ViewAppointmentStoryboard.storyboard */,
-				73A1209320184E5700F87318 /* Appointment.swift */,
 				73A1209420184E5700F87318 /* ViewAppointmentCollectionViewCell.swift */,
 				73A1209520184E5700F87318 /* ViewAppointmentViewController.swift */,
 				73A1209620184E5700F87318 /* CreateCollectionViewCell.swift */,
@@ -591,6 +532,68 @@
 				73A120CF20184F3500F87318 /* FSCalendarAppearance.m */,
 			);
 			path = FSCalendar;
+			sourceTree = "<group>";
+		};
+		73A120E02018568E00F87318 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		73A120E3201859DD00F87318 /* Monitoring */ = {
+			isa = PBXGroup;
+			children = (
+				73A120E4201859DD00F87318 /* Collection View */,
+				73A120E7201859DD00F87318 /* MonitoringViewController.swift */,
+				73A120E8201859DD00F87318 /* Monitoring Dashboard */,
+				73A120EB201859DD00F87318 /* Utils */,
+				73A120EE201859DD00F87318 /* MonitoringController.swift */,
+				73A120EF201859DD00F87318 /* MonitoringStoryboard.storyboard */,
+				73A120F0201859DD00F87318 /* ViewTodayResultsViewController.swift */,
+				73A120F1201859DD00F87318 /* Monitoring VC */,
+			);
+			path = Monitoring;
+			sourceTree = "<group>";
+		};
+		73A120E4201859DD00F87318 /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				73A120E5201859DD00F87318 /* ViewTodayResultsCollectionViewCell.swift */,
+				73A120E6201859DD00F87318 /* MonitoringCollectionViewCell.swift */,
+			);
+			path = "Collection View";
+			sourceTree = "<group>";
+		};
+		73A120E8201859DD00F87318 /* Monitoring Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				73A120E9201859DD00F87318 /* MonitoringDashboardViewController.swift */,
+				73A120EA201859DD00F87318 /* MonitoringDashboardCollectionViewCell.swift */,
+			);
+			path = "Monitoring Dashboard";
+			sourceTree = "<group>";
+		};
+		73A120EB201859DD00F87318 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				73A120EC201859DD00F87318 /* helperClass.swift */,
+				73A120ED201859DD00F87318 /* framingham.mlmodel */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		73A120F1201859DD00F87318 /* Monitoring VC */ = {
+			isa = PBXGroup;
+			children = (
+				73A120F2201859DD00F87318 /* BMIViewController.swift */,
+				73A120F3201859DD00F87318 /* CholesterolViewController.swift */,
+				73A120F4201859DD00F87318 /* CigaretteViewController.swift */,
+				73A120F5201859DD00F87318 /* BloodPressureViewController.swift */,
+				73A120F6201859DD00F87318 /* HeartRateViewController.swift */,
+				73A120F7201859DD00F87318 /* GlucoseViewController.swift */,
+			);
+			path = "Monitoring VC";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -717,10 +720,10 @@
 				25FE9C871FEA704800437BD6 /* HomeDashboard.storyboard in Resources */,
 				25FE9C481FEA5FDE00437BD6 /* LaunchScreen.storyboard in Resources */,
 				73A120A720184E5700F87318 /* CreateAppointmentStoryboard.storyboard in Resources */,
-				25D2F6DE1FED019C0075ACBD /* MonitoringStoryboard.storyboard in Resources */,
 				25FE9C451FEA5FDE00437BD6 /* Assets.xcassets in Resources */,
 				25FE9C431FEA5FDE00437BD6 /* Main.storyboard in Resources */,
 				25D2F6DC1FED017C0075ACBD /* MedicationStoryboard.storyboard in Resources */,
+				73A12100201859DD00F87318 /* MonitoringStoryboard.storyboard in Resources */,
 				73A120A020184E5700F87318 /* ViewAppointmentStoryboard.storyboard in Resources */,
 				25D2F6DA1FED01640075ACBD /* VNStoryboard.storyboard in Resources */,
 			);
@@ -919,66 +922,76 @@
 				25FE9C841FEA6C6800437BD6 /* LoginViewController.swift in Sources */,
 				73A120DF20184F3500F87318 /* FSCalendarAppearance.m in Sources */,
 				25FE9C7D1FEA604D00437BD6 /* RestfulManager.swift in Sources */,
+				73A12105201859DD00F87318 /* BloodPressureViewController.swift in Sources */,
 				25FE9C891FEA706A00437BD6 /* HomeDashboardViewController.swift in Sources */,
 				25FE9C7E1FEA604D00437BD6 /* LUISDataManager.swift in Sources */,
 				73A120DA20184F3500F87318 /* FSCalendar+Deprecated.m in Sources */,
 				73A120D320184F3500F87318 /* FSCalendarCell.m in Sources */,
+				73A12106201859DD00F87318 /* HeartRateViewController.swift in Sources */,
+				73A120FA201859DD00F87318 /* MonitoringViewController.swift in Sources */,
 				73A1209F20184E5700F87318 /* UpdateAppointmentViewController.swift in Sources */,
 				25A58EEE201597C80084BDBB /* LoginTextFieldEffect.swift in Sources */,
+				73A120F9201859DD00F87318 /* MonitoringCollectionViewCell.swift in Sources */,
 				25FE9C7A1FEA604D00437BD6 /* Intent.swift in Sources */,
 				25A58EEA2014D87F0084BDBB /* TouchIDAuthentication.swift in Sources */,
 				73A120AE20184ED400F87318 /* DoctorModel.swift in Sources */,
 				73A120DC20184F3500F87318 /* FSCalendarCalculator.m in Sources */,
 				255730761FEC360A004050CC /* PatientDataManager.swift in Sources */,
-				1D9222B820183823003461D8 /* framingham.mlmodel in Sources */,
 				25FE9C911FEA8A8300437BD6 /* UserDataManager.swift in Sources */,
+				73A120E22018587000F87318 /* MonitoringDataManager.swift in Sources */,
 				73A120D920184F3500F87318 /* FSCalendarExtensions.m in Sources */,
 				73A120AC20184EA500F87318 /* AppointmentDataManager.swift in Sources */,
 				2587DB651FF2392F00FB3C23 /* MockMessage.swift in Sources */,
 				1D2280F72018442B00AB75BD /* HomeDashboardCollectionViewCell.swift in Sources */,
-				1D9222B220183823003461D8 /* ViewTodayResultsCollectionViewCell.swift in Sources */,
 				25FE9C3E1FEA5FDE00437BD6 /* AppDelegate.swift in Sources */,
-				1D9222C520183898003461D8 /* MonitoringDataManager.swift in Sources */,
 				252120952005AE970048F66B /* AppointmentDialog.swift in Sources */,
 				25725CAB1FFE4C820006ACB2 /* DialogController.swift in Sources */,
 				73A120A420184E5700F87318 /* CreateCollectionViewCell.swift in Sources */,
+				73A120FC201859DD00F87318 /* MonitoringDashboardCollectionViewCell.swift in Sources */,
 				25FE9C821FEA67A500437BD6 /* User.swift in Sources */,
+				73A120FB201859DD00F87318 /* MonitoringDashboardViewController.swift in Sources */,
 				73A1209E20184E5700F87318 /* CreateAppointmentViewController.swift in Sources */,
+				73A120FF201859DD00F87318 /* MonitoringController.swift in Sources */,
 				2587DB631FF2386800FB3C23 /* ChatViewController.swift in Sources */,
 				25A58EEC2015979E0084BDBB /* TextFieldEffects.swift in Sources */,
 				73A120D820184F3500F87318 /* FSCalendarWeekdayView.m in Sources */,
 				25F9A10920020B7300A98511 /* DesignableLoginField.swift in Sources */,
 				25FE9C7C1FEA604D00437BD6 /* HTTP.swift in Sources */,
+				73A120FD201859DD00F87318 /* helperClass.swift in Sources */,
 				73A120D120184F3500F87318 /* FSCalendarDelegationProxy.m in Sources */,
+				73A12107201859DD00F87318 /* GlucoseViewController.swift in Sources */,
 				73A120DB20184F3500F87318 /* FSCalendarConstants.m in Sources */,
+				73A12101201859DD00F87318 /* ViewTodayResultsViewController.swift in Sources */,
 				2587DB6B1FF29C0300FB3C23 /* ChatNavigationViewController.swift in Sources */,
 				73A120D520184F3500F87318 /* FSCalendar.m in Sources */,
 				73A120A920184E5700F87318 /* modelPopupDesign.swift in Sources */,
 				73A120DE20184F3500F87318 /* FSCalendarTransitionCoordinator.m in Sources */,
 				73A120A320184E5700F87318 /* ViewAppointmentViewController.swift in Sources */,
 				2587DB691FF260F800FB3C23 /* MicButton.swift in Sources */,
+				73A12104201859DD00F87318 /* CigaretteViewController.swift in Sources */,
+				73A120F8201859DD00F87318 /* ViewTodayResultsCollectionViewCell.swift in Sources */,
 				73A120D220184F3500F87318 /* FSCalendarDelegationFactory.m in Sources */,
 				73A120A220184E5700F87318 /* ViewAppointmentCollectionViewCell.swift in Sources */,
 				25FE9C7B1FEA604D00437BD6 /* SwiftyJSON.swift in Sources */,
 				73A120A820184E5700F87318 /* showAppointmentDetailsViewController.swift in Sources */,
+				73A120FE201859DD00F87318 /* framingham.mlmodel in Sources */,
 				2521209120059FAF0048F66B /* Dialog.swift in Sources */,
 				73A120D420184F3500F87318 /* FSCalendarStickyHeader.m in Sources */,
 				25725CA91FFE48C20006ACB2 /* PatientDialog.swift in Sources */,
+				73A1210920185A2100F87318 /* Monitoring.swift in Sources */,
 				73A120D720184F3500F87318 /* FSCalendarScopeHandle.m in Sources */,
 				73A120D620184F3500F87318 /* FSCalendarCollectionViewLayout.m in Sources */,
 				254D38CC2002174A00B2B991 /* DesignableFloatingChatButton.swift in Sources */,
-				1D9222BE20183823003461D8 /* CigaretteViewController.swift in Sources */,
 				254D38CE2002249D00B2B991 /* FDSoundActivatedRecorder.swift in Sources */,
 				73A120A620184E5700F87318 /* BridgingHeader.m in Sources */,
-				73A120A120184E5700F87318 /* Appointment.swift in Sources */,
+				73A12103201859DD00F87318 /* CholesterolViewController.swift in Sources */,
+				73A12102201859DD00F87318 /* BMIViewController.swift in Sources */,
 				73A120D020184F3500F87318 /* FSCalendarCollectionView.m in Sources */,
 				73A120A520184E5700F87318 /* doctorViewController.swift in Sources */,
 				73A120AA20184E5700F87318 /* showUpdateAppointmentDetailsViewController.swift in Sources */,
 				25A58EE82014D84D0084BDBB /* KeychainPasswordItem.swift in Sources */,
 				25FE9C791FEA604D00437BD6 /* Patient.swift in Sources */,
-				1D9222B720183823003461D8 /* helperClass.swift in Sources */,
 				254881F31FF4E1DF00B73C40 /* SpeechToTextHelper.swift in Sources */,
-				1D9222B420183823003461D8 /* MonitoringViewController.swift in Sources */,
 				252120972005AFB10048F66B /* AppointmentModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1148,11 +1161,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VirtualNurse/VirtualNurse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7DV725VJBB;
+				DEVELOPMENT_TEAM = 39JNW654ZE;
 				INFOPLIST_FILE = VirtualNurse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorImran.VirtualNurse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorTaufik.VirtualNurse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1166,11 +1179,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VirtualNurse/VirtualNurse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7DV725VJBB;
+				DEVELOPMENT_TEAM = 39JNW654ZE;
 				INFOPLIST_FILE = VirtualNurse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorImran.VirtualNurse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorTaufik.VirtualNurse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -41,7 +41,7 @@ class MonitoringDataManager: NSObject{
         "heartRate": 0,
         "glucose": 0,
         "tenYearCHD": false,
-        "dateCreated": MonitoringViewController().getTodayDate()
+        "dateCreated": HomeDashboardViewController().getTodayDate()
     ]
     
     
