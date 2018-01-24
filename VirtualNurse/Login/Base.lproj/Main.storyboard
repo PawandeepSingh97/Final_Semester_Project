@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="feV-7a-cry">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="feV-7a-cry">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIe-FD-aqe">
-                                <rect key="frame" x="104" y="266" width="169" height="28"/>
+                                <rect key="frame" x="104" y="266" width="208" height="28"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Virtual Nurse">
                                         <attributes>
@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPA-Vh-8qD" customClass="LoginTextFieldEffect" customModule="VirtualNurse" customModuleProvider="target">
-                                <rect key="frame" x="68" y="344" width="280" height="40"/>
+                                <rect key="frame" x="107" y="344" width="280" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5bC-oA-jVT"/>
                                     <constraint firstAttribute="width" constant="280" id="9VU-WI-65g"/>
@@ -61,7 +61,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6XO-sK-iNX" customClass="LoginTextFieldEffect" customModule="VirtualNurse" customModuleProvider="target">
-                                <rect key="frame" x="68" y="433" width="279" height="40"/>
+                                <rect key="frame" x="107" y="433" width="279" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="279" id="Xg5-1c-k6C"/>
                                     <constraint firstAttribute="height" constant="40" id="pRy-aO-DuY"/>
@@ -94,7 +94,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X13-c1-4h5" customClass="DesignableFloatingChatButton" customModule="VirtualNurse" customModuleProvider="target">
-                                <rect key="frame" x="23" y="518" width="331" height="51"/>
+                                <rect key="frame" x="23" y="518" width="370" height="51"/>
                                 <color key="backgroundColor" red="0.25584182143211365" green="0.71443349123001099" blue="0.98554950952529907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="SMK-Q4-TBk"/>
@@ -113,7 +113,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nurse_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="sBE-gb-n0i">
-                                <rect key="frame" x="116" y="98" width="145" height="130"/>
+                                <rect key="frame" x="116" y="98" width="184" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="7M4-9B-4fk"/>
                                     <constraint firstAttribute="width" constant="145" id="8Qq-o0-3Cd"/>
