@@ -110,12 +110,25 @@ class LoginViewController: UIViewController {
 //
 //
 //                };
+
+                print("success");
+                DispatchQueue.main.async
+                    {
+                        //Navigation to new page
+                        let storyboard = UIStoryboard(name:"HomeDashboard" , bundle:nil)
+                        
+                        let HomeDashboardViewController = storyboard.instantiateViewController(withIdentifier: "home") as! HomeDashboardViewController
+                        // self.navigationController?.isNavigationBarHidden = false
+                        self.present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil);
+                       // self.navigationController?.pushViewController(HomeDashboardViewController, animated: true)
+                }
+               
                 
                 //set username value to a key
-                UserDefaults.standard.setValue(username, forKey: "username");
-                print(UserDefaults.standard.value(forKey: "username") as! String);
-                //GET PATIENT DATA
-                self.getPatientandDisplayDashboard(nric: username);
+//                UserDefaults.standard.setValue(username, forKey: "username");
+//                print(UserDefaults.standard.value(forKey: "username") as! String);
+//                //GET PATIENT DATA
+//                self.getPatientandDisplayDashboard(nric: username);
                 
             }
             else if !isUser
