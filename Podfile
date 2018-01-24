@@ -4,8 +4,15 @@
 target 'VirtualNurse' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-	 pod 'SwiftKeychainWrapper'
+       	 pod 'MessageKit' 
+	 pod 'Alamofire', '~> 4.5'
+	 pod 'FSCalendar'
+	 pod 'fluid-slider'
+	 pod 'TextFieldEffects'
+	 pod "SKYLINK"
+	 
   # Pods for VirtualNurse
+	
 
   target 'VirtualNurseTests' do
     inherit! :search_paths

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="feV-7a-cry">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,40 +15,130 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="VirtualNurse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPA-Vh-8qD">
-                                <rect key="frame" x="28" y="248" width="319" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIe-FD-aqe">
+                                <rect key="frame" x="104" y="266" width="169" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Virtual Nurse">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="Arial-Black"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPA-Vh-8qD" customClass="LoginTextFieldEffect" customModule="VirtualNurse" customModuleProvider="target">
+                                <rect key="frame" x="68" y="344" width="280" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5bC-oA-jVT"/>
+                                    <constraint firstAttribute="width" constant="280" id="9VU-WI-65g"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.25584182143211365" green="0.71443349123001099" blue="0.98554950952529907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6XO-sK-iNX">
-                                <rect key="frame" x="28" y="318" width="319" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6XO-sK-iNX" customClass="LoginTextFieldEffect" customModule="VirtualNurse" customModuleProvider="target">
+                                <rect key="frame" x="68" y="433" width="279" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="279" id="Xg5-1c-k6C"/>
+                                    <constraint firstAttribute="height" constant="40" id="pRy-aO-DuY"/>
+                                </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.25584182143211365" green="0.71443349123001099" blue="0.98554950952529907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X13-c1-4h5">
-                                <rect key="frame" x="28" y="407" width="331" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X13-c1-4h5" customClass="DesignableFloatingChatButton" customModule="VirtualNurse" customModuleProvider="target">
+                                <rect key="frame" x="23" y="518" width="331" height="51"/>
                                 <color key="backgroundColor" red="0.25584182143211365" green="0.71443349123001099" blue="0.98554950952529907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="SMK-Q4-TBk"/>
+                                    <constraint firstAttribute="width" constant="331" id="ehM-wu-5Ic"/>
+                                </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginActionHandler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9iE-ou-M59"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Nurse_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="sBE-gb-n0i">
-                                <rect key="frame" x="28" y="46" width="319" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nurse_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="sBE-gb-n0i">
+                                <rect key="frame" x="116" y="98" width="145" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="7M4-9B-4fk"/>
+                                    <constraint firstAttribute="width" constant="145" id="8Qq-o0-3Cd"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GIe-FD-aqe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="104" id="5fO-xN-kDI"/>
+                            <constraint firstItem="sBE-gb-n0i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="116" id="5ub-kE-B17"/>
+                            <constraint firstItem="6XO-sK-iNX" firstAttribute="top" secondItem="aPA-Vh-8qD" secondAttribute="bottom" constant="49" id="DBq-q8-d0G"/>
+                            <constraint firstItem="6XO-sK-iNX" firstAttribute="top" secondItem="aPA-Vh-8qD" secondAttribute="bottom" constant="49" id="F3y-Tv-0ZQ"/>
+                            <constraint firstItem="X13-c1-4h5" firstAttribute="top" secondItem="6XO-sK-iNX" secondAttribute="bottom" constant="45" id="FSF-QY-13z"/>
+                            <constraint firstItem="X13-c1-4h5" firstAttribute="top" secondItem="6XO-sK-iNX" secondAttribute="bottom" constant="45" id="Inv-tN-h4d"/>
+                            <constraint firstItem="sBE-gb-n0i" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="78" id="JOe-97-fVA"/>
+                            <constraint firstItem="aPA-Vh-8qD" firstAttribute="top" secondItem="GIe-FD-aqe" secondAttribute="bottom" constant="50" id="JrI-XU-9Rh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aPA-Vh-8qD" secondAttribute="trailing" constant="27" id="Kgf-pb-vps"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GIe-FD-aqe" secondAttribute="trailing" constant="102" id="NaQ-hb-39D"/>
+                            <constraint firstItem="aPA-Vh-8qD" firstAttribute="top" secondItem="GIe-FD-aqe" secondAttribute="bottom" constant="50" id="OaK-3M-7jP"/>
+                            <constraint firstItem="X13-c1-4h5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="23" id="Rg8-XT-5Cd"/>
+                            <constraint firstItem="GIe-FD-aqe" firstAttribute="top" secondItem="sBE-gb-n0i" secondAttribute="bottom" constant="38" id="UKs-z9-yhj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sBE-gb-n0i" secondAttribute="trailing" constant="114" id="VVY-lJ-ET1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X13-c1-4h5" secondAttribute="trailing" constant="21" id="cVl-ba-pge"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6XO-sK-iNX" secondAttribute="trailing" constant="28" id="lIe-eF-JhM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Virtual Nurse" id="cbN-Ns-w2Z"/>

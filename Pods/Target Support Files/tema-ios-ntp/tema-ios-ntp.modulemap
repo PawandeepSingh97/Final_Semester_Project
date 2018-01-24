@@ -1,0 +1,6 @@
+framework module tema_ios_ntp {
+  umbrella header "tema-ios-ntp-umbrella.h"
+
+  export *
+  module * { export * }
+}

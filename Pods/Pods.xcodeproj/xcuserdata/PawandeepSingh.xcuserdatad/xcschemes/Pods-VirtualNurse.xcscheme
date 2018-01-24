@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "226086D984E645B22106B6819E01C2CC"
+               BlueprintIdentifier = "399AFF2AE5F1A6ADA680BB25D10D0D8B"
                BuildableName = "Pods_VirtualNurse.framework"
                BlueprintName = "Pods-VirtualNurse"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "226086D984E645B22106B6819E01C2CC"
+            BlueprintIdentifier = "399AFF2AE5F1A6ADA680BB25D10D0D8B"
             BuildableName = "Pods_VirtualNurse.framework"
             BlueprintName = "Pods-VirtualNurse"
             ReferencedContainer = "container:Pods.xcodeproj">

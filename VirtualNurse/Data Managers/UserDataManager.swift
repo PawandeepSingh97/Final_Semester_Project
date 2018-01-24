@@ -29,7 +29,7 @@ class UserDataManager: NSObject {
             
             if err != nil
             {
-                return;
+                return ;
             }
             
             let user = json!;

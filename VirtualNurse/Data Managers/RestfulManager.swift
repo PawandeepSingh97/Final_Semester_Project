@@ -15,6 +15,7 @@ public class RestfulController
     public static var restfulURL:String = "";
     
     
+    
 //    public static func getTodoItem() -> String
 //    {
 //        restfulURL = "\(BaseUrl)/tables/TodoItem";
@@ -51,7 +52,7 @@ public class RestfulController
     
     public static func LUISEndPoint() -> String
     {
-        restfulURL = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/6d6b801b-472e-4f39-b85d-3e5f88cac15c?subscription-key=fc0d98628f84459bb6a52c18339a3068&verbose=true&timezoneOffset=0&q=";
+        restfulURL = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/8d271a66-a002-4e2f-84a8-f8cdf880c002?subscription-key=fd89a96407d54f67bfebdf9a9f5a2b9c&verbose=true&timezoneOffset=0&q=";
         return restfulURL;
     }
     
