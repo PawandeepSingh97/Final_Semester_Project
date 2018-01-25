@@ -160,7 +160,7 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
     
     //Designing a button programmatically
     func DesignSubmitButton(){
-        let borderAlpha : CGFloat = 0.7
+       // let borderAlpha : CGFloat = 0.7
         let cornerRadius : CGFloat = 5.0
         submitButton.frame = CGRect(x: 7, y: 660, width: 400, height: 50)
         submitButton.setTitle("SUBMIT", for: [])

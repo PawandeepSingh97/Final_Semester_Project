@@ -79,7 +79,7 @@ class CholesterolViewController: UIViewController {
 //                let azureTableId = monitoring.id
 //                
 //                //Get the cholesterol value
-                 var cholesterolValue = Int(self.cholesterolLabel.text!)
+                 let cholesterolValue = Int(self.cholesterolLabel.text!)
                  MonitoringController().sumbitMonitoringValues(monitoringName:"totalCholesterol", monitoringValue: cholesterolValue!)
         
         
@@ -167,7 +167,7 @@ class CholesterolViewController: UIViewController {
     
     //Designing a button programmatically
     func DesignSubmitButton(){
-        let borderAlpha : CGFloat = 0.7
+       // let borderAlpha : CGFloat = 0.7
         let cornerRadius : CGFloat = 5.0
         submitButton.frame = CGRect(x: 7, y: 660, width: 400, height: 50)
         submitButton.setTitle("SUBMIT", for: [])

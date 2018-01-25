@@ -79,10 +79,10 @@ class HeartRateViewController: UIViewController {
                 print("record exists")
                 
                 //Get the azure table unique id
-                var azureTableId = monitoring.id
+                let azureTableId = monitoring.id
                 
                 //Get the heartRate value
-                var heartRateValue = Double(self.displayHeartRate.text!) 
+                let heartRateValue = Double(self.displayHeartRate.text!) 
                 
                 //Check if heart rate is clocked in
                 if (heartRateValue! > 0.0){

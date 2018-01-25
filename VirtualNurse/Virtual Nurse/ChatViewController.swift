@@ -51,6 +51,7 @@ class ChatViewController: MessagesViewController {
     
     //HELPERS
     var sttHelper = SpeechToTextHelper();
+    var microsoftTranslator = MicrosoftTranslatorHelper();
     
     //to test speech recognizer,remove later
     //var FLAG:BOOL = false;
@@ -72,6 +73,7 @@ class ChatViewController: MessagesViewController {
         //REQUEST PERMISSION FOR SPEECH
         sttHelper.speechRecognizer?.delegate = self;
         sttHelper.requestSpeechAuthorization();
+        sttHelper.delegate = self;
         
       //  messagesCollectionView.backgroundColor = UIColor(patternImage: UIImage(named: "Blue-Gradient BG")!);//BG COLOR
         messagesCollectionView.backgroundColor = .white;
@@ -107,12 +109,74 @@ class ChatViewController: MessagesViewController {
         micBtnStyle();
         
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //Will set greeting to user;
+    func setGreeting()
+    {
+        
+    }
 
+    func sendMessage(message:MockMessage)
+    {
+        // messages.append(MockMessage(text: "test123", sender: currentSender(), messageId: UUID().uuidString, date: Date()))
+        messages.append(message);
+        messagesCollectionView.insertSections([messages.count - 1])
+        messagesCollectionView.scrollToBottom()
+    }
+    
+    
+    /*
+     - Start SpeechToText
+     */
+    func startSpeechToText(_ userSpeech:UITextView)
+    {
+        if sttHelper.audioEngine.isRunning//if audio is recording
+        {   //stop speechtotext
+            sttHelper.audioEngine.stop();
+            sttHelper.recognitionRequest?.endAudio();
+            print("\n RECORDING STOP \n")
+        }
+        else
+        {
+            print("\n RECORDING START \n");
+                                            //pass label inside to show user
+            sttHelper.startRecordingUserSpeech(userSpeech:userSpeech);//start
+            sttHelper.AutoDetectUserSpeaking(2.5);//Set autodetection
+        }
+    }
+
+    
+    //function will take in text and speak to user
+    //based on preferred language
+    func playBotFeedback(text:String)
+    {
+        
+        
+        dialogController?.query(text: text, onComplete: { (response) in
+            //once get response
+            //display in UI
+            DispatchQueue.main.async
+                {
+                     self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+                  //  self.sttHelper.myUtterance = AVSpeechUtterance(string:response)
+                    // self.myUtterance.rate = 0.5
+                  //  self.sttHelper.synth.speak(self.sttHelper.myUtterance);
+                    
+            }
+            self.microsoftTranslator.Translate(from: "en", to: "en", text: response);
+            
+            
+        })
+    }
+
+    // UI MIC BTN STYLE
+//===========================================================================================================
     
     //STYLE FOR MIC BUTTON
     @objc func micBtnStyle()
@@ -154,13 +218,13 @@ class ChatViewController: MessagesViewController {
         };
         
         //let emptyBtn = InputBarButtonItem();
-//        let keyboardBtn = InputBarButtonItem();
-//        keyboardBtn.image = UIImage(named:"keyboard_nav_item");
-//        keyboardBtn.center = self.view.center;
-//        keyboardBtn.setSize(CGSize(width: 100, height: 100), animated: false);
+        //        let keyboardBtn = InputBarButtonItem();
+        //        keyboardBtn.image = UIImage(named:"keyboard_nav_item");
+        //        keyboardBtn.center = self.view.center;
+        //        keyboardBtn.setSize(CGSize(width: 100, height: 100), animated: false);
         
         // Since we moved the send button to the bottom stack lets set the right stack width to 0
-      //  mib.setRightStackViewWidthConstant(to: 0, animated: true)
+        //  mib.setRightStackViewWidthConstant(to: 0, animated: true)
         //let btnItems = [emptyBtn,micbtn,keyboardBtn];
         // Finally set the items
         //mib.bottomStackView.distribution = .fillEqually;
@@ -172,6 +236,7 @@ class ChatViewController: MessagesViewController {
         
     }
     
+    var userSpeech = UITextView()
     
     //STYLE FOR LISTENING BUTTON
     func listeningBtnStyle()
@@ -183,24 +248,24 @@ class ChatViewController: MessagesViewController {
         lib.backgroundView.backgroundColor = UIColor.white;
         lib.isOpaque = false;
         
-        let userSpeech = UITextView()
+        self.userSpeech = UITextView();
         
         let listeningBtn = InputBarButtonItem();
         listeningBtn.title = "LISTENING";
         listeningBtn.contentHorizontalAlignment = .left;
         listeningBtn.onSelected { (btn) in
             
-            self.sendMessage(message: MockMessage(text: userSpeech.text, sender: self.currentUser, messageId: UUID().uuidString, date: Date()));
+            self.sendMessage(message: MockMessage(text: self.userSpeech.text, sender: self.currentUser, messageId: UUID().uuidString, date: Date()));
             //TODO
             //ONCE SEND AND DISPLAY ON UI
             //SEND TEXT TO LUIS FOR FEEDBACK
-            self.playBotFeedback(text: userSpeech.text);
+            self.playBotFeedback(text: self.userSpeech.text);
         }
         listeningBtn.onDeselected { (btn) in
             lib.topStackView.arrangedSubviews.first?.removeFromSuperview();
             lib.topStackViewPadding = .zero;
             ////stop STT, and display mic btn ui
-            self.startSpeechToText(userSpeech)
+            self.startSpeechToText(self.userSpeech)
             self.micBtnStyle();
         }
         
@@ -212,7 +277,7 @@ class ChatViewController: MessagesViewController {
             $0.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             //when is cancel btn is clicked,change style
             //and stop speechtotext
-          
+            
             
         }
         cancelBtn.onDeselected {
@@ -220,8 +285,8 @@ class ChatViewController: MessagesViewController {
             lib.topStackView.arrangedSubviews.first?.removeFromSuperview();
             lib.topStackViewPadding = .zero;
             //stop STT, and display mic btn ui
-            self.startSpeechToText(userSpeech)
-              self.micBtnStyle();
+            self.startSpeechToText(self.userSpeech)
+            self.micBtnStyle();
         };
         
         //cancelBtn.title = "CANCEL";
@@ -233,7 +298,7 @@ class ChatViewController: MessagesViewController {
         lib.padding.bottom = 10;
         messageInputBar = lib;
         
-       
+        
         userSpeech.text = "Listening";
         userSpeech.font = UIFont.boldSystemFont(ofSize: 12)
         userSpeech.backgroundColor = .white;
@@ -242,6 +307,8 @@ class ChatViewController: MessagesViewController {
         lib.topStackView.sizeToFit();
         //lib.topStackViewPadding.top = 6;
         
+        //When ever listening UI btn style is showing
+        //App is getting user speech
         startSpeechToText(userSpeech);
         
         reloadInputViews();
@@ -259,60 +326,6 @@ class ChatViewController: MessagesViewController {
         newMessageInputBar.delegate = self
         messageInputBar = newMessageInputBar
         reloadInputViews()
-    }
-
-    
-    
-    
-    /*
-     - Start SpeechToText
-     */
-    func startSpeechToText(_ userSpeech:UITextView)
-    {
-        if sttHelper.audioEngine.isRunning//if audio is recording
-        {   //stop speechtotext
-            sttHelper.audioEngine.stop();
-            sttHelper.recognitionRequest?.endAudio();
-            print("\n RECORDING STOP \n")
-        }
-        else
-        {
-            print("\n RECORDING START \n");
-                                            //pass label inside to show user 
-            sttHelper.startRecordingUserSpeech(userSpeech:userSpeech);//start
-        }
-    }
-    
-    
-    func sendMessage(message:MockMessage)
-    {
-       // messages.append(MockMessage(text: "test123", sender: currentSender(), messageId: UUID().uuidString, date: Date()))
-        messages.append(message);
-        messagesCollectionView.insertSections([messages.count - 1])
-        messagesCollectionView.scrollToBottom()
-    }
-    
-    
-    
-    //function will take in text and speak to user
-    //based on preferred language
-    func playBotFeedback(text:String)
-    {
-        
-        
-        dialogController?.query(text: text, onComplete: { (response) in
-            //once get response
-            //display in UI
-            DispatchQueue.main.async
-                {
-                     self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
-                    self.sttHelper.myUtterance = AVSpeechUtterance(string:response)
-                    // self.myUtterance.rate = 0.5
-                    self.sttHelper.synth.speak(self.sttHelper.myUtterance);
-            }
-            
-            
-        })
     }
     
     
@@ -530,6 +543,57 @@ extension ChatViewController:SFSpeechRecognizerDelegate
 ////    }
 //}
 
+extension ChatViewController:SpeechDetectionDelegate
+{
+    func User(hasNeverSpoke: Bool) {
+        if hasNeverSpoke{ //stop speech
+            
+            if sttHelper.audioEngine.isRunning//if audio is recording
+            {   //stop speechtotext
+                sttHelper.audioEngine.stop();
+                sttHelper.recognitionRequest?.endAudio();
+                print("\n RECORDING STOP \n")
+                self.micBtnStyle();
+                sttHelper.isUserSpeaking = false;
+                sttHelper.SpeakingTimer = Timer()
+            }
+            
+            print("NEVER SPOKE");
+            
+        }
+    }
+    
+    func User(hasFinishedSpeaking: Bool) {
+        if hasFinishedSpeaking // stop and send message
+        {
+            
+            if sttHelper.audioEngine.isRunning//if audio is recording
+            {   //stop speechtotext
+                sttHelper.audioEngine.stop();
+                sttHelper.recognitionRequest?.endAudio();
+                print("\n RECORDING STOP \n")
+                
+                self.sendMessage(message: MockMessage(text: userSpeech.text, sender: self.currentUser, messageId: UUID().uuidString, date: Date()));
+                //TODO
+                //ONCE SEND AND DISPLAY ON UI
+                //SEND TEXT TO LUIS FOR FEEDBACK
+                self.playBotFeedback(text: userSpeech.text);
+                self.micBtnStyle();
+            }
+        }
+        
+        print("HAS SPOKEN");
+    }
+    
+    func checkIf(isUserSpeaking: Bool, test: String) {
+        //
+    }
+    
+}
+
+
+//UICOLOR EXTENSION
+//TODO : PUT ALL UICOLOR EXTENSION UNDER ONE CLASS
 
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {

@@ -17,7 +17,19 @@ import Speech
   NSMicrophoneUsageDescription - "Your microphone will be used."
  */
 
+protocol SpeechDetectionDelegate
+{
+    func checkIf(isUserSpeaking:Bool,test:String);
+    func User(hasNeverSpoke:Bool);
+    func User(hasFinishedSpeaking:Bool)
+}
+
 class SpeechToTextHelper: NSObject {
+    
+    var SpeakingTimer = Timer();//Used to check how long user has spoke or how long it never spoke
+    var isUserSpeaking = false; //used to check if user is speaking or not
+    var delegate:SpeechDetectionDelegate?
+    
 
     let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()//will do actual speech recognition
     //can fail to recognize speech and return nil,best use optional; or for different language
@@ -109,9 +121,24 @@ class SpeechToTextHelper: NSObject {
             var isFinal = false//determine if recognition is final
             
             if result != nil {//if not nil
-                //set result to output
-              //  self.inputTxtField.text = result?.bestTranscription.formattedString
-                //print("\n \(result?.bestTranscription.formattedString)");
+          
+                
+                
+                if self.SpeakingTimer.isValid  // once user starts speaking
+                {
+                    self.isUserSpeaking = true;
+                    print("User speaking");
+                    self.SpeakingTimer.invalidate(); //stop timer
+                    self.AutoDetectUserSpeaking(1.8);
+                    
+                    
+                }
+//                 else  // as user is speaking, set a detection, when after 2.5 seconds there is silence
+//                {
+//                    self.SpeakingTimer.invalidate(); //stop timer
+//                    self.AutoDetectUserSpeaking(1.8);
+//                }
+                
                 userSpeech.text = result?.bestTranscription.formattedString;
                 //and set boolean as final
                 isFinal = (result?.isFinal)!
@@ -151,7 +178,62 @@ class SpeechToTextHelper: NSObject {
         
     }//end func
     
+    var count = 0;
+    var FLAG = false;
     
-    
-    
-}//end class
+    //TIMER TO AUTO-DETECT IF USER NEVER SPOKE OR ONCE USER HAS SPOKE FINISHED
+     func AutoDetectUserSpeaking(_ interval:Double)
+    {
+        print("Timer started");
+        
+        var test = "";
+        
+        if !isUserSpeaking
+        {
+            // Speakingtimer.invalidate()
+            // after 4 seconds, still nothing, then stop
+            SpeakingTimer =   Timer.scheduledTimer(withTimeInterval: TimeInterval(exactly:interval)!, repeats: false) { (_) in
+                    print("User never speak");
+                //       self.delegate?.checkIf(isUserSpeaking: self.isUserSpeaking,test:test);
+                self.delegate?.User(hasNeverSpoke: true);
+            }
+        }
+        else // if user is speaking
+        {
+            FLAG = true;
+            print("user now talking");
+            SpeakingTimer =   Timer.scheduledTimer(withTimeInterval: TimeInterval(exactly:interval)!, repeats: false) { (_) in
+                
+                        //self.delegate?.checkIf(isUserSpeaking: self.isUserSpeaking,test:test);
+                
+                        self.delegate?.User(hasFinishedSpeaking: true);
+                    print("User speak finish");
+                    self.SpeakingTimer.invalidate();
+               
+                
+                
+                //self.count += 1;
+                //print(self.count);
+                
+            }
+        }
+    }
+       
+//        //CREATE A TIMER
+//        SpeakingTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(exactly:interval)!, repeats: false, block: { (_) in
+//
+//            if self.isUserSpeaking
+//            {
+//                self.isUserSpeaking = false;
+//                test = "User speak ffinish";
+//                self.SpeakingTimer.invalidate();
+//
+//            }
+//            else{
+//                test = "User never speak";
+//            }
+//
+//        self.delegate?.checkIf(isUserSpeaking: self.isUserSpeaking,test:test);
+//        })
+    }
+

@@ -13,7 +13,10 @@ import Alamofire
 
 class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-    
+    //PATIENT DATA
+    // DATA PASSED FROM LOGIN
+    //IMRAN, CHANGE UR CODES USING THE VARIABLE
+    var patient:Patient?;
     
     //    @IBOutlet weak var viewTodayResultsButton: UIButton!
     @IBOutlet weak var chdPredictionLabel: UILabel!
@@ -102,7 +105,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collection_cell", for: indexPath) as! HomeDashboardCollectionViewCell
         
         //Cell button action delegate
-        cell.delegate = self as! HomeDashboardCollectionViewCellDelegate
+        cell.delegate = self as HomeDashboardCollectionViewCellDelegate
         
         //Designing guidlines for cell
         let cornerRadius : CGFloat = 10.0
@@ -127,7 +130,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         
         //Creating a button
         let measureButton = cell.viewWithTag(1) as! UIButton
-        let borderAlpha : CGFloat = 0.7
+       // let borderAlpha : CGFloat = 0.7
         measureButton.frame = CGRect(x: 13, y: 120, width: 100, height: 30)
         measureButton.setTitle("MEASURE", for: [])
         measureButton.setTitleColor(UIColor.white, for: [])
@@ -257,10 +260,10 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     }
     
     //Get patient nric
-    func getPatientNric() ->String{
-        let patientNric = "S9822477G"
-        return patientNric
-    }
+//    func getPatientNric() ->String{
+//        let patientNric = "S9822477G"
+//        return patientNric
+//    }
     
     //    //Check if monitoring record exists if not create one
     //    func checkIfRecordExists(){
@@ -452,6 +455,16 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         
     }
     
+    // ========== GOING TO VIRTUAL NURSE CHAT ==========
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ChatSegue"
+        {
+            let chatNav = segue.destination as! ChatNavigationViewController
+            chatNav.patient = patient!;
+        }
+        
+    }
     
     
 }
@@ -501,5 +514,9 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         
         
     }
+    
+ 
+    
+    
 }
 
