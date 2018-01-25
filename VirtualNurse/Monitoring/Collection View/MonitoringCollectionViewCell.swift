@@ -27,8 +27,8 @@ class MonitoringCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         //Designing a button programmitically
-        let borderAlpha : CGFloat = 0.7
-        let cornerRadius : CGFloat = 5.0
+      //  let borderAlpha : CGFloat = 0.7
+      //  let cornerRadius : CGFloat = 5.0
 //        measureButton.frame = CGRect(x: 13, y: 120, width: 100, height: 30)
 //        measureButton.setTitle("MEASURE", for: [])
 //        measureButton.setTitleColor(UIColor.white, for: [])

@@ -188,7 +188,7 @@ class MonitoringDashboardViewController:UIViewController, UICollectionViewDelega
         
         //Retrieving the output
         let output = CHD.output1
-        var finalOutput = round(Double(output[0]))
+        let finalOutput = round(Double(output[0]))
         
         if (finalOutput == 1.0){
             

@@ -109,26 +109,13 @@ class LoginViewController: UIViewController {
 //                            promptForTouchID();
 //
 //
-//                };
-
+//                }
                 print("success");
-                DispatchQueue.main.async
-                    {
-                        //Navigation to new page
-                        let storyboard = UIStoryboard(name:"HomeDashboard" , bundle:nil)
-                        
-                        let HomeDashboardViewController = storyboard.instantiateViewController(withIdentifier: "home") as! HomeDashboardViewController
-                        // self.navigationController?.isNavigationBarHidden = false
-                        self.present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil);
-                       // self.navigationController?.pushViewController(HomeDashboardViewController, animated: true)
-                }
-               
-                
                 //set username value to a key
-//                UserDefaults.standard.setValue(username, forKey: "username");
-//                print(UserDefaults.standard.value(forKey: "username") as! String);
-//                //GET PATIENT DATA
-//                self.getPatientandDisplayDashboard(nric: username);
+                UserDefaults.standard.setValue(username, forKey: "username");
+                print(UserDefaults.standard.value(forKey: "username") as! String);
+                //GET PATIENT DATA
+                self.getPatientandDisplayDashboard(nric: username);
                 
             }
             else if !isUser
@@ -153,7 +140,21 @@ class LoginViewController: UIViewController {
         DispatchQueue.main.async
             {
                // ONCE INTEGRATED THEN CAN
-              //  self.DisplayDashboard(patient:patient);
+                //Navigation to new page
+                let storyboard = UIStoryboard(name:"HomeDashboard" , bundle:nil)
+                
+              
+                // self.navigationController?.isNavigationBarHidden = false
+                //HomeDashboardViewController.patient = patient;
+                let homeNavController = storyboard.instantiateInitialViewController() as! UINavigationController;
+                let HomeDashboardViewController = homeNavController.viewControllers[0] as! HomeDashboardViewController;
+                HomeDashboardViewController.patient = patient;
+                
+                
+                self.present(homeNavController, animated: true, completion: nil);
+                
+                // self.navigationController?.pushViewController(HomeDashboardViewController, animated: true)
+              
             }});
 
     }
@@ -198,18 +199,18 @@ class LoginViewController: UIViewController {
     
     
     
-    /*
-     //MAY CHANGE
-     DISPLAY DASHBOARD
-     */
-    func DisplayDashboard(patient:Patient) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "HomeDashboard", bundle: nil)
-        let Dashboard = storyBoard.instantiateViewController(withIdentifier: "home") as! HomeDashboardViewController;
-        //present method must be called before setting contents
-        self.present(Dashboard, animated: true, completion: nil);
-        //Dashboard.patient = patient;
-        
-    }
+//    /*
+//     //MAY CHANGE
+//     DISPLAY DASHBOARD
+//     */
+//    func DisplayDashboard(patient:Patient) {
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "HomeDashboard", bundle: nil)
+//        let Dashboard = storyBoard.instantiateViewController(withIdentifier: "home") as! HomeDashboardViewController;
+//        //present method must be called before setting contents
+//        self.present(Dashboard, animated: true, completion: nil);
+//        //Dashboard.patient = patient;
+//        
+//    }
     
     
     /*

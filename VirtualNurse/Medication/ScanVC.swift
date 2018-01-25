@@ -153,7 +153,7 @@ UINavigationControllerDelegate {
     //function to add lines
     func addLines() {
         
-        var lineView = UIView(frame: CGRect(x: 0, y: 100, width: 320, height: 1.0))
+        let lineView = UIView(frame: CGRect(x: 0, y: 100, width: 320, height: 1.0))
         lineView.layer.borderWidth = 1.0
         lineView.layer.borderColor = UIColor.black.cgColor
         self.view.addSubview(lineView)
@@ -172,7 +172,7 @@ UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("Reloaded")
-        var highestGuess : [Float] = []
+       // var highestGuess : [Float] = []
 
         
         guard  let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -199,7 +199,7 @@ UINavigationControllerDelegate {
                 
                 
                 // index for the first element, which is defined as 0
-                var index123 : Int = 0
+                //var index123 : Int = 0
 
                 // once data is back, activity indicator will stop animating
                 self.activityIndicator.stopAnimating()
