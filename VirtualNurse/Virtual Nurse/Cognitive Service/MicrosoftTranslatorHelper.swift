@@ -12,6 +12,7 @@ import AVFoundation
 class MicrosoftTranslatorHelper : NSObject
 {
     var player:AVAudioPlayer?;
+    let audioSession = AVAudioSession.sharedInstance();
     
     func Translate(from:String,to:String,text:String)
     {
@@ -56,6 +57,9 @@ class MicrosoftTranslatorHelper : NSObject
             }
             
             do {
+                try self.audioSession.setCategory(AVAudioSessionCategorySoloAmbient)
+                try self.audioSession.setMode(AVAudioSessionModeDefault)
+                
                 self.player = try AVAudioPlayer(data: data);
                 self.player?.prepareToPlay()
                 self.player?.volume = 1.0
