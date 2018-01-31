@@ -12,7 +12,8 @@ import AVFoundation
 class MicrosoftTranslatorHelper : NSObject
 {
     var player:AVAudioPlayer?;
-    let audioSession = AVAudioSession.sharedInstance();
+    var convertedText = "";
+    var bool = false;
     
     
     /**
@@ -37,15 +38,15 @@ class MicrosoftTranslatorHelper : NSObject
                 print(error ?? "Unknown error")
                 return
             }
-
-                //GET LANGUAGE TEXT FROM XML
-                let parser = XMLParser(data: data)
-                parser.delegate = self
-                // print(response);
-                
-                if parser.parse() {
-                    print("parsed");
-                }
+            
+            //GET LANGUAGE TEXT FROM XML
+            let parser = XMLParser(data: data)
+            parser.delegate = self
+            // print(response);
+            
+            if parser.parse() {
+                print("parsed");
+            }
             onComplete?(self.convertedText);
             
         }
@@ -72,10 +73,7 @@ class MicrosoftTranslatorHelper : NSObject
             }
             
             do {
-                try self.audioSession.setCategory(AVAudioSessionCategorySoloAmbient)
-                try self.audioSession.setMode(AVAudioSessionModeDefault)
-                
-                self.player = try AVAudioPlayer(data: data);
+                self.player = try AVAudioPlayer(data: data, fileTypeHint: AVFileType.mp3.rawValue);
                 self.player?.prepareToPlay()
                 self.player?.volume = 1.0
                 self.player?.play()
@@ -109,11 +107,11 @@ extension MicrosoftTranslatorHelper:XMLParserDelegate
         //  currentValue? += string
         print(string);
         convertedText = string;//GET CONVERTED TEXT
-//        var text = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
-//        if bool
-//        {
-//                Speak(text:convertedText);
-//        }
+        //        var text = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+        //        if bool
+        //        {
+        //                Speak(text:convertedText);
+        //        }
         
         
         // // if after xx seconds, no respond from textview
