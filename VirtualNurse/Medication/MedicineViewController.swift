@@ -48,7 +48,6 @@ UINavigationControllerDelegate {
         
         let secondViewController = segue.destination as? medicineDetailController
         
-     //   secondViewController!.medNames = "asdfasdf"
         
         secondViewController!.medNames = medicineSearchTB.text!
   
