@@ -16,6 +16,8 @@
 		254881F31FF4E1DF00B73C40 /* SpeechToTextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254881F21FF4E1DF00B73C40 /* SpeechToTextHelper.swift */; };
 		254D38CC2002174A00B2B991 /* DesignableFloatingChatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D38CB2002174A00B2B991 /* DesignableFloatingChatButton.swift */; };
 		254D38CE2002249D00B2B991 /* FDSoundActivatedRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D38CD2002249D00B2B991 /* FDSoundActivatedRecorder.swift */; };
+		256B3E5A201E0449001FCF73 /* MicButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B3E59201E0449001FCF73 /* MicButtonStyles.swift */; };
+		256B3E5C201E1FDE001FCF73 /* ConversationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B3E5B201E1FDE001FCF73 /* ConversationStack.swift */; };
 		25725CA91FFE48C20006ACB2 /* PatientDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25725CA81FFE48C20006ACB2 /* PatientDialog.swift */; };
 		25725CAB1FFE4C820006ACB2 /* DialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25725CAA1FFE4C820006ACB2 /* DialogController.swift */; };
 		2587DB631FF2386800FB3C23 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2587DB621FF2386800FB3C23 /* ChatViewController.swift */; };
@@ -26,7 +28,13 @@
 		25A58EEC2015979E0084BDBB /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A58EEB2015979E0084BDBB /* TextFieldEffects.swift */; };
 		25A58EEE201597C80084BDBB /* LoginTextFieldEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A58EED201597C80084BDBB /* LoginTextFieldEffect.swift */; };
 		25A979982018B18500120006 /* MicrosoftTranslatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A979972018B18500120006 /* MicrosoftTranslatorHelper.swift */; };
+		25B007712020532700D9A253 /* PromptChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B007702020532700D9A253 /* PromptChatView.swift */; };
+		25B007742020672900D9A253 /* MonitoringDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B007732020672900D9A253 /* MonitoringDialog.swift */; };
+		25B007762020673700D9A253 /* MedicationDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B007752020673700D9A253 /* MedicationDialog.swift */; };
+		25B00778202071F700D9A253 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B00777202071F700D9A253 /* Entity.swift */; };
 		25D2F6DA1FED01640075ACBD /* VNStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D2F6D91FED01640075ACBD /* VNStoryboard.storyboard */; };
+		25D3F0AA201EFA0E0036EE3D /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D3F0A9201EFA0E0036EE3D /* ErrorDialog.swift */; };
+		25E2BF79201A191700D9A587 /* ChatSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E2BF78201A191700D9A587 /* ChatSettingsViewController.swift */; };
 		25F9A10920020B7300A98511 /* DesignableLoginField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F9A10820020B7300A98511 /* DesignableLoginField.swift */; };
 		25FE9C3E1FEA5FDE00437BD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE9C3D1FEA5FDE00437BD6 /* AppDelegate.swift */; };
 		25FE9C431FEA5FDE00437BD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25FE9C411FEA5FDE00437BD6 /* Main.storyboard */; };
@@ -136,6 +144,8 @@
 		254881F21FF4E1DF00B73C40 /* SpeechToTextHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToTextHelper.swift; sourceTree = "<group>"; };
 		254D38CB2002174A00B2B991 /* DesignableFloatingChatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableFloatingChatButton.swift; sourceTree = "<group>"; };
 		254D38CD2002249D00B2B991 /* FDSoundActivatedRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSoundActivatedRecorder.swift; sourceTree = "<group>"; };
+		256B3E59201E0449001FCF73 /* MicButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicButtonStyles.swift; sourceTree = "<group>"; };
+		256B3E5B201E1FDE001FCF73 /* ConversationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationStack.swift; sourceTree = "<group>"; };
 		25725CA81FFE48C20006ACB2 /* PatientDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDialog.swift; sourceTree = "<group>"; };
 		25725CAA1FFE4C820006ACB2 /* DialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogController.swift; sourceTree = "<group>"; };
 		2587DB621FF2386800FB3C23 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +156,13 @@
 		25A58EEB2015979E0084BDBB /* TextFieldEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
 		25A58EED201597C80084BDBB /* LoginTextFieldEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldEffect.swift; sourceTree = "<group>"; };
 		25A979972018B18500120006 /* MicrosoftTranslatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrosoftTranslatorHelper.swift; sourceTree = "<group>"; };
+		25B007702020532700D9A253 /* PromptChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptChatView.swift; sourceTree = "<group>"; };
+		25B007732020672900D9A253 /* MonitoringDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringDialog.swift; sourceTree = "<group>"; };
+		25B007752020673700D9A253 /* MedicationDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationDialog.swift; sourceTree = "<group>"; };
+		25B00777202071F700D9A253 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		25D2F6D91FED01640075ACBD /* VNStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VNStoryboard.storyboard; sourceTree = "<group>"; };
+		25D3F0A9201EFA0E0036EE3D /* ErrorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
+		25E2BF78201A191700D9A587 /* ChatSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSettingsViewController.swift; sourceTree = "<group>"; };
 		25F9A10820020B7300A98511 /* DesignableLoginField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableLoginField.swift; sourceTree = "<group>"; };
 		25FE9C3A1FEA5FDE00437BD6 /* VirtualNurse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualNurse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25FE9C3D1FEA5FDE00437BD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -307,6 +323,8 @@
 				25F9A10820020B7300A98511 /* DesignableLoginField.swift */,
 				25A58EEB2015979E0084BDBB /* TextFieldEffects.swift */,
 				25A58EED201597C80084BDBB /* LoginTextFieldEffect.swift */,
+				256B3E59201E0449001FCF73 /* MicButtonStyles.swift */,
+				25B007702020532700D9A253 /* PromptChatView.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -318,6 +336,10 @@
 				2521209020059FAF0048F66B /* Dialog.swift */,
 				25725CA81FFE48C20006ACB2 /* PatientDialog.swift */,
 				252120942005AE970048F66B /* AppointmentDialog.swift */,
+				25B007732020672900D9A253 /* MonitoringDialog.swift */,
+				25B007752020673700D9A253 /* MedicationDialog.swift */,
+				25D3F0A9201EFA0E0036EE3D /* ErrorDialog.swift */,
+				25B00777202071F700D9A253 /* Entity.swift */,
 			);
 			path = "Intent & Dialog";
 			sourceTree = "<group>";
@@ -401,6 +423,8 @@
 				2587DB6A1FF29C0300FB3C23 /* ChatNavigationViewController.swift */,
 				2587DB621FF2386800FB3C23 /* ChatViewController.swift */,
 				25725CAA1FFE4C820006ACB2 /* DialogController.swift */,
+				25E2BF78201A191700D9A587 /* ChatSettingsViewController.swift */,
+				256B3E5B201E1FDE001FCF73 /* ConversationStack.swift */,
 				25725CA51FFE486F0006ACB2 /* Intent & Dialog */,
 				254881F51FF64F0C00B73C40 /* Cognitive Service */,
 			);
@@ -995,6 +1019,7 @@
 				5B37646920185CD400069BAF /* MonitoringCollectionViewCell.swift in Sources */,
 				5B37649120185D3200069BAF /* Patient.swift in Sources */,
 				5B37644A20185CD400069BAF /* doctorViewController.swift in Sources */,
+				25B007762020673700D9A253 /* MedicationDialog.swift in Sources */,
 				5B37645E20185CD400069BAF /* modelPopupDesign.swift in Sources */,
 				2587DB631FF2386800FB3C23 /* ChatViewController.swift in Sources */,
 				5B37648A20185D3200069BAF /* MonitoringDataManager.swift in Sources */,
@@ -1005,6 +1030,7 @@
 				5B37646220185CD400069BAF /* LoadingIndicatorView copy.swift in Sources */,
 				5B37646020185CD400069BAF /* medicineDetailController.swift in Sources */,
 				5B37648F20185D3200069BAF /* MedicineModel.swift in Sources */,
+				25B007712020532700D9A253 /* PromptChatView.swift in Sources */,
 				5B37647220185CD400069BAF /* BMIViewController.swift in Sources */,
 				5B37645020185CD400069BAF /* FSCalendarStickyHeader.m in Sources */,
 				25F9A10920020B7300A98511 /* DesignableLoginField.swift in Sources */,
@@ -1014,12 +1040,14 @@
 				5B37646520185CD400069BAF /* CustomVisionResult.swift in Sources */,
 				5B37645920185CD400069BAF /* FSCalendarHeaderView.m in Sources */,
 				5B37644720185CD400069BAF /* ViewAppointmentCollectionViewCell.swift in Sources */,
+				25B00778202071F700D9A253 /* Entity.swift in Sources */,
 				25A979982018B18500120006 /* MicrosoftTranslatorHelper.swift in Sources */,
 				5B37647120185CD400069BAF /* ViewTodayResultsViewController.swift in Sources */,
 				2587DB6B1FF29C0300FB3C23 /* ChatNavigationViewController.swift in Sources */,
 				5B37645B20185CD400069BAF /* FSCalendarAppearance.m in Sources */,
 				5B37649220185D3200069BAF /* DoctorModel.swift in Sources */,
 				5B37646A20185CD400069BAF /* MonitoringViewController.swift in Sources */,
+				256B3E5C201E1FDE001FCF73 /* ConversationStack.swift in Sources */,
 				2587DB691FF260F800FB3C23 /* MicButton.swift in Sources */,
 				5B37649520185D3200069BAF /* Monitoring.swift in Sources */,
 				5B37649320185D3200069BAF /* User.swift in Sources */,
@@ -1027,8 +1055,10 @@
 				5B37646820185CD400069BAF /* ViewTodayResultsCollectionViewCell.swift in Sources */,
 				25FE9C7B1FEA604D00437BD6 /* SwiftyJSON.swift in Sources */,
 				5B37644520185CD400069BAF /* UpdateAppointmentViewController.swift in Sources */,
+				25B007742020672900D9A253 /* MonitoringDialog.swift in Sources */,
 				5B37646120185CD400069BAF /* MedicineViewController.swift in Sources */,
 				2521209120059FAF0048F66B /* Dialog.swift in Sources */,
+				25D3F0AA201EFA0E0036EE3D /* ErrorDialog.swift in Sources */,
 				5B37648820185D3200069BAF /* RestfulManager.swift in Sources */,
 				5B37645620185CD400069BAF /* FSCalendar+Deprecated.m in Sources */,
 				5B37647420185CD400069BAF /* CigaretteViewController.swift in Sources */,
@@ -1039,7 +1069,9 @@
 				5B37645820185CD400069BAF /* FSCalendarCalculator.m in Sources */,
 				25A58EE82014D84D0084BDBB /* KeychainPasswordItem.swift in Sources */,
 				5B37648E20185D3200069BAF /* LUISDataManager.swift in Sources */,
+				256B3E5A201E0449001FCF73 /* MicButtonStyles.swift in Sources */,
 				5B37646E20185CD400069BAF /* framingham.mlmodel in Sources */,
+				25E2BF79201A191700D9A587 /* ChatSettingsViewController.swift in Sources */,
 				5B37646B20185CD400069BAF /* MonitoringDashboardViewController.swift in Sources */,
 				5B37646D20185CD400069BAF /* helperClass.swift in Sources */,
 				5B37644920185CD400069BAF /* CreateCollectionViewCell.swift in Sources */,

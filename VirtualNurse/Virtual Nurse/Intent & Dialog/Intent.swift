@@ -14,16 +14,18 @@ import UIKit
  */
 class Intent: NSObject {
     var name:String;
-    var entities:[JSON];
+    var entities:[JSON]?;
     
     var dialog:String!;
     var topic:String!;
     
-    init(_ intentname:String,_ intententities:[JSON]) {
+    init(_ intentname:String,_ intententities:[JSON]?) {
         self.name = intentname;
         self.entities = intententities;
     }
     
+    
+   
     
     //PROCESS INTENT
     //This will determine,which dialog and topic the intent is
@@ -45,6 +47,53 @@ class Intent: NSObject {
         //Do switch case here to pass or in a vc ??
     }
     
+
+    /*
+     Process the dates from the entities
+     and return them as a entity class
+     **/
+    func processEntity() -> Entity?
+    {
+        
+        if let en = entities //unwrapped
+        {
+            if en.count > 0 //check if got value
+            {
+                
+                let entityFromUtterences = en[0]["entity"].string!;
+                
+                let values = en[0]["resolution"]["values"][0];
+                let entityType = values["type"].string!;
+                var entityValues:[String] = []; //stores the date
+                if entityType == "date"
+                {
+                        entityValues.append(values["value"].string!)
+                    
+                }
+                else if entityType == "daterange" {
+                    
+                    entityValues.append(values["start"].string!)
+                    entityValues.append(values["end"].string!)
+                }
+                
+            
+                if entityValues.count == 2
+                {
+                    print("entity from utterence is \(entityFromUtterences), type is \(entityType) and value is start: \(entityValues[0]), end:\(entityValues[1])");
+                    
+                    
+                }
+                else
+                {
+                    print("entity from utterence is \(entityFromUtterences), type is \(entityType) and value is \(entityValues[0])");
+                }
+                
+                return Entity(efu: entityFromUtterences, et: entityType, ev: entityValues);
+                
+            }
+        }
+        return nil
+    }
     
 
 }

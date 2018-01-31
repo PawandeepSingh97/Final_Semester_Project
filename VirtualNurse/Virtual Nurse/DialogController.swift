@@ -8,71 +8,46 @@
 
 import UIKit
 
-protocol BotResponseDelegate:class {
-    func BotResponse(get:Dialog) -> String;
-    
+protocol BotResponseDelegate:class
+{
+    func isPromptQuestion(promptDialog:Dialog);
+    func getBotPromptResponse(responseDialog:Dialog);
 }
 
 //Dialog Controller will interact with viewController,dialog and LUIS endpoint
 class DialogController: NSObject {
     
-    
-    
     var patient:Patient?;
-    var delegate:BotResponseDelegate!;
+    var Botdelegate:BotResponseDelegate!;
     
     //STORES CONVERSATION AND ITS ENTITIES
-    struct ConversationStack {
-        fileprivate var converasationContext: [Dialog] = [];
-        
-        
-        //PUSH DIALOG IN array
-        mutating func push(_ element:Dialog)
-        {
-            converasationContext.append(element);
-        }
-        
-        //Pop Dialog
-        mutating func pop() -> Dialog? {
-            
-            return converasationContext.popLast()
-        }
-        
-        //Peek Dialog
-        func peek() -> Dialog? {
-            return converasationContext.last
-        }
-        
-        //REMOVE ALL ELEMENTS IN STACK
-      mutating  func removeAll()
-        {
-            converasationContext.removeAll();
-            
-        }
+    var conversationContext = ConversationStack();
     
-        func count() -> Int
-        {
-           return converasationContext.count;
-        }
-        
-    }
     
-     var conversationContext = ConversationStack();
     
     //TALK TO LUIS
-     func query(text:String,onComplete:((_:String) -> Void)?)
+     func query(text:String,onComplete:((_:Dialog) -> Void)?)
     {
         LUISDataManager.queryLUIS(query: text) { (intent) in
             //Once determine INTENT FROM LUIS
             intent.processIntent();//will determine topic and dialog
-            let topic = intent.topic;
-            let dialog = intent.dialog;
+            
+            let entity =  intent.processEntity();
+            
+            let topic = intent.topic!;
+            let dialog = intent.dialog!;
+//            let entities = intent.entities;
+            print("topic is \(topic)");
+            print("dialog to call for \(topic) is \(dialog)");
+            
            // let entities = intent.entities;
             
-            self.addDialogToConversation(topic!, methodToCall: dialog!);
+            self.addDialogToConversation(topic, dialogToCall: dialog,entity:entity);
             let response = self.dialogToRespond();
-           // var response = self.BotResponse(topic:topic!, dialogtocall: dialog!);
+            response.getDialog();//this will update the variables in dialog to display in UI or for bot to speak
+            response.paDelegate = self;//set delegate of prompt here
             
+
             onComplete?(response);
         }
     }
@@ -80,17 +55,18 @@ class DialogController: NSObject {
     
     
     //This will display string to UI
-    private func dialogToRespond() -> String
+    private func dialogToRespond() -> Dialog
     {
-        //delegate?.BotResponse(get: conversationContext.peek()!);
-        //conversationContext
-        return conversationContext.peek()!.getDialog();
+        let dialog = conversationContext.peek()!;
+       // dialog.entities = conversationContext.entities;
+        
+        return dialog;
     }
     
     //check stack maintains conversation
     //step1.1:ensure that conversation is within the same topic
     //else remove all the entire elements in stack
-    private func checkContext(elementToAdd:Dialog)
+    private func checkContext(elementToAdd:Dialog,entity:Entity?,hasEntity:Bool,topic:String)
     {
      //CHECK IF LAST ELEMENT MATCHES TYPE OF ELEMENT THAT IS ABOUT TO BE ADDED
         //IF THE TYPE IS SAME,ADD TO STACK
@@ -98,76 +74,100 @@ class DialogController: NSObject {
         
         if conversationContext.count() == 0
         {
+            if hasEntity
+            {
+                //add entity to dialog
+                elementToAdd.entity = entity;
+            }
             conversationContext.push(elementToAdd);
         }
-        else
+        else // if got dialog in stack
         {
-            let recentdialog = conversationContext.peek()!;
-            let rdtype = type(of: recentdialog);
+            let recentdialog = conversationContext.peek()!; //get recent dialog
+            let rdtype = type(of: recentdialog); //get type of recent dialog
             
-            let typeOfElement = type(of: elementToAdd);
+            let typeOfElement = type(of: elementToAdd); // get type of dialog to add
             
-            if rdtype == typeOfElement
+            if rdtype == typeOfElement || hasEntity   // if both are of the same type, or if there is an entity
             {
-                conversationContext.push(elementToAdd);
+
+                //no need add entity,, can make use of previous dialog only if topic is none and call method using recent added entities
+                
+                if topic == "None"
+                {
+                    let lastdialog = conversationContext.pop();
+                    lastdialog?.BotResponse = [];
+                    lastdialog?.responseToDisplay = [];
+                    lastdialog?.entity = entity;
+                    conversationContext.push(lastdialog!)
+                }
+                else
+                {
+                    elementToAdd.entity = entity;
+                    conversationContext.push(elementToAdd);
+                    
+                }
+                
+               
+                //conversationContext.entities?.append(entity) //add entity as well
                 print(" \(typeOfElement)");
             }
-            else
+            else //if different type
             {
-                conversationContext.removeAll();
-                conversationContext.push(elementToAdd);
+                conversationContext.removeAll(); //remove all item in stack
+                
+                if hasEntity
+                {
+                    elementToAdd.entity = entity;
+                }
+                conversationContext.push(elementToAdd); //add new dialog
+                //conversationContext.entities?.append(entity);
             }
         }
-        
-        
     }
-    
+
     
     //step 1.determine dialog and method to call
-    private func addDialogToConversation(_ topic:String,methodToCall:String)
+    private func addDialogToConversation(_ topic:String,dialogToCall:String,entity:Entity?)
     {
         var dialog:Dialog;
         
-        //for testing
-        if patient == nil
+        var hasentity:Bool = false//default false
+
+        
+        if entity == nil // if have no entity
         {
-            dialog = Dialog(methodToCall: methodToCall);//error dialog
-            checkContext(elementToAdd: dialog);
-            return;
+            hasentity = false;
         }
+        else {hasentity = true;}
         
         switch topic{
-        case "Patient"://patient topic
-            dialog = PatientDialog(methodToCall: methodToCall,patient:patient!);
-            //conversationContext.push(dialog);
-        case "Appointment"://appoinment topic
-            dialog = AppointmentDialog(methodToCall: methodToCall, patient: patient!);
-           // conversationContext.push(dialog);
-            
+        case "Patient":
+            dialog = PatientDialog(dialogToCall: dialogToCall,patient:patient!);
+        case "Appointment":
+            dialog = AppointmentDialog(dialogToCall: dialogToCall, patient: patient!);
+        case "None":
+            dialog = Dialog(dialogToCall: dialogToCall);//error dialog
         default:
-            dialog = Dialog(methodToCall: methodToCall);//error dialog
+            dialog = Dialog(dialogToCall: dialogToCall);//error dialog
         }
+ 
         
-        checkContext(elementToAdd: dialog);
+        checkContext(elementToAdd: dialog,entity: entity, hasEntity: hasentity,topic:topic);
     }
     
     
-    //SWITCH CASE
-    //must also pass entites
-//    private func BotResponse(topic:String,dialogtocall:String) -> String
-//    {
-//        switch topic {
-//        case "Patient":
-//            //call patient dialog
-//            var pd = PatientDialog(methodToCall:dialogtocall,patient:patient!);
-//            return pd.getDialog();
-//        default:
-//            //error handle dialog
-//            print("topic fail")
-//            return "error";
-//        }
-//    }
-    
+}
+
+extension DialogController:PromptAnsweredDelegate
+{
+    //ONCE USER HAS GIVEN ANSWER TO BOT, YES OR NO
+    // WILL THEN THE DIALOG RESPONSE
+    //AND PASS THE DIALOG TO UI
+    func User(hasAnswered: String, dialog: Dialog) {
+        //get prompt has and return to the ui
+        Botdelegate.getBotPromptResponse(responseDialog: dialog);
+    }
 }
 
 

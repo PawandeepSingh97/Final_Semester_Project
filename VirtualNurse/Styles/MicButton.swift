@@ -22,6 +22,10 @@ class MicInputBar: MessageInputBar {
         return textView
         }()
     
+    override func textViewDidBeginEditing() {
+        self.inputTextView.isEditable = false;
+    }
+    
     
     
     //ovveride the function

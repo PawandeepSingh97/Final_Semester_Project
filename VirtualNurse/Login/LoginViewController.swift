@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UITextFieldDelegate {
 
     //FOR AUTHENTICATION
     struct KeychainConfiguration {
@@ -25,22 +25,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        
-        //REMOVE THIS 
+//        //REMOVE THIS
         usernameTxtField.text = "S9738337E";
         passwordTxtField.text = "Test1234";
-        
-        
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        
-        view.addGestureRecognizer(tap);
-        
+
+        usernameTxtField.delegate = self;
+        passwordTxtField.delegate = self;
         
     }
 
@@ -58,8 +48,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,31 +55,14 @@ class LoginViewController: UIViewController {
     
     
     //MARK:Action Handler
-    
-    //Calls this function when the tap is recognized.
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
-    
-    //when login button clicked
     @IBAction func loginActionHandler(_ sender: Any)
     {
         if usernameTxtField.hasText && usernameTxtField.hasText//if field not empty
         {
             //check Login
             checkLogin(username: usernameTxtField.text!, password: passwordTxtField.text!);
-            
-           
-            
         }
-        else
-        {
-            showLoginFailedAlert();
-        }
-        
-
-        
+        else{   showLoginFailedAlert();}
     }
     
     /*Check if is authenticated user*/
@@ -101,30 +72,25 @@ class LoginViewController: UIViewController {
         UserDataManager.getUser(user: user) { (isUser) in
             if isUser//if is user
             {
-//                // get value of bool
-//                let preferTouchID = UserDefaults.standard.bool(forKey: "hasTouchIDKey");
-//                if !preferTouchID{//if user does not prefers toucID
-//                    //ask first
-//
-//                            promptForTouchID();
-//
-//
-//                }
-                print("success");
                 //set username value to a key
                 UserDefaults.standard.setValue(username, forKey: "username");
                 print(UserDefaults.standard.value(forKey: "username") as! String);
-                //GET PATIENT DATA
-                self.getPatientandDisplayDashboard(nric: username);
                 
-            }
-            else if !isUser
-            {
-                DispatchQueue.main.async
-                    {
-                            self.showLoginFailedAlert();
+                // get value of bool
+                let preferTouchID = UserDefaults.standard.bool(forKey: "hasTouchIDKey");
+                if !preferTouchID{//if user does not prefers touchID
+                    //ask first
+                    self.promptForTouchID();
                 }
-                
+                else
+                {
+                    //GET PATIENT DATA
+                    self.getPatientandDisplayDashboard(nric: username);
+                }
+            }
+            else // if not user
+            {
+                DispatchQueue.main.async{self.showLoginFailedAlert();}
             }
         }
     }
@@ -142,21 +108,12 @@ class LoginViewController: UIViewController {
                // ONCE INTEGRATED THEN CAN
                 //Navigation to new page
                 let storyboard = UIStoryboard(name:"HomeDashboard" , bundle:nil)
-                
-              
-                // self.navigationController?.isNavigationBarHidden = false
-                //HomeDashboardViewController.patient = patient;
                 let homeNavController = storyboard.instantiateInitialViewController() as! UINavigationController;
+                //Get home dashboard from nav controller
                 let HomeDashboardViewController = homeNavController.viewControllers[0] as! HomeDashboardViewController;
                 HomeDashboardViewController.patient = patient;
-                
-                
                 self.present(homeNavController, animated: true, completion: nil);
-                
-                // self.navigationController?.pushViewController(HomeDashboardViewController, animated: true)
-              
             }});
-
     }
     
     
@@ -178,11 +135,37 @@ class LoginViewController: UIViewController {
             } else { // if touch ID authenticated
                 // retrieve nric
                 // and display dashboard
-                //let nric = UserDefaults.standard.value(forKey: "username") as! String
-                //TODO: 
-               // self?.getPatientandDisplayDashboard(nric: nric);
+                let nric = UserDefaults.standard.value(forKey: "username") as! String
+                self?.getPatientandDisplayDashboard(nric: nric);
             }
         }
+    }
+    
+    /*
+     Prompt user for touch ID
+     */
+    func promptForTouchID()
+    {
+        let promptForTouchID = UIAlertController(title: "Touch ID", message: "Would you like to use Touch ID for the next time you login ?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        promptForTouchID.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            //if user agrees to touch ID use
+            //set true
+            UserDefaults.standard.set(true, forKey: "hasTouchIDKey");
+            let nric = UserDefaults.standard.value(forKey: "username") as! String
+            self.getPatientandDisplayDashboard(nric: nric);
+            
+        }))
+        
+        promptForTouchID.addAction(UIAlertAction(title: "Next Time", style: .cancel, handler: { (action: UIAlertAction!) in
+            //if user DOES NOT AGREE to touch ID use
+            //set false
+            UserDefaults.standard.set(false, forKey: "hasTouchIDKey");
+            let nric = UserDefaults.standard.value(forKey: "username") as! String
+            self.getPatientandDisplayDashboard(nric: nric);
+        }))
+        
+        present(promptForTouchID, animated: true, completion: nil)
     }
     
     /*
@@ -198,43 +181,18 @@ class LoginViewController: UIViewController {
     }
     
     
-    
-//    /*
-//     //MAY CHANGE
-//     DISPLAY DASHBOARD
-//     */
-//    func DisplayDashboard(patient:Patient) {
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "HomeDashboard", bundle: nil)
-//        let Dashboard = storyBoard.instantiateViewController(withIdentifier: "home") as! HomeDashboardViewController;
-//        //present method must be called before setting contents
-//        self.present(Dashboard, animated: true, completion: nil);
-//        //Dashboard.patient = patient;
-//        
-//    }
-    
-    
-    /*
-        Prompt user for touch ID
-     */
-    func promptForTouchID()
-    {
-        let promptForTouchID = UIAlertController(title: "Touch ID", message: "Would you like to use Touch ID for the next time you login ?", preferredStyle: UIAlertControllerStyle.alert)
-        
-        promptForTouchID.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            //if user agrees to touch ID use
-            //set true
-            UserDefaults.standard.set(true, forKey: "hasTouchIDKey");
-            
-        }))
-        
-        promptForTouchID.addAction(UIAlertAction(title: "Next Time", style: .cancel, handler: { (action: UIAlertAction!) in
-            //if user DOES NOT AGREE to touch ID use
-            //set false
-            UserDefaults.standard.set(false, forKey: "hasTouchIDKey");
-        }))
-        
-        present(promptForTouchID, animated: true, completion: nil)
+    //TEXTFIELD DELEGATES
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder();//hide keyboard when return is clicked
+        return true;
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true);
+    }
+    
+    
+    
 
     
 

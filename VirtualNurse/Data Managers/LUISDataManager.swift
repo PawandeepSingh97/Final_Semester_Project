@@ -29,7 +29,24 @@ class LUISDataManager: NSObject {
             
             //get top scoring intent
             let itt = result["topScoringIntent"]["intent"].string!;
-            let entities = result["entities"].array!;//json array
+            let entities = result["entities"].array!;
+            
+            
+//            if  let en = result["entities"].array {
+//                //what was the entity in the utterenaces
+//                let entitymentioned = en[0]["entity"].string!;
+//                let entitytype = en[0]["type"].string!;
+//                let entityvalue = en[0]["resolution"]["values"][0]["value"].string!;
+//
+//                print("*********************")
+//                print("FROM LUIS")
+//                print("UTTERENCE IS \(query)");
+//                print("INTENT IS \(itt)")
+//                print("ENTITY MENTIONED WAS \(entitymentioned), which is type of \(entitytype), and value is \(entityvalue) ");
+//
+//                print("*********************")
+//            }
+            
             
             let intent = Intent(itt,entities);
             onComplete?(intent);//once finish,return intent

@@ -10,9 +10,11 @@ import Foundation
 
 public class RestfulController
 {
-    public static let BaseUrl = "http://pawandeep-virtualnurse.azurewebsites.net";
+    private static let BaseUrl = "http://pawandeep-virtualnurse.azurewebsites.net";
     public static let ver:[String:String] = ["zumo-api-version": "2.0.0"];
     public static var restfulURL:String = "";
+    
+    private static let MicrosoftTranslateURL = "https://api.microsofttranslator.com/V2/Http.svc";
     
     
     
@@ -55,5 +57,18 @@ public class RestfulController
         restfulURL = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/8d271a66-a002-4e2f-84a8-f8cdf880c002?subscription-key=fd89a96407d54f67bfebdf9a9f5a2b9c&verbose=true&timezoneOffset=0&q=";
         return restfulURL;
     }
+    
+    public static func MicrosoftTranslateEndPoint() -> String
+    {
+        restfulURL = "\(MicrosoftTranslateURL)/Translate";
+        return restfulURL;
+    }
+    
+    public static func MicrosoftSpeakEndPoint() -> String
+    {
+        restfulURL = "\(MicrosoftTranslateURL)/Speak"
+        return restfulURL;
+    }
+    
     
 }
