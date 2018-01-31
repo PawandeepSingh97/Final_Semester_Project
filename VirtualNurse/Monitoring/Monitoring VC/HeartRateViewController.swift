@@ -136,7 +136,7 @@ class HeartRateViewController: UIViewController {
     
     //Designing a button programmatically
     func DesignSubmitButton(){
-        let borderAlpha : CGFloat = 0.7
+        //let borderAlpha : CGFloat = 0.7
         let cornerRadius : CGFloat = 5.0
         submitButton.frame = CGRect(x: 7, y: 660, width: 400, height: 50)
         submitButton.setTitle("Submit", for: [])
@@ -187,17 +187,17 @@ class HeartRateViewController: UIViewController {
         //Setting Date
         let calendar = NSCalendar.current
         let now = NSDate()
-        let components = calendar.dateComponents([.year,.month,.day], from: now as Date)
+        //let components = calendar.dateComponents([.year,.month,.day], from: now as Date)
         
-        guard let startDate = calendar.date(from: components) else {
-            fatalError("*** Unable to create the start date ***")
-        }
+//        guard let startDate = calendar.date(from: components) else {
+//            fatalError("*** Unable to create the start date ***")
+//        }
         
         //Minus 1 day of user date time
         let previousDateTime = calendar.date(byAdding: .day, value: -1, to: self.getCurrentLocalDate())
         
         //Predicate -> Filtering of data by date
-        let predicate = HKQuery.predicateForSamples(withStart: previousDateTime , end: self.getCurrentLocalDate() , options: .strictEndDate)
+//        let predicate = HKQuery.predicateForSamples(withStart: previousDateTime , end: self.getCurrentLocalDate() , options: .strictEndDate)
         
         //Sorting the data -> with latest one at the top
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
@@ -242,7 +242,7 @@ class HeartRateViewController: UIViewController {
                                 
                                 //Extract the quantity,date,heartrate
                                 let quantity = result.quantity
-                                let startdate = result.endDate
+                                //let startdate = result.endDate
                                 let count = quantity.doubleValue(for: HKUnit(from: "count/min"))
                                 
                                 //Store heartrate in an array

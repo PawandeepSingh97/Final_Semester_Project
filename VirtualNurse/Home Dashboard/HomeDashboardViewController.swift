@@ -25,17 +25,21 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     //Declaration of variables
     //    var monitoringData:[[String]] = [["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol"] ,["Medicine Search","Top up","Reminder","Scan Medicine"]]
-    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Top up","Reminder","Scan Medicine","Appointment"]
+    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder"]
     var monitoringImages: [String] = ["redBloodPressure","blueGlucose","pinkheart","orangeCig","greenWeight","ruler","redBloodPressure","blueGlucose","pinkheart","orangeCig","orangeCig"]
     var circleLogo: [String] = ["redOval","blueOval","pinkoval","orangeOval","greenOval","purpleOval"]
     var monitoredTicks: [String] = ["redTick","blueTick","pinkTick","orangeTick","greenTick","purpleTick"]
     //var cellBackgroundColour = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0,0xF44336,0x3F51B5,0xE91E63,0xFF9800]
     //    var cellBackgroundColour: [[Int]] = [[0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0],
     //    [0x2196F3,0x2196F3,0x2196F3,0x2196F3]]
-    var cellBackgroundColour: [Int] = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0
-        ,0x2196F3,0x2196F3,0x2196F3,0x2196F3,0x2196F3]
     
-    var monitoringValue:[String] = ["140/80 mmHg","120 mgdL","110 bpm","10 cigs","28","80 mgdL","10","10","10","10","10"]
+    //Real
+//    var cellBackgroundColour: [Int] = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0
+//        ,0x2196F3,0x2196F3,0x2196F3,0x2196F3,0x2196F3]
+    var cellBackgroundColour: [Int] = [0x3F51B5,0x3F51B5,0x3F51B5,0x3F51B5,0x3F51B5,0x3F51B5
+        ,0x3F51B5,0x9C27B0]
+    
+    var monitoringValue:[String] = ["140/80 mmHg","120 mgdL","110 bpm","10 cigs","28","80 mgdL","10","10"]
     
     
     
@@ -131,7 +135,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         //Creating a button
         let measureButton = cell.viewWithTag(1) as! UIButton
        // let borderAlpha : CGFloat = 0.7
-        measureButton.frame = CGRect(x: 13, y: 120, width: 100, height: 30)
+        //measureButton.frame = CGRect(x: 0, y: 120, width: 100, height: 30)
         measureButton.setTitle("MEASURE", for: [])
         measureButton.setTitleColor(UIColor.white, for: [])
         measureButton.backgroundColor = UIColor(hex: self.cellBackgroundColour[indexPath.row])
@@ -186,6 +190,11 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 //Navigation Programmitically
                 let CholesterolViewController = storyboard.instantiateViewController(withIdentifier: "CholesterolViewController") as! CholesterolViewController
                 self.navigationController?.pushViewController(CholesterolViewController, animated: true)
+            }
+            if(indexPath.row == 6){
+                //Navigation Programmitically
+                let MonitoringChartsViewController = storyboard.instantiateViewController(withIdentifier: "MonitoringChartsViewController") as! MonitoringChartsViewController
+                self.navigationController?.pushViewController(MonitoringChartsViewController, animated: true)
             }
         }
             //If return section 1 (Medication)

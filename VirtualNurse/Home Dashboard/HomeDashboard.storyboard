@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -80,6 +81,7 @@
                                             <constraint firstItem="jHx-wT-0F3" firstAttribute="leading" secondItem="lmN-oR-Had" secondAttribute="leading" constant="10" id="3GY-pe-GrC"/>
                                             <constraint firstItem="KP1-6T-f0b" firstAttribute="leading" secondItem="lmN-oR-Had" secondAttribute="leading" constant="12" id="CPe-h3-RCw"/>
                                             <constraint firstAttribute="trailing" secondItem="3DY-yQ-UB8" secondAttribute="trailing" constant="28" id="FyF-Ua-XTu"/>
+                                            <constraint firstAttribute="trailing" secondItem="KP1-6T-f0b" secondAttribute="trailing" constant="12" id="G9z-FD-SDl"/>
                                             <constraint firstItem="3DY-yQ-UB8" firstAttribute="leading" secondItem="lmN-oR-Had" secondAttribute="leading" constant="28" id="Mbd-wU-pOn"/>
                                             <constraint firstItem="3DY-yQ-UB8" firstAttribute="top" secondItem="lmN-oR-Had" secondAttribute="top" constant="11" id="SN5-7B-NwK"/>
                                             <constraint firstAttribute="trailing" secondItem="jHx-wT-0F3" secondAttribute="trailing" constant="10" id="SNG-EF-YBq"/>
@@ -87,7 +89,6 @@
                                             <constraint firstAttribute="bottom" secondItem="KP1-6T-f0b" secondAttribute="bottom" constant="15" id="ZeP-I1-5Fv"/>
                                             <constraint firstItem="KP1-6T-f0b" firstAttribute="top" secondItem="quw-KL-9Eh" secondAttribute="bottom" constant="10" id="aPw-ad-5JQ"/>
                                             <constraint firstItem="KP1-6T-f0b" firstAttribute="centerX" secondItem="lmN-oR-Had" secondAttribute="centerX" id="fb1-FE-KAV"/>
-                                            <constraint firstAttribute="trailing" secondItem="KP1-6T-f0b" secondAttribute="trailing" constant="12" id="ggg-gX-75w"/>
                                             <constraint firstItem="quw-KL-9Eh" firstAttribute="leading" secondItem="lmN-oR-Had" secondAttribute="leading" constant="10" id="y6p-ZB-w3z"/>
                                             <constraint firstAttribute="trailing" secondItem="quw-KL-9Eh" secondAttribute="trailing" constant="10" id="ysb-fA-C0f"/>
                                         </constraints>
@@ -112,12 +113,11 @@
                                     <tabBarItem title="Settings" image="ic_menu_black_24dp" id="QqZ-fa-4Nl"/>
                                 </items>
                             </tabBar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Tx-oa-fRH">
-                                <rect key="frame" x="16" y="28" width="343" height="121"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Tx-oa-fRH">
+                                <rect key="frame" x="16" y="79" width="343" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NO RISK OF HEART DISEASE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLL-Yn-8Pa">
-                                        <rect key="frame" x="57" y="50" width="229.33333333333337" height="20"/>
+                                        <rect key="frame" x="57" y="25" width="229.33333333333337" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,12 +161,16 @@
                         <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VBl-yO-kni" firstAttribute="leading" secondItem="JXH-jW-Byn" secondAttribute="leading" constant="16" id="H1p-Nf-8yE"/>
+                            <constraint firstItem="5Tx-oa-fRH" firstAttribute="leading" secondItem="JXH-jW-Byn" secondAttribute="leading" constant="16" id="JgI-8d-oPM"/>
                             <constraint firstItem="ea0-xN-1Pw" firstAttribute="bottom" secondItem="JXH-jW-Byn" secondAttribute="bottom" id="Mkj-AC-UJU"/>
                             <constraint firstItem="JXH-jW-Byn" firstAttribute="trailing" secondItem="VBl-yO-kni" secondAttribute="trailing" constant="16" id="RJR-0M-ra9"/>
+                            <constraint firstItem="JXH-jW-Byn" firstAttribute="trailing" secondItem="5Tx-oa-fRH" secondAttribute="trailing" constant="16" id="SAf-rz-L6d"/>
                             <constraint firstItem="ea0-xN-1Pw" firstAttribute="top" secondItem="VBl-yO-kni" secondAttribute="bottom" id="V8z-CT-X8a"/>
                             <constraint firstItem="ea0-xN-1Pw" firstAttribute="top" secondItem="VBl-yO-kni" secondAttribute="bottom" id="VRs-ha-oLF"/>
                             <constraint firstItem="ea0-xN-1Pw" firstAttribute="centerX" secondItem="VBl-yO-kni" secondAttribute="centerX" id="Zmy-3M-DiE"/>
+                            <constraint firstItem="5Tx-oa-fRH" firstAttribute="top" secondItem="JXH-jW-Byn" secondAttribute="top" constant="15" id="gZh-IC-56c"/>
                             <constraint firstItem="ea0-xN-1Pw" firstAttribute="top" secondItem="VBl-yO-kni" secondAttribute="bottom" id="oCe-FO-ZCd"/>
+                            <constraint firstItem="VBl-yO-kni" firstAttribute="top" secondItem="5Tx-oa-fRH" secondAttribute="bottom" constant="8" id="v5L-Nv-RKc"/>
                             <constraint firstItem="ea0-xN-1Pw" firstAttribute="leading" secondItem="o1y-LA-4ax" secondAttribute="leading" id="zST-yX-u5I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JXH-jW-Byn"/>

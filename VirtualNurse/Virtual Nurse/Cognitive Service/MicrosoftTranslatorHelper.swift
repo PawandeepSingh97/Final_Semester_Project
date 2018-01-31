@@ -12,8 +12,7 @@ import AVFoundation
 class MicrosoftTranslatorHelper : NSObject
 {
     var player:AVAudioPlayer?;
-    var convertedText = "";
-    var bool = false;
+    let audioSession = AVAudioSession.sharedInstance();
     
     
     /**
@@ -73,7 +72,10 @@ class MicrosoftTranslatorHelper : NSObject
             }
             
             do {
-                self.player = try AVAudioPlayer(data: data, fileTypeHint: AVFileType.mp3.rawValue);
+                try self.audioSession.setCategory(AVAudioSessionCategorySoloAmbient)
+                try self.audioSession.setMode(AVAudioSessionModeDefault)
+                
+                self.player = try AVAudioPlayer(data: data);
                 self.player?.prepareToPlay()
                 self.player?.volume = 1.0
                 self.player?.play()
