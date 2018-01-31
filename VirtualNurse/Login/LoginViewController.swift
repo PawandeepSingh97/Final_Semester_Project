@@ -105,14 +105,27 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         print("\n \(patient.NRIC) \n \(patient.name) \n \(patient.dateOfBirth)");
         DispatchQueue.main.async
             {
-               // ONCE INTEGRATED THEN CAN
-                //Navigation to new page
+                
+                //homeTab
                 let storyboard = UIStoryboard(name:"HomeDashboard" , bundle:nil)
-                let homeNavController = storyboard.instantiateInitialViewController() as! UINavigationController;
+                
+                let TabController = storyboard.instantiateInitialViewController() as! UITabBarController;
                 //Get home dashboard from nav controller
+                
+                let homeNavController = TabController.viewControllers![0] as! UINavigationController;
+                
                 let HomeDashboardViewController = homeNavController.viewControllers[0] as! HomeDashboardViewController;
                 HomeDashboardViewController.patient = patient;
-                self.present(homeNavController, animated: true, completion: nil);
+                self.present(TabController, animated: true, completion: nil);
+                
+               // ONCE INTEGRATED THEN CAN
+                //Navigation to new page
+//                let storyboard = UIStoryboard(name:"HomeDashboard" , bundle:nil)
+//                let homeNavController = storyboard.instantiateInitialViewController() as! UINavigationController;
+//                //Get home dashboard from nav controller
+//                let HomeDashboardViewController = homeNavController.viewControllers[0] as! HomeDashboardViewController;
+//                HomeDashboardViewController.patient = patient;
+//                self.present(homeNavController, animated: true, completion: nil);
             }});
     }
     
