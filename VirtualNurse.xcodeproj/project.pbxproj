@@ -10,6 +10,9 @@
 		1A25FAA0E1E8DCD46B6D9B72 /* Pods_VirtualNurse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A45DFAECE5C072917E3BA8 /* Pods_VirtualNurse.framework */; };
 		1D2280F72018442B00AB75BD /* HomeDashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2280F62018442B00AB75BD /* HomeDashboardCollectionViewCell.swift */; };
 		1D9222C820183C71003461D8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9222C720183C71003461D8 /* HealthKit.framework */; };
+		1DDC6BA4201F99270010A16B /* MonitoringChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC6BA3201F99270010A16B /* MonitoringChartsViewController.swift */; };
+		1DDC6BA6201F9A290010A16B /* MonitoringChartsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC6BA5201F9A290010A16B /* MonitoringChartsCollectionViewCell.swift */; };
+		1DDC6BA8201FA7EA0010A16B /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC6BA7201FA7EA0010A16B /* LineChart.swift */; };
 		22D33914EC2917044372804F /* Pods_VirtualNurseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FFC722CCE747C0420CB9A7 /* Pods_VirtualNurseUITests.framework */; };
 		2521209120059FAF0048F66B /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521209020059FAF0048F66B /* Dialog.swift */; };
 		252120952005AE970048F66B /* AppointmentDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252120942005AE970048F66B /* AppointmentDialog.swift */; };
@@ -143,6 +146,9 @@
 		1D2280F62018442B00AB75BD /* HomeDashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D9222C620183C71003461D8 /* VirtualNurse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VirtualNurse.entitlements; sourceTree = "<group>"; };
 		1D9222C720183C71003461D8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		1DDC6BA3201F99270010A16B /* MonitoringChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringChartsViewController.swift; sourceTree = "<group>"; };
+		1DDC6BA5201F9A290010A16B /* MonitoringChartsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringChartsCollectionViewCell.swift; sourceTree = "<group>"; };
+		1DDC6BA7201FA7EA0010A16B /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		2521209020059FAF0048F66B /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		252120942005AE970048F66B /* AppointmentDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDialog.swift; sourceTree = "<group>"; };
 		254881F21FF4E1DF00B73C40 /* SpeechToTextHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToTextHelper.swift; sourceTree = "<group>"; };
@@ -571,6 +577,7 @@
 		5B37642F20185CD300069BAF /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
+				1DDC6BA7201FA7EA0010A16B /* LineChart.swift */,
 				5B37643020185CD300069BAF /* Collection View */,
 				5B37643320185CD300069BAF /* MonitoringViewController.swift */,
 				5B37643420185CD300069BAF /* Monitoring Dashboard */,
@@ -579,6 +586,8 @@
 				5B37643B20185CD300069BAF /* MonitoringStoryboard.storyboard */,
 				5B37643C20185CD300069BAF /* ViewTodayResultsViewController.swift */,
 				5B37643D20185CD300069BAF /* Monitoring VC */,
+				1DDC6BA3201F99270010A16B /* MonitoringChartsViewController.swift */,
+				1DDC6BA5201F9A290010A16B /* MonitoringChartsCollectionViewCell.swift */,
 			);
 			name = Monitoring;
 			path = VirtualNurse/Monitoring;
@@ -1001,6 +1010,7 @@
 				5B37647620185CD400069BAF /* HeartRateViewController.swift in Sources */,
 				5B37645520185CD400069BAF /* FSCalendarExtensions.m in Sources */,
 				25FE9C891FEA706A00437BD6 /* HomeDashboardViewController.swift in Sources */,
+				1DDC6BA8201FA7EA0010A16B /* LineChart.swift in Sources */,
 				5B37646620185CD400069BAF /* ScanVC.swift in Sources */,
 				5B37644820185CD400069BAF /* ViewAppointmentViewController.swift in Sources */,
 				5B37646F20185CD400069BAF /* MonitoringController.swift in Sources */,
@@ -1049,6 +1059,7 @@
 				25F9A10920020B7300A98511 /* DesignableLoginField.swift in Sources */,
 				5B37645120185CD400069BAF /* FSCalendar.m in Sources */,
 				25FE9C7C1FEA604D00437BD6 /* HTTP.swift in Sources */,
+				1DDC6BA4201F99270010A16B /* MonitoringChartsViewController.swift in Sources */,
 				5B37648C20185D3200069BAF /* MedicineDataManager.swift in Sources */,
 				5B37646520185CD400069BAF /* CustomVisionResult.swift in Sources */,
 				5B37645920185CD400069BAF /* FSCalendarHeaderView.m in Sources */,
@@ -1084,6 +1095,7 @@
 				254D38CE2002249D00B2B991 /* FDSoundActivatedRecorder.swift in Sources */,
 				5B37645820185CD400069BAF /* FSCalendarCalculator.m in Sources */,
 				25A58EE82014D84D0084BDBB /* KeychainPasswordItem.swift in Sources */,
+				1DDC6BA6201F9A290010A16B /* MonitoringChartsCollectionViewCell.swift in Sources */,
 				5B37648E20185D3200069BAF /* LUISDataManager.swift in Sources */,
 				256B3E5A201E0449001FCF73 /* MicButtonStyles.swift in Sources */,
 				5B37646E20185CD400069BAF /* framingham.mlmodel in Sources */,
@@ -1260,12 +1272,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VirtualNurse/VirtualNurse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MZ483TW92Y;
+				DEVELOPMENT_TEAM = 7DV725VJBB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VirtualNurse/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorPawandeep.VirtualNurse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorImran.VirtualNurse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1279,12 +1291,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VirtualNurse/VirtualNurse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MZ483TW92Y;
+				DEVELOPMENT_TEAM = 7DV725VJBB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VirtualNurse/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorPawandeep.VirtualNurse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorImran.VirtualNurse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -38,15 +38,15 @@ class MicrosoftTranslatorHelper : NSObject
                 print(error ?? "Unknown error")
                 return
             }
-
-                //GET LANGUAGE TEXT FROM XML
-                let parser = XMLParser(data: data)
-                parser.delegate = self
-                // print(response);
-                
-                if parser.parse() {
-                    print("parsed");
-                }
+            
+            //GET LANGUAGE TEXT FROM XML
+            let parser = XMLParser(data: data)
+            parser.delegate = self
+            // print(response);
+            
+            if parser.parse() {
+                print("parsed");
+            }
             onComplete?(self.convertedText);
             
         }
@@ -107,11 +107,11 @@ extension MicrosoftTranslatorHelper:XMLParserDelegate
         //  currentValue? += string
         print(string);
         convertedText = string;//GET CONVERTED TEXT
-//        var text = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
-//        if bool
-//        {
-//                Speak(text:convertedText);
-//        }
+        //        var text = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+        //        if bool
+        //        {
+        //                Speak(text:convertedText);
+        //        }
         
         
         // // if after xx seconds, no respond from textview
