@@ -187,6 +187,12 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 let CholesterolViewController = storyboard.instantiateViewController(withIdentifier: "CholesterolViewController") as! CholesterolViewController
                 self.navigationController?.pushViewController(CholesterolViewController, animated: true)
             }
+            
+//            if(indexPath.row == 7){
+//                //Navigation Programmitically
+//                let MedicineViewController = storyboard.instantiateViewController(withIdentifier: "CholesterolViewController") as! CholesterolViewController
+//                self.navigationController?.pushViewController(CholesterolViewController, animated: true)
+//            }
         }
             //If return section 1 (Medication)
         else if (indexPath.section == 1){

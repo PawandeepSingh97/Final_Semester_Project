@@ -78,12 +78,10 @@
 		5B37645F20185CD400069BAF /* showUpdateAppointmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642420185CD300069BAF /* showUpdateAppointmentDetailsViewController.swift */; };
 		5B37646020185CD400069BAF /* medicineDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642620185CD300069BAF /* medicineDetailController.swift */; };
 		5B37646120185CD400069BAF /* MedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642720185CD300069BAF /* MedicineViewController.swift */; };
-		5B37646220185CD400069BAF /* LoadingIndicatorView copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642820185CD300069BAF /* LoadingIndicatorView copy.swift */; };
 		5B37646320185CD400069BAF /* CustomVisionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642A20185CD300069BAF /* CustomVisionService.swift */; };
 		5B37646420185CD400069BAF /* CustomVisionDetails.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5B37642B20185CD300069BAF /* CustomVisionDetails.rtf */; };
 		5B37646520185CD400069BAF /* CustomVisionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642C20185CD300069BAF /* CustomVisionResult.swift */; };
 		5B37646620185CD400069BAF /* ScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642D20185CD300069BAF /* ScanVC.swift */; };
-		5B37646720185CD400069BAF /* MedicationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B37642E20185CD300069BAF /* MedicationStoryboard.storyboard */; };
 		5B37646820185CD400069BAF /* ViewTodayResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37643120185CD300069BAF /* ViewTodayResultsCollectionViewCell.swift */; };
 		5B37646920185CD400069BAF /* MonitoringCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37643220185CD300069BAF /* MonitoringCollectionViewCell.swift */; };
 		5B37646A20185CD400069BAF /* MonitoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37643320185CD300069BAF /* MonitoringViewController.swift */; };
@@ -114,6 +112,12 @@
 		5B37649320185D3200069BAF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37648520185D3200069BAF /* User.swift */; };
 		5B37649420185D3200069BAF /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37648620185D3200069BAF /* MockMessage.swift */; };
 		5B37649520185D3200069BAF /* Monitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37648720185D3200069BAF /* Monitoring.swift */; };
+		5B412F7E2021A5DD0001C3F7 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F7D2021A5DD0001C3F7 /* ReminderModel.swift */; };
+		5B412F802021A7470001C3F7 /* LoadingIndicatorView copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F7F2021A7470001C3F7 /* LoadingIndicatorView copy.swift */; };
+		5B412F842021A7BD0001C3F7 /* reminderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F812021A7BC0001C3F7 /* reminderCustomCell.swift */; };
+		5B412F852021A7BD0001C3F7 /* reminderViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F822021A7BC0001C3F7 /* reminderViewTableViewController.swift */; };
+		5B412F862021A7BD0001C3F7 /* reminderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F832021A7BD0001C3F7 /* reminderDetailVC.swift */; };
+		5B412F882021A8270001C3F7 /* MedicationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B412F872021A8270001C3F7 /* MedicationStoryboard.storyboard */; };
 		C92E5B653558B0FDA861C9B2 /* Pods_VirtualNurseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C888169035B5CCF50C279380 /* Pods_VirtualNurseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -231,12 +235,10 @@
 		5B37642420185CD300069BAF /* showUpdateAppointmentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showUpdateAppointmentDetailsViewController.swift; sourceTree = "<group>"; };
 		5B37642620185CD300069BAF /* medicineDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = medicineDetailController.swift; sourceTree = "<group>"; };
 		5B37642720185CD300069BAF /* MedicineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineViewController.swift; sourceTree = "<group>"; };
-		5B37642820185CD300069BAF /* LoadingIndicatorView copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingIndicatorView copy.swift"; sourceTree = "<group>"; };
 		5B37642A20185CD300069BAF /* CustomVisionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVisionService.swift; sourceTree = "<group>"; };
 		5B37642B20185CD300069BAF /* CustomVisionDetails.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = CustomVisionDetails.rtf; sourceTree = "<group>"; };
 		5B37642C20185CD300069BAF /* CustomVisionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVisionResult.swift; sourceTree = "<group>"; };
 		5B37642D20185CD300069BAF /* ScanVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanVC.swift; sourceTree = "<group>"; };
-		5B37642E20185CD300069BAF /* MedicationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MedicationStoryboard.storyboard; sourceTree = "<group>"; };
 		5B37643120185CD300069BAF /* ViewTodayResultsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTodayResultsCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B37643220185CD300069BAF /* MonitoringCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B37643320185CD300069BAF /* MonitoringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,12 @@
 		5B37648520185D3200069BAF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5B37648620185D3200069BAF /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
 		5B37648720185D3200069BAF /* Monitoring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitoring.swift; sourceTree = "<group>"; };
+		5B412F7D2021A5DD0001C3F7 /* ReminderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
+		5B412F7F2021A7470001C3F7 /* LoadingIndicatorView copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingIndicatorView copy.swift"; sourceTree = "<group>"; };
+		5B412F812021A7BC0001C3F7 /* reminderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reminderCustomCell.swift; sourceTree = "<group>"; };
+		5B412F822021A7BC0001C3F7 /* reminderViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reminderViewTableViewController.swift; sourceTree = "<group>"; };
+		5B412F832021A7BD0001C3F7 /* reminderDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reminderDetailVC.swift; sourceTree = "<group>"; };
+		5B412F872021A8270001C3F7 /* MedicationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MedicationStoryboard.storyboard; sourceTree = "<group>"; };
 		64A45DFAECE5C072917E3BA8 /* Pods_VirtualNurse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualNurse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97FFC722CCE747C0420CB9A7 /* Pods_VirtualNurseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualNurseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34399E8B651217DC992D609 /* Pods-VirtualNurseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseTests/Pods-VirtualNurseTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -390,6 +398,7 @@
 				5B37647820185D3200069BAF /* Data Managers */,
 				5B37648020185D3200069BAF /* Models */,
 				256749D4201825CE00F4A325 /* Styles */,
+				5B412F7F2021A7470001C3F7 /* LoadingIndicatorView copy.swift */,
 				25FE9C3D1FEA5FDE00437BD6 /* AppDelegate.swift */,
 				25FE9C441FEA5FDE00437BD6 /* Assets.xcassets */,
 				25FE9C461FEA5FDE00437BD6 /* LaunchScreen.storyboard */,
@@ -536,12 +545,14 @@
 		5B37642520185CD300069BAF /* Medication */ = {
 			isa = PBXGroup;
 			children = (
+				5B412F812021A7BC0001C3F7 /* reminderCustomCell.swift */,
+				5B412F832021A7BD0001C3F7 /* reminderDetailVC.swift */,
+				5B412F822021A7BC0001C3F7 /* reminderViewTableViewController.swift */,
 				5B37642620185CD300069BAF /* medicineDetailController.swift */,
 				5B37642720185CD300069BAF /* MedicineViewController.swift */,
-				5B37642820185CD300069BAF /* LoadingIndicatorView copy.swift */,
 				5B37642920185CD300069BAF /* CustomVIsion */,
 				5B37642D20185CD300069BAF /* ScanVC.swift */,
-				5B37642E20185CD300069BAF /* MedicationStoryboard.storyboard */,
+				5B412F872021A8270001C3F7 /* MedicationStoryboard.storyboard */,
 			);
 			name = Medication;
 			path = VirtualNurse/Medication;
@@ -630,6 +641,7 @@
 		5B37648020185D3200069BAF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5B412F7D2021A5DD0001C3F7 /* ReminderModel.swift */,
 				5B37648120185D3200069BAF /* MedicineModel.swift */,
 				5B37648220185D3200069BAF /* AppointmentModel.swift */,
 				5B37648320185D3200069BAF /* Patient.swift */,
@@ -787,7 +799,7 @@
 				5B37646420185CD400069BAF /* CustomVisionDetails.rtf in Resources */,
 				5B37647020185CD400069BAF /* MonitoringStoryboard.storyboard in Resources */,
 				25FE9C871FEA704800437BD6 /* HomeDashboard.storyboard in Resources */,
-				5B37646720185CD400069BAF /* MedicationStoryboard.storyboard in Resources */,
+				5B412F882021A8270001C3F7 /* MedicationStoryboard.storyboard in Resources */,
 				25FE9C481FEA5FDE00437BD6 /* LaunchScreen.storyboard in Resources */,
 				25FE9C451FEA5FDE00437BD6 /* Assets.xcassets in Resources */,
 				25FE9C431FEA5FDE00437BD6 /* Main.storyboard in Resources */,
@@ -1015,6 +1027,7 @@
 				5B37644D20185CD400069BAF /* FSCalendarDelegationProxy.m in Sources */,
 				5B37648D20185D3200069BAF /* AppointmentDataManager.swift in Sources */,
 				25725CAB1FFE4C820006ACB2 /* DialogController.swift in Sources */,
+				5B412F862021A7BD0001C3F7 /* reminderDetailVC.swift in Sources */,
 				5B37644420185CD400069BAF /* CreateAppointmentViewController.swift in Sources */,
 				5B37646920185CD400069BAF /* MonitoringCollectionViewCell.swift in Sources */,
 				5B37649120185D3200069BAF /* Patient.swift in Sources */,
@@ -1027,7 +1040,7 @@
 				5B37649420185D3200069BAF /* MockMessage.swift in Sources */,
 				5B37646C20185CD400069BAF /* MonitoringDashboardCollectionViewCell.swift in Sources */,
 				25A58EEC2015979E0084BDBB /* TextFieldEffects.swift in Sources */,
-				5B37646220185CD400069BAF /* LoadingIndicatorView copy.swift in Sources */,
+				5B412F842021A7BD0001C3F7 /* reminderCustomCell.swift in Sources */,
 				5B37646020185CD400069BAF /* medicineDetailController.swift in Sources */,
 				5B37648F20185D3200069BAF /* MedicineModel.swift in Sources */,
 				25B007712020532700D9A253 /* PromptChatView.swift in Sources */,
@@ -1039,6 +1052,7 @@
 				5B37648C20185D3200069BAF /* MedicineDataManager.swift in Sources */,
 				5B37646520185CD400069BAF /* CustomVisionResult.swift in Sources */,
 				5B37645920185CD400069BAF /* FSCalendarHeaderView.m in Sources */,
+				5B412F852021A7BD0001C3F7 /* reminderViewTableViewController.swift in Sources */,
 				5B37644720185CD400069BAF /* ViewAppointmentCollectionViewCell.swift in Sources */,
 				25B00778202071F700D9A253 /* Entity.swift in Sources */,
 				25A979982018B18500120006 /* MicrosoftTranslatorHelper.swift in Sources */,
@@ -1052,8 +1066,10 @@
 				5B37649520185D3200069BAF /* Monitoring.swift in Sources */,
 				5B37649320185D3200069BAF /* User.swift in Sources */,
 				5B37645A20185CD400069BAF /* FSCalendarTransitionCoordinator.m in Sources */,
+				5B412F7E2021A5DD0001C3F7 /* ReminderModel.swift in Sources */,
 				5B37646820185CD400069BAF /* ViewTodayResultsCollectionViewCell.swift in Sources */,
 				25FE9C7B1FEA604D00437BD6 /* SwiftyJSON.swift in Sources */,
+				5B412F802021A7470001C3F7 /* LoadingIndicatorView copy.swift in Sources */,
 				5B37644520185CD400069BAF /* UpdateAppointmentViewController.swift in Sources */,
 				25B007742020672900D9A253 /* MonitoringDialog.swift in Sources */,
 				5B37646120185CD400069BAF /* MedicineViewController.swift in Sources */,

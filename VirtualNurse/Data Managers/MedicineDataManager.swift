@@ -135,6 +135,55 @@ class MedicineDataManager : NSObject {
         }
     }
     
+    func getAllReminders( onComplete:((_ ReminderModel: ReminderModel) -> Void)?) {
+        
+        let reminderUrl:String = "http://pawandeep-virtualnurse.azurewebsites.net/tables/Reminder"
+        
+        //Get request
+        Alamofire.request(reminderUrl, headers: headers).responseJSON { (responseObject) -> Void in
+            print(responseObject.result.isSuccess)
+            
+            print("Reminder Request In")
+            
+            if responseObject.result.isSuccess {
+                
+                
+                let responseJson = JSON(responseObject.result.value!)
+                
+                //Check if responseJson is empty
+                if responseJson != []{
+                    print("RESPONSE JSON\(responseJson)")
+                    //Extract Json
+                    
+                    print(" result value\(responseJson.count)")
+                    
+                    for i in 0..<(responseJson.count){
+                        
+                        
+                        
+                        
+                        let id = responseJson[i]["id"].string!
+                        let medName = responseJson[i]["medicineName"].string!
+                        let checkEnabledOrNot = responseJson[i]["enableReminder"].bool!
+                        let morningTime = responseJson[i]["morningTIme"].string!
+                        let afternoonTime = responseJson[i]["afternoonTime"].string!
+                        let eveningTime = responseJson[i]["eveningTime"].string!
+                        
+                        
+                        print("What the reminder data returned to us :  \(responseJson[i])")
+                        
+                        
+                        
+                        let Reminder = ReminderModel(id ,medName ,checkEnabledOrNot ,morningTime, afternoonTime: afternoonTime ,eveningTime: eveningTime)
+                        
+                        print(checkEnabledOrNot)
+                        onComplete?(Reminder)
+                    }
+                }
+            }
+        }
+    }
+    
 
  
 }
