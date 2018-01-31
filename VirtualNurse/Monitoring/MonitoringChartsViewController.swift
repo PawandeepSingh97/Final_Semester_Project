@@ -255,13 +255,11 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
                         self.xLabels = updatedxLabels
                     
                         //Validation check whether the dates match
-                        for i in self.xLabels {
-                            print(self.allWeekDates[1])
-                            print(Monitoring.dateCreated)
-                            if(self.allWeekDates.contains(Monitoring.dateCreated)){
-                                print(Monitoring.dateCreated)
+                        for i in self.allWeekDates {
+                            if(i == Monitoring.dateCreated){
                                 print(i)
-                                //print("HI\(self.xLabels.index(of: i))!")
+                                print(Monitoring.dateCreated)
+                                print("HI\(String(describing: self.allWeekDates.index(of: i)))")
                             }
                         }
                         //self.data = [3, 4, -2, 11, 13, 15,3, 4, -2, 11, 13, 15]
@@ -329,15 +327,15 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
             //print("This is monday's year \(year)")
             let dayMonth = "\(day)/\(month)"
             xLabels.append(dayMonth)
-            let dayMonthYear = "\(day)/\(month)/\(year)"
+            
+            //Updating the month with leading zeroes
+            let updatedDay = String(format: "%02d", day)
+            let updatedMonth = String(format: "%02d", month)
+            let dayMonthYear = "\(updatedDay)/\(updatedMonth)/\(year)"
             allWeekDates.append(String(describing: dayMonthYear))
             
-            //Check if there is leadingZeroes
-            let formatter = NumberFormatter()
-            formatter.minimumIntegerDigits = 2
-            
-            //let checkMonth = formatter.string(from:hi)
-            //let chekDat = formatter.string(from: day)
+
+          
         }
         
         return xLabels
