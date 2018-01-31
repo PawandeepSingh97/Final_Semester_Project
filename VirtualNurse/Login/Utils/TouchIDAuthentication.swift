@@ -76,5 +76,9 @@ class BiometricIDAuth {
                 completion(message)                            }
         }
     }
-}
+    
+    
+    
+    
+}//end class
 

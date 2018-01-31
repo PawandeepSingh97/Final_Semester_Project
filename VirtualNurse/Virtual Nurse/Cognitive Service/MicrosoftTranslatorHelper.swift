@@ -14,13 +14,20 @@ class MicrosoftTranslatorHelper : NSObject
     var player:AVAudioPlayer?;
     let audioSession = AVAudioSession.sharedInstance();
     
-    func Translate(from:String,to:String,text:String)
+    
+    /**
+     Translate from one language to another
+     */
+    func Translate(from:String,to:String,text:String,onComplete:((_:String) -> Void)?)
     {
+        //allow url encoding
         let f = from.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
-        let t = from.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+        let t = to.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
         let txt = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
         
-        let url = URL(string: "https://api.microsofttranslator.com/V2/Http.svc/Translate?text=\(txt)&to=en&from=en&contentType=text/plain");
+        
+        
+        let url = URL(string: "\(RestfulController.MicrosoftTranslateEndPoint())?text=\(txt)&to=\(t)&from=\(f)&contentType=text/plain");
         var u = URLRequest(url: url!);
         u.addValue("de07fd275ef34f0887cb1113d3dcca47", forHTTPHeaderField: "Ocp-Apim-Subscription-Key");
         
@@ -30,23 +37,31 @@ class MicrosoftTranslatorHelper : NSObject
                 print(error ?? "Unknown error")
                 return
             }
+
+                //GET LANGUAGE TEXT FROM XML
+                let parser = XMLParser(data: data)
+                parser.delegate = self
+                // print(response);
+                
+                if parser.parse() {
+                    print("parsed");
+                }
+            onComplete?(self.convertedText);
             
-            print(data);
-            let parser = XMLParser(data: data)
-            parser.delegate = self
-            // print(response);
-            
-            if parser.parse() {
-                print("parsed");
-            }
         }
         task.resume()
     }
     
-    func Speak(text:String)
+    /*
+     Speak Text in Specified Language
+     */
+    func Speak(text:String,language:String)
     {
         
-        let url = URL(string: "https://api.microsofttranslator.com/V2/Http.svc/Speak?language=en&text=\(text)&format=audio/mp3");
+        let txt = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+        let lng = language.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed);
+        let url = URL(string: "\(RestfulController.MicrosoftSpeakEndPoint())?language=\(lng)&text=\(txt)&format=audio/mp3");
+        
         var u = URLRequest(url: url!);
         u.addValue("de07fd275ef34f0887cb1113d3dcca47", forHTTPHeaderField: "Ocp-Apim-Subscription-Key");
         
@@ -65,7 +80,6 @@ class MicrosoftTranslatorHelper : NSObject
                 self.player?.volume = 1.0
                 self.player?.play()
             }
-                
             catch{
                 print("error")
             }
@@ -77,7 +91,6 @@ class MicrosoftTranslatorHelper : NSObject
     
     
     // Just in case, if there's an error, report it. (We don't want to fly blind here.)
-    
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         print(parseError)
     }
@@ -86,20 +99,6 @@ class MicrosoftTranslatorHelper : NSObject
 
 extension MicrosoftTranslatorHelper:XMLParserDelegate
 {
-    // initialize results structure
-    
-    func parserDidStartDocument(_ parser: XMLParser) {
-        // results = []
-    }
-    
-    // start element
-    //
-    // - If we're starting a "record" create the dictionary that will hold the results
-    // - If we're starting one of our dictionary keys, initialize `currentValue` (otherwise leave `nil`)
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        
-    }
     
     // found characters
     //
@@ -109,20 +108,16 @@ extension MicrosoftTranslatorHelper:XMLParserDelegate
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         //  currentValue? += string
         print(string);
-        var text = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed);
-        Speak(text:text!);
+        convertedText = string;//GET CONVERTED TEXT
+//        var text = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+//        if bool
+//        {
+//                Speak(text:convertedText);
+//        }
+        
         
         // // if after xx seconds, no respond from textview
         // stop speech
-        
-    }
-    
-    // end element
-    //
-    // - If we're at the end of the whole dictionary, then save that dictionary in our array
-    // - If we're at the end of an element that belongs in the dictionary, then save that value in the dictionary
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
     }
 }
