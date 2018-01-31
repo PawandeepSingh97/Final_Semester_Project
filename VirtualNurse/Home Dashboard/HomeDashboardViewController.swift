@@ -144,12 +144,10 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         //        measureButton.layer.borderColor = UIColor(white: 1.0, alpha: borderAlpha).cgColor
         measureButton.layer.cornerRadius = cornerRadius
         
-        
-        
-        
-        
         return cell
     }
+    let MedicationStoryboard = UIStoryboard(name:"MedicationStoryboard" , bundle:nil)
+    
     
     //Returns the selected item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -192,7 +190,14 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 self.navigationController?.pushViewController(CholesterolViewController, animated: true)
             }
             if(indexPath.row == 6){
-                
+                //Navigation Programmitically
+                let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
+                self.navigationController?.pushViewController(MedicineViewController, animated: true)
+            }
+            if(indexPath.row == 7){
+                //Navigation Programmitically
+              let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+                self.navigationController?.pushViewController(ReminderViewController, animated: true)
             }
         }
             //If return section 1 (Medication)
@@ -523,11 +528,16 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
             let CholesterolViewController = storyboard.instantiateViewController(withIdentifier: "CholesterolViewController") as! CholesterolViewController
             self.navigationController?.pushViewController(CholesterolViewController, animated: true)
         }
-        if(item!.item == 7){
+        if(item!.item == 6){
             //Navigation Programmitically
             let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
             self.navigationController?.pushViewController(MedicineViewController, animated: true)
+        }
+        if (item!.item == 7) {
             
+            //Navigation Programmitically
+            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+            self.navigationController?.pushViewController(ReminderViewController, animated: true)
         }
         //reminderViewTableViewController
 
