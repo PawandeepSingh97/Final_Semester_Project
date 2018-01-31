@@ -51,34 +51,6 @@
 		25FE9C841FEA6C6800437BD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE9C831FEA6C6800437BD6 /* LoginViewController.swift */; };
 		25FE9C871FEA704800437BD6 /* HomeDashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25FE9C861FEA704800437BD6 /* HomeDashboard.storyboard */; };
 		25FE9C891FEA706A00437BD6 /* HomeDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FE9C881FEA706A00437BD6 /* HomeDashboardViewController.swift */; };
-		5B37644420185CD400069BAF /* CreateAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3763F720185CD300069BAF /* CreateAppointmentViewController.swift */; };
-		5B37644520185CD400069BAF /* UpdateAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3763F820185CD300069BAF /* UpdateAppointmentViewController.swift */; };
-		5B37644620185CD400069BAF /* ViewAppointmentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3763F920185CD300069BAF /* ViewAppointmentStoryboard.storyboard */; };
-		5B37644720185CD400069BAF /* ViewAppointmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3763FA20185CD300069BAF /* ViewAppointmentCollectionViewCell.swift */; };
-		5B37644820185CD400069BAF /* ViewAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3763FB20185CD300069BAF /* ViewAppointmentViewController.swift */; };
-		5B37644920185CD400069BAF /* CreateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3763FC20185CD300069BAF /* CreateCollectionViewCell.swift */; };
-		5B37644A20185CD400069BAF /* doctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3763FD20185CD300069BAF /* doctorViewController.swift */; };
-		5B37644B20185CD400069BAF /* BridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3763FE20185CD300069BAF /* BridgingHeader.m */; };
-		5B37644C20185CD400069BAF /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37640020185CD300069BAF /* FSCalendarCollectionView.m */; };
-		5B37644D20185CD400069BAF /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37640420185CD300069BAF /* FSCalendarDelegationProxy.m */; };
-		5B37644E20185CD400069BAF /* FSCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37640620185CD300069BAF /* FSCalendarDelegationFactory.m */; };
-		5B37644F20185CD400069BAF /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37640C20185CD300069BAF /* FSCalendarCell.m */; };
-		5B37645020185CD400069BAF /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37640D20185CD300069BAF /* FSCalendarStickyHeader.m */; };
-		5B37645120185CD400069BAF /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37640E20185CD300069BAF /* FSCalendar.m */; };
-		5B37645220185CD400069BAF /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37640F20185CD300069BAF /* FSCalendarCollectionViewLayout.m */; };
-		5B37645320185CD400069BAF /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37641020185CD300069BAF /* FSCalendarScopeHandle.m */; };
-		5B37645420185CD400069BAF /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37641120185CD300069BAF /* FSCalendarWeekdayView.m */; };
-		5B37645520185CD400069BAF /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37641520185CD300069BAF /* FSCalendarExtensions.m */; };
-		5B37645620185CD400069BAF /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37641720185CD300069BAF /* FSCalendar+Deprecated.m */; };
-		5B37645720185CD400069BAF /* FSCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37641820185CD300069BAF /* FSCalendarConstants.m */; };
-		5B37645820185CD400069BAF /* FSCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37641920185CD300069BAF /* FSCalendarCalculator.m */; };
-		5B37645920185CD400069BAF /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37641A20185CD300069BAF /* FSCalendarHeaderView.m */; };
-		5B37645A20185CD400069BAF /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37641E20185CD300069BAF /* FSCalendarTransitionCoordinator.m */; };
-		5B37645B20185CD400069BAF /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B37641F20185CD300069BAF /* FSCalendarAppearance.m */; };
-		5B37645C20185CD400069BAF /* CreateAppointmentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B37642020185CD300069BAF /* CreateAppointmentStoryboard.storyboard */; };
-		5B37645D20185CD400069BAF /* showAppointmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642220185CD300069BAF /* showAppointmentDetailsViewController.swift */; };
-		5B37645E20185CD400069BAF /* modelPopupDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642320185CD300069BAF /* modelPopupDesign.swift */; };
-		5B37645F20185CD400069BAF /* showUpdateAppointmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642420185CD300069BAF /* showUpdateAppointmentDetailsViewController.swift */; };
 		5B37646020185CD400069BAF /* medicineDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642620185CD300069BAF /* medicineDetailController.swift */; };
 		5B37646120185CD400069BAF /* MedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642720185CD300069BAF /* MedicineViewController.swift */; };
 		5B37646320185CD400069BAF /* CustomVisionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B37642A20185CD300069BAF /* CustomVisionService.swift */; };
@@ -121,6 +93,35 @@
 		5B412F852021A7BD0001C3F7 /* reminderViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F822021A7BC0001C3F7 /* reminderViewTableViewController.swift */; };
 		5B412F862021A7BD0001C3F7 /* reminderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F832021A7BD0001C3F7 /* reminderDetailVC.swift */; };
 		5B412F882021A8270001C3F7 /* MedicationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B412F872021A8270001C3F7 /* MedicationStoryboard.storyboard */; };
+		73C52D612021CAD900646867 /* CreateAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D532021CAD900646867 /* CreateAppointmentViewController.swift */; };
+		73C52D622021CAD900646867 /* UpdateAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D542021CAD900646867 /* UpdateAppointmentViewController.swift */; };
+		73C52D632021CAD900646867 /* ViewAppointmentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73C52D552021CAD900646867 /* ViewAppointmentStoryboard.storyboard */; };
+		73C52D642021CAD900646867 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D562021CAD900646867 /* Appointment.swift */; };
+		73C52D652021CAD900646867 /* ViewAppointmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D572021CAD900646867 /* ViewAppointmentCollectionViewCell.swift */; };
+		73C52D662021CAD900646867 /* ViewAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D582021CAD900646867 /* ViewAppointmentViewController.swift */; };
+		73C52D672021CAD900646867 /* CreateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D592021CAD900646867 /* CreateCollectionViewCell.swift */; };
+		73C52D682021CAD900646867 /* doctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D5A2021CAD900646867 /* doctorViewController.swift */; };
+		73C52D692021CAD900646867 /* BridgingHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D5B2021CAD900646867 /* BridgingHeader.m */; };
+		73C52D6A2021CAD900646867 /* CreateAppointmentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73C52D5C2021CAD900646867 /* CreateAppointmentStoryboard.storyboard */; };
+		73C52D6B2021CAD900646867 /* showAppointmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D5E2021CAD900646867 /* showAppointmentDetailsViewController.swift */; };
+		73C52D6C2021CAD900646867 /* modelPopupDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D5F2021CAD900646867 /* modelPopupDesign.swift */; };
+		73C52D6D2021CAD900646867 /* showUpdateAppointmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D602021CAD900646867 /* showUpdateAppointmentDetailsViewController.swift */; };
+		73C52D8F2021CAF000646867 /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D6F2021CAF000646867 /* FSCalendarCollectionView.m */; };
+		73C52D902021CAF000646867 /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D732021CAF000646867 /* FSCalendarDelegationProxy.m */; };
+		73C52D912021CAF000646867 /* FSCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D752021CAF000646867 /* FSCalendarDelegationFactory.m */; };
+		73C52D922021CAF000646867 /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D7B2021CAF000646867 /* FSCalendarCell.m */; };
+		73C52D932021CAF000646867 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D7C2021CAF000646867 /* FSCalendarStickyHeader.m */; };
+		73C52D942021CAF000646867 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D7D2021CAF000646867 /* FSCalendar.m */; };
+		73C52D952021CAF000646867 /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D7E2021CAF000646867 /* FSCalendarCollectionViewLayout.m */; };
+		73C52D962021CAF000646867 /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D7F2021CAF000646867 /* FSCalendarScopeHandle.m */; };
+		73C52D972021CAF000646867 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D802021CAF000646867 /* FSCalendarWeekdayView.m */; };
+		73C52D982021CAF000646867 /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D842021CAF000646867 /* FSCalendarExtensions.m */; };
+		73C52D992021CAF000646867 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D862021CAF000646867 /* FSCalendar+Deprecated.m */; };
+		73C52D9A2021CAF000646867 /* FSCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D872021CAF000646867 /* FSCalendarConstants.m */; };
+		73C52D9B2021CAF000646867 /* FSCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D882021CAF000646867 /* FSCalendarCalculator.m */; };
+		73C52D9C2021CAF000646867 /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D892021CAF000646867 /* FSCalendarHeaderView.m */; };
+		73C52D9D2021CAF000646867 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D8D2021CAF000646867 /* FSCalendarTransitionCoordinator.m */; };
+		73C52D9E2021CAF000646867 /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C52D8E2021CAF000646867 /* FSCalendarAppearance.m */; };
 		C92E5B653558B0FDA861C9B2 /* Pods_VirtualNurseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C888169035B5CCF50C279380 /* Pods_VirtualNurseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -193,52 +194,6 @@
 		25FE9C861FEA704800437BD6 /* HomeDashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeDashboard.storyboard; sourceTree = "<group>"; };
 		25FE9C881FEA706A00437BD6 /* HomeDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDashboardViewController.swift; sourceTree = "<group>"; };
 		38981DAED48FE0AEEAC0DB9A /* Pods-VirtualNurse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurse/Pods-VirtualNurse.debug.xcconfig"; sourceTree = "<group>"; };
-		5B3763F620185CD300069BAF /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
-		5B3763F720185CD300069BAF /* CreateAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAppointmentViewController.swift; sourceTree = "<group>"; };
-		5B3763F820185CD300069BAF /* UpdateAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAppointmentViewController.swift; sourceTree = "<group>"; };
-		5B3763F920185CD300069BAF /* ViewAppointmentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewAppointmentStoryboard.storyboard; sourceTree = "<group>"; };
-		5B3763FA20185CD300069BAF /* ViewAppointmentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAppointmentCollectionViewCell.swift; sourceTree = "<group>"; };
-		5B3763FB20185CD300069BAF /* ViewAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAppointmentViewController.swift; sourceTree = "<group>"; };
-		5B3763FC20185CD300069BAF /* CreateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewCell.swift; sourceTree = "<group>"; };
-		5B3763FD20185CD300069BAF /* doctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = doctorViewController.swift; sourceTree = "<group>"; };
-		5B3763FE20185CD300069BAF /* BridgingHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgingHeader.m; sourceTree = "<group>"; };
-		5B37640020185CD300069BAF /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
-		5B37640120185CD300069BAF /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
-		5B37640220185CD300069BAF /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
-		5B37640320185CD300069BAF /* FSCalendarScopeHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarScopeHandle.h; sourceTree = "<group>"; };
-		5B37640420185CD300069BAF /* FSCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationProxy.m; sourceTree = "<group>"; };
-		5B37640520185CD300069BAF /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
-		5B37640620185CD300069BAF /* FSCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationFactory.m; sourceTree = "<group>"; };
-		5B37640720185CD300069BAF /* FSCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCalculator.h; sourceTree = "<group>"; };
-		5B37640820185CD300069BAF /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderView.h; sourceTree = "<group>"; };
-		5B37640920185CD300069BAF /* FSCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstants.h; sourceTree = "<group>"; };
-		5B37640A20185CD300069BAF /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
-		5B37640B20185CD300069BAF /* FSCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
-		5B37640C20185CD300069BAF /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
-		5B37640D20185CD300069BAF /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
-		5B37640E20185CD300069BAF /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
-		5B37640F20185CD300069BAF /* FSCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
-		5B37641020185CD300069BAF /* FSCalendarScopeHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarScopeHandle.m; sourceTree = "<group>"; };
-		5B37641120185CD300069BAF /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
-		5B37641220185CD300069BAF /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionView.h; sourceTree = "<group>"; };
-		5B37641320185CD300069BAF /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
-		5B37641420185CD300069BAF /* FSCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationFactory.h; sourceTree = "<group>"; };
-		5B37641520185CD300069BAF /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
-		5B37641620185CD300069BAF /* FSCalendarDelegationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationProxy.h; sourceTree = "<group>"; };
-		5B37641720185CD300069BAF /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
-		5B37641820185CD300069BAF /* FSCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstants.m; sourceTree = "<group>"; };
-		5B37641920185CD300069BAF /* FSCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCalculator.m; sourceTree = "<group>"; };
-		5B37641A20185CD300069BAF /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderView.m; sourceTree = "<group>"; };
-		5B37641B20185CD300069BAF /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
-		5B37641C20185CD300069BAF /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
-		5B37641D20185CD300069BAF /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
-		5B37641E20185CD300069BAF /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
-		5B37641F20185CD300069BAF /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
-		5B37642020185CD300069BAF /* CreateAppointmentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateAppointmentStoryboard.storyboard; sourceTree = "<group>"; };
-		5B37642120185CD300069BAF /* VirtualNurse-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VirtualNurse-Bridging-Header.h"; sourceTree = "<group>"; };
-		5B37642220185CD300069BAF /* showAppointmentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showAppointmentDetailsViewController.swift; sourceTree = "<group>"; };
-		5B37642320185CD300069BAF /* modelPopupDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modelPopupDesign.swift; sourceTree = "<group>"; };
-		5B37642420185CD300069BAF /* showUpdateAppointmentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showUpdateAppointmentDetailsViewController.swift; sourceTree = "<group>"; };
 		5B37642620185CD300069BAF /* medicineDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = medicineDetailController.swift; sourceTree = "<group>"; };
 		5B37642720185CD300069BAF /* MedicineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineViewController.swift; sourceTree = "<group>"; };
 		5B37642A20185CD300069BAF /* CustomVisionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVisionService.swift; sourceTree = "<group>"; };
@@ -282,6 +237,53 @@
 		5B412F832021A7BD0001C3F7 /* reminderDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reminderDetailVC.swift; sourceTree = "<group>"; };
 		5B412F872021A8270001C3F7 /* MedicationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MedicationStoryboard.storyboard; sourceTree = "<group>"; };
 		64A45DFAECE5C072917E3BA8 /* Pods_VirtualNurse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualNurse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73C52D522021CAD900646867 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		73C52D532021CAD900646867 /* CreateAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAppointmentViewController.swift; sourceTree = "<group>"; };
+		73C52D542021CAD900646867 /* UpdateAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAppointmentViewController.swift; sourceTree = "<group>"; };
+		73C52D552021CAD900646867 /* ViewAppointmentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ViewAppointmentStoryboard.storyboard; sourceTree = "<group>"; };
+		73C52D562021CAD900646867 /* Appointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		73C52D572021CAD900646867 /* ViewAppointmentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAppointmentCollectionViewCell.swift; sourceTree = "<group>"; };
+		73C52D582021CAD900646867 /* ViewAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAppointmentViewController.swift; sourceTree = "<group>"; };
+		73C52D592021CAD900646867 /* CreateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewCell.swift; sourceTree = "<group>"; };
+		73C52D5A2021CAD900646867 /* doctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = doctorViewController.swift; sourceTree = "<group>"; };
+		73C52D5B2021CAD900646867 /* BridgingHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgingHeader.m; sourceTree = "<group>"; };
+		73C52D5C2021CAD900646867 /* CreateAppointmentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateAppointmentStoryboard.storyboard; sourceTree = "<group>"; };
+		73C52D5D2021CAD900646867 /* VirtualNurse-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VirtualNurse-Bridging-Header.h"; sourceTree = "<group>"; };
+		73C52D5E2021CAD900646867 /* showAppointmentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showAppointmentDetailsViewController.swift; sourceTree = "<group>"; };
+		73C52D5F2021CAD900646867 /* modelPopupDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modelPopupDesign.swift; sourceTree = "<group>"; };
+		73C52D602021CAD900646867 /* showUpdateAppointmentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showUpdateAppointmentDetailsViewController.swift; sourceTree = "<group>"; };
+		73C52D6F2021CAF000646867 /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
+		73C52D702021CAF000646867 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
+		73C52D712021CAF000646867 /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
+		73C52D722021CAF000646867 /* FSCalendarScopeHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarScopeHandle.h; sourceTree = "<group>"; };
+		73C52D732021CAF000646867 /* FSCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationProxy.m; sourceTree = "<group>"; };
+		73C52D742021CAF000646867 /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
+		73C52D752021CAF000646867 /* FSCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationFactory.m; sourceTree = "<group>"; };
+		73C52D762021CAF000646867 /* FSCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCalculator.h; sourceTree = "<group>"; };
+		73C52D772021CAF000646867 /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderView.h; sourceTree = "<group>"; };
+		73C52D782021CAF000646867 /* FSCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstants.h; sourceTree = "<group>"; };
+		73C52D792021CAF000646867 /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
+		73C52D7A2021CAF000646867 /* FSCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
+		73C52D7B2021CAF000646867 /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
+		73C52D7C2021CAF000646867 /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
+		73C52D7D2021CAF000646867 /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
+		73C52D7E2021CAF000646867 /* FSCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
+		73C52D7F2021CAF000646867 /* FSCalendarScopeHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarScopeHandle.m; sourceTree = "<group>"; };
+		73C52D802021CAF000646867 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
+		73C52D812021CAF000646867 /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionView.h; sourceTree = "<group>"; };
+		73C52D822021CAF000646867 /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
+		73C52D832021CAF000646867 /* FSCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationFactory.h; sourceTree = "<group>"; };
+		73C52D842021CAF000646867 /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
+		73C52D852021CAF000646867 /* FSCalendarDelegationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationProxy.h; sourceTree = "<group>"; };
+		73C52D862021CAF000646867 /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
+		73C52D872021CAF000646867 /* FSCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstants.m; sourceTree = "<group>"; };
+		73C52D882021CAF000646867 /* FSCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCalculator.m; sourceTree = "<group>"; };
+		73C52D892021CAF000646867 /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderView.m; sourceTree = "<group>"; };
+		73C52D8A2021CAF000646867 /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
+		73C52D8B2021CAF000646867 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
+		73C52D8C2021CAF000646867 /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
+		73C52D8D2021CAF000646867 /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
+		73C52D8E2021CAF000646867 /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
 		97FFC722CCE747C0420CB9A7 /* Pods_VirtualNurseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualNurseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34399E8B651217DC992D609 /* Pods-VirtualNurseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseTests/Pods-VirtualNurseTests.release.xcconfig"; sourceTree = "<group>"; };
 		B47553265F57198EB41746F7 /* Pods-VirtualNurseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseTests/Pods-VirtualNurseTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -397,9 +399,9 @@
 				25FE9C731FEA604D00437BD6 /* Login */,
 				25FE9C851FEA702300437BD6 /* Home Dashboard */,
 				25FE9C6C1FEA604C00437BD6 /* Virtual Nurse */,
+				73C52D512021CAD900646867 /* Virtual Appointment */,
 				5B37642520185CD300069BAF /* Medication */,
 				5B37642F20185CD300069BAF /* Monitoring */,
-				5B3763F520185CD300069BAF /* Virtual Appointment */,
 				25FE9C701FEA604C00437BD6 /* HTTP */,
 				5B37647820185D3200069BAF /* Data Managers */,
 				5B37648020185D3200069BAF /* Models */,
@@ -484,68 +486,6 @@
 				97FFC722CCE747C0420CB9A7 /* Pods_VirtualNurseUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5B3763F520185CD300069BAF /* Virtual Appointment */ = {
-			isa = PBXGroup;
-			children = (
-				5B3763F620185CD300069BAF /* BridgingHeader.h */,
-				5B3763F720185CD300069BAF /* CreateAppointmentViewController.swift */,
-				5B3763F820185CD300069BAF /* UpdateAppointmentViewController.swift */,
-				5B3763F920185CD300069BAF /* ViewAppointmentStoryboard.storyboard */,
-				5B3763FA20185CD300069BAF /* ViewAppointmentCollectionViewCell.swift */,
-				5B3763FB20185CD300069BAF /* ViewAppointmentViewController.swift */,
-				5B3763FC20185CD300069BAF /* CreateCollectionViewCell.swift */,
-				5B3763FD20185CD300069BAF /* doctorViewController.swift */,
-				5B3763FE20185CD300069BAF /* BridgingHeader.m */,
-				5B3763FF20185CD300069BAF /* FSCalendar */,
-				5B37642020185CD300069BAF /* CreateAppointmentStoryboard.storyboard */,
-				5B37642120185CD300069BAF /* VirtualNurse-Bridging-Header.h */,
-				5B37642220185CD300069BAF /* showAppointmentDetailsViewController.swift */,
-				5B37642320185CD300069BAF /* modelPopupDesign.swift */,
-				5B37642420185CD300069BAF /* showUpdateAppointmentDetailsViewController.swift */,
-			);
-			name = "Virtual Appointment";
-			path = "VirtualNurse/Virtual Appointment";
-			sourceTree = SOURCE_ROOT;
-		};
-		5B3763FF20185CD300069BAF /* FSCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				5B37640020185CD300069BAF /* FSCalendarCollectionView.m */,
-				5B37640120185CD300069BAF /* FSCalendarWeekdayView.h */,
-				5B37640220185CD300069BAF /* FSCalendarCollectionViewLayout.h */,
-				5B37640320185CD300069BAF /* FSCalendarScopeHandle.h */,
-				5B37640420185CD300069BAF /* FSCalendarDelegationProxy.m */,
-				5B37640520185CD300069BAF /* FSCalendarExtensions.h */,
-				5B37640620185CD300069BAF /* FSCalendarDelegationFactory.m */,
-				5B37640720185CD300069BAF /* FSCalendarCalculator.h */,
-				5B37640820185CD300069BAF /* FSCalendarHeaderView.h */,
-				5B37640920185CD300069BAF /* FSCalendarConstants.h */,
-				5B37640A20185CD300069BAF /* FSCalendarAppearance.h */,
-				5B37640B20185CD300069BAF /* FSCalendarTransitionCoordinator.h */,
-				5B37640C20185CD300069BAF /* FSCalendarCell.m */,
-				5B37640D20185CD300069BAF /* FSCalendarStickyHeader.m */,
-				5B37640E20185CD300069BAF /* FSCalendar.m */,
-				5B37640F20185CD300069BAF /* FSCalendarCollectionViewLayout.m */,
-				5B37641020185CD300069BAF /* FSCalendarScopeHandle.m */,
-				5B37641120185CD300069BAF /* FSCalendarWeekdayView.m */,
-				5B37641220185CD300069BAF /* FSCalendarCollectionView.h */,
-				5B37641320185CD300069BAF /* FSCalendarDynamicHeader.h */,
-				5B37641420185CD300069BAF /* FSCalendarDelegationFactory.h */,
-				5B37641520185CD300069BAF /* FSCalendarExtensions.m */,
-				5B37641620185CD300069BAF /* FSCalendarDelegationProxy.h */,
-				5B37641720185CD300069BAF /* FSCalendar+Deprecated.m */,
-				5B37641820185CD300069BAF /* FSCalendarConstants.m */,
-				5B37641920185CD300069BAF /* FSCalendarCalculator.m */,
-				5B37641A20185CD300069BAF /* FSCalendarHeaderView.m */,
-				5B37641B20185CD300069BAF /* FSCalendarStickyHeader.h */,
-				5B37641C20185CD300069BAF /* FSCalendar.h */,
-				5B37641D20185CD300069BAF /* FSCalendarCell.h */,
-				5B37641E20185CD300069BAF /* FSCalendarTransitionCoordinator.m */,
-				5B37641F20185CD300069BAF /* FSCalendarAppearance.m */,
-			);
-			path = FSCalendar;
 			sourceTree = "<group>";
 		};
 		5B37642520185CD300069BAF /* Medication */ = {
@@ -682,6 +622,70 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		73C52D512021CAD900646867 /* Virtual Appointment */ = {
+			isa = PBXGroup;
+			children = (
+				73C52D6E2021CAF000646867 /* FSCalendar */,
+				73C52D522021CAD900646867 /* BridgingHeader.h */,
+				73C52D532021CAD900646867 /* CreateAppointmentViewController.swift */,
+				73C52D542021CAD900646867 /* UpdateAppointmentViewController.swift */,
+				73C52D552021CAD900646867 /* ViewAppointmentStoryboard.storyboard */,
+				73C52D562021CAD900646867 /* Appointment.swift */,
+				73C52D572021CAD900646867 /* ViewAppointmentCollectionViewCell.swift */,
+				73C52D582021CAD900646867 /* ViewAppointmentViewController.swift */,
+				73C52D592021CAD900646867 /* CreateCollectionViewCell.swift */,
+				73C52D5A2021CAD900646867 /* doctorViewController.swift */,
+				73C52D5B2021CAD900646867 /* BridgingHeader.m */,
+				73C52D5C2021CAD900646867 /* CreateAppointmentStoryboard.storyboard */,
+				73C52D5D2021CAD900646867 /* VirtualNurse-Bridging-Header.h */,
+				73C52D5E2021CAD900646867 /* showAppointmentDetailsViewController.swift */,
+				73C52D5F2021CAD900646867 /* modelPopupDesign.swift */,
+				73C52D602021CAD900646867 /* showUpdateAppointmentDetailsViewController.swift */,
+			);
+			name = "Virtual Appointment";
+			path = "../../Demo_VN/VirtualNurse/Virtual Appointment";
+			sourceTree = "<group>";
+		};
+		73C52D6E2021CAF000646867 /* FSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				73C52D6F2021CAF000646867 /* FSCalendarCollectionView.m */,
+				73C52D702021CAF000646867 /* FSCalendarWeekdayView.h */,
+				73C52D712021CAF000646867 /* FSCalendarCollectionViewLayout.h */,
+				73C52D722021CAF000646867 /* FSCalendarScopeHandle.h */,
+				73C52D732021CAF000646867 /* FSCalendarDelegationProxy.m */,
+				73C52D742021CAF000646867 /* FSCalendarExtensions.h */,
+				73C52D752021CAF000646867 /* FSCalendarDelegationFactory.m */,
+				73C52D762021CAF000646867 /* FSCalendarCalculator.h */,
+				73C52D772021CAF000646867 /* FSCalendarHeaderView.h */,
+				73C52D782021CAF000646867 /* FSCalendarConstants.h */,
+				73C52D792021CAF000646867 /* FSCalendarAppearance.h */,
+				73C52D7A2021CAF000646867 /* FSCalendarTransitionCoordinator.h */,
+				73C52D7B2021CAF000646867 /* FSCalendarCell.m */,
+				73C52D7C2021CAF000646867 /* FSCalendarStickyHeader.m */,
+				73C52D7D2021CAF000646867 /* FSCalendar.m */,
+				73C52D7E2021CAF000646867 /* FSCalendarCollectionViewLayout.m */,
+				73C52D7F2021CAF000646867 /* FSCalendarScopeHandle.m */,
+				73C52D802021CAF000646867 /* FSCalendarWeekdayView.m */,
+				73C52D812021CAF000646867 /* FSCalendarCollectionView.h */,
+				73C52D822021CAF000646867 /* FSCalendarDynamicHeader.h */,
+				73C52D832021CAF000646867 /* FSCalendarDelegationFactory.h */,
+				73C52D842021CAF000646867 /* FSCalendarExtensions.m */,
+				73C52D852021CAF000646867 /* FSCalendarDelegationProxy.h */,
+				73C52D862021CAF000646867 /* FSCalendar+Deprecated.m */,
+				73C52D872021CAF000646867 /* FSCalendarConstants.m */,
+				73C52D882021CAF000646867 /* FSCalendarCalculator.m */,
+				73C52D892021CAF000646867 /* FSCalendarHeaderView.m */,
+				73C52D8A2021CAF000646867 /* FSCalendarStickyHeader.h */,
+				73C52D8B2021CAF000646867 /* FSCalendar.h */,
+				73C52D8C2021CAF000646867 /* FSCalendarCell.h */,
+				73C52D8D2021CAF000646867 /* FSCalendarTransitionCoordinator.m */,
+				73C52D8E2021CAF000646867 /* FSCalendarAppearance.m */,
+			);
+			name = FSCalendar;
+			path = ../../Pods/FSCalendar/FSCalendar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -803,16 +807,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B37645C20185CD400069BAF /* CreateAppointmentStoryboard.storyboard in Resources */,
-				5B37644620185CD400069BAF /* ViewAppointmentStoryboard.storyboard in Resources */,
 				5B37646420185CD400069BAF /* CustomVisionDetails.rtf in Resources */,
 				5B37647020185CD400069BAF /* MonitoringStoryboard.storyboard in Resources */,
 				25FE9C871FEA704800437BD6 /* HomeDashboard.storyboard in Resources */,
+				73C52D632021CAD900646867 /* ViewAppointmentStoryboard.storyboard in Resources */,
 				5B412F882021A8270001C3F7 /* MedicationStoryboard.storyboard in Resources */,
 				25FE9C481FEA5FDE00437BD6 /* LaunchScreen.storyboard in Resources */,
 				25FE9C451FEA5FDE00437BD6 /* Assets.xcassets in Resources */,
 				25FE9C431FEA5FDE00437BD6 /* Main.storyboard in Resources */,
 				25D2F6DA1FED01640075ACBD /* VNStoryboard.storyboard in Resources */,
+				73C52D6A2021CAD900646867 /* CreateAppointmentStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1005,96 +1009,95 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73C52D9C2021CAF000646867 /* FSCalendarHeaderView.m in Sources */,
 				25FE9C841FEA6C6800437BD6 /* LoginViewController.swift in Sources */,
-				5B37644E20185CD400069BAF /* FSCalendarDelegationFactory.m in Sources */,
 				5B37647620185CD400069BAF /* HeartRateViewController.swift in Sources */,
-				5B37645520185CD400069BAF /* FSCalendarExtensions.m in Sources */,
 				25FE9C891FEA706A00437BD6 /* HomeDashboardViewController.swift in Sources */,
+				73C52D9E2021CAF000646867 /* FSCalendarAppearance.m in Sources */,
+				73C52D662021CAD900646867 /* ViewAppointmentViewController.swift in Sources */,
 				1DDC6BA8201FA7EA0010A16B /* LineChart.swift in Sources */,
 				5B37646620185CD400069BAF /* ScanVC.swift in Sources */,
-				5B37644820185CD400069BAF /* ViewAppointmentViewController.swift in Sources */,
+				73C52D6B2021CAD900646867 /* showAppointmentDetailsViewController.swift in Sources */,
 				5B37646F20185CD400069BAF /* MonitoringController.swift in Sources */,
 				25A58EEE201597C80084BDBB /* LoginTextFieldEffect.swift in Sources */,
 				5B37649020185D3200069BAF /* AppointmentModel.swift in Sources */,
 				25FE9C7A1FEA604D00437BD6 /* Intent.swift in Sources */,
-				5B37644F20185CD400069BAF /* FSCalendarCell.m in Sources */,
-				5B37644C20185CD400069BAF /* FSCalendarCollectionView.m in Sources */,
-				5B37645420185CD400069BAF /* FSCalendarWeekdayView.m in Sources */,
 				25A58EEA2014D87F0084BDBB /* TouchIDAuthentication.swift in Sources */,
+				73C52D8F2021CAF000646867 /* FSCalendarCollectionView.m in Sources */,
 				5B37647520185CD400069BAF /* BloodPressureViewController.swift in Sources */,
-				5B37645320185CD400069BAF /* FSCalendarScopeHandle.m in Sources */,
 				1D2280F72018442B00AB75BD /* HomeDashboardCollectionViewCell.swift in Sources */,
-				5B37645D20185CD400069BAF /* showAppointmentDetailsViewController.swift in Sources */,
 				5B37648B20185D3200069BAF /* PatientDataManager.swift in Sources */,
 				5B37647320185CD400069BAF /* CholesterolViewController.swift in Sources */,
 				25FE9C3E1FEA5FDE00437BD6 /* AppDelegate.swift in Sources */,
-				5B37645720185CD400069BAF /* FSCalendarConstants.m in Sources */,
-				5B37645F20185CD400069BAF /* showUpdateAppointmentDetailsViewController.swift in Sources */,
+				73C52D982021CAF000646867 /* FSCalendarExtensions.m in Sources */,
 				252120952005AE970048F66B /* AppointmentDialog.swift in Sources */,
-				5B37644B20185CD400069BAF /* BridgingHeader.m in Sources */,
 				5B37647720185CD400069BAF /* GlucoseViewController.swift in Sources */,
 				5B37646320185CD400069BAF /* CustomVisionService.swift in Sources */,
-				5B37644D20185CD400069BAF /* FSCalendarDelegationProxy.m in Sources */,
 				5B37648D20185D3200069BAF /* AppointmentDataManager.swift in Sources */,
 				25725CAB1FFE4C820006ACB2 /* DialogController.swift in Sources */,
 				5B412F862021A7BD0001C3F7 /* reminderDetailVC.swift in Sources */,
-				5B37644420185CD400069BAF /* CreateAppointmentViewController.swift in Sources */,
 				5B37646920185CD400069BAF /* MonitoringCollectionViewCell.swift in Sources */,
+				73C52D652021CAD900646867 /* ViewAppointmentCollectionViewCell.swift in Sources */,
 				5B37649120185D3200069BAF /* Patient.swift in Sources */,
-				5B37644A20185CD400069BAF /* doctorViewController.swift in Sources */,
 				25B007762020673700D9A253 /* MedicationDialog.swift in Sources */,
-				5B37645E20185CD400069BAF /* modelPopupDesign.swift in Sources */,
 				2587DB631FF2386800FB3C23 /* ChatViewController.swift in Sources */,
+				73C52D9D2021CAF000646867 /* FSCalendarTransitionCoordinator.m in Sources */,
 				5B37648A20185D3200069BAF /* MonitoringDataManager.swift in Sources */,
-				5B37645220185CD400069BAF /* FSCalendarCollectionViewLayout.m in Sources */,
+				73C52D952021CAF000646867 /* FSCalendarCollectionViewLayout.m in Sources */,
+				73C52D922021CAF000646867 /* FSCalendarCell.m in Sources */,
 				5B37649420185D3200069BAF /* MockMessage.swift in Sources */,
 				5B37646C20185CD400069BAF /* MonitoringDashboardCollectionViewCell.swift in Sources */,
 				25A58EEC2015979E0084BDBB /* TextFieldEffects.swift in Sources */,
 				5B412F842021A7BD0001C3F7 /* reminderCustomCell.swift in Sources */,
 				5B37646020185CD400069BAF /* medicineDetailController.swift in Sources */,
 				5B37648F20185D3200069BAF /* MedicineModel.swift in Sources */,
+				73C52D9B2021CAF000646867 /* FSCalendarCalculator.m in Sources */,
 				25B007712020532700D9A253 /* PromptChatView.swift in Sources */,
+				73C52D902021CAF000646867 /* FSCalendarDelegationProxy.m in Sources */,
 				5B37647220185CD400069BAF /* BMIViewController.swift in Sources */,
-				5B37645020185CD400069BAF /* FSCalendarStickyHeader.m in Sources */,
 				25F9A10920020B7300A98511 /* DesignableLoginField.swift in Sources */,
-				5B37645120185CD400069BAF /* FSCalendar.m in Sources */,
 				25FE9C7C1FEA604D00437BD6 /* HTTP.swift in Sources */,
+				73C52D692021CAD900646867 /* BridgingHeader.m in Sources */,
 				1DDC6BA4201F99270010A16B /* MonitoringChartsViewController.swift in Sources */,
 				5B37648C20185D3200069BAF /* MedicineDataManager.swift in Sources */,
 				5B37646520185CD400069BAF /* CustomVisionResult.swift in Sources */,
-				5B37645920185CD400069BAF /* FSCalendarHeaderView.m in Sources */,
 				5B412F852021A7BD0001C3F7 /* reminderViewTableViewController.swift in Sources */,
-				5B37644720185CD400069BAF /* ViewAppointmentCollectionViewCell.swift in Sources */,
 				25B00778202071F700D9A253 /* Entity.swift in Sources */,
 				25A979982018B18500120006 /* MicrosoftTranslatorHelper.swift in Sources */,
+				73C52D6C2021CAD900646867 /* modelPopupDesign.swift in Sources */,
 				5B37647120185CD400069BAF /* ViewTodayResultsViewController.swift in Sources */,
 				2587DB6B1FF29C0300FB3C23 /* ChatNavigationViewController.swift in Sources */,
-				5B37645B20185CD400069BAF /* FSCalendarAppearance.m in Sources */,
 				5B37649220185D3200069BAF /* DoctorModel.swift in Sources */,
+				73C52D682021CAD900646867 /* doctorViewController.swift in Sources */,
 				5B37646A20185CD400069BAF /* MonitoringViewController.swift in Sources */,
 				256B3E5C201E1FDE001FCF73 /* ConversationStack.swift in Sources */,
 				2587DB691FF260F800FB3C23 /* MicButton.swift in Sources */,
 				5B37649520185D3200069BAF /* Monitoring.swift in Sources */,
 				5B37649320185D3200069BAF /* User.swift in Sources */,
-				5B37645A20185CD400069BAF /* FSCalendarTransitionCoordinator.m in Sources */,
 				5B412F7E2021A5DD0001C3F7 /* ReminderModel.swift in Sources */,
 				5B37646820185CD400069BAF /* ViewTodayResultsCollectionViewCell.swift in Sources */,
 				25FE9C7B1FEA604D00437BD6 /* SwiftyJSON.swift in Sources */,
+				73C52D9A2021CAF000646867 /* FSCalendarConstants.m in Sources */,
 				5B412F802021A7470001C3F7 /* LoadingIndicatorView copy.swift in Sources */,
-				5B37644520185CD400069BAF /* UpdateAppointmentViewController.swift in Sources */,
 				25B007742020672900D9A253 /* MonitoringDialog.swift in Sources */,
 				5B37646120185CD400069BAF /* MedicineViewController.swift in Sources */,
 				2521209120059FAF0048F66B /* Dialog.swift in Sources */,
+				73C52D962021CAF000646867 /* FSCalendarScopeHandle.m in Sources */,
+				73C52D6D2021CAD900646867 /* showUpdateAppointmentDetailsViewController.swift in Sources */,
 				25D3F0AA201EFA0E0036EE3D /* ErrorDialog.swift in Sources */,
+				73C52D992021CAF000646867 /* FSCalendar+Deprecated.m in Sources */,
+				73C52D912021CAF000646867 /* FSCalendarDelegationFactory.m in Sources */,
 				5B37648820185D3200069BAF /* RestfulManager.swift in Sources */,
-				5B37645620185CD400069BAF /* FSCalendar+Deprecated.m in Sources */,
 				5B37647420185CD400069BAF /* CigaretteViewController.swift in Sources */,
+				73C52D622021CAD900646867 /* UpdateAppointmentViewController.swift in Sources */,
+				73C52D612021CAD900646867 /* CreateAppointmentViewController.swift in Sources */,
 				5B37648920185D3200069BAF /* UserDataManager.swift in Sources */,
+				73C52D942021CAF000646867 /* FSCalendar.m in Sources */,
 				25725CA91FFE48C20006ACB2 /* PatientDialog.swift in Sources */,
 				254D38CC2002174A00B2B991 /* DesignableFloatingChatButton.swift in Sources */,
 				254D38CE2002249D00B2B991 /* FDSoundActivatedRecorder.swift in Sources */,
-				5B37645820185CD400069BAF /* FSCalendarCalculator.m in Sources */,
 				25A58EE82014D84D0084BDBB /* KeychainPasswordItem.swift in Sources */,
+				73C52D642021CAD900646867 /* Appointment.swift in Sources */,
 				1DDC6BA6201F9A290010A16B /* MonitoringChartsCollectionViewCell.swift in Sources */,
 				5B37648E20185D3200069BAF /* LUISDataManager.swift in Sources */,
 				256B3E5A201E0449001FCF73 /* MicButtonStyles.swift in Sources */,
@@ -1102,8 +1105,10 @@
 				25E2BF79201A191700D9A587 /* ChatSettingsViewController.swift in Sources */,
 				5B37646B20185CD400069BAF /* MonitoringDashboardViewController.swift in Sources */,
 				5B37646D20185CD400069BAF /* helperClass.swift in Sources */,
-				5B37644920185CD400069BAF /* CreateCollectionViewCell.swift in Sources */,
+				73C52D932021CAF000646867 /* FSCalendarStickyHeader.m in Sources */,
 				254881F31FF4E1DF00B73C40 /* SpeechToTextHelper.swift in Sources */,
+				73C52D972021CAF000646867 /* FSCalendarWeekdayView.m in Sources */,
+				73C52D672021CAD900646867 /* CreateCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
