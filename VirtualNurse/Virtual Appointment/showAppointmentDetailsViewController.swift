@@ -76,12 +76,11 @@ class showAppointmentDetailsViewController: UIViewController {
         PatientDataManager().getPatientByNRIC(appoinmentItem!.nric) { (patient) in
             print("nric \(self.appoinmentItem!.nric)")
             AppointmentDataManager().getDoctorIDByNameNric(patient.NRIC, patient.name, self.appoinmentItem!.doctorName, onComplete: { (Doctor) in
-                print("patient \(patient.name)")
-                print("patient \(patient.NRIC)")
-                print("doctor \(Doctor.doctorName)")
+
                 self.doctorId = Doctor.id
                 
                 AppointmentDataManager().getDoctorTableByNricDocName(patient.NRIC,self.appoinmentItem!.doctorName, onComplete: { (Doctor) in
+
                     if(Doctor.date ==  ""){
                         //update the time and date on the doctor table
                         AppointmentDataManager().patchDoctorRecord(self.doctorId, updateParam, success: { (success) in
@@ -95,8 +94,8 @@ class showAppointmentDetailsViewController: UIViewController {
                             "time": self.appoinmentItem!.time,
                             "date": self.appoinmentItem!.date,
                             "doctorName": Doctor.doctorName,
-                            "patientName": Doctor.patientName,
-                            "patientNric": Doctor.patientNric,
+                            "patientName": Doctor.patientNric,
+                            "patientNric": Doctor.patientName,
                             "doctorSpeciality": Doctor.doctorSpeciality
                         ]
                         //create record on doctor table

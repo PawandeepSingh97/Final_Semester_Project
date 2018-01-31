@@ -16,18 +16,7 @@ class UpdateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        print("appointmentFinal \(appoinmentItem?.date)")
-//        print("appointmentFinal \(appoinmentItem?.time)")
-//        print(Date())
-//
-//        let inputFormatter = DateFormatter()
-//        inputFormatter.dateFormat = "yyyy/dd/MM"
-//        let showDate = inputFormatter.date(from: (appoinmentItem?.date)! )
-//        inputFormatter.dateFormat = "yyyy-dd-MM HH:mm:ss Z"
-//        let resultString = inputFormatter.string(from: showDate!)
-//        print(resultString)
-        
+
         if UIDevice.current.model.hasPrefix("iPad") {
             self.calendarHeightConstraint.constant = 400
         }
@@ -59,7 +48,7 @@ class UpdateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
         // Dispose of any resources that can be recreated.
     }
     
-    var data = ["9:00 am - 10:00 am", "10:00 am - 11:00 am", "11:00 am - 12:00 pm", "12:00 pm - 01:00 pm", "01:00 pm - 02:00 pm","02:00 pm - 03:00 pm (Break)","04:00 pm - 05:00 pm", "05:00 pm - 06:00 pm"]
+    var data = ["9:00 AM - 10:00 AM", "10:00 AM - 11:00 AM", "11:00 AM - 12:00 PM", "12:00 PM - 1:00 PM", "1:00 PM - 2:00 PM","2:00 PM - 3:00 PM (Break)","3:00 PM - 4:00 PM","4:00 PM - 5:00 PM", "5:00 PM - 6:00 PM"]
     
 
     @IBOutlet weak var calendar: FSCalendar!
@@ -69,7 +58,7 @@ class UpdateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
     // For calender dateformat
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "dd/MM/yyyy"
         return formatter
     }()
     // For calender
@@ -207,18 +196,4 @@ class UpdateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
             
         }
     }
-}
-
-
-extension UIColor {
-    
-    convenience init(hex:Int, alpha:CGFloat = 1.0) {
-        self.init(
-            red:   CGFloat((hex & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((hex & 0x00FF00) >> 8)  / 255.0,
-            blue:  CGFloat((hex & 0x0000FF) >> 0)  / 255.0,
-            alpha: alpha
-        )
-    }
-    
 }

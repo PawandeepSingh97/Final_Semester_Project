@@ -72,6 +72,18 @@ class doctorViewController: UIViewController {
         doctorPicker.backgroundColor = .black
     }
     
+    func uniqueElementsFrom<T: Hashable>(array: [T]) -> [T] {
+        var set = Set<T>()
+        let result = array.filter {
+            guard !set.contains($0) else {
+                return false
+            }
+            set.insert($0)
+            return true
+        }
+        return result
+    }
+    
     func createToolBar(){
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -109,20 +121,25 @@ extension doctorViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return doctorList.count
+        let uniqueStrings = uniqueElementsFrom(array:self.doctorList)
+        return uniqueStrings.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return doctorList[row]
+        let uniqueStrings = uniqueElementsFrom(array:self.doctorList)
+        return uniqueStrings[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedDoctor = doctorList[row]
+        let uniqueStrings = uniqueElementsFrom(array:self.doctorList)
+        selectedDoctor = uniqueStrings[row]
         doctortxt.text = selectedDoctor
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
+        
+        let uniqueStrings = uniqueElementsFrom(array:self.doctorList)
         var label: UILabel
         
         if let view = view as? UILabel{
@@ -134,7 +151,7 @@ extension doctorViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont(name: "Menlo-Regular", size: 17)
-        label.text = doctorList[row]
+        label.text = uniqueStrings[row]
         
         return label
     }

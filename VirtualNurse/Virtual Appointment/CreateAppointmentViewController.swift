@@ -12,7 +12,7 @@ import FSCalendar;
 class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSource, UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate  {
 
     
-    var data = ["9:00 am - 10:00 am", "10:00 am - 11:00 am", "11:00 am - 12:00 pm", "12:00 pm - 01:00 pm", "01:00 pm - 02:00 pm","02:00 pm - 03:00 pm (Break)","04:00 pm - 05:00 pm", "05:00 pm - 06:00 pm"]
+    var data = ["9:00 AM - 10:00 AM", "10:00 AM - 11:00 AM", "11:00 AM - 12:00 PM", "12:00 PM - 1:00 PM", "1:00 PM - 2:00 PM","2:00 PM - 3:00 PM (Break)","3:00 PM - 4:00 PM","4:00 PM - 5:00 PM", "5:00 PM - 6:00 PM"]
     
     
     @IBOutlet weak var calendar: FSCalendar!
@@ -58,7 +58,9 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
     // For calender dateformat
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+       // formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "dd/MM/yyyy"
+
         return formatter
     }()
     
