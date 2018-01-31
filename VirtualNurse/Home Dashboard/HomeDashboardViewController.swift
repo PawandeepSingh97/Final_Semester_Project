@@ -192,9 +192,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 self.navigationController?.pushViewController(CholesterolViewController, animated: true)
             }
             if(indexPath.row == 6){
-                //Navigation Programmitically
-                let MonitoringChartsViewController = storyboard.instantiateViewController(withIdentifier: "MonitoringChartsViewController") as! MonitoringChartsViewController
-                self.navigationController?.pushViewController(MonitoringChartsViewController, animated: true)
+                
             }
         }
             //If return section 1 (Medication)
