@@ -217,11 +217,11 @@
         <!--MonitoringChartsViewController-->
         <scene sceneID="PGj-w2-4pJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9DJ-6d-aMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="MonitoringStoryboard" referencedIdentifier="MonitoringChartsViewController" id="cXE-Kp-N6o" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="9uu-9C-fSr"/>
                     <navigationItem key="navigationItem" id="T39-hs-IMF"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9DJ-6d-aMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1175" y="400"/>
         </scene>
