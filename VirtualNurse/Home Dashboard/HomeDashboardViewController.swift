@@ -487,6 +487,11 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         //Instatiate Monitoring Storyboard
         let storyboard = UIStoryboard(name:"MonitoringStoryboard" , bundle:nil)
         
+        //Instatiate Medicine Storyboard
+        let MedicationStoryboard = UIStoryboard(name:"MedicationStoryboard" , bundle:nil)
+        
+        
+        
         //When button clicked navigate to different pages
         if(item!.item == 0){
             //Navigation Programmitically
@@ -518,12 +523,14 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
             let CholesterolViewController = storyboard.instantiateViewController(withIdentifier: "CholesterolViewController") as! CholesterolViewController
             self.navigationController?.pushViewController(CholesterolViewController, animated: true)
         }
-        
-        
+        if(item!.item == 7){
+            //Navigation Programmitically
+            let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
+            self.navigationController?.pushViewController(MedicineViewController, animated: true)
+            
+        }
+        //reminderViewTableViewController
+
     }
-    
- 
-    
-    
 }
 
