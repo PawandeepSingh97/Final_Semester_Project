@@ -89,7 +89,6 @@
 		5B412F7E2021A5DD0001C3F7 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F7D2021A5DD0001C3F7 /* ReminderModel.swift */; };
 		5B412F802021A7470001C3F7 /* LoadingIndicatorView copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F7F2021A7470001C3F7 /* LoadingIndicatorView copy.swift */; };
 		5B412F842021A7BD0001C3F7 /* reminderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F812021A7BC0001C3F7 /* reminderCustomCell.swift */; };
-		5B412F852021A7BD0001C3F7 /* reminderViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F822021A7BC0001C3F7 /* reminderViewTableViewController.swift */; };
 		5B412F862021A7BD0001C3F7 /* reminderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F832021A7BD0001C3F7 /* reminderDetailVC.swift */; };
 		5B412F882021A8270001C3F7 /* MedicationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B412F872021A8270001C3F7 /* MedicationStoryboard.storyboard */; };
 		5B412F992021D3DB0001C3F7 /* CreateAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F8B2021D3DB0001C3F7 /* CreateAppointmentViewController.swift */; };
@@ -215,7 +214,6 @@
 		5B412F7D2021A5DD0001C3F7 /* ReminderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
 		5B412F7F2021A7470001C3F7 /* LoadingIndicatorView copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoadingIndicatorView copy.swift"; sourceTree = "<group>"; };
 		5B412F812021A7BC0001C3F7 /* reminderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reminderCustomCell.swift; sourceTree = "<group>"; };
-		5B412F822021A7BC0001C3F7 /* reminderViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reminderViewTableViewController.swift; sourceTree = "<group>"; };
 		5B412F832021A7BD0001C3F7 /* reminderDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reminderDetailVC.swift; sourceTree = "<group>"; };
 		5B412F872021A8270001C3F7 /* MedicationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MedicationStoryboard.storyboard; sourceTree = "<group>"; };
 		5B412F8A2021D3DB0001C3F7 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
@@ -437,7 +435,6 @@
 				5B412F7F2021A7470001C3F7 /* LoadingIndicatorView copy.swift */,
 				5B412F812021A7BC0001C3F7 /* reminderCustomCell.swift */,
 				5B412F832021A7BD0001C3F7 /* reminderDetailVC.swift */,
-				5B412F822021A7BC0001C3F7 /* reminderViewTableViewController.swift */,
 				5B37642620185CD300069BAF /* medicineDetailController.swift */,
 				5B37642720185CD300069BAF /* MedicineViewController.swift */,
 				5B37642920185CD300069BAF /* CustomVIsion */,
@@ -955,7 +952,6 @@
 				1DDC6BA4201F99270010A16B /* MonitoringChartsViewController.swift in Sources */,
 				5B37648C20185D3200069BAF /* MedicineDataManager.swift in Sources */,
 				5B37646520185CD400069BAF /* CustomVisionResult.swift in Sources */,
-				5B412F852021A7BD0001C3F7 /* reminderViewTableViewController.swift in Sources */,
 				25B00778202071F700D9A253 /* Entity.swift in Sources */,
 				25A979982018B18500120006 /* MicrosoftTranslatorHelper.swift in Sources */,
 				5B412FA42021D3DB0001C3F7 /* modelPopupDesign.swift in Sources */,

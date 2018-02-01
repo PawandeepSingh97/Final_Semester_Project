@@ -13,11 +13,13 @@ import UIKit
 class MedicineViewController: UIViewController,  UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
 
+    var recievedArray : [String] = [String]()
+    
     
     // Codes that connect to the storyboard
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var scanMedsBtn: UIButton!
-    @IBOutlet weak var medicineImages: UIImageView!
+  //  @IBOutlet weak var medicineImages: UIImageView!
     @IBOutlet weak var medicineSearchTB: UITextField!
     
     
@@ -41,22 +43,48 @@ UINavigationControllerDelegate {
         super.didReceiveMemoryWarning()
     }
 
+    func uniqueElementsFrom<T: Hashable>(array: [T]) -> [T] {
+        var set = Set<T>()
+        let result = array.filter {
+            guard !set.contains($0) else {
+                return false
+            }
+            set.insert($0)
+            return true
+        }
+        return result
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if (segue.identifier == "destination") {
+//        MedicineDataManager().getAllMedication(onComplete: { (Medicine) in
+//
+//
+//    self.recievedArray.append(Medicine.medicineName)
+//
+//            let uniqueMedicine = self.uniqueElementsFrom(array: self.recievedArray)
+                       //     for i in uniqueMedicine {
+                    
+                             //   if  self.medicineSearchTB.text! == i {
+//            if uniqueMedicine.contains(self.medicineSearchTB.text!) == true {
+//
         
-        let secondViewController = segue.destination as? medicineDetailController
-        
-        
-        secondViewController!.medNames = medicineSearchTB.text!
-  
-       
-       
-             }
-        }
-        
+                                    if (segue.identifier == "destination") {
+                                        
+                                        let secondViewController = segue.destination as? medicineDetailController;
+                                        secondViewController!.medNames = self.medicineSearchTB.text!
+                                    }
+                           //     }
+//                                else {
+//                                    print("Wrong Medicine!")
+//                                }
+    
+//                           })
+    
+      //  }
+    
+   
+    
     }
 
-
-
+}

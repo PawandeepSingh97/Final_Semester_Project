@@ -18,7 +18,8 @@ UINavigationControllerDelegate {
     @IBOutlet weak var scanBtn: UIButton!
     @IBOutlet weak var predictedName: UILabel!
     @IBOutlet weak var predictedValue: UILabel!
-    @IBOutlet weak var moreInfoBtn: UIButton!
+    @IBOutlet weak var infoButtons: UIButton!
+    // @IBOutlet weak var moreInfoBtn: UIButton!
     
     // declare variables & array & objects
     var estimatedValues : [Float] = []
@@ -26,7 +27,7 @@ UINavigationControllerDelegate {
     var predictValue : [String] = []
     var firstValues : Float = 0
     var medicineList : [MedicineModel] = []
-    
+    var nama : String = ""
     
     // connects to the storyboard
     @IBOutlet weak var resultIV: UIImageView!
@@ -56,6 +57,8 @@ UINavigationControllerDelegate {
         // ask users permission whenever user wants to choose medicine image from library
         checkPermission()
         
+        infoButtons.isHidden = true
+        infoButtons.isEnabled = false
 
         
     }
@@ -81,6 +84,24 @@ UINavigationControllerDelegate {
         }
         
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "toInformationDetail") {
+            
+            let secondViewController = segue.destination as? medicineDetailController
+     
+            secondViewController!.medNames = nama
+       
+            
+            
+        }
+    }
+    
+    
+    
+    
     
     // this methods handles the alert function
     
@@ -285,22 +306,29 @@ UINavigationControllerDelegate {
             
             predictedValue.isHidden = true
             predictedName.isHidden = true
+            nama = predictedName.text!
+            print("Nama Sama Sayang ? Tutkup Di Punya Satu ? : \(nama)")
+            infoButtons.isHidden = true
+            infoButtons.isEnabled = false
             
+            let alert = UIAlertController(title: "Please try again", message: "Try capturing the pill in a well - lit area & make sure it is a Diabetic medication. Thank You!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "GO Back", style: UIAlertActionStyle.default, handler: { (_) in
+                self.navigationController?.popViewController(animated: true);
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            
+
         }
         
         else {
-            
-            moreInfoBtn.isHidden = false
-            moreInfoBtn.isEnabled = true
-            
+
+            nama = predictedName.text!
+            print("Nama Sama Sayang ? Tutkup Di Punya Dua ? : \(nama)")
+            infoButtons.isHidden = false
+            infoButtons.isEnabled = true
         }
-
     }
-    
-
-
-    
-
-
-    
 }
+
