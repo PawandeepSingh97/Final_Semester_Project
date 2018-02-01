@@ -62,8 +62,6 @@ class MonitoringDataManager: NSObject{
         //Encoded Url
         let encodedUrl = "\(url)?$filter=\(encodedTodayDate!)\(encodedPatientNric!)"
         
-        print("Imran\(encodedUrl)")
-        
         //Get request
         Alamofire.request(encodedUrl, headers: headers).responseJSON { (responseObject) -> Void in
             //print(responseObject)
@@ -201,11 +199,10 @@ class MonitoringDataManager: NSObject{
     //Returns all records in monitoring table based on dateCreated and nric
     func getFilteredMonitoringRecordsBasedOnDate(_ todayDate: String, _ endDate: String, _ patientNric:String, onComplete:((_ Monitoring: Monitoring) -> Void)?) {
         
-        let todayDate = "28/01/2018"
-        let endDate = "5/02/2018"
-        
+        print(todayDate)
+        print(endDate)
         //Filter todayDate
-        let filteredTodayDate = "dateCreated gt '\(todayDate)' and dateCreated lt '\(endDate)'"
+        let filteredTodayDate = "dateCreated le '\(endDate)'"
         
         
         //Encode the todayDate
@@ -226,7 +223,6 @@ class MonitoringDataManager: NSObject{
             //print(responseObject)
             if responseObject.result.isSuccess {
                 let responseJson = JSON(responseObject.result.value!)
-                print("Imran\(responseJson)")
                 //Check if responseJson is empty
                 if responseJson != []{
                     

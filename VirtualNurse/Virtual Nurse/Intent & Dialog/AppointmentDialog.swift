@@ -22,7 +22,9 @@ class AppointmentDialog:Dialog {
     
     override func getDialog() {
         
-        var dates = getDatesFromUtterances();
+        let dates = getDatesFromUtterances();
+//        print(dates.start.debugDescription)
+//        print(dates.end.debugDescription)
     
         switch self.dialog {
         case "Get":
@@ -59,7 +61,7 @@ class AppointmentDialog:Dialog {
             //if have appointment but is not next week
             //show message to first say, you have no appointment this week but you have an appointment on...
             getAppointment(start: starting, end: ending, issame: false);
-            
+            //
         }
         
         //TODO: ONCE GET APPOINTMENT DETAILS, HAVE A METHOD TO READ STRING AS THOUGH A NURSE IS READING IT
@@ -141,17 +143,23 @@ class AppointmentDialog:Dialog {
     func getAppointment(start:Date,end:Date,issame:Bool){
         AppointmentDataManager().getAppointmentByNRIC((patient?.NRIC)!) { (Appointment) in
             
+            print("enter here \(Appointment.date)")
+            
     self.appointmentList.append(AppointmentModel(Appointment.id,Appointment.nric,Appointment.doctorName,Appointment.date,Appointment.time));
             
 
             if issame //asking if got appointment on a particualt date
             {
-                for date in self.appointmentList{
-                    print("****************date \(date) **********************")
-                    print("****************date \(date) **********************")
+                
+                //check if date is in appointmentlist
+                //if have, return the appointment
+                for appt in self.appointmentList{
+                    print("****************date \(appt.date) **********************");
+                    
                 }
             }
             else { //asking if got appointment in a week range
+                //check if appointment is inside the start and end date range
                 
             }
 

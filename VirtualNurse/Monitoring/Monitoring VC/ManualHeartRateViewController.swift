@@ -1,20 +1,20 @@
 //
-//  CholesterolViewController.swift
+//  ManualHeartRateViewController.swift
 //  VirtualNurse
 //
-//  Created by Mohamed Imran on 31/12/17.
-//  Copyright © 2017 TeamSurvivor. All rights reserved.
+//  Created by Mohamed Imran on 1/2/18.
+//  Copyright © 2018 TeamSurvivor. All rights reserved.
 //
 
 import UIKit
 import fluid_slider
 import Alamofire
 
-class CholesterolViewController: UIViewController {
-    
+class ManualHeartRateViewController: UIViewController {
+
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var cholesterolLabel: UILabel!
-    @IBOutlet weak var cholesterolSlider: Slider!
+    @IBOutlet weak var heartLabel: UILabel!
+    @IBOutlet weak var heartSlider: Slider!
     @IBOutlet weak var submitButton: UIButton!
     var slidervalue = 0
     
@@ -29,7 +29,7 @@ class CholesterolViewController: UIViewController {
         
         //Set date for the label
         dateLabel.text = helperClass().setDateLabelCurrentDate()
-    
+        
     }
     
     
@@ -54,67 +54,70 @@ class CholesterolViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
         //Return to the monitoring dashboard
-         navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func submitButtonClicked(_ sender: Any) {
-        
-//        //Retrive patient nric and today's date
-//        let todayDate:String = helperClass().getTodayDate()
-//        let patientNric:String = helperClass().getPatientNric()
-//        
-//        //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-//        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
-//            
-//            //Retrieved results from Database
-//            let retrievedPatientNric = monitoring.nric
-//            let retrievedDateCreated = monitoring.dateCreated
-//            
-//            //If record exists in database
-//            if (retrievedPatientNric == patientNric && retrievedDateCreated == todayDate){
-//                print("record exists")
-//                
-//                //Get the azure table unique id
-//                let azureTableId = monitoring.id
-//                
-//                //Get the cholesterol value
-                 let cholesterolValue = Int(self.cholesterolLabel.text!)
-                 MonitoringController().sumbitMonitoringValues(monitoringName:"totalCholesterol", monitoringValue: cholesterolValue!)
-        
-        
-//
-//                
-//                //Declare updated parameters
-//                let updatedParameters: Parameters = [
-//                    "totalCholesterol": cholesterolValue!,
-//                    ]
-//                
-//                //Update the cholesterol in the monitoring record
-//                MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
-//                    print(success)
-//                }) { (error) in
-//                    print(error)
-//                }
-//                
-                //Check if cholesterolValue is in healthy range
-                if (cholesterolValue! <= 200){
-                    self.showAlert(message: "Good Job! You have a desirable cholesterol level")
-                }
-                else {
-                    self.showAlert(message: "Please keep yourself healthy. You are having a unhealthy cholesterol level")
-                }
-//
-//            }
-//        }
-        
        
+        //Retrive patient nric and today's date
+        let todayDate:String = helperClass().getTodayDate()
+        let patientNric:String = helperClass().getPatientNric()
+        
+        //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+            
+            //Retrieved results from Database
+            let retrievedPatientNric = monitoring.nric
+            let retrievedDateCreated = monitoring.dateCreated
+            
+            //If record exists in database
+            if (retrievedPatientNric == patientNric && retrievedDateCreated == todayDate){
+                print("record exists")
+                
+                //Get the azure table unique id
+                let azureTableId = monitoring.id
+                
+                //Get the heartRate value
+                let heartRateValue = Double(self.heartLabel.text!)
+                
+                //Check if heart rate is clocked in
+                if (heartRateValue! > 0.0){
+                    
+                    //Declare updated parameters
+                    let updatedParameters: Parameters = [
+                        "heartRate": heartRateValue!,
+                        ]
+                    
+                    //Update the heartRate in the monitoring record
+                    MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
+                        print(success)
+                    }) { (error) in
+                        print(error)
+                    }
+                    
+                    //Check if heart rate is in healthy range
+                    if (heartRateValue! >= 60.0 && heartRateValue! <= 100.0){
+                        self.showAlert(message: "Good Job! You have a healthy heart rate.")
+                    }
+                    else{
+                        self.showAlert(message: "Please keep yourself healthy. You have a unhealthy heart rate")
+                    }
+                    
+                }
+                else{
+                    self.showAlert(message: "Please clock in your heart rate again.")
+                }
+            }
+        }
+        
+        
         
     }
     
@@ -122,7 +125,7 @@ class CholesterolViewController: UIViewController {
     func DesignCustomSlider() {
         
         let labelTextAttributes: [NSAttributedStringKey : Any] = [.font: UIFont.systemFont(ofSize: 12, weight: .bold), .foregroundColor: UIColor.white]
-        cholesterolSlider.attributedTextForFraction = { fraction in
+        heartSlider.attributedTextForFraction = { fraction in
             let formatter = NumberFormatter()
             formatter.maximumIntegerDigits = 3
             formatter.maximumFractionDigits = 0
@@ -131,18 +134,18 @@ class CholesterolViewController: UIViewController {
             return NSAttributedString(string: string, attributes: [.font: UIFont.systemFont(ofSize: 12, weight: .bold), .foregroundColor: UIColor.black])
             
         }
-        cholesterolSlider.setMinimumLabelAttributedText(NSAttributedString(string: "0", attributes: labelTextAttributes))
-        cholesterolSlider.setMaximumLabelAttributedText(NSAttributedString(string: "400", attributes: labelTextAttributes))
-        cholesterolSlider.fraction = 0.5
-        cholesterolSlider.shadowOffset = CGSize(width: 0, height: 10)
-        cholesterolSlider.shadowBlur = 5
-        cholesterolSlider.shadowColor = UIColor(white: 0, alpha: 0.1)
-        cholesterolSlider.contentViewColor = UIColor(hex: 0x9C27B0)
-        cholesterolSlider.valueViewColor = .white
-        cholesterolSlider.didBeginTracking = { [weak self] _ in
+        heartSlider.setMinimumLabelAttributedText(NSAttributedString(string: "0", attributes: labelTextAttributes))
+        heartSlider.setMaximumLabelAttributedText(NSAttributedString(string: "400", attributes: labelTextAttributes))
+        heartSlider.fraction = 0.5
+        heartSlider.shadowOffset = CGSize(width: 0, height: 10)
+        heartSlider.shadowBlur = 5
+        heartSlider.shadowColor = UIColor(white: 0, alpha: 0.1)
+        heartSlider.contentViewColor = UIColor(hex: 0xE91E63)
+        heartSlider.valueViewColor = .white
+        heartSlider.didBeginTracking = { [weak self] _ in
             self?.setLabelHidden(true, animated: true)
         }
-        cholesterolSlider.didEndTracking = { [weak self] _ in
+        heartSlider.didEndTracking = { [weak self] _ in
             self?.setLabelHidden(false, animated: true)
         }
         
@@ -164,21 +167,21 @@ class CholesterolViewController: UIViewController {
     func sliderValueSelected(value: String){
         slidervalue = Int(value)!
         //Set the slider value text to label
-        cholesterolLabel.text = String(slidervalue)
+        heartLabel.text = String(slidervalue)
         
         
     }
     
-   
+    
     
     //Designing a button programmatically
     func DesignSubmitButton(){
-       // let borderAlpha : CGFloat = 0.7
+        // let borderAlpha : CGFloat = 0.7
         let cornerRadius : CGFloat = 5.0
         submitButton.frame = CGRect(x: 7, y: 660, width: 400, height: 50)
         submitButton.setTitle("SUBMIT", for: [])
         submitButton.setTitleColor(UIColor.white, for: [])
-        submitButton.backgroundColor = UIColor(hex: 0x9C27B0)
+        submitButton.backgroundColor = UIColor(hex: 0xE91E63)
         submitButton.layer.cornerRadius = cornerRadius
         self.view.addSubview(submitButton)
     }
@@ -186,7 +189,7 @@ class CholesterolViewController: UIViewController {
     //Alert
     func showAlert(message: String){
         DispatchQueue.main.async() {
-            let alertController = UIAlertController(title: "Cholesterol Monitoring", message:
+            let alertController = UIAlertController(title: "Heart Rate Monitoring", message:
                 message, preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default,handler: nil))
             
@@ -194,7 +197,7 @@ class CholesterolViewController: UIViewController {
         }
     }
     
-
- 
+    
+    
 
 }

@@ -41,6 +41,9 @@ class GlucoseViewController: UIViewController {
         //Hide the navigation bar
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
+        //Hide the tab bar
+        self.tabBarController?.tabBar.isHidden = true
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,56 +52,39 @@ class GlucoseViewController: UIViewController {
         //Show the navigation bar
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         
+        //Show the tab bar
+        self.tabBarController?.tabBar.isHidden = false
+        
     }
     
     //When submit button is clicked
     @IBAction func submitButtonClicked(_ sender: Any) {
         
-//        //Retrive patient nric and today's date
-//        let todayDate:String = helperClass().getTodayDate()
-//        let patientNric:String = helperClass().getPatientNric()
-//
-//        //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-//        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
-//
-//            //Retrieved results from Database
-//            let retrievedPatientNric = monitoring.nric
-//            let retrievedDateCreated = monitoring.dateCreated
-//
-//            //If record exists in database
-//            if (retrievedPatientNric == patientNric && retrievedDateCreated == todayDate){
-//                print("record exists")
-//
-//                //Get the azure table unique id
-//                let azureTableId = monitoring.id
-//
-//                //Get the glucose value
+                //Get the glucose value
                 let glucoseValue = Int(self.glucoseValueLabel.text!)
-                 MonitoringController().sumbitMonitoringValues(monitoringName:"glucose",monitoringValue: glucoseValue!)
-//
-//
-//                    //Declare updated parameters
-//                    let updatedParameters: Parameters = [
-//                        "glucose": glucoseValue!,
-//                        ]
-//
-//                    //Update the glucose in the monitoring record
-//                    MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
-//                        print(success)
-//                    }) { (error) in
-//                        print(error)
-//                    }
-//
+        
+
                     //Check if glucose is in healthy range
                     if (glucoseValue! >= 70 && glucoseValue! <= 100){
-                        self.showAlert(message: "Good Job! You have a healthy glucose level")
+                        self.showAlert(message: "Glucose value inserted successfully.")
+        MonitoringController().sumbitMonitoringValues(monitoringName:"glucose",monitoringValue: glucoseValue!)
                     }
+                    //Check if glucose is in healthy range
+                    else if (glucoseValue! < 70){
+                        self.showAlert(message: "Please check whether you entered valid glucose value.")
+                    }
+                    //Check if glucose is in healthy range
+                    else if (glucoseValue! > 200){
+                        self.showAlert(message: "Please check whether you entered valid glucose value.")
+                    }
+                    //Check if glucose is in healthy range
                     else {
-                        self.showAlert(message: "Please keep yourself healthy. You are having a unhealthy glucose level")
-                    }
-//
-//            }
-//        }
+                        self.showAlert(message: "Glucose value inserted successfully.")
+                        MonitoringController().sumbitMonitoringValues(monitoringName:"glucose",monitoringValue: glucoseValue!)
+                     }
+        
+          
+
     }
     
     //When back button is tapped

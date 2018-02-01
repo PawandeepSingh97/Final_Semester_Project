@@ -45,12 +45,19 @@ class HeartRateViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        //Hide the tab bar
+        self.tabBarController?.tabBar.isHidden = true
 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        //Show the tab bar
+        self.tabBarController?.tabBar.isHidden = false
 
     }
     
@@ -126,7 +133,12 @@ class HeartRateViewController: UIViewController {
     }
     
     @IBAction func viewChartsButton(_ sender: Any) {
-        print("Charts button clicked")
+        
+        //Instatiate Monitoring Storyboard
+        let storyboard = UIStoryboard(name:"MonitoringStoryboard" , bundle:nil)
+        //Navigation Programmitically
+        let ManualHeartRateViewController = storyboard.instantiateViewController(withIdentifier: "ManualHeartRateViewController") as! ManualHeartRateViewController
+        self.navigationController?.pushViewController(ManualHeartRateViewController, animated: true)
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
