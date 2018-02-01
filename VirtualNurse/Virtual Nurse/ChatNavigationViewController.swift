@@ -40,13 +40,18 @@ class ChatNavigationViewController: UINavigationController {
 
         self.view.addSubview(imageview!);
         //imageview?.translatesAutoresizingMaskIntoConstraints = false;
+        imageview?.translatesAutoresizingMaskIntoConstraints = false;
         
     //SET CONSTRAINT TO IMAGEVIEW
-    let horConstraint = NSLayoutConstraint(item: imageview!, attribute: .centerX, relatedBy: .equal,toItem: navigationBar, attribute: .centerX,multiplier: 1.0, constant: navigationBar.frame.size.width);
-        
+//
+//
+//
+        let horConstraint = NSLayoutConstraint(item: imageview!, attribute: .centerX, relatedBy: .equal,toItem: view, attribute: .centerX,multiplier: 1.0, constant:0);
+//
+        let verConstraint = NSLayoutConstraint(item: imageview!, attribute: .top, relatedBy: .equal, toItem: navigationBar, attribute: .bottom, multiplier: 1, constant:0);
+//
+//
 
-        let verConstraint = NSLayoutConstraint(item: imageview!, attribute: .centerY, relatedBy: .equal, toItem: navigationBar, attribute: .centerY, multiplier: 1, constant:1);
-        
         view.addConstraints([horConstraint,verConstraint]);
         
         //DISPLAY CHAT
@@ -68,18 +73,7 @@ class ChatNavigationViewController: UINavigationController {
         self.view.layer.add(transition, forKey: kCATransition)
     }
     
-    
-//    @objc func connected(_ sender:AnyObject){
-//
-//        let transition:CATransition = CATransition()
-//        transition.duration = 0.5
-//        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-//        transition.type = kCATransitionFromTop
-//        transition.subtype = kCATransitionFade;
-//        self.view.layer.add(transition, forKey: kCATransition);
-//        self.dismiss(animated: true, completion: nil);
-//
-//    }
+
     
     //GESTURE TO DETERMINE WHERE USER IS SLIDING
     @objc func panGestureRecognizerHandler(_ sender: UIPanGestureRecognizer) {
