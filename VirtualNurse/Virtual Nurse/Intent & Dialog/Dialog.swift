@@ -85,7 +85,7 @@ class Dialog:NSObject
 
        // var dates:[Date] = [];
         let df = DateFormatter();
-        df.dateFormat = "YYYY-MM-DD"//ORIGINAL FORMAT IN THE DATE STRING
+        df.dateFormat = "yyyy-MM-dd"//ORIGINAL FORMAT IN THE DATE STRING
         
         dates = [];
         if let en = self.entity
@@ -94,10 +94,11 @@ class Dialog:NSObject
             {
                 for stringdates in en.entityValues!
                 {
-                    print("**************** DATES ARE \(stringdates)")
+                    print("************** DATES ARE \(stringdates)")
                     
-                    let date = df.date(from: stringdates);
-                    self.dates.append(date!);
+                    let date = df.date(from: stringdates)!;
+                    print(date.debugDescription)
+                    self.dates.append(date);
                     //print("**************** DATES formated ARE \(date?.debugDescription)")
                 }
             }
@@ -117,14 +118,15 @@ class Dialog:NSObject
             {
                 startDate = dates[0];
                 endDate = dates[1];
+                return (startDate,endDate);
             }
             else if dates.count == 1
             {
                 startDate = dates[0];
                 endDate = dates[0];
+                print("THERE ARE \(dates.count) DATES FROM ENTITY");
+                return (startDate,endDate);
             }
-        print("THERE ARE \(dates.count) DATES FROM ENTITY");
-        
         return (startDate,endDate);
     }
     
