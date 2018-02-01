@@ -66,11 +66,14 @@ class MonitoringDialog:Dialog
                 self.responseToDisplay.append(message)
                 self.BotResponse.append(message)
             }
+        
         //PASS DIALOG TO DELEGATE
+        //DOING CAN DISPLAY MESSAGE AFTER GETTING CONTENT FROM DB
         brDelegate?.Nurse(response: self);
         
     }
     
+
     
     //create func to call from db
    private func checkMonitoring()
@@ -130,6 +133,8 @@ class MonitoringDialog:Dialog
                  self.itemsnotLogged.append("Cholesterol Intake")
             }
             
+            //ONCE GOT DATA FROM MONITORING DB
+            //CALL THE DIALOG TO DISPLAY MESSAGE AND ITS CONTENT
             self.getMonitoring(self.loggedCounter, self.itemsnotLogged);
             
         }

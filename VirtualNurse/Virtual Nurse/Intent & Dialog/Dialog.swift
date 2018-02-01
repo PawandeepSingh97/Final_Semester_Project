@@ -57,7 +57,7 @@ class Dialog:NSObject
     {
         responseToDisplay.append(error())
         BotResponse.append(error());
-        brDelegate?.Nurse(response: self);
+        //return responseToDisplay;
     }
     
     //HANDLE ERROR BY CREATING AN ERROR DIALOG

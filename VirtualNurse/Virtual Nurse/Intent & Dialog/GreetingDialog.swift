@@ -30,6 +30,10 @@ class GreetingDialog:Dialog
         {
         case "Hello":
             greetPatient();
+        case "Info":
+            greetPatient();
+            getAppointment();
+            getMonitoringLog();
         default:
             self.responseToDisplay.append(error())
             self.BotResponse.append(error())
@@ -41,13 +45,11 @@ class GreetingDialog:Dialog
     
     func greetPatient()
     {
-        let toDisplay = "Hello \(patient?.name)";
+        let toDisplay = "Hello \(patient!.name)";
         let botReply = toDisplay;
         
         self.responseToDisplay.append(toDisplay)
         self.BotResponse.append(botReply);
-        
-        brDelegate?.Nurse(response: self);
     }
     
     func getAppointment()
