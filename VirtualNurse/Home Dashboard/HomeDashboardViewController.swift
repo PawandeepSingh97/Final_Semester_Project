@@ -23,13 +23,13 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     @IBOutlet weak var overallStatus: UIView!
     
     //Declaration of variables
-    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder"]
+    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder","Create Appointment","View Appointment","Health Data"]
     var monitoringImages: [String] = ["redBloodPressure","blueGlucose","pinkheart","orangeCig","greenWeight","ruler","redBloodPressure","blueGlucose","pinkheart","orangeCig","orangeCig"]
     var circleLogo: [String] = ["redOval","blueOval","pinkoval","orangeOval","greenOval","purpleOval"]
     var monitoredTicks: [String] = ["redTick","blueTick","pinkTick","orangeTick","greenTick","purpleTick"]
     var cellBackgroundColour: [Int] = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0
-        ,0x2196F3,0x2196F3]
-    var monitoringDataValue:[String] = ["0","0","0","0","0","0","0","0"]
+        ,0x2196F3,0x2196F3,0x2196F3,0x2196F3,0x2196F3]
+    var monitoringDataValue:[String] = ["0","0","0","0","0","0","0","0","0","0","0"]
     var cigValue:String="0 cigs";
     
     
@@ -56,6 +56,9 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         //Call the DesignView function
         DesignView()
         
+        tabcontroller.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -193,6 +196,22 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
               let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
                 self.navigationController?.pushViewController(ReminderViewController, animated: true)
             }
+            if(indexPath.row == 8){
+                //Navigation Programmitically
+                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+            }
+            if(indexPath.row == 9){
+                //Navigation Programmitically
+                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+            }
+            if(indexPath.row == 10){
+                //Navigation Programmitically
+                let MonitoringChartsViewController = storyboard.instantiateViewController(withIdentifier: "MonitoringChartsViewController") as! MonitoringChartsViewController
+                MonitoringChartsViewController.patient = patient
+                self.navigationController?.pushViewController(MonitoringChartsViewController, animated: true)
+            }
         }
             //If return section 1 (Medication)
         else if (indexPath.section == 1){
@@ -286,8 +305,11 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             self.monitoringDataValue.append(self.cigValue)
             self.monitoringDataValue.append(bmiValue)
             self.monitoringDataValue.append(cholesterolValue)
-            self.monitoringDataValue.append("0")
-            self.monitoringDataValue.append("0")
+            self.monitoringDataValue.append("")
+            self.monitoringDataValue.append("")
+            self.monitoringDataValue.append("")
+            self.monitoringDataValue.append("")
+            self.monitoringDataValue.append("")
             
             //Reload the collection view
             self.CollectionView.reloadData()
@@ -307,7 +329,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     } //end of function
     
     
-    
+
     //Predict CHD
     func predictCHD(id:String, nric:String, gender:String, age:Int, education:String, currentSmoker:Bool, cigsPerDay:Int, bpMedicine:Bool, prevalentStroke:Bool, prevalentHypertension:Bool, diabetes:Bool, totalCholesterol:Int, systolicBloodPressure:Double, diastolicBloodPressure:Double, bmi:Double, heartRate:Double, glucose:Int) {
         
@@ -424,8 +446,15 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             let chatNav = segue.destination as! ChatNavigationViewController
             chatNav.patient = patient!;
         }
+        if segue.identifier == "MonitoringChartsViewController"
+        {
+            let monitoringNav = segue.destination as! MonitoringChartsViewController
+            monitoringNav.patient = patient!;
+        }
+        
         
     }
+    
     
     
 }
@@ -495,6 +524,22 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
             self.navigationController?.pushViewController(ReminderViewController, animated: true)
         }
         //reminderViewTableViewController
+        if(item!.item == 8){
+            //Navigation Programmitically
+            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+        }
+        if(item!.item == 9){
+            //Navigation Programmitically
+            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+        }
+        if(item!.item == 10){
+            //Navigation Programmitically
+            let MonitoringChartsViewController = storyboard.instantiateViewController(withIdentifier: "MonitoringChartsViewController") as! MonitoringChartsViewController
+            MonitoringChartsViewController.patient = patient
+            self.navigationController?.pushViewController(MonitoringChartsViewController, animated: true)
+        }
 
     }
 }

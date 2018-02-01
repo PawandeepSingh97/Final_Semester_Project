@@ -54,7 +54,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="392-F0-YKY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -164,6 +164,7 @@
         <scene sceneID="qhk-Rg-E9s">
             <objects>
                 <tabBarController storyboardIdentifier="homeTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="obR-XV-e3O" customClass="BaseTabBarViewController" customModule="VirtualNurse" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WDV-mZ-MNe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -171,8 +172,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="pd6-cK-M3N" kind="relationship" relationship="viewControllers" id="Hdw-Se-Hxx"/>
-                        <segue destination="cXE-Kp-N6o" kind="relationship" relationship="viewControllers" id="Dqt-VL-nwK"/>
                         <segue destination="Gjg-39-pSQ" kind="relationship" relationship="viewControllers" id="0RZ-y4-sOW"/>
+                        <segue destination="cXE-Kp-N6o" kind="relationship" relationship="viewControllers" id="rEN-90-mNd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rsp-33-WVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -183,7 +184,7 @@
         <scene sceneID="PGj-w2-4pJ">
             <objects>
                 <viewControllerPlaceholder storyboardName="MonitoringStoryboard" referencedIdentifier="MonitoringChartsViewController" id="cXE-Kp-N6o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="9uu-9C-fSr"/>
+                    <tabBarItem key="tabBarItem" title="Health Data" id="9uu-9C-fSr"/>
                     <navigationItem key="navigationItem" id="T39-hs-IMF"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9DJ-6d-aMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,7 +195,7 @@
         <scene sceneID="up2-ja-hp9">
             <objects>
                 <viewControllerPlaceholder storyboardName="ViewAppointmentStoryboard" id="Gjg-39-pSQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="O50-5k-775"/>
+                    <tabBarItem key="tabBarItem" title="Appointment" id="O50-5k-775"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nr0-TF-40y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
