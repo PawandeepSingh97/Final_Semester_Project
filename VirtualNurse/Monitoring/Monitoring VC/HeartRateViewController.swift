@@ -19,6 +19,8 @@ class HeartRateViewController: UIViewController {
     @IBOutlet weak var displayHeartRate: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var patient:Patient?;
+    
     //To interact with the healthkit framework
     let healthStore = HKHealthStore()
     
@@ -69,38 +71,41 @@ class HeartRateViewController: UIViewController {
     
     @IBAction func submitButtonClicked(_ sender: Any) {
         print("Submit button clicked")
-        
         //Retrive patient nric and today's date
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = (patient?.NRIC)!
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
-            
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patient!) { (monitoring) in
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
             let retrievedDateCreated = monitoring.dateCreated
             
+            print("1\(retrievedPatientNric == patientNric)")
+            print("2\(retrievedDateCreated == todayDate)")
+            
             //If record exists in database
             if (retrievedPatientNric == patientNric && retrievedDateCreated == todayDate){
-                print("record exists")
+                //print("record exists")
+                print("GO AND DIE")
                 
                 //Get the azure table unique id
                 let azureTableId = monitoring.id
                 
                 //Get the heartRate value
-                let heartRateValue = Double(self.displayHeartRate.text!) 
+                var heartRateValue = Double(self.displayHeartRate.text!)
+               
                 
                 //Check if heart rate is clocked in
                 if (heartRateValue! > 0.0){
-                    
+    
                     //Declare updated parameters
                     let updatedParameters: Parameters = [
                         "heartRate": heartRateValue!,
                         ]
                     
                     //Update the heartRate in the monitoring record
-                    MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
+                    MonitoringDataManager().patchMonitoringRecord(self.patient!,azureTableId,updatedParameters, success: { (success) in
                         print(success)
                     }) { (error) in
                         print(error)

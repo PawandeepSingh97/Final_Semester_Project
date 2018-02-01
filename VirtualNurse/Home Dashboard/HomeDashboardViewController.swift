@@ -15,7 +15,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     //PATIENT DATA
     // DATA PASSED FROM LOGIN
-    //IMRAN, CHANGE UR CODES USING THE VARIABLE
     var patient:Patient?;
     
     //    @IBOutlet weak var viewTodayResultsButton: UIButton!
@@ -74,8 +73,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         super.viewWillAppear(animated)
         //reload the collectionView
         checkIfRecordExists()
-        
-        
         
     }
     
@@ -153,31 +150,37 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             if(indexPath.row == 0){
                 //Navigation Programmitically
                 let BloodPressureViewController = storyboard.instantiateViewController(withIdentifier: "BloodPressureViewController") as! BloodPressureViewController
+                BloodPressureViewController.patient = patient
                 self.navigationController?.pushViewController(BloodPressureViewController, animated: true)
             }
             if(indexPath.row == 1){
                 //Navigation Programmitically
                 let GlucoseViewController = storyboard.instantiateViewController(withIdentifier: "GlucoseViewController") as! GlucoseViewController
+                GlucoseViewController.patient = patient
                 self.navigationController?.pushViewController(GlucoseViewController, animated: true)
             }
             if(indexPath.row == 2){
                 //Navigation Programmitically
                 let HeartRateViewController = storyboard.instantiateViewController(withIdentifier: "HeartRateViewController") as! HeartRateViewController
+                HeartRateViewController.patient = patient
                 self.navigationController?.pushViewController(HeartRateViewController, animated: true)
             }
             if(indexPath.row == 3){
                 //Navigation Programmitically
                 let CigaretteViewController = storyboard.instantiateViewController(withIdentifier: "CigaretteViewController") as! CigaretteViewController
+                CigaretteViewController.patient = patient
                 self.navigationController?.pushViewController(CigaretteViewController, animated: true)
             }
             if(indexPath.row == 4){
                 //Navigation Programmitically
                 let BMIViewController = storyboard.instantiateViewController(withIdentifier: "BMIViewController") as! BMIViewController
+                BMIViewController.patient = patient
                 self.navigationController?.pushViewController(BMIViewController, animated: true)
             }
             if(indexPath.row == 5){
                 //Navigation Programmitically
                 let CholesterolViewController = storyboard.instantiateViewController(withIdentifier: "CholesterolViewController") as! CholesterolViewController
+                CholesterolViewController.patient = patient
                 self.navigationController?.pushViewController(CholesterolViewController, animated: true)
             }
             if(indexPath.row == 6){
@@ -236,70 +239,12 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         return result
     }
     
-    //Get patient nric
-//    func getPatientNric() ->String{
-//        let patientNric = "S9822477G"
-//        return patientNric
-//    }
-    
-    //    //Check if monitoring record exists if not create one
-    //    func checkIfRecordExists(){
-    //
-    //        let todayDate:String = getTodayDate()
-    //        let patientNric:String = getPatientNric()
-    //
-    //        //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve monitoring records
-    //        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
-    //                        //Retrieved results from Database
-    //                        let retrievedPatientNric = monitoring.nric
-    //                        let retrievedDateCreated = monitoring.dateCreated
-    //
-    //                        //If record exists in database
-    //                        if (retrievedPatientNric == patientNric && retrievedDateCreated == todayDate){
-    //                            print("record exists")
-    //
-    //                        //Check if monitored, if monitored change from default logo to tick logo
-    //                        if (monitoring.systolicBloodPressure != 0){
-    //                           self.monitoringImages[0] = self.monitoredTicks[0]
-    //                        }
-    //                        if (monitoring.glucose != 0){
-    //                            self.monitoringImages[1] = self.monitoredTicks[1]
-    //                        }
-    //                        if (monitoring.heartRate != 0){
-    //                            self.monitoringImages[2] = self.monitoredTicks[2]
-    //                        }
-    //                        if (monitoring.cigsPerDay != -1){
-    //                            self.monitoringImages[3] = self.monitoredTicks[3]
-    //                        }
-    //                        if (monitoring.bmi != 0){
-    //                            self.monitoringImages[4] = self.monitoredTicks[4]
-    //                        }
-    //                        if (monitoring.totalCholesterol != 0){
-    //                            self.monitoringImages[5] = self.monitoredTicks[5]
-    //                        }
-    //                            //Reload the collection view
-    //                            self.CollectionView.reloadData()
-    //
-    //
-    //                            //If values are entered then predictCHD
-    //                            if (monitoring.heartRate != 0 && monitoring.diastolicBloodPressure != 0 && monitoring.systolicBloodPressure != 0 && monitoring.glucose != 0 && monitoring.cigsPerDay != -1 && monitoring.bmi != 0 && monitoring.totalCholesterol != 0){
-    //                                //Predict CHD
-    //                                self.predictCHD(id: monitoring.id, nric: monitoring.nric, gender: monitoring.gender, age: monitoring.age, education: monitoring.education, currentSmoker: monitoring.currentSmoker, cigsPerDay: monitoring.cigsPerDay, bpMedicine: monitoring.bpMedicine, prevalentStroke: monitoring.prevalentStroke, prevalentHypertension: monitoring.prevalentHypertension, diabetes: monitoring.diabetes, totalCholesterol: monitoring.totalCholesterol, systolicBloodPressure: monitoring.systolicBloodPressure, diastolicBloodPressure: monitoring.diastolicBloodPressure, bmi: monitoring.bmi, heartRate: monitoring.heartRate, glucose: monitoring.glucose)
-    //                            }
-    //                            else{
-    //                                self.chdPredictionLabel.text = "NO RISK OF HEART DISEASE"
-    //                            }
-    //
-    //                        }
-    //
-    //        }
-    //   }
     
     //Check if monitoring record exists if not create one
     func checkIfRecordExists(){
         
         //Retrieve from controller to checkIfRecordExists
-        MonitoringController().checkIfRecordExists { (monitoring) in
+        MonitoringController().checkIfRecordExists(patient: patient!) { (monitoring) in
             
             //Check if monitored, if monitored change from default logo to tick logo
             if (monitoring.systolicBloodPressure != 0){
@@ -435,11 +380,12 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         
         //Retrive patient nric and today's date
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = (patient?.NRIC)!
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate,patient!) { (monitoring) in
             
+
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
             let retrievedDateCreated = monitoring.dateCreated
@@ -458,7 +404,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 ]
                 
                 //Update the tenYearCHD in the monitoring record
-                MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
+                MonitoringDataManager().patchMonitoringRecord(self.patient!,azureTableId,updatedParameters, success: { (success) in
                     print(success)
                 }) { (error) in
                     print(error)
@@ -504,31 +450,37 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         if(item!.item == 0){
             //Navigation Programmitically
             let BloodPressureViewController = storyboard.instantiateViewController(withIdentifier: "BloodPressureViewController") as! BloodPressureViewController
+            BloodPressureViewController.patient = patient
             self.navigationController?.pushViewController(BloodPressureViewController, animated: true)
         }
         if(item!.item == 1){
             //Navigation Programmitically
             let GlucoseViewController = storyboard.instantiateViewController(withIdentifier: "GlucoseViewController") as! GlucoseViewController
+            GlucoseViewController.patient = patient
             self.navigationController?.pushViewController(GlucoseViewController, animated: true)
         }
         if(item!.item == 2){
             //Navigation Programmitically
             let HeartRateViewController = storyboard.instantiateViewController(withIdentifier: "HeartRateViewController") as! HeartRateViewController
+            HeartRateViewController.patient = patient
             self.navigationController?.pushViewController(HeartRateViewController, animated: true)
         }
         if(item!.item == 3){
             //Navigation Programmitically
             let CigaretteViewController = storyboard.instantiateViewController(withIdentifier: "CigaretteViewController") as! CigaretteViewController
+            CigaretteViewController.patient = patient
             self.navigationController?.pushViewController(CigaretteViewController, animated: true)
         }
         if(item!.item == 4){
             //Navigation Programmitically
             let BMIViewController = storyboard.instantiateViewController(withIdentifier: "BMIViewController") as! BMIViewController
+            BMIViewController.patient = patient
             self.navigationController?.pushViewController(BMIViewController, animated: true)
         }
         if(item!.item == 5){
             //Navigation Programmitically
             let CholesterolViewController = storyboard.instantiateViewController(withIdentifier: "CholesterolViewController") as! CholesterolViewController
+            CholesterolViewController.patient = patient
             self.navigationController?.pushViewController(CholesterolViewController, animated: true)
         }
         if(item!.item == 6){

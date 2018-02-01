@@ -18,6 +18,9 @@ class ManualHeartRateViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     var slidervalue = 0
     
+    //Patient Data
+    var patient:Patient?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,10 +71,10 @@ class ManualHeartRateViewController: UIViewController {
        
         //Retrive patient nric and today's date
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = (patient?.NRIC)!
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patient!) { (monitoring) in
             
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
@@ -96,7 +99,7 @@ class ManualHeartRateViewController: UIViewController {
                         ]
                     
                     //Update the heartRate in the monitoring record
-                    MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
+                    MonitoringDataManager().patchMonitoringRecord(self.patient!,azureTableId,updatedParameters, success: { (success) in
                         print(success)
                     }) { (error) in
                         print(error)

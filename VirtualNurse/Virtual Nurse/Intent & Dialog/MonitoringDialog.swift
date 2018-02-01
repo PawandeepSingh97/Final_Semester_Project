@@ -30,30 +30,32 @@ class MonitoringDialog:Dialog
     //create func to call from db
     func check()
     {
-        //call the controller
-        monitorController.checkIfRecordExists { (Monitoring) in
-            //Put if else
-            //Virtual NurseLogic
-            //Check which monitoring values are not log
-            if (Monitoring.systolicBloodPressure != 0){
-                
-            }
-            if (Monitoring.glucose != 0){
-                
-            }
-            if (Monitoring.heartRate != 0){
-                
-            }
-            if (Monitoring.cigsPerDay != -1){
-               
-            }
-            if (Monitoring.bmi != 0){
-                
-            }
-            if (Monitoring.totalCholesterol != 0){
-                
-            }
-        }
+        
+        //Add the patient Object as parameter.....
+//        //call the controller
+//        monitorController.checkIfRecordExists { (Monitoring) in
+//            //Put if else
+//            //Virtual NurseLogic
+//            //Check which monitoring values are not log
+//            if (Monitoring.systolicBloodPressure != 0){
+//                
+//            }
+//            if (Monitoring.glucose != 0){
+//                
+//            }
+//            if (Monitoring.heartRate != 0){
+//                
+//            }
+//            if (Monitoring.cigsPerDay != -1){
+//               
+//            }
+//            if (Monitoring.bmi != 0){
+//                
+//            }
+//            if (Monitoring.totalCholesterol != 0){
+//                
+//            }
+//        }
     }
     
 }
