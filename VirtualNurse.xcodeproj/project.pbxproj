@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A25FAA0E1E8DCD46B6D9B72 /* Pods_VirtualNurse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A45DFAECE5C072917E3BA8 /* Pods_VirtualNurse.framework */; };
 		1D2280F72018442B00AB75BD /* HomeDashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2280F62018442B00AB75BD /* HomeDashboardCollectionViewCell.swift */; };
+		1D568E07202249B1006E2268 /* ManualHeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D568E06202249B1006E2268 /* ManualHeartRateViewController.swift */; };
 		1D9222C820183C71003461D8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9222C720183C71003461D8 /* HealthKit.framework */; };
 		1DDC6BA4201F99270010A16B /* MonitoringChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC6BA3201F99270010A16B /* MonitoringChartsViewController.swift */; };
 		1DDC6BA6201F9A290010A16B /* MonitoringChartsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC6BA5201F9A290010A16B /* MonitoringChartsCollectionViewCell.swift */; };
@@ -127,6 +128,7 @@
 /* Begin PBXFileReference section */
 		05EC101D574FE10F1C0565D9 /* Pods-VirtualNurseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseUITests/Pods-VirtualNurseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1D2280F62018442B00AB75BD /* HomeDashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDashboardCollectionViewCell.swift; sourceTree = "<group>"; };
+		1D568E06202249B1006E2268 /* ManualHeartRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualHeartRateViewController.swift; sourceTree = "<group>"; };
 		1D9222C620183C71003461D8 /* VirtualNurse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VirtualNurse.entitlements; sourceTree = "<group>"; };
 		1D9222C720183C71003461D8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1DDC6BA3201F99270010A16B /* MonitoringChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringChartsViewController.swift; sourceTree = "<group>"; };
@@ -461,7 +463,6 @@
 		5B37642F20185CD300069BAF /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
-				1DDC6BA7201FA7EA0010A16B /* LineChart.swift */,
 				5B37643020185CD300069BAF /* Collection View */,
 				5B37643320185CD300069BAF /* MonitoringViewController.swift */,
 				5B37643420185CD300069BAF /* Monitoring Dashboard */,
@@ -498,6 +499,7 @@
 		5B37643720185CD300069BAF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1DDC6BA7201FA7EA0010A16B /* LineChart.swift */,
 				5B37643820185CD300069BAF /* helperClass.swift */,
 				5B37643920185CD300069BAF /* framingham.mlmodel */,
 			);
@@ -513,6 +515,7 @@
 				5B37644120185CD300069BAF /* BloodPressureViewController.swift */,
 				5B37644220185CD300069BAF /* HeartRateViewController.swift */,
 				5B37644320185CD300069BAF /* GlucoseViewController.swift */,
+				1D568E06202249B1006E2268 /* ManualHeartRateViewController.swift */,
 			);
 			path = "Monitoring VC";
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 				5B37646120185CD400069BAF /* MedicineViewController.swift in Sources */,
 				2521209120059FAF0048F66B /* Dialog.swift in Sources */,
 				5B412FA52021D3DB0001C3F7 /* showUpdateAppointmentDetailsViewController.swift in Sources */,
+				1D568E07202249B1006E2268 /* ManualHeartRateViewController.swift in Sources */,
 				25D3F0AA201EFA0E0036EE3D /* ErrorDialog.swift in Sources */,
 				5B37648820185D3200069BAF /* RestfulManager.swift in Sources */,
 				5B37647420185CD400069BAF /* CigaretteViewController.swift in Sources */,
@@ -1165,12 +1169,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VirtualNurse/VirtualNurse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87XKK97E72;
+				DEVELOPMENT_TEAM = 7DV725VJBB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VirtualNurse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorNarrendran.VirtualNurse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorImran.VirtualNurse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1186,12 +1190,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VirtualNurse/VirtualNurse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87XKK97E72;
+				DEVELOPMENT_TEAM = 7DV725VJBB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VirtualNurse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorNarrendran.VirtualNurse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorImran.VirtualNurse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

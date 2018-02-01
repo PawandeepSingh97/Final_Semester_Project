@@ -24,22 +24,14 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     @IBOutlet weak var overallStatus: UIView!
     
     //Declaration of variables
-    //    var monitoringData:[[String]] = [["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol"] ,["Medicine Search","Top up","Reminder","Scan Medicine"]]
     var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder"]
     var monitoringImages: [String] = ["redBloodPressure","blueGlucose","pinkheart","orangeCig","greenWeight","ruler","redBloodPressure","blueGlucose","pinkheart","orangeCig","orangeCig"]
     var circleLogo: [String] = ["redOval","blueOval","pinkoval","orangeOval","greenOval","purpleOval"]
     var monitoredTicks: [String] = ["redTick","blueTick","pinkTick","orangeTick","greenTick","purpleTick"]
-    //var cellBackgroundColour = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0,0xF44336,0x3F51B5,0xE91E63,0xFF9800]
-    //    var cellBackgroundColour: [[Int]] = [[0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0],
-    //    [0x2196F3,0x2196F3,0x2196F3,0x2196F3]]
-    
-    //Real
-//    var cellBackgroundColour: [Int] = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0
-//        ,0x2196F3,0x2196F3,0x2196F3,0x2196F3,0x2196F3]
-    var cellBackgroundColour: [Int] = [0x3F51B5,0x3F51B5,0x3F51B5,0x3F51B5,0x3F51B5,0x3F51B5
-        ,0x3F51B5,0x9C27B0]
-    
-    var monitoringValue:[String] = ["140/80 mmHg","120 mgdL","110 bpm","10 cigs","28","80 mgdL","10","10"]
+    var cellBackgroundColour: [Int] = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0
+        ,0x2196F3,0x2196F3]
+    var monitoringDataValue:[String] = ["0","0","0","0","0","0","0","0"]
+    var cigValue:String="0 cigs";
     
     
     
@@ -62,9 +54,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         //Call the DesignView function
         DesignView()
         
-        //       //Call the design function for viewTodayResultsButton
-        //       DesignViewResultsTodayButton()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,7 +69,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         //reload the collectionView
         checkIfRecordExists()
         
@@ -130,7 +118,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         //cell.circleLogo.image = UIImage(named: self.circleLogo[indexPath.row])
         //Set monitoring value
         cell.monitoringValue.textColor =  UIColor(hex: self.cellBackgroundColour[indexPath.row])
-        cell.monitoringValue.text = self.monitoringValue[indexPath.row]
+        cell.monitoringValue.text = self.monitoringDataValue[indexPath.row]
         
         //Creating a button
         let measureButton = cell.viewWithTag(1) as! UIButton
@@ -228,32 +216,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1.0
     }
-    
-    //Section Header View
-    //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    //        let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeader", for: indexPath)
-    //
-    //        return sectionHeader
-    //    }
-    
-    //    func numberOfSections(in collectionView: UICollectionView) -> Int {
-    //        print("\(monitoringData.count) Sections")
-    //        return monitoringData.count
-    //    }
-    
-    //    //Designing a button programmitically
-    //    func DesignViewResultsTodayButton(){
-    //        let borderAlpha : CGFloat = 0.7
-    //        let cornerRadius : CGFloat = 10.0
-    //        viewTodayResultsButton.frame = CGRect(x: 250, y: 200, width: 130, height: 30)
-    //        viewTodayResultsButton.setTitle("View today", for: [])
-    //        viewTodayResultsButton.setTitleColor(UIColor.black, for: [])
-    //        viewTodayResultsButton.backgroundColor = UIColor.white
-    //        viewTodayResultsButton.layer.borderWidth = 0.5
-    //        viewTodayResultsButton.layer.borderColor = UIColor.black.cgColor
-    //        viewTodayResultsButton.layer.cornerRadius = cornerRadius
-    //        self.view.addSubview(viewTodayResultsButton)
-    //    }
     
     //Designing the UIView
     func DesignView(){
@@ -355,6 +317,30 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             if (monitoring.totalCholesterol != 0){
                 self.monitoringImages[5] = self.monitoredTicks[5]
             }
+            
+            //Retrieve bloopPressure, Glucose, Heartrate, cigarette, bmi, cholesterol value
+            let bloodPressureValue = "\(monitoring.systolicBloodPressure)/\(monitoring.diastolicBloodPressure) mmHg"
+            let glucoseValue = "\(monitoring.glucose) mgdL"
+            let heartRateValue = "\(monitoring.heartRate) bpm"
+            if (monitoring.cigsPerDay != -1){
+                self.cigValue = "\(monitoring.cigsPerDay) cigs"
+            }
+            let bmiValue = "\(monitoring.bmi)"
+            let cholesterolValue = "\(monitoring.totalCholesterol) mgdL"
+            
+            //Clear all the array first before appending
+            self.monitoringDataValue.removeAll()
+            
+            //Appending all the values to monitoringValue array
+            self.monitoringDataValue.append(bloodPressureValue)
+            self.monitoringDataValue.append(glucoseValue)
+            self.monitoringDataValue.append(heartRateValue)
+            self.monitoringDataValue.append(self.cigValue)
+            self.monitoringDataValue.append(bmiValue)
+            self.monitoringDataValue.append(cholesterolValue)
+            self.monitoringDataValue.append("0")
+            self.monitoringDataValue.append("0")
+            
             //Reload the collection view
             self.CollectionView.reloadData()
             
@@ -416,15 +402,29 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         
         //Retrieving the output
         let output = CHD.output1
-        var finalOutput = round(Double(output[0]))
+        let finalOutput = round(Double(output[0]))
+        
+        print(output)
         
         if (finalOutput == 1.0){
             self.chdPredictionLabel.text = "RISK OF HEART DISEASE!"
             //Get the CHD value
             chdValue = true
+            
+            //Animate the UI view when there is a risk
+            UIView.animate(withDuration: 1, animations: {
+                self.overallStatus.backgroundColor = UIColor(hex:0xD50000)
+                self.overallStatus.frame.size.width += 10
+                self.overallStatus.frame.size.height += 10
+            }) { _ in
+                UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
+                    self.overallStatus.frame.origin.y -= 20
+                })
+            }
         }
         else{
             self.chdPredictionLabel.text = "NO RISK OF HEART DISEASE"
+            overallStatus.backgroundColor = UIColor(hex:0x212121)
             
             //Get the CHD value
             chdValue = false

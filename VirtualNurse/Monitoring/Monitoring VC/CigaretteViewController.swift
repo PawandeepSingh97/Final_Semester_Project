@@ -38,6 +38,10 @@ class CigaretteViewController: UIViewController {
         //Hide navigation bar
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
+        //Hide the tab bar
+        self.tabBarController?.tabBar.isHidden = true
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,6 +49,9 @@ class CigaretteViewController: UIViewController {
         
         //Show navigation bar
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        //Show the tab bar
+        self.tabBarController?.tabBar.isHidden = false
         
     }
     
