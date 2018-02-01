@@ -26,16 +26,26 @@ class GreetingDialog:Dialog
         
         //if patient says anything for me ?
         // will just get everything
+        switch self.dialog
+        {
+        case "Hello":
+            greetPatient();
+        case "Info":
+            greetPatient();
+            getAppointment();
+            getMonitoringLog();
+        default:
+            self.responseToDisplay.append(error())
+            self.BotResponse.append(error())
+        }
         
-        greetPatient();
-        getAppointment();
-        getMedication();
+
         
     }
     
     func greetPatient()
     {
-        let toDisplay = "Hello \(patient?.name)";
+        let toDisplay = "Hello \(patient!.name)";
         let botReply = toDisplay;
         
         self.responseToDisplay.append(toDisplay)

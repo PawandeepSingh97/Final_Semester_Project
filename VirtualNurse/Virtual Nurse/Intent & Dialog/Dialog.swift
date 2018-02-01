@@ -14,10 +14,16 @@ protocol PromptAnsweredDelegate {
     func User(hasAnswered:String,dialog:Dialog);
 }
 
+protocol BotReplyDelegate {
+    func Nurse(response:Dialog);
+}
+
+
 class Dialog:NSObject
 {
     var Intent: String { get { return "Dialog" } }
     var paDelegate:PromptAnsweredDelegate?;
+    var brDelegate:BotReplyDelegate?;
     
     //Store patient data
     var patient:Patient?;
@@ -58,22 +64,6 @@ class Dialog:NSObject
     open func error() -> String {
         return "Sorry, I didn't quite get that.\n Could you say that again ? ";
     }
-    
-    //This will cast the dialog as its original cast type
-     func castDialog() -> Dialog
-    {
-        
-        //get type of current instance
-        switch Intent {
-        case "Appointment":
-            return self as! AppointmentDialog;
-        default:
-            return self;
-        }
-        
-    
-    }
-    
     
     @objc open func promptHandler(sender:UIButton)
     {
