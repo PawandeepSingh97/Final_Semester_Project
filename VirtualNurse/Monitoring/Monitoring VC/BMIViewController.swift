@@ -35,6 +35,10 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
         //Set date for the label
         dateLabel.text = helperClass().setDateLabelCurrentDate()
         
+        //Add done button to keypad
+        heightTextField.addDoneButtonToKeyboard(myAction:  #selector(self.heightTextField.resignFirstResponder))
+        weightTextField.addDoneButtonToKeyboard(myAction:  #selector(self.weightTextField.resignFirstResponder))
+        
 
     }
 
@@ -49,6 +53,10 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
         //Hide the navigation bar
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
+        //Hide the tab bar
+        self.tabBarController?.tabBar.isHidden = true
+
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,6 +64,9 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
         
         //Show the navigation bar
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        //Show the tab bar
+        self.tabBarController?.tabBar.isHidden = false
         
     }
     
@@ -180,9 +191,5 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
-
-    
-    
-
 }
+

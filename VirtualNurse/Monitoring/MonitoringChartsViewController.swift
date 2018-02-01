@@ -22,10 +22,11 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
     
     var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Top up","Reminder","Scan Medicine","Appointment"]
     
-//    var data: [CGFloat] = [10, 4, -2, 11, 13, 15,3, 4, -2, 11, 13, 15]
-//    var data2: [CGFloat] = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2]
-//    var data3: [CGFloat] = [100, 90, 53, 92, 172, 202]
+    var monitoringDataValue:[String] = ["0","0","0","0","0","0"]
+    var cigValue:String="Today: 0 cigs";
     
+
+
     var bloodPressureData: [CGFloat] = [0]
     var glucoseData: [CGFloat] = [0]
     var heartRateData: [CGFloat] = [0]
@@ -39,13 +40,24 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
     
     var allWeekDates:[String] = ["0"]
     
+    //Retrieve all dates
+    var dates:[String] = ["0"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
        //Get current days in a week
-       let updatedxLabels = self.getAllDatesInCurrentWeek()
-       xLabels = updatedxLabels
+       //Load all data as default
+       setDefaultChartData()
+        
+       checkIfRecordExists()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setDefaultChartData()
+        
+        checkIfRecordExists()
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,6 +96,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         //Blood Pressure
         if(indexPath.row == 0){
         cell.monitoringName.text = monitoringData[indexPath.row]
+        cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
         cell.line.clearAll()
         cell.line.animation.enabled = true
         cell.line.area = true
@@ -105,6 +118,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         //Glucose
         if(indexPath.row == 1){
             cell.monitoringName.text = monitoringData[indexPath.row]
+            cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
             cell.line.clearAll()
             cell.line.animation.enabled = true
             cell.line.area = true
@@ -125,6 +139,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         //Heart Rate
         if(indexPath.row == 2){
             cell.monitoringName.text = monitoringData[indexPath.row]
+            cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
             cell.line.clearAll()
             cell.line.animation.enabled = true
             cell.line.area = true
@@ -145,6 +160,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         //Cigs
         if(indexPath.row == 3){
             cell.monitoringName.text = monitoringData[indexPath.row]
+            cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
             cell.line.clearAll()
             cell.line.animation.enabled = true
             cell.line.area = true
@@ -166,6 +182,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         //BMI
         if(indexPath.row == 4){
             cell.monitoringName.text = monitoringData[indexPath.row]
+            cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
             cell.line.clearAll()
             cell.line.animation.enabled = true
             cell.line.area = true
@@ -187,6 +204,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         //Cholestrol
         if(indexPath.row == 5){
             cell.monitoringName.text = monitoringData[indexPath.row]
+            cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
             cell.line.clearAll()
             cell.line.animation.enabled = true
             cell.line.area = true
@@ -227,69 +245,75 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
     
     @IBAction func segementedControlClicked(_ sender: Any) {
         
-            self.bloodPressureData.removeAll()
-            self.glucoseData.removeAll()
-            self.heartRateData.removeAll()
-            self.cigsData.removeAll()
-            self.bmiData.removeAll()
-            self.cholestrolData.removeAll()
+            //Set it to all default Value
+            self.bloodPressureData = [0,0,0,0,0,0,0,0]
+            self.glucoseData = [0,0,0,0,0,0,0,0]
+            self.heartRateData = [0,0,0,0,0,0,0,0]
+            self.cigsData = [0,0,0,0,0,0,0,0]
+            self.bmiData = [0,0,0,0,0,0,0,0]
+            self.cholestrolData = [0,0,0,0,0,0,0,0]
         
-            MonitoringDataManager().getFilteredMonitoringRecordsBasedOnDate("", "", "S9822477G") { (Monitoring) in
-                
-                 //Append all the results to the array
-                 self.bloodPressureData.append(CGFloat(Monitoring.systolicBloodPressure))
-                 self.glucoseData.append(CGFloat(Monitoring.glucose))
-                 self.heartRateData.append(CGFloat(Monitoring.heartRate))
-                 self.cigsData.append(CGFloat(Monitoring.cigsPerDay))
-                 self.bmiData.append(CGFloat(Monitoring.bmi))
-                 self.cholestrolData.append(CGFloat(Monitoring.totalCholesterol))
-                
+            self.getAllDatesInCurrentWeek()
+            let startDate = dates[0]
+            let endDate = dates[6]
+            xLabels.removeAll()
+
+        MonitoringDataManager().getFilteredMonitoringRecordsBasedOnDate(startDate,endDate, "S9822477G") { (Monitoring) in
                 
                 //If segment week is clicked
                 if(self.segmentedControl.selectedSegmentIndex == 0){
                         self.xLabels.removeAll()
-                        //self.data.removeAll()
-                        //self.data2.removeAll()
-                        //self.data3.removeAll()
                         let updatedxLabels = self.getAllDatesInCurrentWeek()
                         self.xLabels = updatedxLabels
                     
                         //Validation check whether the dates match
                         for i in self.allWeekDates {
                             if(i == Monitoring.dateCreated){
-                                print(i)
-                                print(Monitoring.dateCreated)
-                                print("HI\(String(describing: self.allWeekDates.index(of: i)))")
+                                
+                                //Store the date index in the array
+                                let dateIndex = self.allWeekDates.index(of: i)!
+                                //Replace the specifc item in the array
+                                self.bloodPressureData[dateIndex] = CGFloat(Monitoring.systolicBloodPressure)
+                                self.glucoseData[dateIndex] = CGFloat(Monitoring.glucose)
+                                self.heartRateData[dateIndex] = CGFloat(Monitoring.heartRate)
+                                if(Monitoring.cigsPerDay == -1){
+                                    self.cigsData[dateIndex] = 0
+                                }else{
+                                    self.cigsData[dateIndex] = CGFloat(Monitoring.cigsPerDay)
+                                }
+                                self.bmiData[dateIndex] = CGFloat(Monitoring.bmi)
+                                self.cholestrolData[dateIndex] = CGFloat(Monitoring.totalCholesterol)
                             }
                         }
-                        //self.data = [3, 4, -2, 11, 13, 15,3, 4, -2, 11, 13, 15]
-                        //self.data2 = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2]
-                        //self.data3 = [100, 90, 53, 92, 172, 202]
                         self.chartsCollectionView.reloadData()
 
                 }
                 // If segment month is clicked
                 if(self.segmentedControl.selectedSegmentIndex == 1){
+                    //Set it to all default Value
+                    self.bloodPressureData = [0,0,0,0,0,0,0,0,0,0,0,0]
+                    self.glucoseData = [0,0,0,0,0,0,0,0,0,0,0,0]
+                    self.heartRateData = [0,0,0,0,0,0,0,0,0,0,0,0]
+                    self.cigsData = [0,0,0,0,0,0,0,0,0,0,0,0]
+                    self.bmiData = [0,0,0,0,0,0,0,0,0,0,0,0]
+                    self.cholestrolData = [0,0,0,0,0,0,0,0,0,0,0,0]
+                    
                     self.xLabels.removeAll()
-//                    self.data.removeAll()
-//                    self.data2.removeAll()
-//                    self.data3.removeAll()
                     self.xLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-                    //self.data = [0, 4, -2, 11, 13, 15,3, 4, -2, 11, 13, 15]
-                    //self.data2 = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2]
-                    //self.data3 = [100, 90, 53, 92, 172, 202]
                     self.chartsCollectionView.reloadData()
                 }
                 //If segement is click
                 if(self.segmentedControl.selectedSegmentIndex == 2){
+                    //Set it to all default Value
+                    self.bloodPressureData = [0,0,0,0,0]
+                    self.glucoseData = [0,0,0,0,0]
+                    self.heartRateData = [0,0,0,0,0]
+                    self.cigsData = [0,0,0,0,0]
+                    self.bmiData = [0,0,0,0,0]
+                    self.cholestrolData = [0,0,0,0,0]
+                    
                     self.xLabels.removeAll()
-//                    self.data.removeAll()
-//                    self.data2.removeAll()
-//                    self.data3.removeAll()
                     self.xLabels = ["2016","2017","2018","2018","2016","2017","2018","2018","2016","2017","2018","2018"]
-                    //self.data = [10, 4, -2, 11, 13, 15,3, 4, -2, 11, 13, 15]
-                    //self.data2 = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2]
-                    //self.data3 = [100, 90, 53, 92, 172, 202]
                     self.chartsCollectionView.reloadData()
                 }
             }
@@ -311,13 +335,14 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         let calendar = Calendar.current
         
         allWeekDates.removeAll()
+        dates.removeAll()
 
         //Loop thru all 7 days in a week
         for i in 0...12{
             
             //Adding one day each till it reaches the 7th day
             let daysOfAWeek = calendar.date(byAdding: .day, value: i, to: mondaysDate)
-//            print("Adding 7 days \(String(describing: daysOfAWeek))")
+            //print("Adding 7 days \(String(describing: daysOfAWeek))")
         
             //Get the year,month,day
             let year = calendar.component(.year, from: daysOfAWeek!)
@@ -327,21 +352,103 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
             //print("This is monday's year \(year)")
             let dayMonth = "\(day)/\(month)"
             xLabels.append(dayMonth)
-            
+
             //Updating the month with leading zeroes
             let updatedDay = String(format: "%02d", day)
             let updatedMonth = String(format: "%02d", month)
             let dayMonthYear = "\(updatedDay)/\(updatedMonth)/\(year)"
             allWeekDates.append(String(describing: dayMonthYear))
             
-
-          
+            //Store all dates for database check
+            dates.append("\(day)/\(updatedMonth)/\(year)")
         }
         
         return xLabels
-        
-      
     }
+    
+    
+    func setDefaultChartData(){
+        
+        self.getAllDatesInCurrentWeek()
+        let startDate = dates[0]
+        let endDate = dates[6]
+        xLabels.removeAll()
+        
+        //Set it to all default Value
+        self.bloodPressureData = [0,0,0,0,0,0,0,0]
+        self.glucoseData = [0,0,0,0,0,0,0,0]
+        self.heartRateData = [0,0,0,0,0,0,0,0]
+        self.cigsData = [0,0,0,0,0,0,0,0]
+        self.bmiData = [0,0,0,0,0,0,0,0]
+        self.cholestrolData = [0,0,0,0,0,0,0,0]
+        
+        MonitoringDataManager().getFilteredMonitoringRecordsBasedOnDate(startDate,endDate, "S9822477G") { (Monitoring) in
+            
+                self.xLabels.removeAll()
+                //self.data.removeAll()
+                //self.data2.removeAll()
+                //self.data3.removeAll()
+                let updatedxLabels = self.getAllDatesInCurrentWeek()
+                self.xLabels = updatedxLabels
+            
+                //Validation check whether the dates match
+                for i in self.allWeekDates {
+                    if(i == Monitoring.dateCreated){
+                        //Store the date index in the array
+                        let dateIndex = self.allWeekDates.index(of: i)!
+                        //Replace the specifc item in the array
+                        self.bloodPressureData[dateIndex] = CGFloat(Monitoring.systolicBloodPressure)
+                        self.glucoseData[dateIndex] = CGFloat(Monitoring.glucose)
+                        self.heartRateData[dateIndex] = CGFloat(Monitoring.heartRate)
+                        if(Monitoring.cigsPerDay == -1){
+                          self.cigsData[dateIndex] = 0
+                        }else{
+                          self.cigsData[dateIndex] = CGFloat(Monitoring.cigsPerDay)
+                        }
+                        self.bmiData[dateIndex] = CGFloat(Monitoring.bmi)
+                        print("Taufik\(self.bmiData)")
+                        self.cholestrolData[dateIndex] = CGFloat(Monitoring.totalCholesterol)
+                    }
+                }
+                self.chartsCollectionView.reloadData()
+    
+        }
+    }
+    
+    //Check if monitoring record exists if not create one
+    func checkIfRecordExists(){
+        
+        //Retrieve from controller to checkIfRecordExists
+        MonitoringController().checkIfRecordExists { (monitoring) in
+            
+            //Retrieve bloopPressure, Glucose, Heartrate, cigarette, bmi, cholesterol value
+            let bloodPressureValue = "Today: \(monitoring.systolicBloodPressure)"
+            let glucoseValue = "Today: \(monitoring.glucose) mgdL"
+            let heartRateValue = "Today: \(monitoring.heartRate) bpm"
+            if (monitoring.cigsPerDay != -1){
+                self.cigValue = "Today: \(monitoring.cigsPerDay) cigs"
+            }
+            let bmiValue = "Today: \(monitoring.bmi)"
+            let cholesterolValue = "Today: \(monitoring.totalCholesterol) mgdL"
+            
+            //Clear all the array first before appending
+            self.monitoringDataValue.removeAll()
+            
+            //Appending all the values to monitoringValue array
+            self.monitoringDataValue.append(bloodPressureValue)
+            self.monitoringDataValue.append(glucoseValue)
+            self.monitoringDataValue.append(heartRateValue)
+            self.monitoringDataValue.append(self.cigValue)
+            self.monitoringDataValue.append(bmiValue)
+            self.monitoringDataValue.append(cholesterolValue)
+            
+            //Reload the collection view
+            self.chartsCollectionView.reloadData()
+            
+        }
+        
+        
+    } //end of function
     
    
 

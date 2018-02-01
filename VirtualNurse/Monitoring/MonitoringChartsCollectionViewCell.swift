@@ -10,7 +10,8 @@ import UIKit
 
 class MonitoringChartsCollectionViewCell: UICollectionViewCell {
     
-     @IBOutlet weak var line: LineChart!
+    @IBOutlet weak var monitoringTodayValue: UILabel!
+    @IBOutlet weak var line: LineChart!
     @IBOutlet weak var monitoringName: UILabel!
     
 }
