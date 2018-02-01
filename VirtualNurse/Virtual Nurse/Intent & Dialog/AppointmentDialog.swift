@@ -12,17 +12,23 @@ class AppointmentDialog:Dialog {
     
      override var Intent: String { get { return "Appointment" } }
     
+
+    var appointmentList : [AppointmentModel] = [];
+
     var appointment:AppointmentModel?;
-    
     
     init(dialogToCall:String,patient:Patient) {
         super.init(dialogToCall: dialogToCall)
         self.patient = patient;
+        
+        
     }
     
     override func getDialog() {
         
-        var dates = getDatesFromUtterances();
+        let dates = getDatesFromUtterances();
+
+    
     
         switch self.dialog {
         case "Get":
@@ -33,6 +39,8 @@ class AppointmentDialog:Dialog {
             self.responseToDisplay.append(error())
             self.BotResponse.append(error())
         }
+        
+        
     }
     
 //================================================================================================================================================
@@ -40,32 +48,42 @@ class AppointmentDialog:Dialog {
     func getAppointment(starting:Date,ending:Date){
         
         var datereply  = " ";
-        if let en = entity {
-            datereply = " for \(en.entityFromUtterence!) ";
+        if let en = entity { //if have entity
+            
+            
+            datereply = "for \(en.entityFromUtterence!)";
+            
+            //means is one date only
+            if starting == ending
+            {
+                checkAppointment(hasDate: true, start: starting, end: ending, issame: true,datereply:datereply);
+                //call required method to get appointment details
+            }
+            else if starting != ending { //means is a date range (e.g when user ask for next week appointment)
+                // call required method to get appointment details
+                //if have appointment but is not next week
+                //show message to first say, you have no appointment this week but you have an appointment on...
+                checkAppointment(hasDate: true, start: starting, end: ending, issame: false,datereply:datereply);
+                //
+            }
+            
         }
         else
         {
-            datereply = " ";
+            datereply = "";
+            checkAppointment(hasDate: false, start: Date(), end: Date(), issame: false,datereply:datereply);
         }
         
-        //means is one date only
-        if starting == ending
-        {
-            //call required method to get appointment details
-        }
-        else if starting != ending { //means is a date range (e.g when user ask for next week appointment)
-            // call required method to get appointment details
-            //if have appointment but is not next week
-            //show message to first say, you have no appointment this week but you have an appointment on...
-        }
         
-        //TODO: ONCE GET APPOINTMENT DETAILS, HAVE A METHOD TO READ STRING AS THOUGH A NURSE IS READING IT
         
-        let toDisplay = "Your appointment\(datereply)is in 12/12/2018 and is with dr.Tan";
+        let toDisplay = "You do not have any appointment at this time";
         let botReply = toDisplay;
         
         self.responseToDisplay.append(toDisplay)
         self.BotResponse.append(botReply)
+        
+        //TODO: ONCE GET APPOINTMENT DETAILS, HAVE A METHOD TO READ STRING AS THOUGH A NURSE IS READING IT
+        
         //return ("Your appointment is in 12/12/2018");
     }
     
@@ -135,14 +153,10 @@ class AppointmentDialog:Dialog {
     
     func updateAppointmentNo(){}
     
+    
 //================================================================================================================================================
     
-//    private func readDate() -> String
-//    {
-//        let test = "12 December 2018";
-//        return test;
-//    }
-    
+
     
     
     /*
@@ -173,6 +187,87 @@ class AppointmentDialog:Dialog {
 //****************TAUFIK*****************
     //TODO, CREATE A FUNCTION , THAT TAKES IN 2 DATES TO CHECK IF AN APPOINTMENT IS WITHIN THE 2 DATES SPECIFIED
                 // IF POSSIBLE, WILL BE GREAT IF CAN GET WHO IS THE DOCTOR FOR THAT APPOINTMENT AS WELL
+    
+    
+    
+    private func checkAppointment(hasDate:Bool,start:Date,end:Date,issame:Bool,datereply:String){
+        AppointmentDataManager().getAppointmentByNRIC((patient?.NRIC)!) { (appointment) in
+            
+            var appt = AppointmentModel(appointment.id,appointment.nric,appointment.doctorName,appointment.date,appointment.time);
+            
+            self.appointmentList.append(appt);
+            print(appt.nric);
+        
+            for appointment in self.appointmentList
+            {
+                
+                if hasDate //IF HAS ENTITY
+                {
+                    if issame //asking if got appointment on a particular date
+                    {
+                        //check if date is in appointmentlist
+                        //if have, return the appointment
+                        let formattedapptDate = self.convertDateFrom(appointment.date)
+                        if start == formattedapptDate
+                        {
+                            //if there is an appointment on the date specified
+                            //display message
+                            let toDisplay = "You do have an appointment \(datereply) which is on the \(appointment.date) at \(appointment.time) with \(appointment.doctorName)";
+                            let botReply = toDisplay;
+                            
+                            self.responseToDisplay.append(toDisplay)
+                            self.BotResponse.append(botReply)
+                            self.brDelegate?.Nurse(response: self);
+                            break;
+                        }
+                        else
+                        {
+                            //if not display message, don't have appointment for that day
+                            // but have appointment on ....
+                            let toDisplay = "You do not have an appointment \(datereply) but have one which is on the \(appointment.date) at \(appointment.time) with \(appointment.doctorName)";
+                            let botReply = toDisplay;
+                            
+                            self.responseToDisplay.append(toDisplay)
+                            self.BotResponse.append(botReply)
+                            self.brDelegate?.Nurse(response: self);
+                            break;
+                        }
+                        
+                        
+                    }
+                    else
+                    { //asking if got appointment in a week range
+                        //check if appointment is inside the start and end date range
+                        
+                    }
+                }
+                else //IF NOT ENTITY
+                {
+                   // let formattedapptDate = self.convertDateFrom(appointment.date)
+                    let toDisplay = "You have an appointment \(datereply) which is on the \(appointment.date) at \(appointment.time) with \(appointment.doctorName)";
+                    let botReply = toDisplay;
+                    
+                    self.responseToDisplay.append(toDisplay)
+                    self.BotResponse.append(botReply)
+                    self.brDelegate?.Nurse(response: self);
+                    break;
+                }
+                
+                
+            }//end for loop
+            
+            print("got appoint for \(self.responseToDisplay.last!)");
+            
+        }
+    }
+    
+    private func convertDateFrom(_ string:String) -> Date
+    {
+        let formatter = DateFormatter();
+        formatter.dateFormat = "dd/MM/yyyy";
+        let date = formatter.date(from: string)!;
+        return date;
+    }
     
     //TODO, CREATE ANOTHER FUNCTION TO CANCEL APPOINTMENT,
     

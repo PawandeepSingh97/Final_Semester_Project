@@ -17,9 +17,11 @@ class BloodPressureViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var distolicBp: JiroTextField!
     @IBOutlet weak var dateLabel: UILabel!
     
+    //Patient Data
+    var patient:Patient?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Call DesignSubmitButton Function
         DesignSubmitButton()
    
@@ -29,6 +31,10 @@ class BloodPressureViewController: UIViewController,UITextFieldDelegate {
         
         //Set date for the label
         dateLabel.text = helperClass().setDateLabelCurrentDate()
+        
+        //Add done button to keypad
+        systolicBp.addDoneButtonToKeyboard(myAction:  #selector(self.systolicBp.resignFirstResponder))
+        distolicBp.addDoneButtonToKeyboard(myAction:  #selector(self.distolicBp.resignFirstResponder))
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,11 +49,15 @@ class BloodPressureViewController: UIViewController,UITextFieldDelegate {
         return false
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //Hide the navigationbar
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        //Hide the tab bar
+        self.tabBarController?.tabBar.isHidden = true
         
     }
     
@@ -57,15 +67,20 @@ class BloodPressureViewController: UIViewController,UITextFieldDelegate {
         //Show the navigationbar
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         
+        //Show the tab bar
+        self.tabBarController?.tabBar.isHidden = false
+        
     }
 
     @IBAction func submitButtonClicked(_ sender: Any) {
         //Retrive patient nric and today's date
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = (patient?.NRIC)!
+        
+        print("Patient Nric\(patientNric)")
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patient!) { (monitoring) in
             
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
@@ -84,8 +99,16 @@ class BloodPressureViewController: UIViewController,UITextFieldDelegate {
                 let distolicBpValue = Double(self.distolicBp.text!)
                 
                 //Check if systolicBp and distolicBp is clocked in
-                if (self.systolicBp.text!.isEmpty && self.distolicBp.text!.isEmpty){
+                if (self.systolicBp.text!.isEmpty || self.distolicBp.text!.isEmpty){
                     self.showAlert(message: "Please check if you have entered systolicBp and distolicBp value.")
+                }
+                //Check if systolicBp and distolicBp is clocked in
+                else if (systolicBpValue! < 90 || distolicBpValue! < 40){
+                    self.showAlert(message: "Please check whether you entered valid systolicBp and distolicBp value.")
+                }
+                //Check if systolicBp and distolicBp is clocked in
+                else if (systolicBpValue! > 240 || distolicBpValue! > 160){
+                   self.showAlert(message: "Please check whether you entered valid systolicBp and distolicBp value.")
                 }
                 else{
                     
@@ -96,22 +119,13 @@ class BloodPressureViewController: UIViewController,UITextFieldDelegate {
                     ]
                     
                     //Update the systolicBp and distolicBp in the monitoring record
-                    MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
+                    MonitoringDataManager().patchMonitoringRecord(self.patient!,azureTableId,updatedParameters, success: { (success) in
                         print(success)
                     }) { (error) in
                         print(error)
                     }
                     
-                    //Check if systolicBp and distolicBp is in healthy range
-                    if (systolicBpValue! < 120 && distolicBpValue! < 80){
-                        self.showAlert(message: "Good Job! You have a healthy systolicBp and distolicBp")
-                    }
-                    else if(systolicBpValue! > 140 && distolicBpValue! < 90){
-                        self.showAlert(message: "Please keep yourself healthy. You are having high blood pressure")
-                    }
-                    else{
-                        self.showAlert(message: "Inserted Successfully")
-                    }
+                    self.showAlert(message: "Inserted Successfully")
                 }
             }
         }
@@ -146,7 +160,24 @@ class BloodPressureViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
+}
+
+extension UITextField{
     
-
-
+    func addDoneButtonToKeyboard(myAction:Selector?){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 300, height: 40))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: myAction)
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.inputAccessoryView = doneToolbar
+    }
 }

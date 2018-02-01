@@ -18,8 +18,13 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
     
+    //Patient Data
+    var patient:Patient?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         //Call the Design Button function
         DesignSubmitButton()
@@ -35,6 +40,10 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
         //Set date for the label
         dateLabel.text = helperClass().setDateLabelCurrentDate()
         
+        //Add done button to keypad
+        heightTextField.addDoneButtonToKeyboard(myAction:  #selector(self.heightTextField.resignFirstResponder))
+        weightTextField.addDoneButtonToKeyboard(myAction:  #selector(self.weightTextField.resignFirstResponder))
+        
 
     }
 
@@ -49,6 +58,10 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
         //Hide the navigation bar
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
+        //Hide the tab bar
+        self.tabBarController?.tabBar.isHidden = true
+
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,15 +70,18 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
         //Show the navigation bar
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         
+        //Show the tab bar
+        self.tabBarController?.tabBar.isHidden = false
+        
     }
     
     @IBAction func submitButtonClicked(_ sender: Any) {
         //Retrive patient nric and today's date
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = (patient?.NRIC)!
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patient!) { (monitoring) in
             
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
@@ -85,15 +101,26 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
                 if (self.heightTextField.text!.isEmpty && self.weightTextField.text!.isEmpty){
                     self.showAlert(message: "Please check if you have entered height and weight value.")
                 }
+                //Check if the textfield are empty
+                else if((self.heightTextField.text?.isEmpty)! || (self.weightTextField.text?.isEmpty)!){
+                    //showAlert(message: "Please check your inputs")
+                    self.showAlert(message: "Please check if you have entered height and weight value.")
+                    self.bmiValue.text = "0"
+                }
+                else if !(self.heightTextField.text?.contains("."))!
+                {
+                    self.showAlert(message: "Please check if you have entered height meteres")
+                    self.bmiValue.text = "0"
+                }
                 else{
-                    
+
                     //Declare updated parameters
                     let updatedParameters: Parameters = [
                         "bmi": BMI,
                         ]
                     
                     //Update the systolicBp and distolicBp in the monitoring record
-                    MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
+                    MonitoringDataManager().patchMonitoringRecord(self.patient!,azureTableId,updatedParameters, success: { (success) in
                         print(success)
                     }) { (error) in
                         print(error)
@@ -122,8 +149,9 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
         
         //Check if the textfield are empty
-        if((heightTextField.text?.isEmpty)! && (weightTextField.text?.isEmpty)!){
-            showAlert(message: "Please check your inputs")
+        if((heightTextField.text?.isEmpty)! || (weightTextField.text?.isEmpty)!){
+            //showAlert(message: "Please check your inputs")
+            bmiValue.text = "0"
         }
         else{
             if (Double(weightTextField.text!) == nil){
@@ -180,9 +208,5 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
-
-    
-    
-
 }
+

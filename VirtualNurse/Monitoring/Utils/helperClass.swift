@@ -20,12 +20,6 @@ class helperClass{
         return result
     }
     
-    //Get patient nric
-    func getPatientNric() ->String{
-        let patientNric = "S9822477G"
-        return patientNric
-    }
-    
     //Set label currentDate
     func setDateLabelCurrentDate()->String{
         let date = Date()
@@ -34,6 +28,11 @@ class helperClass{
         let str = formatter.string(from: date)
         return str
     }
+    
+
+    
+    
+ 
     
     
     

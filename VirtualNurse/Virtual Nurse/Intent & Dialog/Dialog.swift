@@ -14,10 +14,16 @@ protocol PromptAnsweredDelegate {
     func User(hasAnswered:String,dialog:Dialog);
 }
 
+protocol BotReplyDelegate {
+    func Nurse(response:Dialog);
+}
+
+
 class Dialog:NSObject
 {
     var Intent: String { get { return "Dialog" } }
     var paDelegate:PromptAnsweredDelegate?;
+    var brDelegate:BotReplyDelegate?;
     
     //Store patient data
     var patient:Patient?;
@@ -59,22 +65,6 @@ class Dialog:NSObject
         return "Sorry, I didn't quite get that.\n Could you say that again ? ";
     }
     
-    //This will cast the dialog as its original cast type
-     func castDialog() -> Dialog
-    {
-        
-        //get type of current instance
-        switch Intent {
-        case "Appointment":
-            return self as! AppointmentDialog;
-        default:
-            return self;
-        }
-        
-    
-    }
-    
-    
     @objc open func promptHandler(sender:UIButton)
     {
         print("defulat handler for dialog")
@@ -85,7 +75,7 @@ class Dialog:NSObject
 
        // var dates:[Date] = [];
         let df = DateFormatter();
-        df.dateFormat = "YYYY-MM-DD"//ORIGINAL FORMAT IN THE DATE STRING
+        df.dateFormat = "yyyy-MM-dd"//ORIGINAL FORMAT IN THE DATE STRING
         
         dates = [];
         if let en = self.entity
@@ -94,10 +84,11 @@ class Dialog:NSObject
             {
                 for stringdates in en.entityValues!
                 {
-                    print("**************** DATES ARE \(stringdates)")
+                    print("************** DATES ARE \(stringdates)")
                     
-                    let date = df.date(from: stringdates);
-                    self.dates.append(date!);
+                    let date = df.date(from: stringdates)!;
+                    print(date.debugDescription)
+                    self.dates.append(date);
                     //print("**************** DATES formated ARE \(date?.debugDescription)")
                 }
             }
@@ -117,14 +108,15 @@ class Dialog:NSObject
             {
                 startDate = dates[0];
                 endDate = dates[1];
+                return (startDate,endDate);
             }
             else if dates.count == 1
             {
                 startDate = dates[0];
                 endDate = dates[0];
+                print("THERE ARE \(dates.count) DATES FROM ENTITY");
+                return (startDate,endDate);
             }
-        print("THERE ARE \(dates.count) DATES FROM ENTITY");
-        
         return (startDate,endDate);
     }
     

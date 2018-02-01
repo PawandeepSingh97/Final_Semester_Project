@@ -98,6 +98,7 @@ class ChatViewController: MessagesViewController {
         dialogController?.Botdelegate = self;
         
         
+        
         setGreeting();
         
         
@@ -122,22 +123,14 @@ class ChatViewController: MessagesViewController {
     //Will set greeting to user;
     func setGreeting()
     {
-        //TODO
-        //hardcode message, each messageID,MUST BE UNIQUE
-        //REMOVE ONCE,TESTING FINISH
-        let m1 = MockMessage(text: "Hi \(patient!.name),I will soon set up auto greeting and many more ^_^.", sender: virtualNurse, messageId: UUID().uuidString, date: Date());
         
-        let m2 = MockMessage(text: "Don't forget to log in your health report.", sender: virtualNurse, messageId: UUID().uuidString, date: Date());
         
-        let m3 = MockMessage(text: "Your appointment is on the 12/12/2018", sender: virtualNurse, messageId: UUID().uuidString, date: Date());
-        
-        let m4 = MockMessage(text: "And make sure you do not forget to log your health and take your medication.", sender: virtualNurse, messageId: UUID().uuidString, date: Date());
-        
-        messages.append(m1);
-        messages.append(m2);
-        messages.append(m3);
-        messages.append(m4);
-        //messages.append(mm);
+        let greetingdialog = dialogController?.defaultGreeting(patient: patient!);
+        for response in (greetingdialog?.responseToDisplay)!
+        {
+            messages.append(MockMessage(text: response, sender: virtualNurse, messageId: UUID().uuidString, date: Date()));
+        }
+ 
     }
 
     func sendMessage(message:MockMessage)
@@ -174,6 +167,7 @@ class ChatViewController: MessagesViewController {
     //STYLE FOR LISTENING BUTTON
     func listeningBtnStyle()
     {
+        
         let lib = mbs.ListeningBtnStyle();
         
         mbs.listeningBtn?.onSelected{ _ in
@@ -232,6 +226,7 @@ class ChatViewController: MessagesViewController {
     //CHANGE STYLE ??
     @objc func defaultKeyboardStyle()
     {
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"mic_nav_item"), style: .plain, target: nil, action: #selector(micBtnStyle));
         self.navigationItem.rightBarButtonItem?.tintColor = .white;
         
@@ -263,6 +258,7 @@ class ChatViewController: MessagesViewController {
         else
         {
             //pass textview inside to update UI
+            sttHelper.isUserSpeaking = false;
             sttHelper.startRecordingUserSpeech(userSpeech:userSpeech);//start
             sttHelper.AutoDetectUserSpeaking(2.5);//Set autodetection
             
@@ -289,11 +285,9 @@ class ChatViewController: MessagesViewController {
             }
             
             
-            //get dialog from response first
-           // response.getDialog();//This will determine what to call
-            
             //GET DIALOG AND PLACE IN UI
             let responseToDisplay = response.responseToDisplay;
+            let botspeakmessage = response.BotResponse;
             print("nurse responded : \(responseToDisplay)");
             //let Botresponse = response.BotResponse; // this will when bot speaks
             DispatchQueue.main.async {
@@ -301,12 +295,19 @@ class ChatViewController: MessagesViewController {
                 
                 self.messagesCollectionView.deleteSections([self.messages.count]);
                 
+                
+                for botspeak in botspeakmessage
+                {
+                    //call bot speak also
+                    self.sttHelper.delegate?.BotSpeak(text: botspeak, translationRequired: false);
+                }
+                
                 for response in responseToDisplay //display messages in loop
                 {
                     self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+                    
+                    
                 }
-                
-                
             }
             
             
@@ -326,6 +327,31 @@ class ChatViewController: MessagesViewController {
 //TODO,TEST FIRST
 extension ChatViewController:BotResponseDelegate
 {
+    func display(response: Dialog) {
+        
+        print("DISPLAY");
+        //Remove the ... from array
+        //self.messages.removeLast();
+        
+        if response.isPrompt{ //if the question is a prompt
+            //pass the dialog response to the prompt delegate
+            self.dialogController?.Botdelegate.isPromptQuestion(promptDialog: response);
+        }
+        
+        
+        for botspeak in response.BotResponse
+        {
+            //call bot speak also
+            self.sttHelper.delegate?.BotSpeak(text: botspeak, translationRequired: false);
+        }
+        
+        for response in response.responseToDisplay //display messages in loop
+        {
+            self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+            
+        }
+    }
+    
     //Function is called if nurse is asking a prompt question to patient
     func isPromptQuestion(promptDialog: Dialog) {
         print("****** BOT RESPONDED WITH A PROMPT QUESTION");
@@ -334,10 +360,11 @@ extension ChatViewController:BotResponseDelegate
         DispatchQueue.main.async {
             self.messageInputBar.inputTextView.isEditable = false
             let Promptview = PromptChatView();
-            
+            //TODO: HAVE A BG COLOR FOR BUTTONS
             //SET THE HANDLER FROM THE DIALOG
             Promptview.yesButton?.addTarget(promptDialog, action: #selector(promptDialog.promptHandler), for: .touchUpInside);
             Promptview.noButton?.addTarget(promptDialog, action: #selector(promptDialog.promptHandler), for: .touchUpInside);
+            
             self.messageInputBar.topStackView.addArrangedSubview(Promptview);
         }
         
@@ -358,7 +385,8 @@ extension ChatViewController:BotResponseDelegate
         print("nurse prompt responded : \(responseToDisplay)");
         //let Botresponse = response.BotResponse; // this will when bot speaks
         
-            self.sendMessage(message: MockMessage(text:responseToDisplay.last!, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+        
+        self.sendMessage(message: MockMessage(text:responseToDisplay.last!, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
         
         
         
@@ -371,11 +399,22 @@ extension ChatViewController:BotResponseDelegate
 
 extension ChatViewController:SpeechDetectionDelegate
 {
+    func BotSpeak(text: String, translationRequired: Bool) {
+        
+        print("*********BOT SPEAK ************");
+        print("BOT SAID \(text)");
+        //call microsoft
+        
+        
+        //if en is default, no need translation,speak can already
+        microsoftTranslator.Speak(text: text, language: "en");
+    }
+    
     
     func User(hasNeverSpoke: Bool) {
         if hasNeverSpoke{
             //stop speech to text
-            print("USER HAS NEVER SPOKE")
+            print("********USER HAS NEVER SPOKE****")
             startSpeechToText();
         }
     }
@@ -383,7 +422,7 @@ extension ChatViewController:SpeechDetectionDelegate
     func User(hasFinishedSpeaking: Bool) {
         if hasFinishedSpeaking{
             //send text to query
-            print("USER HAS SPOKE AND FINISHED SPEAKING")
+            print("*************USER HAS SPOKE AND FINISHED SPEAKING*************")
             startSpeechToText();
             
             self.sendMessage(message: MockMessage(text:userSpeech.text, sender: self.currentUser, messageId: UUID().uuidString, date: Date()));
@@ -534,6 +573,7 @@ extension ChatViewController: MessagesLayoutDelegate {
 //TO set display style for message bubble
 extension ChatViewController : MessagesDisplayDelegate
 {
+    
     //set bg color for bubble
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         

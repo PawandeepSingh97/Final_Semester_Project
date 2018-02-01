@@ -27,7 +27,6 @@ class MicrosoftTranslatorHelper : NSObject
         let txt = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
         
         
-        
         let url = URL(string: "\(RestfulController.MicrosoftTranslateEndPoint())?text=\(txt)&to=\(t)&from=\(f)&contentType=text/plain");
         var u = URLRequest(url: url!);
         u.addValue("de07fd275ef34f0887cb1113d3dcca47", forHTTPHeaderField: "Ocp-Apim-Subscription-Key");
@@ -60,7 +59,7 @@ class MicrosoftTranslatorHelper : NSObject
     {
         
         let txt = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
-        let lng = language.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed);
+        let lng = language.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
         let url = URL(string: "\(RestfulController.MicrosoftSpeakEndPoint())?language=\(lng)&text=\(txt)&format=audio/mp3");
         
         var u = URLRequest(url: url!);

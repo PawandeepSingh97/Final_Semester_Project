@@ -17,6 +17,9 @@ class CigaretteViewController: UIViewController {
     @IBOutlet weak var totalCigarette: UILabel!
     var totalcountCigarette = 0
     
+    //Patient Data
+    var patient:Patient?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +41,10 @@ class CigaretteViewController: UIViewController {
         //Hide navigation bar
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
+        //Hide the tab bar
+        self.tabBarController?.tabBar.isHidden = true
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,6 +52,9 @@ class CigaretteViewController: UIViewController {
         
         //Show navigation bar
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        //Show the tab bar
+        self.tabBarController?.tabBar.isHidden = false
         
     }
     
@@ -75,10 +85,10 @@ class CigaretteViewController: UIViewController {
         
         //Retrive patient nric and today's date
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = (patient?.NRIC)!
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patient!) { (monitoring) in
             
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
@@ -101,7 +111,7 @@ class CigaretteViewController: UIViewController {
                         ]
                     
                     //Update the cigsPerDay in the monitoring record
-                    MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
+                MonitoringDataManager().patchMonitoringRecord(self.patient!,azureTableId,updatedParameters, success: { (success) in
                         print(success)
                     }) { (error) in
                         print(error)

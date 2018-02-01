@@ -11,19 +11,17 @@ import Alamofire
 
 class MonitoringDataManager: NSObject{
     
-    //Declaring and Initialising HTTP headers
-    let headers: HTTPHeaders = [
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "ZUMO-API-VERSION": "2.0.0"
-    ]
-    
-    //Declaring and Initialising URL of Microsoft Azure monitoring database
-    let url:String = "http://pawandeep-virtualnurse.azurewebsites.net/tables/Monitoring"
+//    var patient:Patient?;
+//    
+//     init(patient:Patient?) {
+//        //patient date
+//        parameters["Nric"] = patient?.NRIC
+//
+//    }
     
     //Declare default parameters
-    let parameters: Parameters = [
-        "nric": "S9822477G",
+    var parameters: Parameters = [
+        "nric": "",
         "name": "Imran",
         "gender": "male",
         "age": 48,
@@ -44,25 +42,31 @@ class MonitoringDataManager: NSObject{
         "dateCreated": HomeDashboardViewController().getTodayDate()
     ]
     
+    //Declaring and Initialising HTTP headers
+    let headers: HTTPHeaders = [
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "ZUMO-API-VERSION": "2.0.0"
+    ]
+    
+    //Declaring and Initialising URL of Microsoft Azure monitoring database
+    let url:String = "http://pawandeep-virtualnurse.azurewebsites.net/tables/Monitoring"
     
     
+   
     //Returns all records in monitoring table based on dateCreated and nric
-    func getFilteredMonitoringRecords(_ todayDate: String, _ patientNric:String, onComplete:((_ Monitoring: Monitoring) -> Void)?) {
-        
+    func getFilteredMonitoringRecords(_ todayDate: String, _ patient: Patient, onComplete:((_ Monitoring: Monitoring) -> Void)?) {
         //Filter todayDate
         let filteredTodayDate = "dateCreated eq '\(todayDate)'"
         //Encode the todayDate
         let encodedTodayDate = filteredTodayDate.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        
         //Filtered PatientNric
-        let filteredPatientNric = "and nric eq '\(patientNric)'"
+        let filteredPatientNric = "and nric eq '\(patient.NRIC)'"
         //Encode the patientNric
         let encodedPatientNric = filteredPatientNric.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         //Encoded Url
         let encodedUrl = "\(url)?$filter=\(encodedTodayDate!)\(encodedPatientNric!)"
-        
-        print("Imran\(encodedUrl)")
         
         //Get request
         Alamofire.request(encodedUrl, headers: headers).responseJSON { (responseObject) -> Void in
@@ -103,7 +107,9 @@ class MonitoringDataManager: NSObject{
                   else{
                     print("Error no records created")
                     print("Created default records")
-                
+                    
+                    self.parameters["nric"] = patient.NRIC
+                    self.parameters["name"] = patient.name
 
                     //If No records create new default records
                     self.postMonitoringRecord(success: { (JSONResponse) in
@@ -155,7 +161,6 @@ class MonitoringDataManager: NSObject{
     
     //Post a monitoring record
     func postMonitoringRecord(success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void){
-       
         //Post Request
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
             
@@ -175,10 +180,12 @@ class MonitoringDataManager: NSObject{
     }
     
     //Update a monitoring record
-    func patchMonitoringRecord(_ azureTableId: String, _ parameters: Parameters, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void){
+    func patchMonitoringRecord(_ patient:Patient, _ azureTableId: String, _ parameters: Parameters, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void){
         
         //Update the url by passing the azureTableId
         let updatedUrl = "\(url)/\(azureTableId)"
+        
+        self.parameters["nric"] = patient.NRIC
         
         //Patch Request
         Alamofire.request(updatedUrl, method: .patch, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (responseObject) -> Void in
@@ -201,11 +208,10 @@ class MonitoringDataManager: NSObject{
     //Returns all records in monitoring table based on dateCreated and nric
     func getFilteredMonitoringRecordsBasedOnDate(_ todayDate: String, _ endDate: String, _ patientNric:String, onComplete:((_ Monitoring: Monitoring) -> Void)?) {
         
-        let todayDate = "28/01/2018"
-        let endDate = "5/02/2018"
-        
+        print(todayDate)
+        print(endDate)
         //Filter todayDate
-        let filteredTodayDate = "dateCreated gt '\(todayDate)' and dateCreated lt '\(endDate)'"
+        let filteredTodayDate = "dateCreated le '\(endDate)'"
         
         
         //Encode the todayDate
@@ -226,7 +232,6 @@ class MonitoringDataManager: NSObject{
             //print(responseObject)
             if responseObject.result.isSuccess {
                 let responseJson = JSON(responseObject.result.value!)
-                print("Imran\(responseJson)")
                 //Check if responseJson is empty
                 if responseJson != []{
                     
