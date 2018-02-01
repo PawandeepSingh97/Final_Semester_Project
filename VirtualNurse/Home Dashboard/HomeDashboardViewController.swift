@@ -46,6 +46,9 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var tabcontroller = self.tabBarController as! BaseTabBarViewController;
+        tabcontroller.patientDelegate = self;
+        
         //Set the delegates of collectionView
         self.CollectionView.delegate = self
         self.CollectionView.dataSource = self
@@ -541,6 +544,14 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         }
         //reminderViewTableViewController
 
+    }
+}
+
+//PASS PATIENT DATA TO TAB CONTROLLER
+extension HomeDashboardViewController:PatientDelegate
+{
+    func getPatient() -> Patient {
+        return patient!;
     }
 }
 

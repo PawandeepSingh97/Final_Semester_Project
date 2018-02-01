@@ -67,7 +67,7 @@ class MonitoringController{
                 
                   //Virtual NurseLogic
 //                //Check if monitored, if monitored change from default logo to tick logo
-//                if (monitoring.systolicBloodPressure != 0){
+//                if (monitoring.systolicBloodPressure != 0){ //means fill up already
 //                    self.monitoringImages[0] = self.monitoredTicks[0]
 //                }
 //                if (monitoring.glucose != 0){

@@ -13,7 +13,7 @@ class AppointmentDialog:Dialog {
      override var Intent: String { get { return "Appointment" } }
     
     var appointment:AppointmentModel?;
-    
+    var appointmentList : [AppointmentModel] = []
     
     init(dialogToCall:String,patient:Patient) {
         super.init(dialogToCall: dialogToCall)
@@ -22,7 +22,9 @@ class AppointmentDialog:Dialog {
     
     override func getDialog() {
         
-        var dates = getDatesFromUtterances();
+        let dates = getDatesFromUtterances();
+//        print(dates.start.debugDescription)
+//        print(dates.end.debugDescription)
     
         switch self.dialog {
         case "Get":
@@ -51,12 +53,15 @@ class AppointmentDialog:Dialog {
         //means is one date only
         if starting == ending
         {
+            getAppointment(start: starting, end: ending, issame: true);
             //call required method to get appointment details
         }
         else if starting != ending { //means is a date range (e.g when user ask for next week appointment)
             // call required method to get appointment details
             //if have appointment but is not next week
             //show message to first say, you have no appointment this week but you have an appointment on...
+            getAppointment(start: starting, end: ending, issame: false);
+            //
         }
         
         //TODO: ONCE GET APPOINTMENT DETAILS, HAVE A METHOD TO READ STRING AS THOUGH A NURSE IS READING IT
@@ -134,6 +139,33 @@ class AppointmentDialog:Dialog {
     func updateAppointmentYes(){}
     
     func updateAppointmentNo(){}
+    
+    func getAppointment(start:Date,end:Date,issame:Bool){
+        AppointmentDataManager().getAppointmentByNRIC((patient?.NRIC)!) { (Appointment) in
+            
+            print("enter here \(Appointment.date)")
+            
+    self.appointmentList.append(AppointmentModel(Appointment.id,Appointment.nric,Appointment.doctorName,Appointment.date,Appointment.time));
+            
+
+            if issame //asking if got appointment on a particualt date
+            {
+                
+                //check if date is in appointmentlist
+                //if have, return the appointment
+                for appt in self.appointmentList{
+                    print("****************date \(appt.date) **********************");
+                    
+                }
+            }
+            else { //asking if got appointment in a week range
+                //check if appointment is inside the start and end date range
+                
+            }
+
+           
+        }
+    }
     
 //================================================================================================================================================
     

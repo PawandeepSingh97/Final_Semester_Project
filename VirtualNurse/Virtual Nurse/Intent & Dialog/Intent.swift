@@ -83,7 +83,7 @@ class Intent: NSObject {
                     
                     
                 }
-                else
+                else if entityValues.count == 1
                 {
                     print("entity from utterence is \(entityFromUtterences), type is \(entityType) and value is \(entityValues[0])");
                 }

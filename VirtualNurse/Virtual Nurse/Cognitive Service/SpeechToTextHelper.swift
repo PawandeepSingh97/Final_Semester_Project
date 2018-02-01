@@ -21,6 +21,7 @@ protocol SpeechDetectionDelegate
 {
     func User(hasNeverSpoke:Bool);
     func User(hasFinishedSpeaking:Bool)
+    func BotSpeak(text:String,translationRequired:Bool);
 }
 
 class SpeechToTextHelper: NSObject {
