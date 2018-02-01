@@ -28,7 +28,6 @@ class MonitoringDialog:Dialog
     override func getDialog() {
         switch self.dialog {
         case "Get":
-            print("monitoring : \(loggedCounter)");
            checkMonitoring();
         default:
             self.responseToDisplay.append(error())
@@ -41,7 +40,7 @@ class MonitoringDialog:Dialog
         //get stuff thats havent log yet
         //display meesage
         
-            print("GET MONITORING CALLED FIRST A ALREADY");
+            //print("GET MONITORING CALLED FIRST A ALREADY");
             var message = "";
             if loggedcounter == 6
             {
@@ -67,12 +66,14 @@ class MonitoringDialog:Dialog
                 self.responseToDisplay.append(message)
                 self.BotResponse.append(message)
             }
+        //PASS DIALOG TO DELEGATE
         brDelegate?.Nurse(response: self);
         
     }
     
+    
     //create func to call from db
-    func checkMonitoring()
+   private func checkMonitoring()
     {
         //var loggedCounter:Int = 0;
         //var itemsNotLogged:[String] = [];

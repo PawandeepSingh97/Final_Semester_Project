@@ -57,29 +57,13 @@ class Dialog:NSObject
     {
         responseToDisplay.append(error())
         BotResponse.append(error());
-        //return responseToDisplay;
+        brDelegate?.Nurse(response: self);
     }
     
     //HANDLE ERROR BY CREATING AN ERROR DIALOG
     open func error() -> String {
         return "Sorry, I didn't quite get that.\n Could you say that again ? ";
     }
-    
-    //This will cast the dialog as its original cast type
-     func castDialog() -> Dialog
-    {
-        
-        //get type of current instance
-        switch Intent {
-        case "Appointment":
-            return self as! AppointmentDialog;
-        default:
-            return self;
-        }
-        
-    
-    }
-    
     
     @objc open func promptHandler(sender:UIButton)
     {

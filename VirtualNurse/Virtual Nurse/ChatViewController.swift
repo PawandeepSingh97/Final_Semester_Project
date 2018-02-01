@@ -274,47 +274,45 @@ class ChatViewController: MessagesViewController {
     {
         //Query from LUIS
         //GET
-        dialogController?.query(text: patientquery, onComplete: { (response) in
-            
-            //Remove the ... from array
-            self.messages.removeLast();
-            
-            if response.isPrompt{ //if the question is a prompt
-                //pass the dialog response to the prompt delegate
-                self.dialogController?.Botdelegate.isPromptQuestion(promptDialog: response);
-            }
-            
-            
-            //get dialog from response first
-           // response.getDialog();//This will determine what to call
-            
-            //GET DIALOG AND PLACE IN UI
-            let responseToDisplay = response.responseToDisplay;
-            let botspeakmessage = response.BotResponse;
-            print("nurse responded : \(responseToDisplay)");
-            //let Botresponse = response.BotResponse; // this will when bot speaks
-            DispatchQueue.main.async {
-                //Update UI to remove ... and insert nurse response
-                
-                self.messagesCollectionView.deleteSections([self.messages.count]);
-                
-                
-                for botspeak in botspeakmessage
-                {
-                    //call bot speak also
-                    self.sttHelper.delegate?.BotSpeak(text: botspeak, translationRequired: false);
-                }
-                
-                for response in responseToDisplay //display messages in loop
-                {
-                    self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
-                    
-                    
-                }
-            }
-            
-            
-        })
+        dialogController?.query(text: patientquery);
+//        dialogController?.query(text: patientquery, onComplete: { (response) in
+//
+//            //Remove the ... from array
+//            self.messages.removeLast();
+//
+//            if response.isPrompt{ //if the question is a prompt
+//                //pass the dialog response to the prompt delegate
+//                self.dialogController?.Botdelegate.isPromptQuestion(promptDialog: response);
+//            }
+//
+//
+//            //GET DIALOG AND PLACE IN UI
+//            let responseToDisplay = response.responseToDisplay;
+//            let botspeakmessage = response.BotResponse;
+//            print("nurse responded : \(responseToDisplay)");
+//            //let Botresponse = response.BotResponse; // this will when bot speaks
+//            DispatchQueue.main.async {
+//                //Update UI to remove ... and insert nurse response
+//
+//                self.messagesCollectionView.deleteSections([self.messages.count]);
+//
+//
+//                for botspeak in botspeakmessage
+//                {
+//                    //call bot speak also
+//                    self.sttHelper.delegate?.BotSpeak(text: botspeak, translationRequired: false);
+//                }
+//
+//                for response in responseToDisplay //display messages in loop
+//                {
+//                    self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+//
+//
+//                }
+//            }
+//
+//
+//        })
     }
 
     
@@ -331,6 +329,17 @@ class ChatViewController: MessagesViewController {
 extension ChatViewController:BotResponseDelegate
 {
     func display(response: Dialog) {
+        
+        print("DISPLAYED");
+        //Remove the ... from array
+        self.messages.removeLast();
+        
+        self.messagesCollectionView.deleteSections([self.messages.count]);
+        
+        if response.isPrompt{ //if the question is a prompt
+            //pass the dialog response to the prompt delegate
+            self.dialogController?.Botdelegate.isPromptQuestion(promptDialog: response);
+        }
         
         
         for botspeak in response.BotResponse

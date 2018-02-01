@@ -30,7 +30,7 @@ class DialogController: NSObject {
     
     
     //TALK TO LUIS
-     func query(text:String,onComplete:((_:Dialog) -> Void)?)
+     func query(text:String)
     {
         LUISDataManager.queryLUIS(query: text) { (intent) in
             //Once determine INTENT FROM LUIS
@@ -51,9 +51,6 @@ class DialogController: NSObject {
             response.getDialog();//this will update the variables in dialog to display in UI or for bot to speak
             response.paDelegate = self;//set delegate of prompt here
             response.brDelegate = self;
-            
-
-            onComplete?(response);
         }
     }
     
@@ -160,7 +157,8 @@ class DialogController: NSObject {
         
         switch topic{
         case "Greeting":
-            dialog = GreetingDialog(dialogToCall: dialogToCall, patient: patient!);
+            break;
+         //   dialog = GreetingDialog(dialogToCall: dialogToCall, patient: patient!);
         case "Patient":
             dialog = PatientDialog(dialogToCall: dialogToCall,patient:patient!);
         case "Appointment":
@@ -182,7 +180,7 @@ class DialogController: NSObject {
     
     func defaultGreeting(patient:Patient) -> GreetingDialog
     {
-        var gd = GreetingDialog(dialogToCall: "", patient: patient);
+        let gd = GreetingDialog(dialogToCall: "", patient: patient);
         gd.getDialog();
         return gd
     }
@@ -201,6 +199,7 @@ extension DialogController:PromptAnsweredDelegate
     }
 }
 
+//GET DIALOG AND PASS IN TO DELEGATE
 extension DialogController:BotReplyDelegate
 {
     func Nurse(response: Dialog) {

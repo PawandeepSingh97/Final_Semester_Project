@@ -26,10 +26,16 @@ class GreetingDialog:Dialog
         
         //if patient says anything for me ?
         // will just get everything
+        switch self.dialog
+        {
+        case "Hello":
+            greetPatient();
+        default:
+            self.responseToDisplay.append(error())
+            self.BotResponse.append(error())
+        }
         
-        greetPatient();
-        getAppointment();
-        getMedication();
+
         
     }
     
@@ -40,6 +46,8 @@ class GreetingDialog:Dialog
         
         self.responseToDisplay.append(toDisplay)
         self.BotResponse.append(botReply);
+        
+        brDelegate?.Nurse(response: self);
     }
     
     func getAppointment()
