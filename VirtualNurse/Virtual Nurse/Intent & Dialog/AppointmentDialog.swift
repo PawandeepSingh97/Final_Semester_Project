@@ -35,6 +35,8 @@ class AppointmentDialog:Dialog {
             self.responseToDisplay.append(error())
             self.BotResponse.append(error())
         }
+        
+        
     }
     
 //================================================================================================================================================
@@ -71,6 +73,7 @@ class AppointmentDialog:Dialog {
         
         self.responseToDisplay.append(toDisplay)
         self.BotResponse.append(botReply)
+        brDelegate?.Nurse(response: self);
         //return ("Your appointment is in 12/12/2018");
     }
     
