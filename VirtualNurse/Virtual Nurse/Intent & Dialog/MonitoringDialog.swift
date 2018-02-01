@@ -39,6 +39,7 @@ class MonitoringDialog:Dialog
     func check()
     {
         var loggedCounter:Int = 0;
+        var itemsNotLogged:[String] = [];
         
         //call the controller
         monitorController.checkIfRecordExists { (Monitoring) in
@@ -46,22 +47,22 @@ class MonitoringDialog:Dialog
             //Virtual NurseLogic
             //Check which monitoring values are not log
             if (Monitoring.systolicBloodPressure != 0){ // !=0 means log already
-                
+                loggedCounter += 1;
             }
             if (Monitoring.glucose != 0){
-                
+                loggedCounter += 1;
             }
             if (Monitoring.heartRate != 0){
-                
+                loggedCounter += 1;
             }
             if (Monitoring.cigsPerDay != -1){
-               
+               loggedCounter += 1;
             }
             if (Monitoring.bmi != 0){
-                
+                loggedCounter += 1;
             }
             if (Monitoring.totalCholesterol != 0){
-                
+                loggedCounter += 1;
             }
         }
     }
