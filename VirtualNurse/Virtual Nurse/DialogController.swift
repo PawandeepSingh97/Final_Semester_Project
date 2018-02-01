@@ -14,6 +14,8 @@ protocol BotResponseDelegate:class
     func getBotPromptResponse(responseDialog:Dialog);
 }
 
+
+
 //Dialog Controller will interact with viewController,dialog and LUIS endpoint
 class DialogController: NSObject {
     
@@ -66,7 +68,7 @@ class DialogController: NSObject {
     //check stack maintains conversation
     //step1.1:ensure that conversation is within the same topic
     //else remove all the entire elements in stack
-    private func checkContext(elementToAdd:Dialog,entity:Entity?,hasEntity:Bool,topic:String)
+    private func checkContext(elementToAdd:Dialog,entity:Entity?,hasEntity:Bool,topic:String,iserrordialog:Bool)
     {
      //CHECK IF LAST ELEMENT MATCHES TYPE OF ELEMENT THAT IS ABOUT TO BE ADDED
         //IF THE TYPE IS SAME,ADD TO STACK
@@ -120,7 +122,18 @@ class DialogController: NSObject {
                 {
                     elementToAdd.entity = entity;
                 }
-                conversationContext.push(elementToAdd); //add new dialog
+                if iserrordialog
+                {
+                    let lastdialog = conversationContext.pop();
+                    lastdialog?.BotResponse = [];
+                    lastdialog?.responseToDisplay = [];
+                    conversationContext.push(lastdialog!);
+                }
+                else
+                {
+                        conversationContext.push(elementToAdd); //add new dialog
+                }
+                
                 //conversationContext.entities?.append(entity);
             }
         }
@@ -133,6 +146,7 @@ class DialogController: NSObject {
         var dialog:Dialog;
         
         var hasentity:Bool = false//default false
+        var iserrordialog = false;
 
         
         if entity == nil // if have no entity
@@ -142,6 +156,8 @@ class DialogController: NSObject {
         else {hasentity = true;}
         
         switch topic{
+        case "Greeting":
+            dialog = GreetingDialog(dialogToCall: dialogToCall, patient: patient!);
         case "Patient":
             dialog = PatientDialog(dialogToCall: dialogToCall,patient:patient!);
         case "Appointment":
@@ -150,10 +166,20 @@ class DialogController: NSObject {
             dialog = Dialog(dialogToCall: dialogToCall);//error dialog
         default:
             dialog = Dialog(dialogToCall: dialogToCall);//error dialog
+            iserrordialog = true;
         }
  
         
-        checkContext(elementToAdd: dialog,entity: entity, hasEntity: hasentity,topic:topic);
+        checkContext(elementToAdd: dialog,entity: entity, hasEntity: hasentity,topic:topic,iserrordialog:iserrordialog);
+    }
+    
+    
+    
+    func defaultGreeting(patient:Patient) -> GreetingDialog
+    {
+        var gd = GreetingDialog(dialogToCall: "", patient: patient);
+        gd.getDialog();
+        return gd
     }
     
     

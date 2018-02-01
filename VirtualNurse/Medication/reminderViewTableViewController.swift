@@ -48,7 +48,7 @@ class reminderViewTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 3
     }
 
     
@@ -56,28 +56,9 @@ class reminderViewTableViewController: UITableViewController {
 
          let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! reminderCustomCell
         
-        // Fetches the appropriate meal for the data source layout.
-        var booleanKing : Bool?
-        let mealBool = rowValues[5]
-        let mealName = rowValues[0]
         
-        if (mealBool == "true") {
-            
-            booleanKing = true
-        }
-        
-        else if (mealBool == "false") {
-            
-            booleanKing = false
-        }
-        
-        else{
-            print("BOOLEAN IS NULL!")
-        }
-        
-        cell.reminderLbl.text = self.medicineName
-        cell.switchControls.isOn = booleanKing!
-        
+        cell.reminderLbl.text = self.rowValues[0]
+     
         return cell
     }
  
@@ -148,12 +129,8 @@ class reminderViewTableViewController: UITableViewController {
             print("Viknes DON \(self.medicineName)")
             print("TAUFIK BATISAH WWE CHAMPION \(String(describing: self.checkEnabledOrNot))")
             print("Harikesh \(self.rowValues)")
-            
-            
+            print("Inner regions : \(counting123)")
             
         }
-     
-        print("What are the total number of records : \(counting123)")
     }
-
 }
