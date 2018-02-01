@@ -14,10 +14,16 @@ protocol PromptAnsweredDelegate {
     func User(hasAnswered:String,dialog:Dialog);
 }
 
+protocol BotReplyDelegate {
+    func Nurse(response:Dialog);
+}
+
+
 class Dialog:NSObject
 {
     var Intent: String { get { return "Dialog" } }
     var paDelegate:PromptAnsweredDelegate?;
+    var brDelegate:BotReplyDelegate?;
     
     //Store patient data
     var patient:Patient?;

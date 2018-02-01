@@ -12,6 +12,8 @@ protocol BotResponseDelegate:class
 {
     func isPromptQuestion(promptDialog:Dialog);
     func getBotPromptResponse(responseDialog:Dialog);
+    
+    func display(response:Dialog);
 }
 
 
@@ -48,6 +50,7 @@ class DialogController: NSObject {
             let response = self.dialogToRespond();
             response.getDialog();//this will update the variables in dialog to display in UI or for bot to speak
             response.paDelegate = self;//set delegate of prompt here
+            response.brDelegate = self;
             
 
             onComplete?(response);
@@ -162,6 +165,8 @@ class DialogController: NSObject {
             dialog = PatientDialog(dialogToCall: dialogToCall,patient:patient!);
         case "Appointment":
             dialog = AppointmentDialog(dialogToCall: dialogToCall, patient: patient!);
+        case "Monitor":
+            dialog = MonitoringDialog(dialogToCall: dialogToCall, patient: patient!);
         case "None":
             dialog = Dialog(dialogToCall: dialogToCall);//error dialog
         default:
@@ -196,5 +201,11 @@ extension DialogController:PromptAnsweredDelegate
     }
 }
 
+extension DialogController:BotReplyDelegate
+{
+    func Nurse(response: Dialog) {
+        Botdelegate.display(response: response);
+    }
+}
 
 
