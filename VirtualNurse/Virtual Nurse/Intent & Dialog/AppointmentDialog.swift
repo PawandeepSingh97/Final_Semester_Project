@@ -13,7 +13,7 @@ class AppointmentDialog:Dialog {
      override var Intent: String { get { return "Appointment" } }
     
     var appointment:AppointmentModel?;
-    
+    var appointmentList : [AppointmentModel] = []
     
     init(dialogToCall:String,patient:Patient) {
         super.init(dialogToCall: dialogToCall)
@@ -51,12 +51,15 @@ class AppointmentDialog:Dialog {
         //means is one date only
         if starting == ending
         {
+            getAppointment(start: starting, end: ending, issame: true);
             //call required method to get appointment details
         }
         else if starting != ending { //means is a date range (e.g when user ask for next week appointment)
             // call required method to get appointment details
             //if have appointment but is not next week
             //show message to first say, you have no appointment this week but you have an appointment on...
+            getAppointment(start: starting, end: ending, issame: false);
+            
         }
         
         //TODO: ONCE GET APPOINTMENT DETAILS, HAVE A METHOD TO READ STRING AS THOUGH A NURSE IS READING IT
@@ -134,6 +137,27 @@ class AppointmentDialog:Dialog {
     func updateAppointmentYes(){}
     
     func updateAppointmentNo(){}
+    
+    func getAppointment(start:Date,end:Date,issame:Bool){
+        AppointmentDataManager().getAppointmentByNRIC((patient?.NRIC)!) { (Appointment) in
+            
+    self.appointmentList.append(AppointmentModel(Appointment.id,Appointment.nric,Appointment.doctorName,Appointment.date,Appointment.time));
+            
+
+            if issame //asking if got appointment on a particualt date
+            {
+                for date in self.appointmentList{
+                    print("****************date \(date) **********************")
+                    print("****************date \(date) **********************")
+                }
+            }
+            else { //asking if got appointment in a week range
+                
+            }
+
+           
+        }
+    }
     
 //================================================================================================================================================
     
