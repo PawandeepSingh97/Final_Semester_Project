@@ -8,46 +8,130 @@
 
 import UIKit
 import Alamofire
+import UserNotifications
 
 class ViewAppointmentViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
-   
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
     
-     var appointmentList : [AppointmentModel] = []
-     var appointmentAvailableList: [DoctorModel] = []
-     var appointmentCheckedList: [DoctorModel] = []
-//     var DoctorName: String = ""
-
+    var appointmentList : [AppointmentModel] = []
+    var appointmentAvailableList: [DoctorModel] = []
+    var appointmentCheckedList: [DoctorModel] = []
+    var DoctorName: String = ""
+    //Patient Data
+    var patient:Patient?;
+    let loadValues = "Loading Appointment..."
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         navigationItem.rightBarButtonItem = editButtonItem
-
+        
+        
+    }
+    
+    func notify(){
+        let currentTime = self.convertTime(self.currentTime())
+        let patientNric:String = (patient?.NRIC)!
+//        let patientNric:String = "S9822477G"
+        print("currentTime \(currentTime)")
+        AppointmentDataManager().getAppointmentByNRIC(patientNric) { (Appointment) in
+            let dateStr = Appointment.time
+            let dateStrOfArray = dateStr.components(separatedBy: "-")
+            var timeList: Array = [String] ()
+            
+            if Appointment.date == self.getCurrentDate(){
+                
+                for DateStr in dateStrOfArray {
+                    
+                    timeList.append(DateStr)
+                    let time = self.convertTime(timeList[0])
+                    print("appointmentTIME \(time)")
+                    let appointmentTIMES = self.convertStringToTime(time)
+                    let appointmentTIME = appointmentTIMES - 600
+                    let newAppointmentDate = self.convertTimeToString(appointmentTIME)
+                    print("time0 \(appointmentTIMES)")
+                    print("time2 \(appointmentTIME)")
+                    print("time3 \(newAppointmentDate)")
+                    print("time4 \(currentTime)")
+                    if currentTime == newAppointmentDate{
+                        print("entered")
+                        self.appointmentNotification()
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func appointmentNotification(){
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            if(settings.authorizationStatus == .authorized){
+                self.scheduleNotifcation()
+            }else{
+                UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .badge, .alert], completionHandler: { (granted, error) in
+                    if let error = error{
+                        print(error)
+                    }else{
+                        if(granted){
+                            self.scheduleNotifcation()
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
+    func scheduleNotifcation(){
+        let timedNotificationIdentifier = "timedNotificationIdentifier"
+        let content = UNMutableNotificationContent()
+        content.title = "Appointment"
+        content.body = "Your appointment is in 10 mins time. Please be prepared"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0, repeats: false)
+        let notificationRequest = UNNotificationRequest(identifier: timedNotificationIdentifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(notificationRequest) { (error) in
+            if let error = error{
+                print(error)
+            }else{
+                print("Notification scheduled")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+       
         DispatchQueue.main.async {
+            
             self.appointmentList.removeAll()
             self.appointment()
-            self.appointmentChecked()
-//            self.getAppointmentChecked()
+            // self.appointmentChecked()
+            //self.getAppointmentChecked(self.DoctorName)
+            self.getAppointmentChecked("Dr David Cahill")
+            self.notify()
+            
+            
+            print("docplease \(self.DoctorName)")
         }
+       
     }
     
     func getAppointmentChecked(_ docName:String) {
-        
-        let patientNric:String = "S9822477G"
-//        let docName: String = "Dr David Cahill"
-        print("HIDoctorNAME \(docName)")
+        print("loading \(LoadingIndicatorView.show(loadValues))")
+         LoadingIndicatorView.show(loadValues)
+        let patientNric:String = (patient?.NRIC)!
+//        let patientNric:String = "S9822477G"
         AppointmentDataManager().getDoctorTableByNricName(patientNric, docName) { (Doctor) in
-            print("CHECHED DOCTOR \(Doctor)")
-             self.appointmentCheckedList.append(DoctorModel(Doctor.id, Doctor.patientName, Doctor.patientNric, Doctor.doctorName, Doctor.date, Doctor.time, Doctor.doctorSpeciality))
+            self.appointmentCheckedList.append(DoctorModel(Doctor.id, Doctor.patientName, Doctor.patientNric, Doctor.doctorName, Doctor.date, Doctor.time, Doctor.doctorSpeciality))
+            self.appointmentChecked()
+            
+           LoadingIndicatorView.hide()
         }
-
+        
     }
     
     func currentTime() -> String {
@@ -65,7 +149,7 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
         let dateChanged = dateFormatter.date(from: dateAsString)
         dateFormatter.dateFormat = "h:mm a"
         let Date12 = dateFormatter.string(from: dateChanged!)
-        
+        print("important \(Date12)")
         return "\(Date12)"
     }
     
@@ -88,7 +172,7 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
         let str =  formatter.string(from: date)
         return str
     }
-
+    
     
     func convertDate(_ Date:String) -> Date{
         let formatter = DateFormatter()
@@ -97,78 +181,107 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
         return str
     }
     
-    func appointmentChecked(){
-        let patientNric:String = "S9822477G"
+    func convertStringToTime(_ time:String) -> Date{
+        let inFormatter = DateFormatter()
+        inFormatter.locale = NSLocale(localeIdentifier: "en_SG") as Locale!
+        inFormatter.dateFormat = "HH:mm"
+        
+        let inStr = time
+        let date = inFormatter.date(from: inStr)!
+        
+        print(date)
+        return date
+    }
     
-
+    func convertTimeToString(_ time:Date) -> String{
+        
+        let outFormatter = DateFormatter()
+        outFormatter.locale = NSLocale(localeIdentifier: "en_SG") as Locale!
+        outFormatter.dateFormat = "hh:mm"
+        
+        let inStr = time
+        let outStr = outFormatter.string(from: inStr)
+        
+        print(outStr)
+        return outStr
+    }
+    
+    
+    func appointmentChecked(){
+        let patientNric:String = (patient?.NRIC)!
+         print("testing \(patientNric)")
+        
         //Call the getAppointmentByNRIC in AppointmentDataManager to retrieve appointment records
         AppointmentDataManager().getAppointmentByNRIC(patientNric) { (Appointment) in
             let dateStr = Appointment.time
             let dateStrOfArray = dateStr.components(separatedBy: "-")
             var timeList: Array = [String] ()
-
+            
             let appointmentDate = self.convertDate(Appointment.date)
             let currentDate = self.convertDate(self.getCurrentDate())
             
             if appointmentDate <= currentDate {
-
-                    for DateStr in dateStrOfArray {
-
-                        timeList.append(DateStr)
-                        let time = self.convertTime(timeList[0])
-                        let currentTime = self.convertTime(self.currentTime())
-
-                        if time <= currentTime{
-
+                 print("testing1 \(appointmentDate)")
+                for DateStr in dateStrOfArray {
+                    
+                    timeList.append(DateStr)
+                    let time = self.convertTime(timeList[0])
+                    let currentTime = self.convertTime(self.currentTime())
+                    
+                    if time <= currentTime{
+                       print("testing1 \(time)")
+                        AppointmentDataManager().getDoctorTableByAll(Appointment.nric, Appointment.doctorName, Appointment.time, Appointment.date, onComplete: { (Doctor) in
                             
-                            // Delete from doctor table
-                            AppointmentDataManager().getDoctorTableByAll(Appointment.nric, Appointment.doctorName, Appointment.time, Appointment.date, onComplete: { (Doctor) in
-                                print("appcheck \(self.appointmentCheckedList.count)")
-                                self.getAppointmentChecked(Doctor.doctorName)
-                                if self.appointmentCheckedList.count == 1{
-                                    let updateDoctorParams: Parameters = [
-                                        "time": "",
-                                        "date": "",
-                                        ]
-
-                                    AppointmentDataManager().patchDoctorRecord(Doctor.id, updateDoctorParams, success: { (success) in
-                                        print(success)
-                                    }, failure: { (error) in
-                                        print(error)
-                                    })
-                                } else{
+                            if self.appointmentCheckedList.count == 1{
+                                print("check1")
+                                let updateDoctorParameters: Parameters = [
+                                    "time": "",
+                                    "date": "",
+                                    ]
                                 
-                                    AppointmentDataManager().DeleteDoctorRecord(Doctor.id, success: { (success) in
-                                        print(success)
-                                    }, failure: { (error) in
-                                        print(error)
-                                    })
-                             }
-                            })
+                                AppointmentDataManager().patchDoctorRecord(Doctor.id, updateDoctorParameters, success: { (success) in
+                                    print(success)
+                                }, failure: { (error) in
+                                    print(error)
+                                })
+                            } else{
+                                print("check2")
+                                
+                                AppointmentDataManager().DeleteDoctorRecord(Doctor.id, success: { (success) in
+                                    print(success)
+                                }, failure: { (error) in
+                                    print(error)
+                                })
+                            }
                             
-                            //delete from appointment table
-                            AppointmentDataManager().DeleteAppointmentRecord(Appointment.id, success: { (success) in
-                                DispatchQueue.main.async {
-                                    self.appointmentList.removeAll()
-                                    self.appointment()
-                                    self.collectionView.reloadData()
-                                }
-                                print(success)
-                            }, failure: { (error) in
-                                print(error)
-                            })
+                        })
+                        
+                        //delete from appointment table
+                        AppointmentDataManager().DeleteAppointmentRecord(Appointment.id, success: { (success) in
+                            DispatchQueue.main.async {
+                                self.appointmentList.removeAll()
+                                self.appointment()
+                                self.collectionView.reloadData()
+
+                            }
+                            print(success)
+                        }, failure: { (error) in
+                            print(error)
+                        })
                     }
                 }
             }
+         
         }
     }
-
     
- 
+    
+    
     
     func appointment(){
-        let patientNric:String = "S9822477G"
-        
+        let patientNric:String = (patient?.NRIC)!
+ //       let patientNric:String = "S9822477G"
+        print("nrichello \(patientNric)")
         //Call the getAppointmentByNRIC in AppointmentDataManager to retrieve appointment records
         AppointmentDataManager().getAppointmentByNRIC(patientNric) { (Appointment) in
             //Retrieved results from Database
@@ -177,7 +290,7 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
             self.appointmentList.append(AppointmentModel(Appointment.id,Appointment.nric,Appointment.doctorName,Appointment.date,Appointment.time))
             
             self.collectionView.reloadData()
-
+            
         }
     }
     
@@ -190,11 +303,11 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
         let nric = ""
         return nric
     }
-
+    
     //collection view
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
+        
         return appointmentList.count
     }
     
@@ -205,7 +318,7 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
         cell.time.text = appointmentList[indexPath.row].time
         cell.date.text = appointmentList[indexPath.row].date
         print("id \(appointmentList[indexPath.row].id)")
-
+        
         cell.delegate = self
         
         //This creates the shadows and modifies the cards a little bit
@@ -237,7 +350,7 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
             }
         }
     }
-   
+    
     
     //pass appointment information to next page
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -265,24 +378,24 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
                     updateViewController.appoinmentItem = appointment
                     
                 }
-        
+                
             }
-
+            
         }
     }
-
+    
 }
 
 
 // delete button for collection view
 
 extension ViewAppointmentViewController: ViewAppointmentCollectionViewCellDelegate{
-
+    
     func delete(cell: ViewAppointmentCollectionViewCell ){
         let alert = UIAlertController(title: "Alert", message: "Do you want to cancel appointment", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-    
+            
             if let indexPath = self.collectionView?.indexPath(for: cell){
                 
                 let patientAppointmentDate = "\(self.appointmentList[indexPath.row].date)"
@@ -294,10 +407,10 @@ extension ViewAppointmentViewController: ViewAppointmentCollectionViewCellDelega
                     let doctorName = appointment.doctorName
                     
                     AppointmentDataManager().getDoctorTableByAll(patientNric, doctorName, patientAppointmentTime, patientAppointmentDate, onComplete: { (Doctor) in
-
+                        
                         
                         self.appointmentAvailableList.append(DoctorModel(Doctor.id, Doctor.patientName, Doctor.patientNric, Doctor.doctorName, Doctor.date, Doctor.time, Doctor.doctorSpeciality))
-
+                        
                         if self.appointmentAvailableList.count == 1{
                             print("number\(self.appointmentAvailableList.count)")
                             let updateDoctorParams: Parameters = [
@@ -321,7 +434,7 @@ extension ViewAppointmentViewController: ViewAppointmentCollectionViewCellDelega
                         
                     })
                     
-
+                    
                     //delete from appointment table
                     AppointmentDataManager().DeleteAppointmentRecord(patientAppointmentId, success: { (success) in
                         DispatchQueue.main.async {
@@ -333,7 +446,7 @@ extension ViewAppointmentViewController: ViewAppointmentCollectionViewCellDelega
                     }, failure: { (error) in
                         print(error)
                     })
-                 
+                    
                 })
                 
                 
@@ -344,3 +457,4 @@ extension ViewAppointmentViewController: ViewAppointmentCollectionViewCellDelega
     }
     
 }
+

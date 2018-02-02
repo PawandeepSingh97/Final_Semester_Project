@@ -17,22 +17,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select your Doctor" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jlq-NC-0zx">
-                                <rect key="frame" x="95" y="318" width="224" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PageHeader" translatesAutoresizingMaskIntoConstraints="NO" id="7Xa-0S-DiA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="436"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doctor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZk-YN-A80">
+                                <rect key="frame" x="168" y="165" width="103" height="26.333333333333343"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="0.96383008055780128" green="1" blue="0.95923827219910529" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select your Doctor" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jlq-NC-0zx">
+                                <rect key="frame" x="102" y="277" width="211" height="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.6072613441780822" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Doctor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1v-PR-mao">
-                                <rect key="frame" x="168" y="257" width="78" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fZk-YN-A80" firstAttribute="leading" secondItem="G1s-Jv-tfY" secondAttribute="leading" constant="168" id="1Xc-br-PKn"/>
+                            <constraint firstItem="Jlq-NC-0zx" firstAttribute="top" secondItem="fZk-YN-A80" secondAttribute="bottom" constant="85.666666666666657" id="81T-nd-AXm"/>
+                            <constraint firstItem="Jlq-NC-0zx" firstAttribute="leading" secondItem="G1s-Jv-tfY" secondAttribute="leading" constant="102" id="GBA-Uj-OGW"/>
+                            <constraint firstItem="7Xa-0S-DiA" firstAttribute="trailing" secondItem="G1s-Jv-tfY" secondAttribute="trailing" id="MTh-er-1e5"/>
+                            <constraint firstItem="7Xa-0S-DiA" firstAttribute="leading" secondItem="G1s-Jv-tfY" secondAttribute="leading" id="PZl-EZ-uAU"/>
+                            <constraint firstItem="G1s-Jv-tfY" firstAttribute="bottom" secondItem="7Xa-0S-DiA" secondAttribute="bottom" constant="300" id="lso-Lo-eGj"/>
+                            <constraint firstItem="fZk-YN-A80" firstAttribute="top" secondItem="G1s-Jv-tfY" secondAttribute="top" constant="145" id="qK2-DK-mfd"/>
+                            <constraint firstItem="G1s-Jv-tfY" firstAttribute="trailing" secondItem="Jlq-NC-0zx" secondAttribute="trailing" constant="101" id="qxd-jP-ZNl"/>
+                            <constraint firstItem="7Xa-0S-DiA" firstAttribute="top" secondItem="F1n-Vq-LYc" secondAttribute="top" id="rVO-LM-F71"/>
+                            <constraint firstItem="G1s-Jv-tfY" firstAttribute="trailing" secondItem="fZk-YN-A80" secondAttribute="trailing" constant="143" id="yQM-JF-f0j"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="G1s-Jv-tfY"/>
                     </view>
                     <connections>
@@ -212,7 +225,6 @@
                                             <state key="normal" title="Confirm"/>
                                             <connections>
                                                 <action selector="createAppointmentBtn:" destination="n7a-U4-ixl" eventType="touchUpInside" id="E2o-O0-Zq7"/>
-                                                <segue destination="Egd-xd-rT1" kind="unwind" identifier="unwindToVC1" unwindAction="unwindToVC1WithSegue:" id="gdl-6a-gK6"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -268,9 +280,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aaz-LX-GEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Egd-xd-rT1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1634.7826086956522" y="-162.22826086956522"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="PageHeader" width="375" height="442"/>
+    </resources>
 </document>

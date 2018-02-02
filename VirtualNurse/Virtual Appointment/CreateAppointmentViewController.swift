@@ -23,6 +23,8 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
      var doctorName: String = ""
      var appointmentDateList: Array = [String] ()
      var appointmentTimeList = [""]
+     //Patient Data
+     var patient:Patient?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,7 +183,7 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
             print("Item2 \(indexPath!)")
             if(indexPath != nil) {
                 
-               let patientNric:String = "S9822477G"
+               let patientNric:String = (patient?.NRIC)!
                 
                 let appointmentItem = self.data[(indexPath?.row)!]
                 let appointment = AppointmentModel(
