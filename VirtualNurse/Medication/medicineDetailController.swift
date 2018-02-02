@@ -30,6 +30,8 @@ class medicineDetailController: UIViewController {
         super.viewDidLoad()
          validatorFuncs()
         getMedicineDetails()
+        
+        shareBtn.layer.cornerRadius = 10.0
        
 
     }

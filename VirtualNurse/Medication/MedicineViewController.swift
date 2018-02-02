@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//import TextFieldEffects
 
 
 class MedicineViewController: UIViewController,  UIImagePickerControllerDelegate,
@@ -16,6 +16,7 @@ UINavigationControllerDelegate {
     var recievedArray : [String] = [String]()
     
     
+  //  @IBOutlet weak var medicineSearchJB: JiroTextField!
     // Codes that connect to the storyboard
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var scanMedsBtn: UIButton!
@@ -31,13 +32,22 @@ UINavigationControllerDelegate {
         
         // Makes the button to have rounded edges
         makeRoundedButton()
+       // searchBtn.backgroundColor = UIColor.blue  3F51B5
+        scanMedsBtn.backgroundColor = UIColor.init(hex: 0x3F51B5)
+        searchBtn.backgroundColor = UIColor.init(hex: 0x3F51B5)
+        
     }
     
     func makeRoundedButton(){
         
-        searchBtn.layer.cornerRadius = searchBtn.frame.height / 2
-        scanMedsBtn.layer.cornerRadius = scanMedsBtn.frame.height / 2
+//        searchBtn.layer.cornerRadius = searchBtn.frame.height / 2
+//        scanMedsBtn.layer.cornerRadius = scanMedsBtn.frame.height / 2
+        
+        searchBtn.layer.cornerRadius = 10.0
+        scanMedsBtn.layer.cornerRadius = 10.0
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

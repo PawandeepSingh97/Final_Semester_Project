@@ -53,7 +53,7 @@ UINavigationControllerDelegate {
         
         //makes button to have rounded edges
         scanBtn.layer.cornerRadius = scanBtn.frame.height / 2
-        
+        infoButtons.layer.cornerRadius = infoButtons.frame.height / 2
         // ask users permission whenever user wants to choose medicine image from library
         checkPermission()
         
@@ -154,6 +154,7 @@ UINavigationControllerDelegate {
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary // where the photo is taken from what source
+        //   imagePickerController.sourceType = .camera
         
         imagePickerController.delegate = self
         
@@ -228,6 +229,7 @@ UINavigationControllerDelegate {
                 self.scanBtn.isHidden = false
                 if
                     let error = error {
+                    //error will be shown here!
                     self.predictedName.text = error.localizedDescription
                 } else if
                     
@@ -272,20 +274,20 @@ UINavigationControllerDelegate {
                 }
                 
 
-                self.predictedName.text = self.predictValue[0]
-                self.predictedValue.text = "\(self.appendValues[0])% sure that it is \(self.predictValue[0])"
+                self.predictedName.text = self.predictValue[0] //The Final Predicted Name
+                self.predictedValue.text = "\(self.appendValues[0])% sure that it is \(self.predictValue[0])" // The Final Predicted Value
                 
-                
+                //testing
                 print("The first place goes to \(self.predictValue[0]) & \(self.appendValues[0])%")
-                
+                //testing
                 self.firstValues = NSString(string : self.appendValues[0]).floatValue
-                
+                //testing
                 print("THe first value it is \(self.firstValues)")
-
+                // check whether medicine probability is valid
                 self.checkProbable(valued: self.firstValues)
-                
+                //call the retrieve medicine function name
                 self.getMedicineDetails()
-                
+                // once values arrived , this stops the Loading Screen
                 LoadingIndicatorView.hide()
 
             }
@@ -307,6 +309,7 @@ UINavigationControllerDelegate {
             predictedValue.isHidden = true
             predictedName.isHidden = true
             nama = predictedName.text!
+            //  testing
             print("Nama Sama Sayang ? Tutkup Di Punya Satu ? : \(nama)")
             infoButtons.isHidden = true
             infoButtons.isEnabled = false
@@ -325,6 +328,7 @@ UINavigationControllerDelegate {
         else {
 
             nama = predictedName.text!
+            //testing
             print("Nama Sama Sayang ? Tutkup Di Punya Dua ? : \(nama)")
             infoButtons.isHidden = false
             infoButtons.isEnabled = true

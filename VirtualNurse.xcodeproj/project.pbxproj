@@ -107,6 +107,7 @@
 		5B412FA32021D3DB0001C3F7 /* showAppointmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F962021D3DB0001C3F7 /* showAppointmentDetailsViewController.swift */; };
 		5B412FA42021D3DB0001C3F7 /* modelPopupDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F972021D3DB0001C3F7 /* modelPopupDesign.swift */; };
 		5B412FA52021D3DB0001C3F7 /* showUpdateAppointmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B412F982021D3DB0001C3F7 /* showUpdateAppointmentDetailsViewController.swift */; };
+		5B7CEA5420238E5800DDEBEC /* icons8-compact-camera-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CEA5320238E5800DDEBEC /* icons8-compact-camera-50.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +238,7 @@
 		5B412F962021D3DB0001C3F7 /* showAppointmentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showAppointmentDetailsViewController.swift; sourceTree = "<group>"; };
 		5B412F972021D3DB0001C3F7 /* modelPopupDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modelPopupDesign.swift; sourceTree = "<group>"; };
 		5B412F982021D3DB0001C3F7 /* showUpdateAppointmentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showUpdateAppointmentDetailsViewController.swift; sourceTree = "<group>"; };
+		5B7CEA5320238E5800DDEBEC /* icons8-compact-camera-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-compact-camera-50.png"; sourceTree = "<group>"; };
 		64A45DFAECE5C072917E3BA8 /* Pods_VirtualNurse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualNurse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A34399E8B651217DC992D609 /* Pods-VirtualNurseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseTests/Pods-VirtualNurseTests.release.xcconfig"; sourceTree = "<group>"; };
 		B47553265F57198EB41746F7 /* Pods-VirtualNurseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualNurseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VirtualNurseTests/Pods-VirtualNurseTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				5B37648020185D3200069BAF /* Models */,
 				256749D4201825CE00F4A325 /* Styles */,
 				25FE9C3D1FEA5FDE00437BD6 /* AppDelegate.swift */,
+				5B7CEA5320238E5800DDEBEC /* icons8-compact-camera-50.png */,
 				25FE9C441FEA5FDE00437BD6 /* Assets.xcassets */,
 				25FE9C461FEA5FDE00437BD6 /* LaunchScreen.storyboard */,
 				25FE9C491FEA5FDE00437BD6 /* Info.plist */,
@@ -724,6 +727,7 @@
 				25FE9C481FEA5FDE00437BD6 /* LaunchScreen.storyboard in Resources */,
 				25FE9C451FEA5FDE00437BD6 /* Assets.xcassets in Resources */,
 				25FE9C431FEA5FDE00437BD6 /* Main.storyboard in Resources */,
+				5B7CEA5420238E5800DDEBEC /* icons8-compact-camera-50.png in Resources */,
 				25D2F6DA1FED01640075ACBD /* VNStoryboard.storyboard in Resources */,
 				5B412FA22021D3DB0001C3F7 /* CreateAppointmentStoryboard.storyboard in Resources */,
 			);
