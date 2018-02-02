@@ -15,7 +15,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     //PATIENT DATA
     // DATA PASSED FROM LOGIN
-    //IMRAN, CHANGE UR CODES USING THE VARIABLE
     var patient:Patient?;
     
     //    @IBOutlet weak var viewTodayResultsButton: UIButton!
@@ -24,14 +23,15 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     @IBOutlet weak var overallStatus: UIView!
     
     //Declaration of variables
-    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder"]
+    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder","Create Appointment","View Appointment","Health Data"]
     var monitoringImages: [String] = ["redBloodPressure","blueGlucose","pinkheart","orangeCig","greenWeight","ruler","redBloodPressure","blueGlucose","pinkheart","orangeCig","orangeCig"]
     var circleLogo: [String] = ["redOval","blueOval","pinkoval","orangeOval","greenOval","purpleOval"]
     var monitoredTicks: [String] = ["redTick","blueTick","pinkTick","orangeTick","greenTick","purpleTick"]
     var cellBackgroundColour: [Int] = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0
-        ,0x2196F3,0x2196F3]
-    var monitoringDataValue:[String] = ["0","0","0","0","0","0","0","0"]
+        ,0x2196F3,0x2196F3,0x2196F3,0x2196F3,0x2196F3]
+    var monitoringDataValue:[String] = ["0","0","0","0","0","0","0","0","0","0","0"]
     var cigValue:String="0 cigs";
+    var monitoringTitle:[String] = ["MEASURE","MEASURE","MEASURE","MEASURE","MEASURE","MEASURE","SEARCH","SET","BOOK","VIEW","CHECK"]
     
     
     
@@ -57,6 +57,9 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         //Call the DesignView function
         DesignView()
         
+        tabcontroller.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,13 +75,18 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        self.navigationController?.navigationBar.topItem?.title = "Home Dashboard"
+        
         //reload the collectionView
         checkIfRecordExists()
         
-        
-        
     }
     
+    @IBAction func logoutButtonClicked(_ sender: Any) {
+        print("Logout Button Clicked")
+    }
     //Number of items in a section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return monitoringData.count
@@ -127,7 +135,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         let measureButton = cell.viewWithTag(1) as! UIButton
        // let borderAlpha : CGFloat = 0.7
         //measureButton.frame = CGRect(x: 0, y: 120, width: 100, height: 30)
-        measureButton.setTitle("MEASURE", for: [])
+        measureButton.setTitle(monitoringTitle[indexPath.row], for: [])
         measureButton.setTitleColor(UIColor.white, for: [])
         measureButton.backgroundColor = UIColor(hex: self.cellBackgroundColour[indexPath.row])
         measureButton.layer.borderWidth = 1.0
@@ -147,37 +155,44 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         //Instatiate Monitoring Storyboard
         let storyboard = UIStoryboard(name:"MonitoringStoryboard" , bundle:nil)
         
+        
         //If returns fist section (Monitoring)
         if (indexPath.section == 0){
             //When button clicked navigate to different pages
             if(indexPath.row == 0){
                 //Navigation Programmitically
                 let BloodPressureViewController = storyboard.instantiateViewController(withIdentifier: "BloodPressureViewController") as! BloodPressureViewController
+                BloodPressureViewController.patient = patient
                 self.navigationController?.pushViewController(BloodPressureViewController, animated: true)
             }
             if(indexPath.row == 1){
                 //Navigation Programmitically
                 let GlucoseViewController = storyboard.instantiateViewController(withIdentifier: "GlucoseViewController") as! GlucoseViewController
+                GlucoseViewController.patient = patient
                 self.navigationController?.pushViewController(GlucoseViewController, animated: true)
             }
             if(indexPath.row == 2){
                 //Navigation Programmitically
                 let HeartRateViewController = storyboard.instantiateViewController(withIdentifier: "HeartRateViewController") as! HeartRateViewController
+                HeartRateViewController.patient = patient
                 self.navigationController?.pushViewController(HeartRateViewController, animated: true)
             }
             if(indexPath.row == 3){
                 //Navigation Programmitically
                 let CigaretteViewController = storyboard.instantiateViewController(withIdentifier: "CigaretteViewController") as! CigaretteViewController
+                CigaretteViewController.patient = patient
                 self.navigationController?.pushViewController(CigaretteViewController, animated: true)
             }
             if(indexPath.row == 4){
                 //Navigation Programmitically
                 let BMIViewController = storyboard.instantiateViewController(withIdentifier: "BMIViewController") as! BMIViewController
+                BMIViewController.patient = patient
                 self.navigationController?.pushViewController(BMIViewController, animated: true)
             }
             if(indexPath.row == 5){
                 //Navigation Programmitically
                 let CholesterolViewController = storyboard.instantiateViewController(withIdentifier: "CholesterolViewController") as! CholesterolViewController
+                CholesterolViewController.patient = patient
                 self.navigationController?.pushViewController(CholesterolViewController, animated: true)
             }
             if(indexPath.row == 6){
@@ -189,6 +204,22 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 //Navigation Programmitically
               let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
                 self.navigationController?.pushViewController(ReminderViewController, animated: true)
+            }
+            if(indexPath.row == 8){
+                //Navigation Programmitically
+                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+            }
+            if(indexPath.row == 9){
+                //Navigation Programmitically
+                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+            }
+            if(indexPath.row == 10){
+                //Navigation Programmitically
+                let MonitoringChartsViewController = storyboard.instantiateViewController(withIdentifier: "MonitoringChartsViewController") as! MonitoringChartsViewController
+                MonitoringChartsViewController.patient = patient
+                self.navigationController?.pushViewController(MonitoringChartsViewController, animated: true)
             }
         }
             //If return section 1 (Medication)
@@ -236,70 +267,12 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         return result
     }
     
-    //Get patient nric
-//    func getPatientNric() ->String{
-//        let patientNric = "S9822477G"
-//        return patientNric
-//    }
-    
-    //    //Check if monitoring record exists if not create one
-    //    func checkIfRecordExists(){
-    //
-    //        let todayDate:String = getTodayDate()
-    //        let patientNric:String = getPatientNric()
-    //
-    //        //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve monitoring records
-    //        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
-    //                        //Retrieved results from Database
-    //                        let retrievedPatientNric = monitoring.nric
-    //                        let retrievedDateCreated = monitoring.dateCreated
-    //
-    //                        //If record exists in database
-    //                        if (retrievedPatientNric == patientNric && retrievedDateCreated == todayDate){
-    //                            print("record exists")
-    //
-    //                        //Check if monitored, if monitored change from default logo to tick logo
-    //                        if (monitoring.systolicBloodPressure != 0){
-    //                           self.monitoringImages[0] = self.monitoredTicks[0]
-    //                        }
-    //                        if (monitoring.glucose != 0){
-    //                            self.monitoringImages[1] = self.monitoredTicks[1]
-    //                        }
-    //                        if (monitoring.heartRate != 0){
-    //                            self.monitoringImages[2] = self.monitoredTicks[2]
-    //                        }
-    //                        if (monitoring.cigsPerDay != -1){
-    //                            self.monitoringImages[3] = self.monitoredTicks[3]
-    //                        }
-    //                        if (monitoring.bmi != 0){
-    //                            self.monitoringImages[4] = self.monitoredTicks[4]
-    //                        }
-    //                        if (monitoring.totalCholesterol != 0){
-    //                            self.monitoringImages[5] = self.monitoredTicks[5]
-    //                        }
-    //                            //Reload the collection view
-    //                            self.CollectionView.reloadData()
-    //
-    //
-    //                            //If values are entered then predictCHD
-    //                            if (monitoring.heartRate != 0 && monitoring.diastolicBloodPressure != 0 && monitoring.systolicBloodPressure != 0 && monitoring.glucose != 0 && monitoring.cigsPerDay != -1 && monitoring.bmi != 0 && monitoring.totalCholesterol != 0){
-    //                                //Predict CHD
-    //                                self.predictCHD(id: monitoring.id, nric: monitoring.nric, gender: monitoring.gender, age: monitoring.age, education: monitoring.education, currentSmoker: monitoring.currentSmoker, cigsPerDay: monitoring.cigsPerDay, bpMedicine: monitoring.bpMedicine, prevalentStroke: monitoring.prevalentStroke, prevalentHypertension: monitoring.prevalentHypertension, diabetes: monitoring.diabetes, totalCholesterol: monitoring.totalCholesterol, systolicBloodPressure: monitoring.systolicBloodPressure, diastolicBloodPressure: monitoring.diastolicBloodPressure, bmi: monitoring.bmi, heartRate: monitoring.heartRate, glucose: monitoring.glucose)
-    //                            }
-    //                            else{
-    //                                self.chdPredictionLabel.text = "NO RISK OF HEART DISEASE"
-    //                            }
-    //
-    //                        }
-    //
-    //        }
-    //   }
     
     //Check if monitoring record exists if not create one
     func checkIfRecordExists(){
         
         //Retrieve from controller to checkIfRecordExists
-        MonitoringController().checkIfRecordExists { (monitoring) in
+        MonitoringController().checkIfRecordExists(patient: patient!) { (monitoring) in
             
             //Check if monitored, if monitored change from default logo to tick logo
             if (monitoring.systolicBloodPressure != 0){
@@ -341,8 +314,11 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             self.monitoringDataValue.append(self.cigValue)
             self.monitoringDataValue.append(bmiValue)
             self.monitoringDataValue.append(cholesterolValue)
-            self.monitoringDataValue.append("0")
-            self.monitoringDataValue.append("0")
+            self.monitoringDataValue.append("")
+            self.monitoringDataValue.append("")
+            self.monitoringDataValue.append("")
+            self.monitoringDataValue.append("")
+            self.monitoringDataValue.append("")
             
             //Reload the collection view
             self.CollectionView.reloadData()
@@ -362,7 +338,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     } //end of function
     
     
-    
+
     //Predict CHD
     func predictCHD(id:String, nric:String, gender:String, age:Int, education:String, currentSmoker:Bool, cigsPerDay:Int, bpMedicine:Bool, prevalentStroke:Bool, prevalentHypertension:Bool, diabetes:Bool, totalCholesterol:Int, systolicBloodPressure:Double, diastolicBloodPressure:Double, bmi:Double, heartRate:Double, glucose:Int) {
         
@@ -417,8 +393,8 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             //Animate the UI view when there is a risk
             UIView.animate(withDuration: 1, animations: {
                 self.overallStatus.backgroundColor = UIColor(hex:0xD50000)
-                self.overallStatus.frame.size.width += 10
-                self.overallStatus.frame.size.height += 10
+                //self.overallStatus.frame.size.width += 10
+                //self.overallStatus.frame.size.height += 10
             }) { _ in
                 UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
                     self.overallStatus.frame.origin.y -= 20
@@ -435,11 +411,12 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         
         //Retrive patient nric and today's date
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = (patient?.NRIC)!
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate,patient!) { (monitoring) in
             
+
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
             let retrievedDateCreated = monitoring.dateCreated
@@ -458,7 +435,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 ]
                 
                 //Update the tenYearCHD in the monitoring record
-                MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
+                MonitoringDataManager().patchMonitoringRecord(self.patient!,azureTableId,updatedParameters, success: { (success) in
                     print(success)
                 }) { (error) in
                     print(error)
@@ -478,8 +455,14 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             let chatNav = segue.destination as! ChatNavigationViewController
             chatNav.patient = patient!;
         }
+        if segue.identifier == "MonitoringChartsViewController"
+        {
+            let monitoringNav = segue.destination as! MonitoringChartsViewController
+            monitoringNav.patient = patient!;
+        }
         
     }
+    
     
     
 }
@@ -504,31 +487,37 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         if(item!.item == 0){
             //Navigation Programmitically
             let BloodPressureViewController = storyboard.instantiateViewController(withIdentifier: "BloodPressureViewController") as! BloodPressureViewController
+            BloodPressureViewController.patient = patient
             self.navigationController?.pushViewController(BloodPressureViewController, animated: true)
         }
         if(item!.item == 1){
             //Navigation Programmitically
             let GlucoseViewController = storyboard.instantiateViewController(withIdentifier: "GlucoseViewController") as! GlucoseViewController
+            GlucoseViewController.patient = patient
             self.navigationController?.pushViewController(GlucoseViewController, animated: true)
         }
         if(item!.item == 2){
             //Navigation Programmitically
             let HeartRateViewController = storyboard.instantiateViewController(withIdentifier: "HeartRateViewController") as! HeartRateViewController
+            HeartRateViewController.patient = patient
             self.navigationController?.pushViewController(HeartRateViewController, animated: true)
         }
         if(item!.item == 3){
             //Navigation Programmitically
             let CigaretteViewController = storyboard.instantiateViewController(withIdentifier: "CigaretteViewController") as! CigaretteViewController
+            CigaretteViewController.patient = patient
             self.navigationController?.pushViewController(CigaretteViewController, animated: true)
         }
         if(item!.item == 4){
             //Navigation Programmitically
             let BMIViewController = storyboard.instantiateViewController(withIdentifier: "BMIViewController") as! BMIViewController
+            BMIViewController.patient = patient
             self.navigationController?.pushViewController(BMIViewController, animated: true)
         }
         if(item!.item == 5){
             //Navigation Programmitically
             let CholesterolViewController = storyboard.instantiateViewController(withIdentifier: "CholesterolViewController") as! CholesterolViewController
+            CholesterolViewController.patient = patient
             self.navigationController?.pushViewController(CholesterolViewController, animated: true)
         }
         if(item!.item == 6){
@@ -543,6 +532,22 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
             self.navigationController?.pushViewController(ReminderViewController, animated: true)
         }
         //reminderViewTableViewController
+        if(item!.item == 8){
+            //Navigation Programmitically
+            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+        }
+        if(item!.item == 9){
+            //Navigation Programmitically
+            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+        }
+        if(item!.item == 10){
+            //Navigation Programmitically
+            let MonitoringChartsViewController = storyboard.instantiateViewController(withIdentifier: "MonitoringChartsViewController") as! MonitoringChartsViewController
+            MonitoringChartsViewController.patient = patient
+            self.navigationController?.pushViewController(MonitoringChartsViewController, animated: true)
+        }
 
     }
 }

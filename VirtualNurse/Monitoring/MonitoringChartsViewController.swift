@@ -16,47 +16,42 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
     
     @IBOutlet weak var chartsCollectionView: UICollectionView!
     var label = UILabel()
- 
+    
+    
+    //Declaration of Variables
+    var patient:Patient?;
+    
+    
     var cellBackgroundColour: [Int] = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0
     ,0x2196F3,0x2196F3,0x2196F3,0x2196F3,0x2196F3]
-    
     var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Top up","Reminder","Scan Medicine","Appointment"]
-    
     var monitoringDataValue:[String] = ["0","0","0","0","0","0"]
     var cigValue:String="Today: 0 cigs";
-    
-
-
     var bloodPressureData: [CGFloat] = [0]
     var glucoseData: [CGFloat] = [0]
     var heartRateData: [CGFloat] = [0]
     var cigsData: [CGFloat] = [0]
     var bmiData: [CGFloat] = [0]
     var cholestrolData: [CGFloat] = [0]
-    
-    // simple line with custom x axis labels
-//    var xLabels: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var xLabels:[String] = ["0"]
-    
     var allWeekDates:[String] = ["0"]
     
     //Retrieve all dates
     var dates:[String] = ["0"]
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-       //Get current days in a week
        //Load all data as default
        setDefaultChartData()
-        
        checkIfRecordExists()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //Load all data as default
         setDefaultChartData()
-        
         checkIfRecordExists()
     }
 
@@ -68,7 +63,6 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
     //Number of items in a section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,13 +81,11 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         label.text = "..."
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.center
-        //self.view.addSubview(label)
         views["label"] = label
-        //            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-|", options: [], metrics: nil, views: views))
-        //            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-80-[label]", options: [], metrics: nil, views: views))
+
         
         
-        //Blood Pressure
+        //Blood Pressure chart
         if(indexPath.row == 0){
         cell.monitoringName.text = monitoringData[indexPath.row]
         cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
@@ -115,7 +107,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         views["chart"] = cell.line
         }
         
-        //Glucose
+        //Glucose chart
         if(indexPath.row == 1){
             cell.monitoringName.text = monitoringData[indexPath.row]
             cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
@@ -136,7 +128,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
             //self.view.addSubview(line)
             views["chart"] = cell.line
         }
-        //Heart Rate
+        //Heart Rate chart
         if(indexPath.row == 2){
             cell.monitoringName.text = monitoringData[indexPath.row]
             cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
@@ -157,7 +149,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
             //self.view.addSubview(line)
             views["chart"] = cell.line
         }
-        //Cigs
+        //Cigs chart
         if(indexPath.row == 3){
             cell.monitoringName.text = monitoringData[indexPath.row]
             cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
@@ -179,7 +171,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
             views["chart"] = cell.line
         }
         
-        //BMI
+        //BMI chart
         if(indexPath.row == 4){
             cell.monitoringName.text = monitoringData[indexPath.row]
             cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
@@ -201,7 +193,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
             views["chart"] = cell.line
         }
         
-        //Cholestrol
+        //Cholestrol chart
         if(indexPath.row == 5){
             cell.monitoringName.text = monitoringData[indexPath.row]
             cell.monitoringTodayValue.text = monitoringDataValue[indexPath.row]
@@ -243,9 +235,11 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
 //        label.text = "x: \(x)     y: \(yValues)"
     }
     
+    
+    //Segement Clicked -> Week/Month/Year
     @IBAction func segementedControlClicked(_ sender: Any) {
         
-            //Set it to all default Value
+        //Set it to all default Value
             self.bloodPressureData = [0,0,0,0,0,0,0,0]
             self.glucoseData = [0,0,0,0,0,0,0,0]
             self.heartRateData = [0,0,0,0,0,0,0,0]
@@ -258,7 +252,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
             let endDate = dates[6]
             xLabels.removeAll()
 
-        MonitoringDataManager().getFilteredMonitoringRecordsBasedOnDate(startDate,endDate, "S9822477G") { (Monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecordsBasedOnDate(startDate,endDate, (patient?.NRIC)!) { (Monitoring) in
                 
                 //If segment week is clicked
                 if(self.segmentedControl.selectedSegmentIndex == 0){
@@ -288,8 +282,10 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
                         self.chartsCollectionView.reloadData()
 
                 }
-                // If segment month is clicked
+            
+                 // If segment month is clicked
                 if(self.segmentedControl.selectedSegmentIndex == 1){
+                   
                     //Set it to all default Value
                     self.bloodPressureData = [0,0,0,0,0,0,0,0,0,0,0,0]
                     self.glucoseData = [0,0,0,0,0,0,0,0,0,0,0,0]
@@ -299,10 +295,12 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
                     self.cholestrolData = [0,0,0,0,0,0,0,0,0,0,0,0]
                     
                     self.xLabels.removeAll()
+                    //Update the xLabels
                     self.xLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
                     self.chartsCollectionView.reloadData()
                 }
-                //If segement is click
+            
+            //If segement is click
                 if(self.segmentedControl.selectedSegmentIndex == 2){
                     //Set it to all default Value
                     self.bloodPressureData = [0,0,0,0,0]
@@ -313,6 +311,7 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
                     self.cholestrolData = [0,0,0,0,0]
                     
                     self.xLabels.removeAll()
+                    //Update the xLabels
                     self.xLabels = ["2016","2017","2018","2018","2016","2017","2018","2018","2016","2017","2018","2018"]
                     self.chartsCollectionView.reloadData()
                 }
@@ -330,7 +329,6 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         }
         
         //print(mondaysDate.description(with: .current))
-        
         
         let calendar = Calendar.current
         
@@ -382,12 +380,9 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
         self.bmiData = [0,0,0,0,0,0,0,0]
         self.cholestrolData = [0,0,0,0,0,0,0,0]
         
-        MonitoringDataManager().getFilteredMonitoringRecordsBasedOnDate(startDate,endDate, "S9822477G") { (Monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecordsBasedOnDate(startDate,endDate, (patient?.NRIC)!) { (Monitoring) in
             
                 self.xLabels.removeAll()
-                //self.data.removeAll()
-                //self.data2.removeAll()
-                //self.data3.removeAll()
                 let updatedxLabels = self.getAllDatesInCurrentWeek()
                 self.xLabels = updatedxLabels
             
@@ -417,9 +412,8 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
     
     //Check if monitoring record exists if not create one
     func checkIfRecordExists(){
-        
         //Retrieve from controller to checkIfRecordExists
-        MonitoringController().checkIfRecordExists { (monitoring) in
+        MonitoringController().checkIfRecordExists(patient: patient!) { (monitoring) in
             
             //Retrieve bloopPressure, Glucose, Heartrate, cigarette, bmi, cholesterol value
             let bloodPressureValue = "Today: \(monitoring.systolicBloodPressure)"

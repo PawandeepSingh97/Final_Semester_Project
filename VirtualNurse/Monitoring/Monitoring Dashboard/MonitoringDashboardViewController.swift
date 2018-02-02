@@ -17,6 +17,8 @@ class MonitoringDashboardViewController:UIViewController, UICollectionViewDelega
     @IBOutlet weak var chdStatus: UIView!
     
     let cellScaling: CGFloat = 0.6
+    
+    var patient: Patient?
  
     //Declating Variables
     var monitoringData:[String] = ["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol"]
@@ -220,10 +222,10 @@ class MonitoringDashboardViewController:UIViewController, UICollectionViewDelega
         
         //Retrive patient nric and today's date
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = "S9822477G"
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patient!) { (monitoring) in
             
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
@@ -243,7 +245,7 @@ class MonitoringDashboardViewController:UIViewController, UICollectionViewDelega
                 ]
                 
                 //Update the tenYearCHD in the monitoring record
-                MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
+                MonitoringDataManager().patchMonitoringRecord(self.patient!,azureTableId,updatedParameters, success: { (success) in
                     print(success)
                 }) { (error) in
                     print(error)
@@ -259,10 +261,10 @@ class MonitoringDashboardViewController:UIViewController, UICollectionViewDelega
     func loadAllMonitoringRecords(){
         
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = "S9822477G"
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patient!) { (monitoring) in
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
             let retrievedDateCreated = monitoring.dateCreated

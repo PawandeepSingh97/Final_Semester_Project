@@ -14,6 +14,9 @@ class ViewTodayResultsViewController: UIViewController, UICollectionViewDelegate
     
     let cellScaling: CGFloat = 0.6
     
+    
+    var patient:Patient?
+    
     var monitoringData:[String] = ["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol"]
     var cellBackgroundColour = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0]
     var monitoringDataValue:[String] = ["0","0","0","0","0","0"]
@@ -119,10 +122,10 @@ class ViewTodayResultsViewController: UIViewController, UICollectionViewDelegate
     func loadAllMonitoringRecords(){
         
         let todayDate:String = helperClass().getTodayDate()
-        let patientNric:String = helperClass().getPatientNric()
+        let patientNric:String = "S9822477G"
         
         //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve monitoring records
-        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
+        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patient!) { (monitoring) in
             //Retrieved results from Database
             let retrievedPatientNric = monitoring.nric
             let retrievedDateCreated = monitoring.dateCreated

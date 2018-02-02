@@ -18,6 +18,9 @@ class CholesterolViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     var slidervalue = 0
     
+    //Patient Data
+    var patient:Patient?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,55 +69,28 @@ class CholesterolViewController: UIViewController {
     
     @IBAction func submitButtonClicked(_ sender: Any) {
         
-//        //Retrive patient nric and today's date
-//        let todayDate:String = helperClass().getTodayDate()
-//        let patientNric:String = helperClass().getPatientNric()
-//        
-//        //Call the getFilteredMonitoringRecords in MonitoringDataManager to retrieve specific id in the monitoring records
-//        MonitoringDataManager().getFilteredMonitoringRecords(todayDate, patientNric) { (monitoring) in
-//            
-//            //Retrieved results from Database
-//            let retrievedPatientNric = monitoring.nric
-//            let retrievedDateCreated = monitoring.dateCreated
-//            
-//            //If record exists in database
-//            if (retrievedPatientNric == patientNric && retrievedDateCreated == todayDate){
-//                print("record exists")
-//                
-//                //Get the azure table unique id
-//                let azureTableId = monitoring.id
-//                
-//                //Get the cholesterol value
-                 let cholesterolValue = Int(self.cholesterolLabel.text!)
-                 MonitoringController().sumbitMonitoringValues(monitoringName:"totalCholesterol", monitoringValue: cholesterolValue!)
+         let cholesterolValue = Int(self.cholesterolLabel.text!)
+
         
-        
-//
-//                
-//                //Declare updated parameters
-//                let updatedParameters: Parameters = [
-//                    "totalCholesterol": cholesterolValue!,
-//                    ]
-//                
-//                //Update the cholesterol in the monitoring record
-//                MonitoringDataManager().patchMonitoringRecord(azureTableId,updatedParameters, success: { (success) in
-//                    print(success)
-//                }) { (error) in
-//                    print(error)
-//                }
-//                
+
                 //Check if cholesterolValue is in healthy range
-                if (cholesterolValue! <= 200){
-                    self.showAlert(message: "Good Job! You have a desirable cholesterol level")
+                if (cholesterolValue! >= 70 && cholesterolValue! <= 100){
+                    self.showAlert(message: "Cholesterol value inserted successfully.")
+                    MonitoringController().sumbitMonitoringValues(patient:self.patient!,monitoringName:"totalCholesterol", monitoringValue: cholesterolValue!)
                 }
-                else {
-                    self.showAlert(message: "Please keep yourself healthy. You are having a unhealthy cholesterol level")
+                else if (cholesterolValue! < 70){
+                    self.showAlert(message: "Please check whether you entered valid cholesterol value.")
                 }
-//
-//            }
-//        }
-        
-       
+                    //Check if cholesterol is in healthy range
+                else if (cholesterolValue! > 200){
+                    self.showAlert(message: "Please check whether you entered valid cholesterol value.")
+                }
+                    //Check if cholesterol is in healthy range
+                 else {
+                    self.showAlert(message: "cholesterol value inserted successfully.")
+                    MonitoringController().sumbitMonitoringValues(patient:self.patient!,monitoringName:"totalCholesterol", monitoringValue: cholesterolValue!)
+                   }
+
         
     }
     

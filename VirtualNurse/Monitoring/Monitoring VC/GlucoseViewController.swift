@@ -17,6 +17,10 @@ class GlucoseViewController: UIViewController {
     @IBOutlet weak var glucoseSlider: Slider!
     @IBOutlet weak var submitButton: UIButton!
     var slidervalue = 0
+    
+    //Patient Data
+    var patient:Patient?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,7 +71,7 @@ class GlucoseViewController: UIViewController {
                     //Check if glucose is in healthy range
                     if (glucoseValue! >= 70 && glucoseValue! <= 100){
                         self.showAlert(message: "Glucose value inserted successfully.")
-        MonitoringController().sumbitMonitoringValues(monitoringName:"glucose",monitoringValue: glucoseValue!)
+        MonitoringController().sumbitMonitoringValues(patient:self.patient!,monitoringName:"glucose",monitoringValue: glucoseValue!)
                     }
                     //Check if glucose is in healthy range
                     else if (glucoseValue! < 70){
@@ -80,7 +84,7 @@ class GlucoseViewController: UIViewController {
                     //Check if glucose is in healthy range
                     else {
                         self.showAlert(message: "Glucose value inserted successfully.")
-                        MonitoringController().sumbitMonitoringValues(monitoringName:"glucose",monitoringValue: glucoseValue!)
+                        MonitoringController().sumbitMonitoringValues(patient:self.patient!,monitoringName:"glucose",monitoringValue: glucoseValue!)
                      }
         
           
