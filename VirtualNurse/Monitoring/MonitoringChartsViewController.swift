@@ -20,6 +20,8 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
     
     //Declaration of Variables
     var patient:Patient?;
+    
+    
     var cellBackgroundColour: [Int] = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0
     ,0x2196F3,0x2196F3,0x2196F3,0x2196F3,0x2196F3]
     var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Top up","Reminder","Scan Medicine","Appointment"]

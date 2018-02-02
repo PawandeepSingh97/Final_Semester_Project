@@ -212,7 +212,7 @@
                                 </constraints>
                                 <state key="normal" image="pinkoval"/>
                                 <connections>
-                                    <segue destination="KSH-iF-P2Q" kind="push" id="UWN-xO-wEq"/>
+                                    <action selector="viewChartsButton:" destination="RsM-PB-jFk" eventType="touchUpInside" id="uAv-Zc-BZy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zk0-i9-Uhp">
@@ -443,7 +443,7 @@
             </objects>
             <point key="canvasLocation" x="5713.04347826087" y="-774.45652173913049"/>
         </scene>
-        <!--Monitoring Charts View Controller-->
+        <!--Health Data-->
         <scene sceneID="U6v-jZ-Ach">
             <objects>
                 <viewController storyboardIdentifier="MonitoringChartsViewController" id="gvO-OI-yjQ" customClass="MonitoringChartsViewController" customModule="VirtualNurse" customModuleProvider="target" sceneMemberID="viewController">
@@ -452,7 +452,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YTD-1F-cwR">
-                                <rect key="frame" x="20" y="148" width="374" height="568"/>
+                                <rect key="frame" x="20" y="148" width="374" height="519"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gzd-PB-YxZ">
                                     <size key="itemSize" width="372" height="230"/>
@@ -542,7 +542,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4sT-Fv-xKH"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Health Data" id="Im5-aN-MbY"/>
                     <navigationItem key="navigationItem" id="aU3-1V-mTF"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chartsCollectionView" destination="YTD-1F-cwR" id="F1j-wj-PYa"/>
                         <outlet property="segmentedControl" destination="J4a-gx-IdF" id="bOM-hU-gb3"/>
