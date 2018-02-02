@@ -23,12 +23,12 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     @IBOutlet weak var overallStatus: UIView!
     
     //Declaration of variables
-    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder","Create Appointment","View Appointment","Health Data"]
-    var monitoringImages: [String] = ["redBloodPressure","blueGlucose","pinkheart","orangeCig","greenWeight","ruler","redBloodPressure","blueGlucose","pinkheart","orangeCig","orangeCig"]
+    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder","Add Appointment","View Appointment","Health Data"]
+    var monitoringImages: [String] = ["redBloodPressure","blueGlucose","pinkheart","orangeCig","greenWeight","ruler","redBloodPressure","blueGlucose","CreateApp","ViewApp","HealthData"]
     var circleLogo: [String] = ["redOval","blueOval","pinkoval","orangeOval","greenOval","purpleOval"]
     var monitoredTicks: [String] = ["redTick","blueTick","pinkTick","orangeTick","greenTick","purpleTick"]
     var cellBackgroundColour: [Int] = [0xF44336,0x3F51B5,0xE91E63,0xFF9800,0x009688,0x9C27B0
-        ,0x2196F3,0x2196F3,0x2196F3,0x2196F3,0x2196F3]
+        ,0x2196F3,0x2196F3,0x00BCD4,0x00BCD4,0x00BCD4]
     var monitoringDataValue:[String] = ["0","0","0","0","0","0","0","0","0","0","0"]
     var cigValue:String="0 cigs";
     var monitoringTitle:[String] = ["MEASURE","MEASURE","MEASURE","MEASURE","MEASURE","MEASURE","SEARCH","SET","BOOK","VIEW","CHECK"]
@@ -154,6 +154,10 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         
         //Instatiate Monitoring Storyboard
         let storyboard = UIStoryboard(name:"MonitoringStoryboard" , bundle:nil)
+        //Instatiate CreateAppointment Storyboard
+        let CreateAppointmentStoryboard = UIStoryboard(name:"CreateAppointmentStoryboard" , bundle:nil)
+        //Instatiate ViewAppointment Storyboard
+        let ViewAppointmentStoryboard = UIStoryboard(name:"ViewAppointmentStoryboard" , bundle:nil)
         
         
         //If returns fist section (Monitoring)
@@ -207,11 +211,16 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             }
             if(indexPath.row == 8){
                 //Navigation Programmitically
-               
+                let CreateAppointmentViewContoller = CreateAppointmentStoryboard.instantiateViewController(withIdentifier: "doctorViewController") as! doctorViewController
+                CreateAppointmentViewContoller.patient = patient
+                self.navigationController?.pushViewController(CreateAppointmentViewContoller, animated: true)
             }
             if(indexPath.row == 9){
                 //Navigation Programmitically
-
+                let ViewAppointmentViewController = ViewAppointmentStoryboard.instantiateViewController(withIdentifier: "ViewAppointmentViewController") as! ViewAppointmentViewController
+                print("viewappointment \(patient)")
+                ViewAppointmentViewController.patient = patient
+                self.navigationController?.pushViewController(ViewAppointmentViewController, animated: true)
             }
             if(indexPath.row == 10){
                 //Navigation Programmitically
@@ -478,7 +487,10 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         
         //Instatiate Medicine Storyboard
         let MedicationStoryboard = UIStoryboard(name:"MedicationStoryboard" , bundle:nil)
-        
+        //Instatiate CreateAppointment Storyboard
+        let CreateAppointmentStoryboard = UIStoryboard(name:"CreateAppointmentStoryboard" , bundle:nil)
+        //Instatiate ViewAppointment Storyboard
+        let ViewAppointmentStoryboard = UIStoryboard(name:"ViewAppointmentStoryboard" , bundle:nil)
         
         
         //When button clicked navigate to different pages
@@ -532,11 +544,15 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         //reminderViewTableViewController
         if(item!.item == 8){
             //Navigation Programmitically
-          
+            let CreateAppointmentViewContoller = CreateAppointmentStoryboard.instantiateViewController(withIdentifier: "doctorViewController") as! doctorViewController
+            CreateAppointmentViewContoller.patient = patient
+            self.navigationController?.pushViewController(CreateAppointmentViewContoller, animated: true)
         }
         if(item!.item == 9){
             //Navigation Programmitically
-           
+            let ViewAppointmentViewController = ViewAppointmentStoryboard.instantiateViewController(withIdentifier: "ViewAppointmentViewController") as! ViewAppointmentViewController
+            ViewAppointmentViewController.patient = patient
+            self.navigationController?.pushViewController(ViewAppointmentViewController, animated: true)
         }
         if(item!.item == 10){
             //Navigation Programmitically
