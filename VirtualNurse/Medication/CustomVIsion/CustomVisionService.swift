@@ -9,7 +9,9 @@
 import Foundation
 class CustomVisionService{
     
-var preductionUrl = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.1/Prediction/9e39ab45-846f-4389-aa3a-b9042b289f2f/image?iterationId=1b3f2e0c-593c-4e8c-b28b-dc586302090f"
+//var preductionUrl = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.1/Prediction/9e39ab45-846f-4389-aa3a-b9042b289f2f/image?iterationId=1b3f2e0c-593c-4e8c-b28b-dc586302090f"
+    var preductionUrl = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.1/Prediction/9e39ab45-846f-4389-aa3a-b9042b289f2f/image"
+    
 var predictionKey = "6074b2b8ea7a447f8199182e49f9c3a0"
 var contentType = "application/octet-stream"
 

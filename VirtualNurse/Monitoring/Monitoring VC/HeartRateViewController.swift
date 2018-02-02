@@ -143,6 +143,7 @@ class HeartRateViewController: UIViewController {
         let storyboard = UIStoryboard(name:"MonitoringStoryboard" , bundle:nil)
         //Navigation Programmitically
         let ManualHeartRateViewController = storyboard.instantiateViewController(withIdentifier: "ManualHeartRateViewController") as! ManualHeartRateViewController
+        ManualHeartRateViewController.patient = patient
         self.navigationController?.pushViewController(ManualHeartRateViewController, animated: true)
     }
     

@@ -23,6 +23,7 @@ class MonitoringDialog:Dialog
     init(dialogToCall:String,patient:Patient) {
         super.init(dialogToCall: dialogToCall)
         self.patient = patient;
+        
     }
     
     override func getDialog() {
@@ -78,32 +79,67 @@ class MonitoringDialog:Dialog
     //create func to call from db
    private func checkMonitoring()
     {
-        
-        //Add the patient Object as parameter.....
-//        //call the controller
-//        monitorController.checkIfRecordExists { (Monitoring) in
-//            //Put if else
-//            //Virtual NurseLogic
-//            //Check which monitoring values are not log
-//            if (Monitoring.systolicBloodPressure != 0){
-//                
-//            }
-//            if (Monitoring.glucose != 0){
-//                
-//            }
-//            if (Monitoring.heartRate != 0){
-//                
-//            }
-//            if (Monitoring.cigsPerDay != -1){
-//               
-//            }
-//            if (Monitoring.bmi != 0){
-//                
-//            }
-//            if (Monitoring.totalCholesterol != 0){
-//                
-//            }
-//        }
+        //var loggedCounter:Int = 0;
+        //var itemsNotLogged:[String] = [];
+    
+        //call the controller
+        monitorController.checkIfRecordExists(patient: self.patient!) { (Monitoring) in
+            //Put if else
+            //Virtual NurseLogic
+            //Check which monitoring values are not log
+            if (Monitoring.systolicBloodPressure != 0){ // !=0 means log already
+                self.loggedCounter += 1;
+                print("LOG BLOOD PRESSURE ALREADY ")
+            }
+            else {
+                self.itemsnotLogged.append("Blood Pressure")
+                print("NEVER LOG BLOOD PRESSURE ALREADY ")
+            }
+            if (Monitoring.glucose != 0){
+                self.loggedCounter += 1;
+                
+            }
+            else{
+                self.itemsnotLogged.append("Glucose")
+            }
+            if (Monitoring.heartRate != 0){
+                self.loggedCounter += 1;
+                
+            }
+            else
+            {
+                 self.itemsnotLogged.append("Heart Rate")
+            }
+            if (Monitoring.cigsPerDay != -1){
+               self.loggedCounter += 1;
+                
+            }
+            else
+            {
+                 self.itemsnotLogged.append("Ciggerate")
+            }
+            if (Monitoring.bmi != 0){
+                self.loggedCounter += 1;
+                
+            }
+            else
+            {
+                 self.itemsnotLogged.append("BMI")
+            }
+            if (Monitoring.totalCholesterol != 0){
+                self.loggedCounter += 1;
+                
+            }
+            else{
+                 self.itemsnotLogged.append("Cholesterol Intake")
+            }
+            
+            //ONCE GOT DATA FROM MONITORING DB
+            //CALL THE DIALOG TO DISPLAY MESSAGE AND ITS CONTENT
+            self.getMonitoring(self.loggedCounter, self.itemsnotLogged);
+            
+        }
     }
     
 }
+

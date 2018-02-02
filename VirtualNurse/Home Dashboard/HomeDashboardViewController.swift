@@ -31,6 +31,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         ,0x2196F3,0x2196F3,0x00BCD4,0x00BCD4,0x00BCD4]
     var monitoringDataValue:[String] = ["0","0","0","0","0","0","0","0","0","0","0"]
     var cigValue:String="0 cigs";
+    var monitoringTitle:[String] = ["MEASURE","MEASURE","MEASURE","MEASURE","MEASURE","MEASURE","SEARCH","SET","BOOK","VIEW","CHECK"]
     
     
     
@@ -74,11 +75,18 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        self.navigationController?.navigationBar.topItem?.title = "Home Dashboard"
+        
         //reload the collectionView
         checkIfRecordExists()
         
     }
     
+    @IBAction func logoutButtonClicked(_ sender: Any) {
+        print("Logout Button Clicked")
+    }
     //Number of items in a section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return monitoringData.count
@@ -127,7 +135,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         let measureButton = cell.viewWithTag(1) as! UIButton
        // let borderAlpha : CGFloat = 0.7
         //measureButton.frame = CGRect(x: 0, y: 120, width: 100, height: 30)
-        measureButton.setTitle("MEASURE", for: [])
+        measureButton.setTitle(monitoringTitle[indexPath.row], for: [])
         measureButton.setTitleColor(UIColor.white, for: [])
         measureButton.backgroundColor = UIColor(hex: self.cellBackgroundColour[indexPath.row])
         measureButton.layer.borderWidth = 1.0
@@ -150,6 +158,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         let CreateAppointmentStoryboard = UIStoryboard(name:"CreateAppointmentStoryboard" , bundle:nil)
         //Instatiate ViewAppointment Storyboard
         let ViewAppointmentStoryboard = UIStoryboard(name:"ViewAppointmentStoryboard" , bundle:nil)
+        
         
         //If returns fist section (Monitoring)
         if (indexPath.section == 0){
@@ -197,8 +206,8 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             }
             if(indexPath.row == 7){
                 //Navigation Programmitically
-              let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+//              let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//                self.navigationController?.pushViewController(ReminderViewController, animated: true)
             }
             if(indexPath.row == 8){
                 //Navigation Programmitically
@@ -391,8 +400,8 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             //Animate the UI view when there is a risk
             UIView.animate(withDuration: 1, animations: {
                 self.overallStatus.backgroundColor = UIColor(hex:0xD50000)
-                self.overallStatus.frame.size.width += 10
-                self.overallStatus.frame.size.height += 10
+                //self.overallStatus.frame.size.width += 10
+                //self.overallStatus.frame.size.height += 10
             }) { _ in
                 UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
                     self.overallStatus.frame.origin.y -= 20
@@ -458,7 +467,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             let monitoringNav = segue.destination as! MonitoringChartsViewController
             monitoringNav.patient = patient!;
         }
-        
         
     }
     
@@ -530,8 +538,8 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         if (item!.item == 7) {
             
             //Navigation Programmitically
-            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+//            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//            self.navigationController?.pushViewController(ReminderViewController, animated: true)
         }
         //reminderViewTableViewController
         if(item!.item == 8){
