@@ -12,7 +12,7 @@ import FSCalendar;
 class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCalendarDataSource, UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate  {
 
     
-    var data = ["9:00 AM - 10:00 AM", "10:00 AM - 11:00 AM", "11:00 AM - 12:00 PM", "12:00 PM - 1:00 PM", "1:00 PM - 2:00 PM","2:00 PM - 3:00 PM (Break)","3:00 PM - 4:00 PM","4:00 PM - 5:00 PM", "5:00 PM - 6:00 PM"]
+    var data = ["9:00 AM - 10:00 AM", "10:00 AM - 11:00 AM", "11:00 AM - 12:00 PM", "12:00 PM - 1:00 PM", "1:00 PM - 2:00 PM","2:00 PM - 3:00 PM","3:00 PM - 4:00 PM","4:00 PM - 5:00 PM", "5:00 PM - 6:00 PM"]
     
     
     @IBOutlet weak var calendar: FSCalendar!
@@ -23,6 +23,8 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
      var doctorName: String = ""
      var appointmentDateList: Array = [String] ()
      var appointmentTimeList = [""]
+     //Patient Data
+     var patient:Patient?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,7 +183,7 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
             print("Item2 \(indexPath!)")
             if(indexPath != nil) {
                 
-               let patientNric:String = "S9822477G"
+               let patientNric:String = (patient?.NRIC)!
                 
                 let appointmentItem = self.data[(indexPath?.row)!]
                 let appointment = AppointmentModel(

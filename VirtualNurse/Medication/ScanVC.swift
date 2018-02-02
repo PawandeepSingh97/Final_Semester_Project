@@ -18,7 +18,8 @@ UINavigationControllerDelegate {
     @IBOutlet weak var scanBtn: UIButton!
     @IBOutlet weak var predictedName: UILabel!
     @IBOutlet weak var predictedValue: UILabel!
-    @IBOutlet weak var moreInfoBtn: UIButton!
+    @IBOutlet weak var infoButtons: UIButton!
+    // @IBOutlet weak var moreInfoBtn: UIButton!
     
     // declare variables & array & objects
     var estimatedValues : [Float] = []
@@ -26,7 +27,7 @@ UINavigationControllerDelegate {
     var predictValue : [String] = []
     var firstValues : Float = 0
     var medicineList : [MedicineModel] = []
-    
+    var nama : String = ""
     
     // connects to the storyboard
     @IBOutlet weak var resultIV: UIImageView!
@@ -52,10 +53,12 @@ UINavigationControllerDelegate {
         
         //makes button to have rounded edges
         scanBtn.layer.cornerRadius = scanBtn.frame.height / 2
-        
+        infoButtons.layer.cornerRadius = infoButtons.frame.height / 2
         // ask users permission whenever user wants to choose medicine image from library
         checkPermission()
         
+        infoButtons.isHidden = true
+        infoButtons.isEnabled = false
 
         
     }
@@ -81,6 +84,24 @@ UINavigationControllerDelegate {
         }
         
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "toInformationDetail") {
+            
+            let secondViewController = segue.destination as? medicineDetailController
+     
+            secondViewController!.medNames = nama
+       
+            
+            
+        }
+    }
+    
+    
+    
+    
     
     // this methods handles the alert function
     
@@ -132,7 +153,8 @@ UINavigationControllerDelegate {
     @IBAction func selectButton(_ sender: Any) {
         
         let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary // where the photo is taken from what source
+        //imagePickerController.sourceType = .photoLibrary // where the photo is taken from what source
+          imagePickerController.sourceType = .camera
         
         imagePickerController.delegate = self
         
@@ -207,6 +229,7 @@ UINavigationControllerDelegate {
                 self.scanBtn.isHidden = false
                 if
                     let error = error {
+                    //error will be shown here!
                     self.predictedName.text = error.localizedDescription
                 } else if
                     
@@ -251,20 +274,20 @@ UINavigationControllerDelegate {
                 }
                 
 
-                self.predictedName.text = self.predictValue[0]
-                self.predictedValue.text = "\(self.appendValues[0])% sure that it is \(self.predictValue[0])"
+                self.predictedName.text = self.predictValue[0] //The Final Predicted Name
+                self.predictedValue.text = "\(self.appendValues[0])% sure that it is \(self.predictValue[0])" // The Final Predicted Value
                 
-                
+                //testing
                 print("The first place goes to \(self.predictValue[0]) & \(self.appendValues[0])%")
-                
+                //testing
                 self.firstValues = NSString(string : self.appendValues[0]).floatValue
-                
+                //testing
                 print("THe first value it is \(self.firstValues)")
-
+                // check whether medicine probability is valid
                 self.checkProbable(valued: self.firstValues)
-                
+                //call the retrieve medicine function name
                 self.getMedicineDetails()
-                
+                // once values arrived , this stops the Loading Screen
                 LoadingIndicatorView.hide()
 
             }
@@ -285,22 +308,31 @@ UINavigationControllerDelegate {
             
             predictedValue.isHidden = true
             predictedName.isHidden = true
+            nama = predictedName.text!
+            //  testing
+            print("Nama Sama Sayang ? Tutkup Di Punya Satu ? : \(nama)")
+            infoButtons.isHidden = true
+            infoButtons.isEnabled = false
             
+            let alert = UIAlertController(title: "Please try again", message: "Try capturing the pill in a well - lit area & make sure it is a Diabetic medication. Thank You!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "GO Back", style: UIAlertActionStyle.default, handler: { (_) in
+                self.navigationController?.popViewController(animated: true);
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            
+
         }
         
         else {
-            
-            moreInfoBtn.isHidden = false
-            moreInfoBtn.isEnabled = true
-            
+
+            nama = predictedName.text!
+            //testing
+            print("Nama Sama Sayang ? Tutkup Di Punya Dua ? : \(nama)")
+            infoButtons.isHidden = false
+            infoButtons.isEnabled = true
         }
-
     }
-    
-
-
-    
-
-
-    
 }
+

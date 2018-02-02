@@ -159,9 +159,6 @@ class MedicineDataManager : NSObject {
                     
                     for i in 0..<(responseJson.count){
                         
-                        
-                        
-                        
                         let id = responseJson[i]["id"].string!
                         let medName = responseJson[i]["medicineName"].string!
                         let checkEnabledOrNot = responseJson[i]["enableReminder"].bool!
@@ -169,10 +166,7 @@ class MedicineDataManager : NSObject {
                         let afternoonTime = responseJson[i]["afternoonTime"].string!
                         let eveningTime = responseJson[i]["eveningTime"].string!
                         
-                        
                         print("What the reminder data returned to us :  \(responseJson[i])")
-                        
-                        
                         
                         let Reminder = ReminderModel(id ,medName ,checkEnabledOrNot ,morningTime, afternoonTime: afternoonTime ,eveningTime: eveningTime)
                         

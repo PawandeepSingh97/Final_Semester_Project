@@ -116,7 +116,9 @@ class showAppointmentDetailsViewController: UIViewController {
                         let alertController = UIAlertController(title: "Confirmation", message:
                             "Your appointment have been Created", preferredStyle: UIAlertControllerStyle.alert)
                         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-                            self.performSegue(withIdentifier: "unwindToVC1", sender: self)
+                            
+                        // self.performSegue(withIdentifier: "unwindToVC1", sender: self)
+  
                         }))
                         self.present(alertController, animated: true, completion: nil)
                         
