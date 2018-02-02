@@ -207,13 +207,11 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             }
             if(indexPath.row == 8){
                 //Navigation Programmitically
-                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+               
             }
             if(indexPath.row == 9){
                 //Navigation Programmitically
-                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+
             }
             if(indexPath.row == 10){
                 //Navigation Programmitically
@@ -534,13 +532,11 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         //reminderViewTableViewController
         if(item!.item == 8){
             //Navigation Programmitically
-            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+          
         }
         if(item!.item == 9){
             //Navigation Programmitically
-            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+           
         }
         if(item!.item == 10){
             //Navigation Programmitically
