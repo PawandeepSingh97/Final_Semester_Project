@@ -19,6 +19,8 @@ protocol BotResponseDelegate:class
     
     func recievedPromptResponse(responseDialog:Dialog);
     
+    func receivedMedication(responseDialog:MedicationDialog);
+    
     
 }
 
@@ -210,6 +212,26 @@ extension DialogController:PromptAnsweredDelegate
     //AND PASS THE DIALOG TO UI
     func User(hasAnswered: String, dialog: Dialog) {
         //get prompt has and return to the ui
+        
+        //for medication
+        let rdtype = type(of: dialog); //get type of recent dialog
+        
+        var med = MedicationDialog(dialogToCall: "", patient: patient!);
+        let typeOfElement = type(of: med); // get type of dialog to add
+        
+        if rdtype == typeOfElement
+        {
+            
+            let meddialog = dialog as! MedicationDialog;
+            Botdelegate.receivedMedication(responseDialog: meddialog);
+            return;
+        }
+        else
+        {
+            print(rdtype)
+            print(typeOfElement)
+        }
+        
         Botdelegate.recievedPromptResponse(responseDialog: dialog);
     }
 }
@@ -218,7 +240,11 @@ extension DialogController:PromptAnsweredDelegate
 extension DialogController:BotReplyDelegate
 {
     func Nurse(response: Dialog) {
+
         Botdelegate.display(response: response);
+        
+        
+        
     }
 }
 

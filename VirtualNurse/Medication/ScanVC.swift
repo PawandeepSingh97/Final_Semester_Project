@@ -12,7 +12,9 @@ import PhotosUI // for photo library
 class ScanVC: UIViewController,  UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
     
+    @IBOutlet weak var firstLabel: UILabel!
     
+    @IBOutlet weak var secondLabel: UILabel!
     
     // connects to the storyboard
     @IBOutlet weak var scanBtn: UIButton!
@@ -31,7 +33,7 @@ UINavigationControllerDelegate {
     
     // connects to the storyboard
     @IBOutlet weak var resultIV: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+   // @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     // calls class which handles custom vision service
@@ -60,7 +62,8 @@ UINavigationControllerDelegate {
         infoButtons.isHidden = true
         infoButtons.isEnabled = false
 
-        
+        firstLabel.isHidden = true
+        secondLabel.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -106,13 +109,13 @@ UINavigationControllerDelegate {
     // this methods handles the alert function
     
     func startAlert() {
-        
+        // We herby declare that the predictions this application produces for identifying medications is not fully accurate.
         // declare an alert message
-        let alertController = UIAlertController(title: "Disclaimer", message: "We hereby declare that the predications for identifying medications are not fully accurate. Use this at your own risk. Any enquires, contact Pawandeep", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Disclaimer", message: "We hereby declare that the predictions this application produces for identifying medications are not fully accurate", preferredStyle: UIAlertControllerStyle.alert)
 
         // sets what button to be included in the alert message
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            print("OK")
+        let okAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("Okay")
         }
         
         //attaches button to alert message
@@ -207,7 +210,7 @@ UINavigationControllerDelegate {
         dismiss(animated: true, completion: nil) // dismiss the image picker
         
         // activity indicator starts animating
-        activityIndicator.startAnimating()
+     //   activityIndicator.startAnimating()
         LoadingIndicatorView.show("Loading")
         
         // this variable is the image in JPEG format with compression quality
@@ -224,7 +227,7 @@ UINavigationControllerDelegate {
                 //var index123 : Int = 0
 
                 // once data is back, activity indicator will stop animating
-                self.activityIndicator.stopAnimating()
+            //    self.activityIndicator.stopAnimating()
                 // scan button will be shown
                 self.scanBtn.isHidden = false
                 if
@@ -287,8 +290,15 @@ UINavigationControllerDelegate {
                 self.checkProbable(valued: self.firstValues)
                 //call the retrieve medicine function name
                 self.getMedicineDetails()
+                
+                
+                self.firstLabel.isHidden = false
+                self.secondLabel.isHidden = false
+                
                 // once values arrived , this stops the Loading Screen
                 LoadingIndicatorView.hide()
+                
+                
 
             }
         })
