@@ -33,6 +33,8 @@ class ManualHeartRateViewController: UIViewController {
         //Set date for the label
         dateLabel.text = helperClass().setDateLabelCurrentDate()
         
+        
+        
     }
     
     
@@ -50,8 +52,8 @@ class ManualHeartRateViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        //Show the navigation bar
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        //Show the navigation bar
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         
         //Show the tab bar
         self.tabBarController?.tabBar.isHidden = false
@@ -63,6 +65,10 @@ class ManualHeartRateViewController: UIViewController {
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
+        
+        //Show the navigation bar
+        self.navigationController?.isNavigationBarHidden = true
+        
         //Return to the monitoring dashboard
         navigationController?.popViewController(animated: true)
     }

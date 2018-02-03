@@ -27,15 +27,12 @@ class showAppointmentDetailsViewController: UIViewController {
         
         // styling for button
         let cornerRadius : CGFloat = 10.0
-        confirmBtn.setTitle("Confirmed", for: [])
-        confirmBtn.setTitleColor(UIColor.black, for: [])
+        confirmBtn.setTitle("Confirm", for: [])
+        confirmBtn.setTitleColor(UIColor.white, for: [])
         confirmBtn.backgroundColor = UIColor.clear
-        confirmBtn.layer.borderWidth = 1.0
-        confirmBtn.layer.borderColor = UIColor.black.cgColor
+        confirmBtn.layer.borderWidth = 2.0
+        confirmBtn.layer.borderColor = UIColor.white.cgColor
         confirmBtn.layer.cornerRadius = cornerRadius
-        
-        print("item \(String(describing: appoinmentItem?.date))")
-        print("item \(String(describing: appoinmentItem?.time))")
 
     }
 
@@ -117,7 +114,7 @@ class showAppointmentDetailsViewController: UIViewController {
                             "Your appointment have been Created", preferredStyle: UIAlertControllerStyle.alert)
                         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
                             
-                        // self.performSegue(withIdentifier: "unwindToVC1", sender: self)
+                        self.performSegue(withIdentifier: "unwindToHome", sender: self)
   
                         }))
                         self.present(alertController, animated: true, completion: nil)
