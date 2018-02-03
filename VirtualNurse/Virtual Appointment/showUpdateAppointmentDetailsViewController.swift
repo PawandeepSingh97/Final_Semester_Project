@@ -26,11 +26,11 @@ class showUpdateAppointmentDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         let cornerRadius : CGFloat = 10.0
-        confirmBtn.setTitle("Confirmed", for: [])
-        confirmBtn.setTitleColor(UIColor.black, for: [])
+        confirmBtn.setTitle("Confirm", for: [])
+        confirmBtn.setTitleColor(UIColor.white, for: [])
         confirmBtn.backgroundColor = UIColor.clear
-        confirmBtn.layer.borderWidth = 1.0
-        confirmBtn.layer.borderColor = UIColor.black.cgColor
+        confirmBtn.layer.borderWidth = 2.0
+        confirmBtn.layer.borderColor = UIColor.white.cgColor
         confirmBtn.layer.cornerRadius = cornerRadius
         
     }

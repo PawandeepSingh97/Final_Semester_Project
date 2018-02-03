@@ -48,7 +48,7 @@ class UpdateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
         // Dispose of any resources that can be recreated.
     }
     
-    var data = ["9:00 AM - 10:00 AM", "10:00 AM - 11:00 AM", "11:00 AM - 12:00 PM", "12:00 PM - 1:00 PM", "1:00 PM - 2:00 PM","2:00 PM - 3:00 PM (Break)","3:00 PM - 4:00 PM","4:00 PM - 5:00 PM", "5:00 PM - 6:00 PM"]
+    var data = ["9:00 AM - 10:00 AM", "10:00 AM - 11:00 AM", "11:00 AM - 12:00 PM", "12:00 PM - 1:00 PM", "1:00 PM - 2:00 PM","2:00 PM - 3:00 PM","3:00 PM - 4:00 PM","4:00 PM - 5:00 PM", "5:00 PM - 6:00 PM"]
     
 
     @IBOutlet weak var calendar: FSCalendar!
@@ -101,15 +101,13 @@ class UpdateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
     
     // When calender date is selected
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("did select date \(self.dateFormatter.string(from: date))")
+ 
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
         
         self.collectionView.reloadData();
         let SelectedDate = String(describing: self.calendar.selectedDate.map({self.dateFormatter.string(from: $0)})!)
         self.appointmentTimeList.removeAll()
         AppointmentDataManager().getTimeByDoctorDate((appoinmentItem?.doctorName)!, SelectedDate) { (Appointment) in
-            print("time booked \(Appointment.time)")
             self.appointmentTimeList.append(Appointment.time)
             self.collectionView.reloadData();
         }
@@ -163,6 +161,7 @@ class UpdateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
                 cell.layer.masksToBounds = false
                 cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
                 cell.backgroundColor = UIColor(hex: 0xD91E18)
+                cell.isUserInteractionEnabled = false
             }
             
         }
@@ -177,7 +176,6 @@ class UpdateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
             let detailViewController = segue.destination as! showUpdateAppointmentDetailsViewController
             let cell = sender as! UICollectionViewCell
             let indexPath = self.collectionView!.indexPath(for: cell)
-            print("Item2 \(indexPath!)")
             if(indexPath != nil) {
                 
                 let appointmentItem = data[(indexPath?.row)!]

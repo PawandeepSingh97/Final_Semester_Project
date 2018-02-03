@@ -14,7 +14,6 @@ class doctorViewController: UIViewController {
 
     var selectedDoctor: String?
     var doctorList: Array = [String] ()
-    //Patient Data
     var patient:Patient?;
     
     override func viewDidLoad() {
@@ -71,7 +70,7 @@ class doctorViewController: UIViewController {
         doctortxt.inputView = doctorPicker
         
         //customization
-        doctorPicker.backgroundColor = UIColor(hex:0x0090FF)
+        doctorPicker.backgroundColor = UIColor(hex:0x53B7CF)
     }
     
     func uniqueElementsFrom<T: Hashable>(array: [T]) -> [T] {
@@ -92,8 +91,6 @@ class doctorViewController: UIViewController {
         
         //customization
         toolBar.barTintColor =  .white
-
-//        toolBar.barTintColor = .black
         toolBar.tintColor = .black
         
         let doneButton = UIBarButtonItem(title:"Done", style: .plain, target: self, action: #selector(doctorViewController.dismissKeyboard))
@@ -155,7 +152,7 @@ extension doctorViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         
         label.textColor = .white
         label.textAlignment = .center
-        label.font = UIFont(name: "Menlo-Regular", size: 17)
+        label.font = UIFont(name: "System", size: 17)
         label.text = uniqueStrings[row]
         
         return label
