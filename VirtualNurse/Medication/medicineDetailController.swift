@@ -32,7 +32,19 @@ class medicineDetailController: UIViewController {
         getMedicineDetails()
         
         shareBtn.layer.cornerRadius = 10.0
-       
+        
+        let btn1 = UIButton(type: .custom)
+        btn1.setImage(UIImage(named: "icons8-share-50 (2)"), for: .normal)
+        btn1.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        btn1.addTarget(self, action: #selector(shareFunc), for: .touchUpInside)
+        let item1 = UIBarButtonItem(customView: btn1)
+        
+        self.navigationItem.setRightBarButton(item1, animated: true)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(shareFunc))
+        
+        
+
 
     }
     
@@ -156,6 +168,22 @@ class medicineDetailController: UIViewController {
         self.present(activityViewController, animated: true, completion: nil)
         
     }
+    
+    @objc func shareFunc() {
+        
+        let textToShare = rowValues
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+    
+    
     
 
 }

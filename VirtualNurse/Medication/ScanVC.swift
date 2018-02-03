@@ -156,13 +156,30 @@ UINavigationControllerDelegate {
     @IBAction func selectButton(_ sender: Any) {
         
         let imagePickerController = UIImagePickerController()
-        //imagePickerController.sourceType = .photoLibrary // where the photo is taken from what source
-          imagePickerController.sourceType = .camera
         
-        imagePickerController.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+         //   var imagePicker = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .camera;
+            imagePickerController.allowsEditing = false
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+          //  var imagePicker = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .photoLibrary;
+            imagePickerController.allowsEditing = true
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+        
+   //     imagePickerController.sourceType = .photoLibrary // where the photo is taken from what source
+       //   imagePickerController.sourceType = .camera
+        
+     //   imagePickerController.delegate = self
         
         // present the system gallery
-        present(imagePickerController, animated: true, completion: nil)
+     //   present(imagePickerController, animated: true, completion: nil)
         
         
         // when a picture is selected, it will hid
