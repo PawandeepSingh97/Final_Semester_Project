@@ -303,12 +303,12 @@
 			children = (
 				25FE9C6F1FEA604C00437BD6 /* Intent.swift */,
 				2521209020059FAF0048F66B /* Dialog.swift */,
-				2551604A2022AFF000399D32 /* GreetingDialog.swift */,
-				25725CA81FFE48C20006ACB2 /* PatientDialog.swift */,
 				252120942005AE970048F66B /* AppointmentDialog.swift */,
-				25B007752020673700D9A253 /* MedicationDialog.swift */,
 				25B007732020672900D9A253 /* MonitoringDialog.swift */,
+				25B007752020673700D9A253 /* MedicationDialog.swift */,
+				2551604A2022AFF000399D32 /* GreetingDialog.swift */,
 				25D3F0A9201EFA0E0036EE3D /* ErrorDialog.swift */,
+				25725CA81FFE48C20006ACB2 /* PatientDialog.swift */,
 				25B00777202071F700D9A253 /* Entity.swift */,
 			);
 			path = "Intent & Dialog";
@@ -1177,12 +1177,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VirtualNurse/VirtualNurse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7DV725VJBB;
+				DEVELOPMENT_TEAM = MZ483TW92Y;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VirtualNurse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorImran.VirtualNurse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorPawandeep.VirtualNurse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1198,12 +1198,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VirtualNurse/VirtualNurse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7DV725VJBB;
+				DEVELOPMENT_TEAM = MZ483TW92Y;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VirtualNurse/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorImran.VirtualNurse;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SurvivorPawandeep.VirtualNurse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

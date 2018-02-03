@@ -99,7 +99,7 @@ class ChatViewController: MessagesViewController {
         
         
         
-        setGreeting();
+       // setGreeting();
         
         
         //Set mic style by default
@@ -121,20 +121,21 @@ class ChatViewController: MessagesViewController {
     }
     
     //Will set greeting to user;
-    func setGreeting()
-    {
-        
-        
-        let greetingdialog = dialogController?.defaultGreeting(patient: patient!);
-        for response in (greetingdialog?.responseToDisplay)!
-        {
-            messages.append(MockMessage(text: response, sender: virtualNurse, messageId: UUID().uuidString, date: Date()));
-        }
- 
-    }
+//    func setGreeting()
+//    {
+//
+//
+//        let greetingdialog = dialogController?.defaultGreeting(patient: patient!);
+//        for response in (greetingdialog?.responseToDisplay)!
+//        {
+//            messages.append(MockMessage(text: response, sender: virtualNurse, messageId: UUID().uuidString, date: Date()));
+//        }
+//
+//    }
 
     func sendMessage(message:MockMessage)
     {
+        
         // messages.append(MockMessage(text: "test123", sender: currentSender(), messageId: UUID().uuidString, date: Date()))
         messages.append(message);
         messagesCollectionView.insertSections([messages.count - 1])
@@ -148,6 +149,7 @@ class ChatViewController: MessagesViewController {
     //STYLE FOR MIC BUTTON
     @objc func micBtnStyle()
     {
+        
         //HVVE A NAV BUTTON ITEM TO CHANGE TO KEYBOARD LAYOUT
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"keyboard_nav_item"), style: .plain, target: nil, action: #selector(defaultKeyboardStyle));
         self.navigationItem.rightBarButtonItem?.tintColor = .white;
@@ -272,46 +274,49 @@ class ChatViewController: MessagesViewController {
      */
     func getNurseResponse(patientquery:String)
     {
-        //Query from LUIS
-        //GET
-        dialogController?.query(text: patientquery, onComplete: { (response) in
-            
-            //Remove the ... from array
-            self.messages.removeLast();
-            
-            if response.isPrompt{ //if the question is a prompt
-                //pass the dialog response to the prompt delegate
-                self.dialogController?.Botdelegate.isPromptQuestion(promptDialog: response);
-            }
-            
-            
-            //GET DIALOG AND PLACE IN UI
-            let responseToDisplay = response.responseToDisplay;
-            let botspeakmessage = response.BotResponse;
-            print("nurse responded : \(responseToDisplay)");
-            //let Botresponse = response.BotResponse; // this will when bot speaks
-            DispatchQueue.main.async {
-                //Update UI to remove ... and insert nurse response
-                
-                self.messagesCollectionView.deleteSections([self.messages.count]);
-                
-                
-                for botspeak in botspeakmessage
-                {
-                    //call bot speak also
-                    self.sttHelper.delegate?.BotSpeak(text: botspeak, translationRequired: false);
-                }
-                
-                for response in responseToDisplay //display messages in loop
-                {
-                    self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
-                    
-                    
-                }
-            }
-            
-            
-        })
+        
+        dialogController?.query(text: patientquery);
+        
+//        //Query from LUIS
+//        //GET
+//        dialogController?.query(text: patientquery, onComplete: { (response) in
+//
+//            //Remove the ... from array
+//            self.messages.removeLast();
+//
+//            if response.isPrompt{ //if the question is a prompt
+//                //pass the dialog response to the prompt delegate
+//                self.dialogController?.Botdelegate.isPromptQuestion(promptDialog: response);
+//            }
+//
+//
+//            //GET DIALOG AND PLACE IN UI
+//            let responseToDisplay = response.responseToDisplay;
+//            let botspeakmessage = response.BotResponse;
+//            print("nurse responded : \(responseToDisplay)");
+//            //let Botresponse = response.BotResponse; // this will when bot speaks
+//            DispatchQueue.main.async {
+//                //Update UI to remove ... and insert nurse response
+//
+//                self.messagesCollectionView.deleteSections([self.messages.count]);
+//
+//
+//                for botspeak in botspeakmessage
+//                {
+//                    //call bot speak also
+//                    self.sttHelper.delegate?.BotSpeak(text: botspeak, translationRequired: false);
+//                }
+//
+//                for response in responseToDisplay //display messages in loop
+//                {
+//                    self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+//
+//
+//                }
+//            }
+//
+//
+//        })
     }
 
     
@@ -330,26 +335,38 @@ extension ChatViewController:BotResponseDelegate
     func display(response: Dialog) {
         
         print("DISPLAY");
-        //Remove the ... from array
-        //self.messages.removeLast();
+        
+        
+        //Remove; the ... from array
+        self.messages.removeLast();
+        
+        
+        
         
         if response.isPrompt{ //if the question is a prompt
             //pass the dialog response to the prompt delegate
             self.dialogController?.Botdelegate.isPromptQuestion(promptDialog: response);
         }
         
+                    DispatchQueue.main.async {
+                        //Update UI to remove ... and insert nurse response
         
-        for botspeak in response.BotResponse
-        {
-            //call bot speak also
-            self.sttHelper.delegate?.BotSpeak(text: botspeak, translationRequired: false);
-        }
+                        self.messagesCollectionView.deleteSections([self.messages.count]);
         
-        for response in response.responseToDisplay //display messages in loop
-        {
-            self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
-            
-        }
+        
+                        for botspeak in response.BotResponse
+                        {
+                            //call bot speak also
+                            self.sttHelper.delegate?.BotSpeak(text: botspeak, translationRequired: false);
+                        }
+        
+                        for response in response.responseToDisplay //display messages in loop
+                        {
+                            self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+        
+        
+                        }
+                    }
     }
     
     //Function is called if nurse is asking a prompt question to patient
@@ -372,7 +389,7 @@ extension ChatViewController:BotResponseDelegate
     
     //Once patient has responed the the prompt dialog
     //will get response here
-    func getBotPromptResponse(responseDialog: Dialog) {
+    func recievedPromptResponse(responseDialog: Dialog) {
         
         self.messageInputBar.inputTextView.isEditable = true;
         
