@@ -273,6 +273,65 @@ class MonitoringDataManager: NSObject{
         }
     }
     
+    //Returns all records in monitoring table based on nric only
+    func getAllMonitoringRecords(_ patientNric:String, onComplete:((_ Monitoring: Monitoring) -> Void)?) {
+        
+        //Filtered PatientNric
+        let filteredPatientNric = "nric eq '\(patientNric)'"
+        //Encode the patientNric
+        let encodedPatientNric = filteredPatientNric.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        //Encoded Url
+        let encodedUrl = "\(url)?$filter=\(encodedPatientNric!)"
+        
+        print("getFilteredMonitoringRecordsBasedOnDate\(encodedUrl)")
+        
+        //Get request
+        Alamofire.request(encodedUrl, headers: headers).responseJSON { (responseObject) -> Void in
+            //print(responseObject)
+            if responseObject.result.isSuccess {
+                let responseJson = JSON(responseObject.result.value!)
+                //Check if responseJson is empty
+                if responseJson != []{
+                    
+                    for i in 0..<(responseJson.count){
+                        
+                        //Extract Json
+                        let id = responseJson[i]["id"].string!
+                        let nric = responseJson[i]["nric"].string!
+                        let name = responseJson[i]["name"].string!
+                        let gender = responseJson[i]["gender"].string!
+                        let age = responseJson[i]["age"].int!
+                        let education = responseJson[i]["education"].string!
+                        let currentSmoker = responseJson[i]["currentSmoker"].bool!
+                        let cigsPerDay = responseJson[i]["cigsPerDay"].int!
+                        let bpMedicine = responseJson[i]["bpMedicine"].bool!
+                        let prevalentStroke = responseJson[i]["prevalentStroke"].bool!
+                        let prevalentHypertension = responseJson[i]["prevalentHypertension"].bool!
+                        let diabetes = responseJson[i]["diabetes"].bool!
+                        let totalCholesterol = responseJson[i]["totalCholesterol"].int!
+                        let systolicBloodPressure = responseJson[i]["systolicBloodPressure"].double!
+                        let diastolicBloodPressure = responseJson[i]["diastolicBloodPressure"].double!
+                        let bmi = responseJson[i]["bmi"].double!
+                        let heartRate = responseJson[i]["heartRate"].double!
+                        let glucose = responseJson[i]["glucose"].int!
+                        let tenYearCHD = responseJson[i]["tenYearCHD"].bool!
+                        let dateCreated = responseJson[i]["dateCreated"].string!
+                        
+                        
+                        let monitoring = Monitoring(id,nric,name,gender,age,education,currentSmoker,cigsPerDay,bpMedicine,prevalentStroke,prevalentHypertension,diabetes,totalCholesterol,systolicBloodPressure,diastolicBloodPressure,bmi,heartRate,glucose,tenYearCHD,dateCreated);
+                        print("retrieved all records")
+                        onComplete?(monitoring)
+                    }
+                    //success(responseJson)
+                    
+                }//end for loo[
+                
+            }
+            
+        }
+    }
+    
     
     
    
