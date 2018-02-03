@@ -17,6 +17,8 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
     @IBOutlet weak var chartsCollectionView: UICollectionView!
     var label = UILabel()
     
+    var count = 0
+    
     
     //Declaration of Variables
     var patient:Patient?;
@@ -237,87 +239,148 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
     
     
     //Segement Clicked -> Week/Month/Year
-    @IBAction func segementedControlClicked(_ sender: Any) {
-        
-        //Set it to all default Value
-            self.bloodPressureData = [0,0,0,0,0,0,0,0]
-            self.glucoseData = [0,0,0,0,0,0,0,0]
-            self.heartRateData = [0,0,0,0,0,0,0,0]
-            self.cigsData = [0,0,0,0,0,0,0,0]
-            self.bmiData = [0,0,0,0,0,0,0,0]
-            self.cholestrolData = [0,0,0,0,0,0,0,0]
-        
-            self.getAllDatesInCurrentWeek()
-            let startDate = dates[0]
-            let endDate = dates[6]
-            xLabels.removeAll()
-
-        MonitoringDataManager().getFilteredMonitoringRecordsBasedOnDate(startDate,endDate, (patient?.NRIC)!) { (Monitoring) in
-                
-                //If segment week is clicked
-                if(self.segmentedControl.selectedSegmentIndex == 0){
-                        self.xLabels.removeAll()
-                        let updatedxLabels = self.getAllDatesInCurrentWeek()
-                        self.xLabels = updatedxLabels
-                    
-                        //Validation check whether the dates match
-                        for i in self.allWeekDates {
-                            if(i == Monitoring.dateCreated){
-                                
-                                //Store the date index in the array
-                                let dateIndex = self.allWeekDates.index(of: i)!
-                                //Replace the specifc item in the array
-                                self.bloodPressureData[dateIndex] = CGFloat(Monitoring.systolicBloodPressure)
-                                self.glucoseData[dateIndex] = CGFloat(Monitoring.glucose)
-                                self.heartRateData[dateIndex] = CGFloat(Monitoring.heartRate)
-                                if(Monitoring.cigsPerDay == -1){
-                                    self.cigsData[dateIndex] = 0
-                                }else{
-                                    self.cigsData[dateIndex] = CGFloat(Monitoring.cigsPerDay)
-                                }
-                                self.bmiData[dateIndex] = CGFloat(Monitoring.bmi)
-                                self.cholestrolData[dateIndex] = CGFloat(Monitoring.totalCholesterol)
-                            }
-                        }
-                        self.chartsCollectionView.reloadData()
-
-                }
-            
-                 // If segment month is clicked
-                if(self.segmentedControl.selectedSegmentIndex == 1){
-                   
-                    //Set it to all default Value
-                    self.bloodPressureData = [0,0,0,0,0,0,0,0,0,0,0,0]
-                    self.glucoseData = [0,0,0,0,0,0,0,0,0,0,0,0]
-                    self.heartRateData = [0,0,0,0,0,0,0,0,0,0,0,0]
-                    self.cigsData = [0,0,0,0,0,0,0,0,0,0,0,0]
-                    self.bmiData = [0,0,0,0,0,0,0,0,0,0,0,0]
-                    self.cholestrolData = [0,0,0,0,0,0,0,0,0,0,0,0]
-                    
-                    self.xLabels.removeAll()
-                    //Update the xLabels
-                    self.xLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-                    self.chartsCollectionView.reloadData()
-                }
-            
-            //If segement is click
-                if(self.segmentedControl.selectedSegmentIndex == 2){
-                    //Set it to all default Value
-                    self.bloodPressureData = [0,0,0,0,0]
-                    self.glucoseData = [0,0,0,0,0]
-                    self.heartRateData = [0,0,0,0,0]
-                    self.cigsData = [0,0,0,0,0]
-                    self.bmiData = [0,0,0,0,0]
-                    self.cholestrolData = [0,0,0,0,0]
-                    
-                    self.xLabels.removeAll()
-                    //Update the xLabels
-                    self.xLabels = ["2016","2017","2018","2018","2016","2017","2018","2018","2016","2017","2018","2018"]
-                    self.chartsCollectionView.reloadData()
-                }
-            }
-        
-    }
+//    @IBAction func segementedControlClicked(_ sender: Any) {
+//        
+//        self.count = 0
+//        
+//        var monthCount = 0
+//        
+//        var totalCholestrol:[Int] = [0]
+//        
+//        //Set it to all default Value
+//            self.bloodPressureData = [0,0,0,0,0,0,0,0]
+//            self.glucoseData = [0,0,0,0,0,0,0,0]
+//            self.heartRateData = [0,0,0,0,0,0,0,0]
+//            self.cigsData = [0,0,0,0,0,0,0,0]
+//            self.bmiData = [0,0,0,0,0,0,0,0]
+//            self.cholestrolData = [0,0,0,0,0,0,0,0]
+//        
+//            self.getAllDatesInCurrentWeek()
+//            let startDate = dates[0]
+//            let endDate = dates[6]
+//            xLabels.removeAll()
+//
+//        //Filtered records based on start and end date of a week
+//        MonitoringDataManager().getFilteredMonitoringRecordsBasedOnDate(startDate,endDate, (patient?.NRIC)!) { (Monitoring) in
+//                
+//                //If segment week is clicked
+//                if(self.segmentedControl.selectedSegmentIndex == 0){
+//                        self.xLabels.removeAll()
+//                        let updatedxLabels = self.getAllDatesInCurrentWeek()
+//                        self.xLabels = updatedxLabels
+//                    
+//                        //Validation check whether the dates match
+//                        for i in self.allWeekDates {
+//                            if(i == Monitoring.dateCreated){
+//                                
+//                                //Store the date index in the array
+//                                let dateIndex = self.allWeekDates.index(of: i)!
+//                                //Replace the specifc item in the array
+//                                self.bloodPressureData[dateIndex] = CGFloat(Monitoring.systolicBloodPressure)
+//                                self.glucoseData[dateIndex] = CGFloat(Monitoring.glucose)
+//                                self.heartRateData[dateIndex] = CGFloat(Monitoring.heartRate)
+//                                if(Monitoring.cigsPerDay == -1){
+//                                    self.cigsData[dateIndex] = 0
+//                                }else{
+//                                    self.cigsData[dateIndex] = CGFloat(Monitoring.cigsPerDay)
+//                                }
+//                                self.bmiData[dateIndex] = CGFloat(Monitoring.bmi)
+//                                self.cholestrolData[dateIndex] = CGFloat(Monitoring.totalCholesterol)
+//                            }
+//                        }
+//                        self.chartsCollectionView.reloadData()
+//
+//                }
+//            
+//        }
+//        
+//        
+//               //Get all Monitoring records
+//           MonitoringDataManager().getAllMonitoringRecords((patient?.NRIC)!) { (Monitoring) in
+//            
+//            
+//            
+//            
+//                 // If segment month is clicked
+//                if(self.segmentedControl.selectedSegmentIndex == 1){
+//                   
+//                    //Set it to all default Value
+//                    self.bloodPressureData = [0,0,0,0,0,0,0,0,0,0,0,0]
+//                    self.glucoseData = [0,0,0,0,0,0,0,0,0,0,0,0]
+//                    self.heartRateData = [0,0,0,0,0,0,0,0,0,0,0,0]
+//                    self.cigsData = [0,0,0,0,0,0,0,0,0,0,0,0]
+//                    self.bmiData = [0,0,0,0,0,0,0,0,0,0,0,0]
+//                    self.cholestrolData = [0,0,0,0,0,0,0,0,0,0,0,0]
+//                    
+//                    self.xLabels.removeAll()
+//                    //Update the xLabels
+//                    self.xLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+//                    
+//                    
+//                    //Extract the month number from the date
+//                    var monthNumber = Monitoring.dateCreated.components(separatedBy: "/")
+//                    monthNumber = [monthNumber[1]]
+//                    
+//                    //Returns the month number
+//                    let monthName = self.returnMonth(monthNumber: monthNumber)
+//                    
+//                    
+//                    self.count = self.count + 1
+//                    print("Total Count\(self.count)")
+//                    
+//
+//                        //Get total count
+//                        //Total cholestrol
+//                        totalCholestrol.append(Monitoring.totalCholesterol)
+//                        let sum = [totalCholestrol.reduce(0, +)]
+//                        let average = sum[0] / self.count
+//                        print("Average\(average)")
+//                        print("Month Name \(sum)")
+//
+//                    
+//                    for i in self.xLabels{
+//                        
+//                        monthCount = monthCount + 1
+//                        print(i)
+//                        print(monthName)
+////                        if(i == monthName){
+////                            self.cholestrolData[monthCount] = CGFloat(average)
+////                        }
+//                    }
+//                    
+//                   
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    self.chartsCollectionView.reloadData()
+//                }
+//            
+//            //If segement is click
+//                if(self.segmentedControl.selectedSegmentIndex == 2){
+//                    //Set it to all default Value
+//                    self.bloodPressureData = [0,0,0,0,0]
+//                    self.glucoseData = [0,0,0,0,0]
+//                    self.heartRateData = [0,0,0,0,0]
+//                    self.cigsData = [0,0,0,0,0]
+//                    self.bmiData = [0,0,0,0,0]
+//                    self.cholestrolData = [0,0,0,0,0]
+//                    
+//                    self.xLabels.removeAll()
+//                    //Update the xLabels
+//                    self.xLabels = ["2016","2017","2018","2018","2016","2017","2018","2018","2016","2017","2018","2018"]
+//                    self.chartsCollectionView.reloadData()
+//                }
+//            
+//            
+//            
+//        }// get all monitoring records end here
+//            
+//        
+//    }
     
     
     //Getting all the Currentdate in a week
@@ -438,11 +501,57 @@ class MonitoringChartsViewController: UIViewController,UICollectionViewDelegate,
             
             //Reload the collection view
             self.chartsCollectionView.reloadData()
-            
         }
         
         
     } //end of function
+    
+    //Check Month number and return
+    func returnMonth(monthNumber:[String])->String {
+        
+        var monthName = ""
+        
+        
+        //Check the month return the monthNumber
+        if(monthNumber[0] == "01"){
+            monthName = "Jan"
+        }
+        if(monthNumber[0] == "02"){
+            monthName = "Feb"
+        }
+        if(monthNumber[0] == "03"){
+            monthName = "Mar"
+        }
+        if(monthNumber[0] == "04"){
+            monthName = "Apr"
+        }
+        if(monthNumber[0] == "05"){
+            monthName = "May"
+        }
+        if(monthNumber[0] == "06"){
+            monthName = "Jun"
+        }
+        if(monthNumber[0] == "07"){
+            monthName = "Jul"
+        }
+        if(monthNumber[0] == "08"){
+            monthName = "Aug"
+        }
+        if(monthNumber[0] == "09"){
+            monthName = "Sep"
+        }
+        if(monthNumber[0] == "10"){
+            monthName = "Oct"
+        }
+        if(monthNumber[0] == "11"){
+            monthName = "Nov"
+        }
+        if(monthNumber[0] == "12"){
+            monthName = "Dec"
+        }
+        
+        return monthName
+    }
     
    
 

@@ -24,8 +24,6 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         //Call the Design Button function
         DesignSubmitButton()
         
@@ -109,7 +107,7 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
                 }
                 else if !(self.heightTextField.text?.contains("."))!
                 {
-                    self.showAlert(message: "Please check if you have entered height meteres")
+                    self.showAlert(message: "Please check if you have entered height(meteres)")
                     self.bmiValue.text = "0"
                 }
                 else{

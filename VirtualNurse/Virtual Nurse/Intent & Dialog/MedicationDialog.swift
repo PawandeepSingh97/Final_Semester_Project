@@ -9,9 +9,10 @@
 import Foundation
 import UIKit;
 
-class MedicationDialog:Dialog,UIImagePickerControllerDelegate
+class MedicationDialog:Dialog
 {
     override var Intent: String { get { return "Medication" } }
+    let imagePickerController = UIImagePickerController();
     
     
     init(dialogToCall:String,patient:Patient) {
@@ -54,6 +55,20 @@ class MedicationDialog:Dialog,UIImagePickerControllerDelegate
     func askForSearchYES()
     {
         
+        //imagePickerController.sourceType = .photoLibrary // where the photo is taken from what source
+        //imagePickerController.sourceType = .camera
+        
+        // present the system gallery
+        
+        //present(imagePickerController, animated: true, completion: nil)
+        
+        
+//        // when a picture is selected, it will hid
+//        scanBtn.isHidden = true
+//
+//        // when selected a photo, all elements are removed from the array
+//        appendValues.removeAll()
+//        predictValue.removeAll()
     }
     
     
@@ -65,6 +80,7 @@ class MedicationDialog:Dialog,UIImagePickerControllerDelegate
     if  text == "YES"{
         
         
+       // paDelegate?.User(hasAnswered: text!, dialog: self);
         //PASS MESSAGE AND DELEGATE TO NOTIFY PATIENT
         paDelegate?.User(hasAnswered: text!, dialog: self)
         print("YES")
@@ -78,31 +94,12 @@ class MedicationDialog:Dialog,UIImagePickerControllerDelegate
     
     }
     
+  
     
     
-//    private func checkPermission() {
-//        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-//
-//        // switch case statement to know what results to be shown to user regarding the acceptance of authorization
-//        switch photoAuthorizationStatus {
-//        case .authorized: // Explicit user permission is required for photo library access, but the user has not yet granted or denied such permission.
-//            print("Access is granted by user")
-//        case .notDetermined:
-//            //Requests the user’s permission, if needed, for accessing the Photos library.
-//            PHPhotoLibrary.requestAuthorization({
-//                (newStatus) in
-//                print("status is \(newStatus)")
-//                if newStatus ==  PHAuthorizationStatus.authorized {
-//                    print("success")
-//                }
-//            })
-//            print("It is not determined until now")
-//        case .restricted: // app not authorized to access the photo library, and the user cannot grant such permission
-//            print("User do not have access to photo album.")
-//        case .denied: //The user has explicitly denied your app access to the photo library
-//            print("User has denied the permission.")
-//        }
-//    }
+    
+    
+
     
     
 }
