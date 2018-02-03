@@ -332,6 +332,15 @@ class ChatViewController: MessagesViewController {
 //TODO,TEST FIRST
 extension ChatViewController:BotResponseDelegate
 {
+    func receivedMedication(responseDialog: MedicationDialog) {
+        //once get medication dialog
+        //set delegate
+        print("****** it is medicine *****");
+        responseDialog.imagePickerController.delegate = self;
+        present(responseDialog.imagePickerController, animated: true, completion: nil)
+        
+    }
+    
     func display(response: Dialog) {
         
         print("DISPLAY");
@@ -663,6 +672,23 @@ extension ChatViewController:SFSpeechRecognizerDelegate
             //set normal keyboar layout by default
             print("SPEECH DENIED");
         }
+    }
+}
+
+extension ChatViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate
+{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil);
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        guard  let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+            else {fatalError("Expected an image, but was provided \(info)")}
+        
+        //get image and pass to chat
+        dismiss(animated: true, completion: nil) // dismiss the image picker
+        sendMessage(message: MockMessage(image: selectedImage, sender: currentUser, messageId: UUID().uuidString, date: Date()));
     }
 }
 
