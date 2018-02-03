@@ -11,7 +11,7 @@ import UIKit
 
 
 class MedicineViewController: UIViewController,  UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
+UINavigationControllerDelegate, UITextFieldDelegate {
 
     var recievedArray : [String] = [String]()
     
@@ -26,6 +26,7 @@ UINavigationControllerDelegate {
     
     var medicineName : String = "";
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,18 +34,30 @@ UINavigationControllerDelegate {
         // Makes the button to have rounded edges
         makeRoundedButton()
        // searchBtn.backgroundColor = UIColor.blue  3F51B5
-        scanMedsBtn.backgroundColor = UIColor.init(hex: 0x3F51B5)
-        searchBtn.backgroundColor = UIColor.init(hex: 0x3F51B5)
+    //    scanMedsBtn.backgroundColor = UIColor.init(hex: 0x3F51B5)
+    //    searchBtn.backgroundColor = UIColor.init(hex: 0x3F51B5)
+        
+    //    validationTF()
+        
+        self.medicineSearchTB.delegate = self
+        self.medicineSearchTB.returnKeyType = .done
+        
+        
+
         
     }
     
+    func textFieldShouldReturn(_ medicineSearchTB: UITextField) -> Bool
+    {
+        medicineSearchTB.resignFirstResponder()
+        return true
+    }
+  
+
+    
     func makeRoundedButton(){
-        
-//        searchBtn.layer.cornerRadius = searchBtn.frame.height / 2
-//        scanMedsBtn.layer.cornerRadius = scanMedsBtn.frame.height / 2
-        
         searchBtn.layer.cornerRadius = 10.0
-        scanMedsBtn.layer.cornerRadius = 10.0
+        //scanMedsBtn.layer.cornerRadius = 10.0
     }
     
     
@@ -65,36 +78,50 @@ UINavigationControllerDelegate {
         return result
     }
 
+    @IBAction func searchAction(_ sender: Any) {
+        
+        if (self.medicineSearchTB.text! == "") {
+            
+            print("No entry has been created!")
+            
+        }
+        
+        
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        MedicineDataManager().getAllMedication(onComplete: { (Medicine) in
-//
-//
-//    self.recievedArray.append(Medicine.medicineName)
-//
-//            let uniqueMedicine = self.uniqueElementsFrom(array: self.recievedArray)
-                       //     for i in uniqueMedicine {
-                    
-                             //   if  self.medicineSearchTB.text! == i {
-//            if uniqueMedicine.contains(self.medicineSearchTB.text!) == true {
-//
-        
+      
+            
+            print("No entry has been created!")
+            
                                     if (segue.identifier == "destination") {
+                                        
+                                        validationTF();
                                         
                                         let secondViewController = segue.destination as? medicineDetailController;
                                         secondViewController!.medNames = self.medicineSearchTB.text!
-                                    }
-                           //     }
-//                                else {
-//                                    print("Wrong Medicine!")
-//                                }
+            }
+}
     
-//                           })
     
-      //  }
-    
-   
-    
+    func validationTF(){
+        
+        if (self.medicineSearchTB.text!.isEmpty) {
+            
+            print("Text field is empty")
+            let alertView = UIAlertController(title: "Enter Medicine Name to Search",
+                                              message: "Medicine Name is Empty",
+                                              preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Okay", style: .default)
+            alertView.addAction(okAction)
+            present(alertView, animated: true)
+      
+            
+        }
+        
+        else {
+     
+        }
+        
+        
     }
-
 }

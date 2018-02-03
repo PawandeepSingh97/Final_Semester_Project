@@ -197,8 +197,14 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             }
             if(indexPath.row == 6){
                 //Navigation Programmitically
-                let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
-                self.navigationController?.pushViewController(MedicineViewController, animated: true)
+//                let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
+//                self.navigationController?.pushViewController(MedicineViewController, animated: true)
+                
+                
+                let popUpMedicine = MedicationStoryboard.instantiateViewController(withIdentifier: "popUpMedicine") as! popUpMedicine
+                self.navigationController?.pushViewController(popUpMedicine, animated: true)
+                
+                
             }
             if(indexPath.row == 7){
                 //Navigation Programmitically
@@ -207,13 +213,13 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             }
             if(indexPath.row == 8){
                 //Navigation Programmitically
-                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+//                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//                self.navigationController?.pushViewController(ReminderViewController, animated: true)
             }
             if(indexPath.row == 9){
                 //Navigation Programmitically
-                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+//                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//                self.navigationController?.pushViewController(ReminderViewController, animated: true)
             }
             if(indexPath.row == 10){
                 //Navigation Programmitically
@@ -522,8 +528,11 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         }
         if(item!.item == 6){
             //Navigation Programmitically
-            let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
-            self.navigationController?.pushViewController(MedicineViewController, animated: true)
+//            let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
+//            self.navigationController?.pushViewController(MedicineViewController, animated: true)
+            
+            let popUpMedicine = MedicationStoryboard.instantiateViewController(withIdentifier: "popUpMedicine") as! popUpMedicine
+            self.navigationController?.pushViewController(popUpMedicine, animated: true)
         }
         if (item!.item == 7) {
             
@@ -534,13 +543,13 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         //reminderViewTableViewController
         if(item!.item == 8){
             //Navigation Programmitically
-            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+//            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//            self.navigationController?.pushViewController(ReminderViewController, animated: true)
         }
         if(item!.item == 9){
             //Navigation Programmitically
-            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+//            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//            self.navigationController?.pushViewController(ReminderViewController, animated: true)
         }
         if(item!.item == 10){
             //Navigation Programmitically
