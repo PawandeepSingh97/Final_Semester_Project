@@ -76,11 +76,7 @@ class AppointmentDialog:Dialog {
         
         
         
-        let toDisplay = "You do not have any appointment at this time";
-        let botReply = toDisplay;
-        
-        self.responseToDisplay.append(toDisplay)
-        self.BotResponse.append(botReply)
+       
         
         //TODO: ONCE GET APPOINTMENT DETAILS, HAVE A METHOD TO READ STRING AS THOUGH A NURSE IS READING IT
         
@@ -96,8 +92,8 @@ class AppointmentDialog:Dialog {
         //CHECK IF GOT APPOINTMENT FIRST
         //IF HAVE, THEN CAN ASK TO PROMPT TO CANCEL
         //FROM THERE, GET PATIENT FEEDBACK IF WANT TO CANCEL,
+        
         getAppointment(starting: start, ending: end);
-
         self.isPrompt = true;//tells dialog it is a prompt questions
         
         //prompt question
@@ -106,7 +102,11 @@ class AppointmentDialog:Dialog {
         //no need to call db here
         
         self.responseToDisplay.append(todisplay)
-        self.BotResponse.append(botReply)
+        self.BotResponse.append(botReply);
+        
+        
+        
+        //self.brDelegate?.Nurse(response: self);
         
         
         //ELSE IF DON'T HAVE,TELL PATIENT YOU HAVE NO APPOINTMENT TO CANCEL
@@ -256,7 +256,18 @@ class AppointmentDialog:Dialog {
                 
             }//end for loop
             
-            print("got appoint for \(self.responseToDisplay.last!)");
+            //if got no appointment;
+            if self.appointmentList.count == 0
+            {
+                let toDisplay = "You do not have any appointment at this time";
+                let botReply = toDisplay;
+                
+                self.responseToDisplay.append(toDisplay)
+                self.BotResponse.append(botReply)
+                self.brDelegate?.Nurse(response: self);
+            }
+            
+            print("got appointment for \(self.responseToDisplay.last!)");
             
         }
     }

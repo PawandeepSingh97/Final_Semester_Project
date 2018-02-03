@@ -303,12 +303,12 @@
 			children = (
 				25FE9C6F1FEA604C00437BD6 /* Intent.swift */,
 				2521209020059FAF0048F66B /* Dialog.swift */,
-				2551604A2022AFF000399D32 /* GreetingDialog.swift */,
-				25725CA81FFE48C20006ACB2 /* PatientDialog.swift */,
 				252120942005AE970048F66B /* AppointmentDialog.swift */,
-				25B007752020673700D9A253 /* MedicationDialog.swift */,
 				25B007732020672900D9A253 /* MonitoringDialog.swift */,
+				25B007752020673700D9A253 /* MedicationDialog.swift */,
+				2551604A2022AFF000399D32 /* GreetingDialog.swift */,
 				25D3F0A9201EFA0E0036EE3D /* ErrorDialog.swift */,
+				25725CA81FFE48C20006ACB2 /* PatientDialog.swift */,
 				25B00777202071F700D9A253 /* Entity.swift */,
 			);
 			path = "Intent & Dialog";

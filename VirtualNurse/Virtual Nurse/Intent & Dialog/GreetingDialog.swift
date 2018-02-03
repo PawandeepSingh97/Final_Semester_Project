@@ -50,7 +50,14 @@ class GreetingDialog:Dialog
         
         self.responseToDisplay.append(toDisplay)
         self.BotResponse.append(botReply);
+        print("\(responseToDisplay[0])");
+        brDelegate?.Nurse(response: self);
     }
+    
+    /**
+     
+     WILL CALL OTHER DIALOGS
+     */
     
     func getAppointment()
     {
