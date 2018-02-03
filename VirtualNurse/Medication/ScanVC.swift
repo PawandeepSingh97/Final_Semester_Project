@@ -156,8 +156,8 @@ UINavigationControllerDelegate {
     @IBAction func selectButton(_ sender: Any) {
         
         let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary // where the photo is taken from what source
-        //   imagePickerController.sourceType = .camera
+        //imagePickerController.sourceType = .photoLibrary // where the photo is taken from what source
+          imagePickerController.sourceType = .camera
         
         imagePickerController.delegate = self
         

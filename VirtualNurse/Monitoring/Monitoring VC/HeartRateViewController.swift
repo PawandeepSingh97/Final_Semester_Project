@@ -14,12 +14,13 @@ class HeartRateViewController: UIViewController {
     
 
     @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var maxHeartRate: UILabel!
-    @IBOutlet weak var minHeartRate: UILabel!
+    //@IBOutlet weak var maxHeartRate: UILabel!
+    //@IBOutlet weak var minHeartRate: UILabel!
     @IBOutlet weak var displayHeartRate: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     var patient:Patient?;
+     var count = 0
     
     //To interact with the healthkit framework
     let healthStore = HKHealthStore()
@@ -44,6 +45,7 @@ class HeartRateViewController: UIViewController {
 
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -56,7 +58,7 @@ class HeartRateViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        //self.navigationController?.setNavigationBarHidden(false, animated: animated)
         
         //Show the tab bar
         self.tabBarController?.tabBar.isHidden = false
@@ -133,12 +135,33 @@ class HeartRateViewController: UIViewController {
     @IBAction func syncAppleWatchButton(_ sender: Any) {
         print("Sync button clicked")
         
-        //Retrieve Heart Rate
-        retrieveHeartRate()
+       Timer.scheduledTimer(timeInterval: 1,
+                             target: self,
+                             selector: #selector(self.retrieveHeartRate),
+                             userInfo: nil,
+                             repeats: true)
+        
+        LoadingIndicatorView.show("Apple watch syncing in progress")
+        
+//        //Retrieve Heart Rate
+//        retrieveHeartRate()
     }
     
+   
+//    @objc func sayHello(timer: Timer){
+//        count = count + 1
+//        print("HI")
+//        if(count == 10){
+//           displayHeartRate.text = "20.0"
+//        }
+//        if(displayHeartRate.text != "0"){
+//            timer.invalidate()
+//        }
+//
+//    }
+    
     @IBAction func viewChartsButton(_ sender: Any) {
-        
+         self.navigationController?.isNavigationBarHidden = true
         //Instatiate Monitoring Storyboard
         let storyboard = UIStoryboard(name:"MonitoringStoryboard" , bundle:nil)
         //Navigation Programmitically
@@ -148,6 +171,7 @@ class HeartRateViewController: UIViewController {
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.isNavigationBarHidden = false
        //Return to the main monitoring dashboard
        navigationController?.popViewController(animated: true)
     }
@@ -200,7 +224,7 @@ class HeartRateViewController: UIViewController {
     }
     
     //Retrieve Heart Rate thru healthKit
-    func retrieveHeartRate(){
+    @objc func retrieveHeartRate(timer: Timer){
         
         //Setting Date
         let calendar = NSCalendar.current
@@ -263,24 +287,60 @@ class HeartRateViewController: UIViewController {
                                 //let startdate = result.endDate
                                 let count = quantity.doubleValue(for: HKUnit(from: "count/min"))
                                 
+                              
+
                                 //Store heartrate in an array
                                 self.storeHeartRate.append(count)
-                                
-                                //Calculate Maximum heartrate
-                                let maximumHeartRate = self.storeHeartRate.max()
-                                self.maxHeartRate.text = String("Max \(Int(maximumHeartRate!))")
-                                
-                                //Calculate Minimum heartrate
-                                let minimumHeartRate = self.storeHeartRate.min()
-                                self.minHeartRate.text = String("Min \(Int(minimumHeartRate!))")
-                                
-                                //Calculate Average heartrate
-                                let sumHeartRate = self.storeHeartRate.reduce(0, +)
-                                let avgHeartRate = sumHeartRate / Double(self.storeHeartRate.count)
-                                self.displayHeartRate.text = String(Int(avgHeartRate))
+                                print(self.storeHeartRate)
+//                                //Calculate Maximum heartrate
+//                                let maximumHeartRate = self.storeHeartRate.max()
+//                                self.maxHeartRate.text = String("Max \(Int(maximumHeartRate!))")
+//
+//                                //Calculate Minimum heartrate
+//                                let minimumHeartRate = self.storeHeartRate.min()
+//                                self.minHeartRate.text = String("Min \(Int(minimumHeartRate!))")
+//
+//                                //Calculate Average heartrate
+//                                let sumHeartRate = self.storeHeartRate.reduce(0, +)
+//                                let avgHeartRate = sumHeartRate / Double(self.storeHeartRate.count)
+//                                self.displayHeartRate.text = String(Int(avgHeartRate))
                             }
                             
                         }
+                        
+                        
+//                        //Calculate Maximum heartrate
+//                        let maximumHeartRate = self.storeHeartRate.max()
+//                        if((maximumHeartRate) != nil){
+//                           self.maxHeartRate.text = String("Max \(Int(maximumHeartRate!))")
+//                        }
+//
+//                        //Calculate Minimum heartrate
+//                        let minimumHeartRate = self.storeHeartRate.min()
+//                        if((minimumHeartRate) != nil){
+//                            self.minHeartRate.text = String("Min \(Int(minimumHeartRate!))")
+//                        }
+    
+                        //Calculate Average heartrate
+                        let sumHeartRate = self.storeHeartRate.reduce(0, +)
+                        let avgHeartRate = sumHeartRate / Double(self.storeHeartRate.count)
+                        if (sumHeartRate != 0){
+                            self.displayHeartRate.text = String(Int(avgHeartRate))
+                            timer.invalidate()
+                            self.count = self.count + 1
+                            print(self.count)
+                            LoadingIndicatorView.hide()
+                        }
+                      
+                        
+                        
+//                        //Stop the timer if the value is already set
+//                        if(self.displayHeartRate.text != "0"){
+//                            timer.invalidate()
+//                            self.count = self.count + 1
+//                            print(self.count)
+//                        }
+                       
 
                     } // Updating the UI Ends here
                     

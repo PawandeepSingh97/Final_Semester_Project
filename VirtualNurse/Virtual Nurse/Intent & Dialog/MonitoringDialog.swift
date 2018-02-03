@@ -33,6 +33,7 @@ class MonitoringDialog:Dialog
         default:
             self.responseToDisplay.append(error())
             self.BotResponse.append(error())
+            brDelegate?.Nurse(response: self);
         }
     }
     

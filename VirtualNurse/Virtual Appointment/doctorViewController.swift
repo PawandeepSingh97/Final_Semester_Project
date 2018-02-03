@@ -14,6 +14,7 @@ class doctorViewController: UIViewController {
 
     var selectedDoctor: String?
     var doctorList: Array = [String] ()
+    var patient:Patient?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class doctorViewController: UIViewController {
     
     func doctorName(){
         //Set patient NRIC
-        let patientNric:String = "S9822477G"
+        let patientNric:String = (patient?.NRIC)!
         
         AppointmentDataManager().getDoctorTableByNric(patientNric) { (Doctor) in
             self.doctorList.append(Doctor.doctorName)
@@ -69,7 +70,7 @@ class doctorViewController: UIViewController {
         doctortxt.inputView = doctorPicker
         
         //customization
-        doctorPicker.backgroundColor = .black
+        doctorPicker.backgroundColor = UIColor(hex:0x53B7CF)
     }
     
     func uniqueElementsFrom<T: Hashable>(array: [T]) -> [T] {
@@ -89,8 +90,8 @@ class doctorViewController: UIViewController {
         toolBar.sizeToFit()
         
         //customization
-        toolBar.barTintColor = .black
-        toolBar.tintColor = .white
+        toolBar.barTintColor =  .white
+        toolBar.tintColor = .black
         
         let doneButton = UIBarButtonItem(title:"Done", style: .plain, target: self, action: #selector(doctorViewController.dismissKeyboard))
         
@@ -108,6 +109,7 @@ class doctorViewController: UIViewController {
     @objc func menuNextButton(sender: UIBarButtonItem) {
         let myVC = storyboard?.instantiateViewController(withIdentifier: "CreateAppointmentViewController") as! CreateAppointmentViewController
         myVC.doctorName = doctortxt.text!
+        myVC.patient = patient
         navigationController?.pushViewController(myVC, animated: true)
     }
     
@@ -150,7 +152,7 @@ extension doctorViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         
         label.textColor = .white
         label.textAlignment = .center
-        label.font = UIFont(name: "Menlo-Regular", size: 17)
+        label.font = UIFont(name: "System", size: 17)
         label.text = uniqueStrings[row]
         
         return label

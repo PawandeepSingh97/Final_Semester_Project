@@ -11,7 +11,7 @@ import Foundation
 import Alamofire
 
 class AppointmentDataManager: NSObject {
-
+    
     var appointmentArray = [AnyObject]()
     
     //Declare a var to store the JSON response
@@ -46,18 +46,18 @@ class AppointmentDataManager: NSObject {
         
         //Get request
         Alamofire.request(encodedUrl, headers: headers).responseJSON { (responseObject) -> Void in
-
+            
             if responseObject.result.isSuccess {
                 
-               
+                
                 let responseJson = JSON(responseObject.result.value!)
                 
                 //Check if responseJson is empty
-                if responseJson != []{ 
+                if responseJson != []{
                     print("RESPONSE JSON\(responseJson)")
                     //Extract Json
                     
-                     print(" result value\(responseJson.count)")
+                    print(" result value\(responseJson.count)")
                     
                     for i in 0..<(responseJson.count){
                         
@@ -78,11 +78,11 @@ class AppointmentDataManager: NSObject {
                         onComplete?(Appointment)
                     }
                     
-                   
+                    
                     
                 }
-            
-
+                
+                
             }
             
         }
@@ -168,7 +168,7 @@ class AppointmentDataManager: NSObject {
                         print("nric1 \(doctorName)")
                         print("date1 \(date)")
                         print("time1 \(time)")
-
+                        
                         let Appointment = AppointmentModel(id,nric,doctorName,date,time);
                         onComplete?(Appointment)
                     }
@@ -208,14 +208,14 @@ class AppointmentDataManager: NSObject {
     func getDoctorIDByNameNric( _ patientNric:String, _ patientName:String, _ doctorName:String, onComplete:((_ DoctorModel: DoctorModel) -> Void)?) {
         
         
-
+        
         let filteredDoctor = "patientNric eq '\(patientNric)' and patientName eq '\(patientName)' and doctorName eq '\(doctorName)'"
         
         let encodedfilteredDoctor = filteredDoctor.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         //Encoded Url
         let encodedUrl = "\(url2)?$filter=\(encodedfilteredDoctor!)"
-
+        
         
         //Get request
         Alamofire.request(encodedUrl, headers: headers).responseJSON { (responseObject) -> Void in
@@ -384,7 +384,7 @@ class AppointmentDataManager: NSObject {
             
         }
     }
-
+    
     
     
     //Returns all records in Doctor table based on nric
@@ -536,7 +536,10 @@ class AppointmentDataManager: NSObject {
     //Returns all records in Doctor table based on nric and doctorName
     func getDoctorTableByAll( _ patientNric:String, _ doctorName:String ,  _ time:String ,  _ date:String ,onComplete:((_ DoctorModel: DoctorModel) -> Void)?) {
         
-        
+        print("enter1 \(patientNric)")
+        print("enter2 \(doctorName)")
+        print("enter3 \(time)")
+        print("enter4 \(date)")
         
         let filteredDoctor = "patientNric eq '\(patientNric)' and doctorName eq '\(doctorName)' and time eq '\(time)' and date eq '\(date)' "
         
@@ -584,6 +587,7 @@ class AppointmentDataManager: NSObject {
             
         }
     }
-
-
+    
+    
 }
+

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="raO-wl-ciY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="raO-wl-ciY">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,22 +17,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select your Doctor" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jlq-NC-0zx">
-                                <rect key="frame" x="95" y="318" width="224" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PageHeaders" translatesAutoresizingMaskIntoConstraints="NO" id="7Xa-0S-DiA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="436"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doctor:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="fZk-YN-A80">
+                                <rect key="frame" x="125" y="91" width="165" height="26.666666666666671"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="0.96383008055780128" green="1" blue="0.95923827219910529" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select your Doctor" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jlq-NC-0zx">
+                                <rect key="frame" x="92" y="184" width="231" height="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.6072613441780822" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Doctor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1v-PR-mao">
-                                <rect key="frame" x="168" y="257" width="78" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fZk-YN-A80" firstAttribute="top" secondItem="G1s-Jv-tfY" secondAttribute="top" constant="71" id="3d6-LZ-WZ6"/>
+                            <constraint firstItem="7Xa-0S-DiA" firstAttribute="trailing" secondItem="G1s-Jv-tfY" secondAttribute="trailing" id="MTh-er-1e5"/>
+                            <constraint firstItem="7Xa-0S-DiA" firstAttribute="leading" secondItem="G1s-Jv-tfY" secondAttribute="leading" id="PZl-EZ-uAU"/>
+                            <constraint firstItem="Jlq-NC-0zx" firstAttribute="leading" secondItem="G1s-Jv-tfY" secondAttribute="leading" constant="92" id="WEa-fZ-tdD"/>
+                            <constraint firstItem="G1s-Jv-tfY" firstAttribute="trailing" secondItem="fZk-YN-A80" secondAttribute="trailing" constant="124" id="X4V-yz-ndT"/>
+                            <constraint firstItem="Jlq-NC-0zx" firstAttribute="top" secondItem="fZk-YN-A80" secondAttribute="bottom" constant="66.666666666666671" id="bFi-Ok-UY2"/>
+                            <constraint firstItem="fZk-YN-A80" firstAttribute="leading" secondItem="G1s-Jv-tfY" secondAttribute="leading" constant="125" id="jM7-7c-rRv"/>
+                            <constraint firstItem="G1s-Jv-tfY" firstAttribute="trailing" secondItem="Jlq-NC-0zx" secondAttribute="trailing" constant="91" id="jaG-kW-dvD"/>
+                            <constraint firstItem="G1s-Jv-tfY" firstAttribute="bottom" secondItem="7Xa-0S-DiA" secondAttribute="bottom" constant="300" id="lso-Lo-eGj"/>
+                            <constraint firstItem="7Xa-0S-DiA" firstAttribute="top" secondItem="F1n-Vq-LYc" secondAttribute="top" id="rVO-LM-F71"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="G1s-Jv-tfY"/>
                     </view>
                     <connections>
@@ -166,18 +179,18 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doctor: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oj6-lz-dvw">
                                             <rect key="frame" x="68" y="33" width="183" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.96155726813319653" green="0.96867650747299194" blue="0.9677168482514874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exW-CU-qNL">
                                             <rect key="frame" x="68" y="85" width="202" height="22"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0y-mu-BwK">
                                             <rect key="frame" x="39" y="127" width="253" height="5"/>
-                                            <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.96081370115280151" green="0.96861177682876587" blue="0.96862834692001343" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="5" id="Wyo-PR-NYF"/>
                                             </constraints>
@@ -185,38 +198,39 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scheduled Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf2-iM-thl">
                                             <rect key="frame" x="68" y="169" width="202" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.96155726813319653" green="0.96867650747299194" blue="0.9677168482514874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7z-mU-sTC">
                                             <rect key="frame" x="68" y="215" width="215" height="21.666666666666657"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEO-LF-LjE">
                                             <rect key="frame" x="39" y="318.66666666666669" width="253" height="5"/>
-                                            <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="5" id="965-ka-r35"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLT-s6-XAb">
                                             <rect key="frame" x="68" y="266.66666666666669" width="224" height="22"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Euc-KI-MLw">
                                             <rect key="frame" x="53" y="331.66666666666669" width="230" height="30"/>
-                                            <state key="normal" title="Confirm"/>
+                                            <state key="normal" title="Confirm">
+                                                <color key="titleColor" red="0.99519230769230771" green="0.99038461538461542" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
                                             <connections>
                                                 <action selector="createAppointmentBtn:" destination="n7a-U4-ixl" eventType="touchUpInside" id="E2o-O0-Zq7"/>
-                                                <segue destination="Egd-xd-rT1" kind="unwind" identifier="unwindToVC1" unwindAction="unwindToVC1WithSegue:" id="gdl-6a-gK6"/>
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.42916509509086609" green="0.70812708139419556" blue="0.80001896619796753" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="v7z-mU-sTC" secondAttribute="trailing" constant="47" id="02U-rn-sbX"/>
                                         <constraint firstAttribute="trailing" secondItem="oj6-lz-dvw" secondAttribute="trailing" constant="79" id="46U-yO-BCQ"/>
@@ -265,12 +279,16 @@
                         <outlet property="bookedDoctor" destination="exW-CU-qNL" id="NEa-Oe-6kb"/>
                         <outlet property="bookedTime" destination="vLT-s6-XAb" id="P5J-I9-lSp"/>
                         <outlet property="confirmBtn" destination="Euc-KI-MLw" id="IvX-Ha-bVv"/>
+                        <segue destination="1A8-Rm-x4s" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="cLR-PR-YAu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aaz-LX-GEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Egd-xd-rT1" userLabel="Exit" sceneMemberID="exit"/>
+                <exit id="1A8-Rm-x4s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1634.7826086956522" y="-162.22826086956522"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="PageHeaders" width="375" height="442"/>
+    </resources>
 </document>
