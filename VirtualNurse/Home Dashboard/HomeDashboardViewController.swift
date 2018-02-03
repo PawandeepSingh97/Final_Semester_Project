@@ -60,7 +60,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         
         tabcontroller.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
 
-
     }
     
 
@@ -80,7 +79,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
         self.navigationController?.navigationBar.topItem?.title = "Home Dashboard"
         
         //reload the collectionView
@@ -404,6 +403,9 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             //Get the CHD value
             chdValue = true
             
+            //Set the overallStatus to default
+            self.overallStatus.frame.origin.y += 12
+            
             //Animate the UI view when there is a risk
             UIView.animate(withDuration: 1, animations: {
                 self.overallStatus.backgroundColor = UIColor(hex:0xD50000)
@@ -411,7 +413,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 //self.overallStatus.frame.size.height += 10
             }) { _ in
                 UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
-                    self.overallStatus.frame.origin.y -= 20
+                    self.overallStatus.frame.origin.y -= 12
                 })
             }
         }
