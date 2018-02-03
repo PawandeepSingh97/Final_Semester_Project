@@ -28,7 +28,8 @@ class BaseTabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         chatBtn.setImage(UIImage(named:"Nurse_Logo"), for:.normal);
-        chatBtn.frame = CGRect(x: 300, y: 550, width: 70, height: 65);
+        chatBtn.frame = CGRect(x: 300, y: 550, width: 75, height: 75);
+        chatBtn.addBadgeToButon(badge: "1");
         view.addSubview(chatBtn);
         
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(buttonDrag(pan:)))

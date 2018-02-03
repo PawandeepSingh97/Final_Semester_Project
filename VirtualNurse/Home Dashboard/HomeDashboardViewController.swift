@@ -21,6 +21,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     @IBOutlet weak var chdPredictionLabel: UILabel!
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var overallStatus: UIView!
+    @IBAction func unwindToHome(segue:UIStoryboardSegue) { }
     
     //Declaration of variables
     var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder","Add Appointment","View Appointment","Health Data"]
@@ -79,7 +80,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         
         self.navigationController?.navigationBar.topItem?.title = "Home Dashboard"
         

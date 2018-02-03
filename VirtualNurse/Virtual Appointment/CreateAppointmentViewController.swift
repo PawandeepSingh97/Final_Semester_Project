@@ -23,7 +23,6 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
      var doctorName: String = ""
      var appointmentDateList: Array = [String] ()
      var appointmentTimeList = [""]
-     //Patient Data
      var patient:Patient?;
     
     override func viewDidLoad() {
@@ -106,14 +105,12 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
     
     // When calender date is selected
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("did select date \(self.dateFormatter.string(from: date))")
+
         let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        print("selected dates is \(selectedDates)")
         self.collectionView.reloadData();
         let SelectedDate = String(describing: self.calendar.selectedDate.map({self.dateFormatter.string(from: $0)})!)
         self.appointmentTimeList.removeAll()
         AppointmentDataManager().getTimeByDoctorDate(doctorName, SelectedDate) { (Appointment) in
-            print("time booked \(Appointment.time)")
             self.appointmentTimeList.append(Appointment.time)
             self.collectionView.reloadData();
         }
@@ -168,8 +165,8 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
                 cell.layer.masksToBounds = false
                 cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
                 cell.backgroundColor = UIColor(hex: 0xD91E18)
+                cell.isUserInteractionEnabled = false
             }
-            
         }
        return cell
     }
@@ -180,12 +177,13 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
             let detailViewController = segue.destination as! showAppointmentDetailsViewController
             let cell = sender as! UICollectionViewCell
             let indexPath = self.collectionView!.indexPath(for: cell)
-            print("Item2 \(indexPath!)")
+            let appointmentItem = self.data[(indexPath?.row)!]
+            let patientNric:String = (patient?.NRIC)!
+            
+        
             if(indexPath != nil) {
                 
-               let patientNric:String = (patient?.NRIC)!
-                
-                let appointmentItem = self.data[(indexPath?.row)!]
+               
                 let appointment = AppointmentModel(
                      "",
                     patientNric,
@@ -198,6 +196,7 @@ class CreateAppointmentViewController: UIViewController, FSCalendarDelegate,FSCa
 
                 
              }
+        
 
             }
         }

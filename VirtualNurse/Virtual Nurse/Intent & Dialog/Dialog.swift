@@ -14,6 +14,7 @@ protocol PromptAnsweredDelegate {
     func User(hasAnswered:String,dialog:Dialog);
 }
 
+//use to get bot reply once dialog is passed
 protocol BotReplyDelegate {
     func Nurse(response:Dialog);
 }
@@ -53,11 +54,14 @@ class Dialog:NSObject
         self.dialog = dialogToCall;
     }
     
+    /*
+     Default dialog is asking user to repeat
+     **/
     open func getDialog()
     {
         responseToDisplay.append(error())
         BotResponse.append(error());
-        //return responseToDisplay;
+        brDelegate?.Nurse(response: self);
     }
     
     //HANDLE ERROR BY CREATING AN ERROR DIALOG
@@ -67,7 +71,7 @@ class Dialog:NSObject
     
     @objc open func promptHandler(sender:UIButton)
     {
-        print("defulat handler for dialog")
+        print("default handler for dialog")
         paDelegate?.User(hasAnswered: "no answer", dialog: self);
     }
     

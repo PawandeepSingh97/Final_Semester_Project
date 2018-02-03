@@ -10,10 +10,16 @@ import UIKit
 
 protocol BotResponseDelegate:class
 {
-    func isPromptQuestion(promptDialog:Dialog);
-    func getBotPromptResponse(responseDialog:Dialog);
     
+    //Function to get the dialog after patient query
     func display(response:Dialog);
+    
+    //function calls when dialog is prompt question
+    func isPromptQuestion(promptDialog:Dialog);
+    
+    func recievedPromptResponse(responseDialog:Dialog);
+    
+    
 }
 
 
@@ -30,7 +36,7 @@ class DialogController: NSObject {
     
     
     //TALK TO LUIS
-     func query(text:String,onComplete:((_:Dialog) -> Void)?)
+     func query(text:String)
     {
         LUISDataManager.queryLUIS(query: text) { (intent) in
             //Once determine INTENT FROM LUIS
@@ -48,12 +54,13 @@ class DialogController: NSObject {
             
             self.addDialogToConversation(topic, dialogToCall: dialog,entity:entity);
             let response = self.dialogToRespond();
-            response.getDialog();//this will update the variables in dialog to display in UI or for bot to speak
             response.paDelegate = self;//set delegate of prompt here
             response.brDelegate = self;
+            response.getDialog();//this will update the variables in dialog to display in UI or for bot to speak
+          
             
 
-            onComplete?(response);
+            //onComplete?(response);
         }
     }
     
@@ -108,6 +115,8 @@ class DialogController: NSObject {
                 }
                 else
                 {
+                    
+                    
                     elementToAdd.entity = entity;
                     conversationContext.push(elementToAdd);
                     
@@ -125,9 +134,9 @@ class DialogController: NSObject {
                 {
                     elementToAdd.entity = entity;
                 }
-                if iserrordialog
+                if iserrordialog //if is an error dialog
                 {
-                    let lastdialog = conversationContext.pop();
+                    let lastdialog = conversationContext.pop();//get last dialog
                     lastdialog?.BotResponse = [];
                     lastdialog?.responseToDisplay = [];
                     conversationContext.push(lastdialog!);
@@ -158,7 +167,9 @@ class DialogController: NSObject {
         }
         else {hasentity = true;}
         
-        switch topic{
+        
+        switch topic
+        {
         case "Greeting":
             dialog = GreetingDialog(dialogToCall: dialogToCall, patient: patient!);
         case "Patient":
@@ -167,11 +178,13 @@ class DialogController: NSObject {
             dialog = AppointmentDialog(dialogToCall: dialogToCall, patient: patient!);
         case "Monitor":
             dialog = MonitoringDialog(dialogToCall: dialogToCall, patient: patient!);
-        case "None":
-            dialog = Dialog(dialogToCall: dialogToCall);//error dialog
-        default:
-            dialog = Dialog(dialogToCall: dialogToCall);//error dialog
+        case "Medication":
+            dialog = MedicationDialog(dialogToCall: dialogToCall, patient: patient!);
+        case "None": //for passing entity
+             dialog = Dialog(dialogToCall: dialogToCall)
+        default: //error dialog
             iserrordialog = true;
+            dialog = Dialog(dialogToCall: dialogToCall);//error dialog
         }
  
         
@@ -179,13 +192,13 @@ class DialogController: NSObject {
     }
     
     
-    
-    func defaultGreeting(patient:Patient) -> GreetingDialog
-    {
-        var gd = GreetingDialog(dialogToCall: "Info", patient: patient);
-        gd.getDialog();
-        return gd
-    }
+//
+//    func defaultGreeting(patient:Patient) -> GreetingDialog
+//    {
+//        var gd = GreetingDialog(dialogToCall: "Info", patient: patient);
+//        gd.getDialog();
+//        return gd
+//    }
     
     
 }
@@ -197,7 +210,7 @@ extension DialogController:PromptAnsweredDelegate
     //AND PASS THE DIALOG TO UI
     func User(hasAnswered: String, dialog: Dialog) {
         //get prompt has and return to the ui
-        Botdelegate.getBotPromptResponse(responseDialog: dialog);
+        Botdelegate.recievedPromptResponse(responseDialog: dialog);
     }
 }
 
