@@ -25,6 +25,7 @@ class Dialog:NSObject
     var Intent: String { get { return "Dialog" } }
     var paDelegate:PromptAnsweredDelegate?;
     var brDelegate:BotReplyDelegate?;
+    var MT = MicrosoftTranslatorHelper();
     
     //Store patient data
     var patient:Patient?;
@@ -59,9 +60,23 @@ class Dialog:NSObject
      **/
     open func getDialog()
     {
-        responseToDisplay.append(error())
-        BotResponse.append(error());
-        brDelegate?.Nurse(response: self);
+        
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en")
+        {
+            responseToDisplay.append(error())
+            BotResponse.append(error());
+            brDelegate?.Nurse(response: self);
+            
+        }
+        else{
+            MT.Translate(from: "en", to: localecode, text: error(), onComplete: { (ct) in
+                self.responseToDisplay.append(ct)
+                self.BotResponse.append(ct);
+                self.brDelegate?.Nurse(response: self);
+            })
+        }
+        
     }
     
     //HANDLE ERROR BY CREATING AN ERROR DIALOG

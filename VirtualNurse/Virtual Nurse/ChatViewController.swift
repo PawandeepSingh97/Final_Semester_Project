@@ -59,6 +59,11 @@ class ChatViewController: MessagesViewController {
     //HELPERS
     var sttHelper = SpeechToTextHelper();
     var microsoftTranslator = MicrosoftTranslatorHelper();
+    
+    
+    var medDialog:MedicationDialog?;
+    
+    var isAlertNeeded:Bool = false;
 
     
     override func viewDidLoad() {
@@ -82,6 +87,13 @@ class ChatViewController: MessagesViewController {
         sttHelper.speechRecognizer?.delegate = self;
         sttHelper.requestSpeechAuthorization();
         sttHelper.delegate = self;
+        let localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if !(localecode == nil || localecode == "en"){
+            
+        }
+        else{
+            changeSpeechLocale(code: localecode)
+        }
         
 
         //TODO: CHANGE ID AND DISPLAY NAME PROPERLY
@@ -99,12 +111,21 @@ class ChatViewController: MessagesViewController {
         
         
         
-       // setGreeting();
+        setGreeting();
         
         
         //Set mic style by default
         micBtnStyle();
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        if isAlertNeeded
+        {
+            heartDiseaseAlert();
+        }
     }
     
     @objc func DisplaySettings()
@@ -119,19 +140,56 @@ class ChatViewController: MessagesViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    var isGreetingDialog:Bool = false;
     //Will set greeting to user;
-//    func setGreeting()
-//    {
-//
-//
-//        let greetingdialog = dialogController?.defaultGreeting(patient: patient!);
-//        for response in (greetingdialog?.responseToDisplay)!
-//        {
-//            messages.append(MockMessage(text: response, sender: virtualNurse, messageId: UUID().uuidString, date: Date()));
-//        }
-//
-//    }
+    func setGreeting()
+    {
+        isGreetingDialog = true;
+        let gd =   dialogController?.defaultGreeting(patient: patient!);
+        gd?.paDelegate = dialogController;
+        gd?.brDelegate = dialogController;
+        
+         gd?.greetPatient();
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(exactly:3)!, repeats: false) { (_) in
+            
+            gd?.getAppointment();
+            gd?.apptDialog?.paDelegate = self.dialogController;
+            gd?.apptDialog?.brDelegate = self.dialogController;
+            gd?.apptDialog?.getDialog();
+            
+            //self.sendMessage(message: MockMessage(text:"...", sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+            Timer.scheduledTimer(withTimeInterval: TimeInterval(exactly:9)!, repeats: false) { (_) in
+                
+                //self.sendMessage(message: MockMessage(text:"...", sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+                gd?.getMonitoringLog();
+                gd?.monitoringDialog?.paDelegate = self.dialogController;
+                gd?.monitoringDialog?.brDelegate = self.dialogController;
+                gd?.monitoringDialog?.getDialog();
+                self.isGreetingDialog = false;
+
+
+            }
+            
+        };
+        
+    }
+    
+    /*
+     Function is called when patient got chance of heart disease
+     Nurse will ask to remind patient to take their medication
+     */
+    func heartDiseaseAlert()
+    {
+        
+            self.sendMessage(message: MockMessage(text:"...", sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+            Timer.scheduledTimer(withTimeInterval: TimeInterval(exactly:2)!, repeats: false) { (_) in
+                self.dialogController?.alertDialogs(patient: self.patient!);
+                self.isAlertNeeded = false;
+            }
+        
+        
+        
+    }
 
     func sendMessage(message:MockMessage)
     {
@@ -139,7 +197,10 @@ class ChatViewController: MessagesViewController {
         // messages.append(MockMessage(text: "test123", sender: currentSender(), messageId: UUID().uuidString, date: Date()))
         messages.append(message);
         messagesCollectionView.insertSections([messages.count - 1])
-        messagesCollectionView.scrollToBottom()
+        if messages.count > 0 {
+            messagesCollectionView.scrollToBottom();
+        }
+        
     }
     
     
@@ -275,7 +336,13 @@ class ChatViewController: MessagesViewController {
     func getNurseResponse(patientquery:String)
     {
         
-        dialogController?.query(text: patientquery);
+        //check what language user is speaking
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if localecode == nil
+        {
+            localecode = "en";
+        }
+        dialogController?.query(text: patientquery, language: localecode);
         
 //        //Query from LUIS
 //        //GET
@@ -319,6 +386,11 @@ class ChatViewController: MessagesViewController {
 //        })
     }
 
+    func changeSpeechLocale(code:String)
+    {
+        print("locale for mic is \(code)");
+        sttHelper.speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: code));
+    }
     
     
 }//end class
@@ -332,12 +404,25 @@ class ChatViewController: MessagesViewController {
 //TODO,TEST FIRST
 extension ChatViewController:BotResponseDelegate
 {
-    func receivedMedication(responseDialog: MedicationDialog) {
+    
+    
+    
+    func receivedMedication(responseDialog: MedicationDialog,response:Bool) {
         //once get medication dialog
         //set delegate
         print("****** it is medicine *****");
-        responseDialog.imagePickerController.delegate = self;
-        present(responseDialog.imagePickerController, animated: true, completion: nil)
+        
+        medDialog = responseDialog;
+        if response {
+            medDialog?.imagePickerController.delegate = self;
+            present((medDialog?.imagePickerController)!, animated: true, completion: nil)
+        }
+        else{
+            medDialog?.askForSearchNo();
+            dialogController?.Botdelegate.recievedPromptResponse(responseDialog: medDialog!);
+            
+        }
+       
         
     }
     
@@ -346,12 +431,13 @@ extension ChatViewController:BotResponseDelegate
         print("DISPLAY");
         
         
-        //Remove; the ... from array
-        self.messages.removeLast();
         
         
-        
-        
+        if messages.count > 0 {
+            //Remove; the ... from array
+            self.messages.removeLast();
+        }
+       
         if response.isPrompt{ //if the question is a prompt
             //pass the dialog response to the prompt delegate
             self.dialogController?.Botdelegate.isPromptQuestion(promptDialog: response);
@@ -359,8 +445,11 @@ extension ChatViewController:BotResponseDelegate
         
                     DispatchQueue.main.async {
                         //Update UI to remove ... and insert nurse response
-        
-                        self.messagesCollectionView.deleteSections([self.messages.count]);
+                        if self.messages.count > 0{
+                                self.messagesCollectionView.deleteSections([self.messages.count]);
+                        }
+                        
+                       
         
         
                         for botspeak in response.BotResponse
@@ -374,6 +463,10 @@ extension ChatViewController:BotResponseDelegate
                             self.sendMessage(message: MockMessage(text:response, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
         
         
+                        }
+                        
+                        if self.isGreetingDialog{
+                            self.sendMessage(message: MockMessage(text:"...", sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
                         }
                     }
     }
@@ -400,23 +493,25 @@ extension ChatViewController:BotResponseDelegate
     //will get response here
     func recievedPromptResponse(responseDialog: Dialog) {
         
-        self.messageInputBar.inputTextView.isEditable = true;
+            
+            self.messageInputBar.inputTextView.isEditable = true;
+            
+            //remove the topstackview
+            self.messageInputBar.topStackView.subviews.forEach({$0.removeFromSuperview()});
+            
+            
+            //GET DIALOG AND PLACE IN UI
+            let responseToDisplay = responseDialog.responseToDisplay;
+            print("nurse prompt responded : \(responseToDisplay)");
+            let Botresponse = responseDialog.BotResponse; // this will when bot speaks
+            
+            
+            self.sendMessage(message: MockMessage(text:responseToDisplay.last!, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+        self.sttHelper.delegate?.BotSpeak(text: Botresponse.last!, translationRequired: false);
+
+        }
         
-        //remove the topstackview
-        messageInputBar.topStackView.subviews.forEach({$0.removeFromSuperview()});
-        
-        
-        //GET DIALOG AND PLACE IN UI
-        let responseToDisplay = responseDialog.responseToDisplay;
-        print("nurse prompt responded : \(responseToDisplay)");
-        //let Botresponse = response.BotResponse; // this will when bot speaks
-        
-        
-        self.sendMessage(message: MockMessage(text:responseToDisplay.last!, sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
-        
-        
-        
-    }
+       
     
 
 }
@@ -425,6 +520,7 @@ extension ChatViewController:BotResponseDelegate
 
 extension ChatViewController:SpeechDetectionDelegate
 {
+    
     func BotSpeak(text: String, translationRequired: Bool) {
         
         print("*********BOT SPEAK ************");
@@ -433,7 +529,14 @@ extension ChatViewController:SpeechDetectionDelegate
         
         
         //if en is default, no need translation,speak can already
-        microsoftTranslator.Speak(text: text, language: "en");
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if localecode == nil
+        {
+            localecode = "en";
+        }
+        
+        
+        MicrosoftTranslatorHelper.Speak(text: text, language: localecode);
     }
     
     
@@ -491,15 +594,20 @@ extension ChatViewController : MessagesDataSource
     }
     
     //Avatar image for chat bubble
-    func avatar(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> Avatar {
-        return Avatar();
-//        if isFromCurrentSender(message: message)
-//        {
-//            return Avatar(initials: "PT");
-//        }
-//        else{
-//            return Avatar(image: UIImage(named:"Nurse_Logo"), initials: "Bot");
-//        }
+//    func avatar(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> Avatar {
+//        return Avatar();
+////        if isFromCurrentSender(message: message)
+////        {
+////            return Avatar(initials: "PT");
+////        }
+////        else{
+////            return Avatar(image: UIImage(named:"Nurse_Logo"), initials: "Bot");
+////        }
+//    }
+    
+    //remove avatar
+    func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return .zero
     }
     
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
@@ -675,10 +783,16 @@ extension ChatViewController:SFSpeechRecognizerDelegate
     }
 }
 
+/**
+ Will be called when is for medication dialog to process medicine search
+ 
+ */
 extension ChatViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate
 {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil);
+        //display message if patient never send picture
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -686,9 +800,35 @@ extension ChatViewController:UIImagePickerControllerDelegate,UINavigationControl
         guard  let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
             else {fatalError("Expected an image, but was provided \(info)")}
         
+        self.messageInputBar.topStackView.subviews.forEach({$0.removeFromSuperview()});
         //get image and pass to chat
         dismiss(animated: true, completion: nil) // dismiss the image picker
+        
+        //display image in chat
         sendMessage(message: MockMessage(image: selectedImage, sender: currentUser, messageId: UUID().uuidString, date: Date()));
+        
+        //process image an display dialog
+        //call medicine search prediction
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(exactly:1)!, repeats: false) { (_) in
+            //remove the topstackview
+            
+            self.sendMessage(message: MockMessage(text:"...", sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
+            self.medDialog?.searchMedicine(image: selectedImage, onComplete: { (md) in
+                //once processed finished
+                DispatchQueue.main.async {
+                    self.messages.removeLast();
+                    self.messagesCollectionView.deleteSections([self.messages.count]);
+                    
+                    
+                    self.dialogController?.Botdelegate.recievedPromptResponse(responseDialog: md);
+                }
+               
+            })
+            //Remove; the ... from array
+        };
+        
+        
+        
     }
 }
 

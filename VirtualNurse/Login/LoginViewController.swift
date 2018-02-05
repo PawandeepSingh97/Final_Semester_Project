@@ -108,8 +108,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 
                 //homeTab
                 let storyboard = UIStoryboard(name:"HomeDashboard" , bundle:nil)
-                
-                let TabController = storyboard.instantiateInitialViewController() as! UITabBarController;
+                let TabController = storyboard.instantiateInitialViewController() as! BaseTabBarViewController;
                 //Get home dashboard from nav controller
                 
                 let homeNavController = TabController.viewControllers![0] as! UINavigationController;
@@ -117,6 +116,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 let HomeDashboardViewController = homeNavController.viewControllers[0] as! HomeDashboardViewController;
                 HomeDashboardViewController.patient = patient;
                 self.present(TabController, animated: true, completion: nil);
+                
+
                 
                // ONCE INTEGRATED THEN CAN
                 //Navigation to new page

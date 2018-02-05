@@ -11,7 +11,7 @@ import AVFoundation
 
 class MicrosoftTranslatorHelper : NSObject
 {
-    var player:AVAudioPlayer?;
+    static var player:AVAudioPlayer?;
     var convertedText = "";
     var bool = false;
     
@@ -52,10 +52,25 @@ class MicrosoftTranslatorHelper : NSObject
         task.resume()
     }
     
+    
+//    func translateArray(from:String,to:String,texts:[String],onComplete:((_:[String]) -> Void)?)
+//    {
+//        var convertedTexts:[String] = [];
+//
+//        for text in texts
+//        {
+//            self.Translate(from: from, to: to, text: text, onComplete: { (convertedText) in
+//                convertedTexts.append(convertedText);
+//            })
+//        }
+//
+//        onComplete!(convertedTexts);
+//    }
+//
     /*
      Speak Text in Specified Language
      */
-    func Speak(text:String,language:String)
+    static func Speak(text:String,language:String)
     {
         
         let txt = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
@@ -104,7 +119,7 @@ extension MicrosoftTranslatorHelper:XMLParserDelegate
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         //  currentValue? += string
-        print(string);
+        print("translated text is \(string)");
         convertedText = string;//GET CONVERTED TEXT
         //        var text = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
         //        if bool
