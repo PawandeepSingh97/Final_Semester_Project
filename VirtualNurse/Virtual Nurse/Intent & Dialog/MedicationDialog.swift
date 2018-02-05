@@ -137,6 +137,7 @@ class MedicationDialog:Dialog
                     
                     /// rounds up probability and sets it on probability label
                     let probabilityLabel = String(format: "%.1f", prediction.Probability * 100)
+                    var probl = prediction.Probability * 100;
                     
                     // contains elemnts of probability in an understood way of all medications
                     //self.estimatedValues.append(prediction.Probability * 100)
@@ -151,21 +152,39 @@ class MedicationDialog:Dialog
                     
                     print("\(probabilityLabel) \(prediction.Tag)");
                     
+                    //checkProbable(valued: prediction.Probability * 100);
+                    
                     
                     MedicineDataManager().getMedicineRecordsByName(prediction.Tag) { (Medicine)  in
                         
                         
-                    
-                        let toDisplay = "This medicine might be called \(Medicine.medicineName). \(Medicine.medicineDesc).\nRecommended to \(Medicine.medicineDosage).\nTo consume \(Medicine.consumptionInstructions).";
-                        let botReply = toDisplay;
-                        
-                        
-                        self.MT.Translate(from: "en", to: localecode, text: toDisplay, onComplete: { (convertedText) in
-                            self.responseToDisplay.append(convertedText)
-                            self.BotResponse.append(convertedText)
-                            onComplete?(self);
+                        if probl > 30 {
                             
-                        })
+                            let toDisplay = "This medicine might be called \(Medicine.medicineName). \(Medicine.medicineDesc).\nRecommended to \(Medicine.medicineDosage).\nTo consume \(Medicine.consumptionInstructions).";
+                            let botReply = toDisplay;
+                            
+                            
+                            self.MT.Translate(from: "en", to: localecode, text: toDisplay, onComplete: { (convertedText) in
+                                self.responseToDisplay.append(convertedText)
+                                self.BotResponse.append(convertedText)
+                                onComplete?(self);
+                                
+                            })
+                            
+                        }
+                        else{
+                            let toDisplay = "It doesn't seem to be a medicine. Please try again if you are sure.";
+                            let botReply = toDisplay;
+                            
+                            self.MT.Translate(from: "en", to: localecode, text: toDisplay, onComplete: { (convertedText) in
+                                self.responseToDisplay.append(convertedText)
+                                self.BotResponse.append(convertedText)
+                                self.brDelegate?.Nurse(response: self);
+                                
+                            })
+                        }
+                        
+                        
                         
                       //  self.responseToDisplay.append(toDisplay)
 //                        self.BotResponse.append(botReply)
