@@ -104,11 +104,11 @@ class BloodPressureViewController: UIViewController,UITextFieldDelegate {
                 }
                 //Check if systolicBp and distolicBp is clocked in
                 else if (systolicBpValue! < 90 || distolicBpValue! < 40){
-                    self.showAlert(message: "Please check whether you entered valid systolicBp and distolicBp value.")
+                    self.showAlert(message: "Please check whether you have entered valid systolicBp and distolicBp value.")
                 }
                 //Check if systolicBp and distolicBp is clocked in
                 else if (systolicBpValue! > 240 || distolicBpValue! > 160){
-                   self.showAlert(message: "Please check whether you entered valid systolicBp and distolicBp value.")
+                   self.showAlert(message: "Please check whether you have entered valid systolicBp and distolicBp value.")
                 }
                 else{
                     

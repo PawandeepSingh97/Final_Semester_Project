@@ -16,6 +16,8 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     //PATIENT DATA
     // DATA PASSED FROM LOGIN
     var patient:Patient?;
+    var tabcontroller:BaseTabBarViewController?;
+    
     
     //    @IBOutlet weak var viewTodayResultsButton: UIButton!
     @IBOutlet weak var chdPredictionLabel: UILabel!
@@ -24,7 +26,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     @IBAction func unwindToHome(segue:UIStoryboardSegue) { }
     
     //Declaration of variables
-    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder","Add Appointment","View Appointment","Health Data"]
+    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder","Appointment"," Appointment","Health Data"]
     var monitoringImages: [String] = ["redBloodPressure","blueGlucose","pinkheart","orangeCig","greenWeight","ruler","medicationIcon","reminderIcon","CreateApp","ViewApp","HealthData"]
     var circleLogo: [String] = ["redOval","blueOval","pinkoval","orangeOval","greenOval","purpleOval"]
     var monitoredTicks: [String] = ["redTick","blueTick","pinkTick","orangeTick","greenTick","purpleTick"]
@@ -44,11 +46,17 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         static let sectionHeaderView = "SectionHeaderView"
     }
     
+    //used to update badge and display chat view
+    var chatBtn:DesignableFloatingChatButton?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var tabcontroller = self.tabBarController as! BaseTabBarViewController;
-        tabcontroller.patientDelegate = self;
+        
+        tabcontroller = self.tabBarController as? BaseTabBarViewController;
+        tabcontroller?.patientDelegate = self;
+        chatBtn = tabcontroller?.chatBtn;
+        chatBtn?.sendActions(for: .touchUpInside);//open chat
         
         //Set the delegates of collectionView
         self.CollectionView.delegate = self
@@ -58,7 +66,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         //Call the DesignView function
         DesignView()
         
-        tabcontroller.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        tabcontroller?.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
 
     }
     
@@ -73,22 +81,44 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        MicrosoftTranslatorHelper.player?.stop();
+        
         //Set navigation bar colour
         //self.setNavigationBarItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
+        let patientNric:String = (patient?.NRIC)!
         self.navigationController?.navigationBar.topItem?.title = "Home Dashboard"
         
         //reload the collectionView
         checkIfRecordExists()
-        
+       // ViewAppointmentViewController().appointmentNotification(patientNric)
     }
     
     @IBAction func logoutButtonClicked(_ sender: Any) {
-        print("Logout Button Clicked")
+
+        //prompts user if want to logout
+        let logoutalert = UIAlertController(title: "Logout", message: "Are you sure you want to logout ? ", preferredStyle: UIAlertControllerStyle.alert)
+        
+        logoutalert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            //if user agrees to touch ID use
+            //set true
+            self.dismiss(animated: true, completion: nil);
+            
+        }))
+        
+        logoutalert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            //if user DOES NOT AGREE to touch ID use
+            //set false
+            logoutalert.dismiss(animated: true, completion: nil);
+            
+        }))
+        
+        present(logoutalert, animated: true, completion: nil)
+        
+        
     }
     //Number of items in a section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -406,10 +436,16 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         if (finalOutput == 1.0){
             self.chdPredictionLabel.text = "RISK OF HEART DISEASE!"
             //Get the CHD value
-            chdValue = true
+            chdValue = true;
             
+            //update badge to have alert
+            self.chatBtn?.addBadgeToButon(badge: "!");
             //Set the overallStatus to default
-            self.overallStatus.frame.origin.y += 12
+            self.overallStatus.frame.origin.y += 10
+            
+            let chatnav = tabcontroller?.chatView;
+            let chat = chatnav?.cvc;
+            chat?.isAlertNeeded = true;
             
             //Animate the UI view when there is a risk
             UIView.animate(withDuration: 1, animations: {
@@ -418,11 +454,14 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 //self.overallStatus.frame.size.height += 10
             }) { _ in
                 UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
-                    self.overallStatus.frame.origin.y -= 12
+                    self.overallStatus.frame.origin.y -= 10
                 })
             }
         }
         else{
+            
+            self.chatBtn?.removeBadgeButton();
+            
             self.chdPredictionLabel.text = "NO RISK OF HEART DISEASE"
             overallStatus.backgroundColor = UIColor(hex:0x212121)
             

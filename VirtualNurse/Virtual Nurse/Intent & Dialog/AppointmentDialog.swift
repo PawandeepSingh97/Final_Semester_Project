@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class AppointmentDialog:Dialog {
     
@@ -16,6 +17,9 @@ class AppointmentDialog:Dialog {
     var appointmentList : [AppointmentModel] = [];
 
     var appointment:AppointmentModel?;
+    
+    private var isCancel:Bool = false;
+    private var isCreate:Bool = false;
     
     init(dialogToCall:String,patient:Patient) {
         super.init(dialogToCall: dialogToCall)
@@ -35,6 +39,8 @@ class AppointmentDialog:Dialog {
             getAppointment(starting: dates.start, ending: dates.end);
         case "Cancel":
             cancelAppointment(start:dates.start,end:dates.end);
+        case "Create":
+            createAppointment(start: dates.start, end: dates.end);
         default:
             self.responseToDisplay.append(error())
             self.BotResponse.append(error())
@@ -89,6 +95,9 @@ class AppointmentDialog:Dialog {
     // NURSE WILL PROMPT IF WANT TO CANCEL FIRST
     func cancelAppointment(start:Date,end:Date)
     {
+        isCancel = true;
+        isCreate = false;
+        
         //CHECK IF GOT APPOINTMENT FIRST
         //IF HAVE, THEN CAN ASK TO PROMPT TO CANCEL
         //FROM THERE, GET PATIENT FEEDBACK IF WANT TO CANCEL,
@@ -101,15 +110,83 @@ class AppointmentDialog:Dialog {
         let botReply = todisplay;
         //no need to call db here
         
-        self.responseToDisplay.append(todisplay)
-        self.BotResponse.append(botReply);
         
+        
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en"){
+            localecode = "en";
+        }
+        MT.Translate(from: "en", to: localecode, text: todisplay) { (convertedText) in
+            self.responseToDisplay.append(convertedText)
+            self.BotResponse.append(convertedText);
+            
+        }
         
         
         //self.brDelegate?.Nurse(response: self);
         
         
         //ELSE IF DON'T HAVE,TELL PATIENT YOU HAVE NO APPOINTMENT TO CANCEL
+    }
+    
+    func createAppointment(start:Date,end:Date) {
+        
+        isCreate = true;
+        isCancel = false;
+        
+          //getAppointment(starting: start, ending: end);
+        self.isPrompt = true;//tells dialog it is a prompt questions
+        
+        //prompt question
+        let todisplay = "Would you like to create an appointment ? ";
+        let botReply = todisplay;
+        //no need to call db here
+        
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en"){
+            localecode = "en";
+        }
+        MT.Translate(from: "en", to: localecode, text: todisplay) { (convertedText) in
+            self.responseToDisplay.append(convertedText)
+            self.BotResponse.append(convertedText);
+            self.brDelegate?.Nurse(response: self);
+            
+        }
+    }
+    
+    func createAppointmentYES(){
+        
+        
+        let todisplay = "Okay, your appointment is Created";
+        _ = todisplay;
+        
+        //self.responseToDisplay.append(todisplay)
+        //self.BotResponse.append(botReply)
+        
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        MT.Translate(from: "en", to: localecode, text: todisplay) { (convertedText) in
+            self.responseToDisplay.append(convertedText)
+            self.BotResponse.append(convertedText);
+            
+            
+        }
+    }
+    
+    func createAppointmentNO(){
+        let todisplay = "Okay, sure";
+        _ = todisplay;
+        
+       // self.responseToDisplay.append(todisplay)
+        //self.BotResponse.append(botReply)
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en"){
+            localecode = "en";
+        }
+        MT.Translate(from: "en", to: localecode, text: todisplay) { (convertedText) in
+            self.responseToDisplay.append(convertedText)
+            self.BotResponse.append(convertedText);
+            
+        }
     }
     
     func cancelAppointmentYES()
@@ -119,8 +196,18 @@ class AppointmentDialog:Dialog {
         let todisplay = "Okay, your appointment has been cancelled ";
         let botReply = todisplay;
         
-        self.responseToDisplay.append(todisplay)
-        self.BotResponse.append(botReply)
+        //self.responseToDisplay.append(todisplay)
+        //self.BotResponse.append(botReply)
+        
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en"){
+            localecode = "en";
+        }
+        MT.Translate(from: "en", to: localecode, text: todisplay) { (convertedText) in
+            self.responseToDisplay.append(convertedText)
+            self.BotResponse.append(convertedText);
+            
+        }
         
     }
     
@@ -131,8 +218,17 @@ class AppointmentDialog:Dialog {
         let todisplay = "Okay, your appointment is not cancelled."
         let botReply = todisplay;
         
-        self.responseToDisplay.append(todisplay)
-        self.BotResponse.append(botReply)
+        //self.responseToDisplay.append(todisplay)
+        //self.BotResponse.append(botReply)
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en"){
+            localecode = "en";
+        }
+        MT.Translate(from: "en", to: localecode, text: todisplay) { (convertedText) in
+            self.responseToDisplay.append(convertedText)
+            self.BotResponse.append(convertedText);
+            
+        }
     }
     
 //================================================================================================================================================
@@ -167,8 +263,20 @@ class AppointmentDialog:Dialog {
         let text = sender.titleLabel?.text!
         print("Appointment prompt handler tapped");
         
+        
+        
+        
         if  text == "YES"{
-            cancelAppointmentYES();//DISPLAY REQUIRED MESSAGE
+            //cancelAppointmentYES();//DISPLAY REQUIRED MESSAGE
+            
+            if isCreate{
+                    createAppointmentYES();
+            }
+            else if isCancel{
+                cancelAppointmentYES()
+            }
+            
+            
             
             //PASS MESSAGE AND DELEGATE TO NOTIFY PATIENT
             paDelegate?.User(hasAnswered: text!, dialog: self)
@@ -176,7 +284,15 @@ class AppointmentDialog:Dialog {
         }
         else
         {
-            cancelAppointmentNO();//DISPLAY REQUIRED MESSAGE
+            if isCreate{
+                createAppointmentNO();
+            }
+            else if isCancel{
+                cancelAppointmentNO()
+            }
+            
+            
+            
             //PASS MESSAGE AND DELEGATE TO NOTIFY PATIENT
             paDelegate?.User(hasAnswered: text!, dialog: self)
              print("NO")
@@ -194,7 +310,10 @@ class AppointmentDialog:Dialog {
         AppointmentDataManager().getAppointmentByNRIC((patient?.NRIC)!) { (appointment) in
             
             var appt = AppointmentModel(appointment.id,appointment.nric,appointment.doctorName,appointment.date,appointment.time);
-            
+            var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+            if (localecode == nil || localecode == "en"){
+                localecode = "en";
+            }
             self.appointmentList.append(appt);
             print(appt.nric);
         
@@ -215,9 +334,13 @@ class AppointmentDialog:Dialog {
                             let toDisplay = "You do have an appointment \(datereply) which is on the \(appointment.date) at \(appointment.time) with \(appointment.doctorName)";
                             let botReply = toDisplay;
                             
-                            self.responseToDisplay.append(toDisplay)
-                            self.BotResponse.append(botReply)
-                            self.brDelegate?.Nurse(response: self);
+                            self.MT.Translate(from: "en", to: localecode, text: toDisplay, onComplete: { (convertedText) in
+                                self.responseToDisplay.append(convertedText)
+                                self.BotResponse.append(convertedText)
+                                self.brDelegate?.Nurse(response: self);
+                                
+                            })
+                            
                             break;
                         }
                         else
@@ -227,9 +350,12 @@ class AppointmentDialog:Dialog {
                             let toDisplay = "You do not have an appointment \(datereply) but have one which is on the \(appointment.date) at \(appointment.time) with \(appointment.doctorName)";
                             let botReply = toDisplay;
                             
-                            self.responseToDisplay.append(toDisplay)
-                            self.BotResponse.append(botReply)
-                            self.brDelegate?.Nurse(response: self);
+                            self.MT.Translate(from: "en", to: localecode, text: toDisplay, onComplete: { (convertedText) in
+                                self.responseToDisplay.append(convertedText)
+                                self.BotResponse.append(convertedText)
+                                self.brDelegate?.Nurse(response: self);
+                                
+                            })
                             break;
                         }
                         
@@ -247,9 +373,12 @@ class AppointmentDialog:Dialog {
                     let toDisplay = "You have an appointment \(datereply) which is on the \(appointment.date) at \(appointment.time) with \(appointment.doctorName)";
                     let botReply = toDisplay;
                     
-                    self.responseToDisplay.append(toDisplay)
-                    self.BotResponse.append(botReply)
-                    self.brDelegate?.Nurse(response: self);
+                    self.MT.Translate(from: "en", to: localecode, text: toDisplay, onComplete: { (convertedText) in
+                        self.responseToDisplay.append(convertedText)
+                        self.BotResponse.append(convertedText)
+                        self.brDelegate?.Nurse(response: self);
+                        
+                    })
                     break;
                 }
                 
@@ -262,13 +391,51 @@ class AppointmentDialog:Dialog {
                 let toDisplay = "You do not have any appointment at this time";
                 let botReply = toDisplay;
                 
-                self.responseToDisplay.append(toDisplay)
-                self.BotResponse.append(botReply)
-                self.brDelegate?.Nurse(response: self);
+                self.MT.Translate(from: "en", to: localecode, text: toDisplay, onComplete: { (convertedText) in
+                    self.responseToDisplay.append(convertedText)
+                    self.BotResponse.append(convertedText)
+                    self.brDelegate?.Nurse(response: self);
+                    
+                })
             }
             
-            print("got appointment for \(self.responseToDisplay.last!)");
+            //print("got appointment for \(self.responseToDisplay.last!)");
             
+        }
+    }
+    
+    
+    func postAppointment(appoinmentItem:AppointmentModel?)
+    {
+        
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en"){
+            localecode = "en";
+        }
+        
+        let createParam: Parameters = [
+            "nric": appoinmentItem!.nric,
+            "doctorName": appoinmentItem!.doctorName,
+            "Time": appoinmentItem!.time,
+            "date": appoinmentItem!.date,
+            ]
+        
+        //Create appointment on the appointment table
+        AppointmentDataManager().postAppointmentRecord(createParam, success: { (success) in
+            print(success);
+            
+            let toDisplay = "Great. Your appointment has been created. It is on the \(appoinmentItem!.date) at \(appoinmentItem!.time) with \(appoinmentItem!.doctorName)";
+            let botReply = toDisplay;
+            
+            self.MT.Translate(from: "en", to: localecode, text: toDisplay, onComplete: { (convertedText) in
+                self.responseToDisplay.append(convertedText)
+                self.BotResponse.append(convertedText)
+                self.brDelegate?.Nurse(response: self);
+                
+            })
+
+        }) { (error) in
+            print(error)
         }
     }
     

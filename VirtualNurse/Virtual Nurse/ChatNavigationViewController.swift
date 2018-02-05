@@ -11,8 +11,11 @@ import UIKit
 class ChatNavigationViewController: UINavigationController {
 
     var patient:Patient?;
+    var cvc:ChatViewController?;
     
     private var imageview:UIImageView?;
+    
+    
     // define a variable to store initial touch position
     private var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
     
@@ -30,7 +33,7 @@ class ChatNavigationViewController: UINavigationController {
         //INSERT SLIDER IMAGE
         let image = UIImage(named: "slideChatMenu");
          imageview = UIImageView(image: image);
-        imageview?.frame = CGRect(x: view.center.x, y: navigationBar.frame.size.height+20, width: 20, height: 20);
+        imageview?.frame = CGRect(x: view.center.x, y: navigationBar.frame.size.height+20, width: 40, height: 40);
         imageview?.contentMode = .top;
         imageview?.isUserInteractionEnabled = true;
 
@@ -55,9 +58,9 @@ class ChatNavigationViewController: UINavigationController {
         view.addConstraints([horConstraint,verConstraint]);
         
         //DISPLAY CHAT
-        let cvc = ChatViewController();
-        cvc.patient = patient;
-        self.pushViewController(cvc, animated: true);
+        cvc = ChatViewController();
+        cvc?.patient = patient;
+        self.pushViewController(cvc!, animated: true);
         
         
         // Do any additional setup after loading the view.
