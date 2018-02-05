@@ -99,6 +99,8 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     @IBAction func logoutButtonClicked(_ sender: Any) {
 
+        MicrosoftTranslatorHelper.player?.stop();
+        
         //prompts user if want to logout
         let logoutalert = UIAlertController(title: "Logout", message: "Are you sure you want to logout ? ", preferredStyle: UIAlertControllerStyle.alert)
         
@@ -107,6 +109,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             //set true
             //var logout = LoginViewController();
             //self.present(logout, animated: true, completion: nil);
+            
             self.dismiss(animated: true, completion: nil);
             
         }))

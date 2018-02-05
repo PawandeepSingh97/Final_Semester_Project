@@ -34,6 +34,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
+        
+        var username = UserDefaults.standard.value(forKey: "username") as! String?;
+        if let un = username{
+            usernameTxtField.text = un;
+        }
+        
         //Checks if user had ask for touchID
         let preferTouchID = UserDefaults.standard.bool(forKey: "hasTouchIDKey");
         if preferTouchID

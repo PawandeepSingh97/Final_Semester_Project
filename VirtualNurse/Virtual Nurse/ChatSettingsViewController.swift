@@ -32,28 +32,46 @@ class ChatSettingsViewController: UIViewController,UIPickerViewDataSource, UIPic
         languagePickerField.inputView = pickerView;
         
         
-        let localecode = UserDefaults.standard.value(forKey: "language") as? String;
-        if localecode == nil{
-            languagePickerField.text = languages[0]
-        }
-        else {
-            
-            for lng in languages
-            {
-                if lng == "en"{
-                    languagePickerField.text = languages[0];
-                }
-                else if lng == "zh-CN"
-                {
-                    languagePickerField.text = languages[1];
-                }
-            }
-        }
+        
         
         
         
         //UserDefaults.standard.setValue(username, forKey: "language");
         //print(UserDefaults.standard.value(forKey: "language") as! String);
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        let localecode = UserDefaults.standard.value(forKey: "language") as? String?;
+        print(localecode);
+        if localecode == nil {
+            languagePickerField.text = languages[0]
+        }
+        else if let lc = localecode {
+            
+            if lc == "en"{
+                languagePickerField.text = languages[0];
+            }
+            else if lc == "zh-CN"
+            {
+                languagePickerField.text = languages[1];
+            }
+            
+//            for lngcodes in languageCode
+//            {
+//                //print(lng);
+//
+//                if localecode == "en"{
+//                    languagePickerField.text = languages[0];
+//                }
+//                else if lngcodes == "zh-CN"
+//                {
+//                    languagePickerField.text = languages[1];
+//                }
+//            }
+        }
         
     }
 
