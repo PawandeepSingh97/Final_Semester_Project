@@ -36,6 +36,8 @@ class GreetingDialog:Dialog
             greetPatient();
         case "Info":
             getInfo();
+        case "ThankYou":
+            replyThankYou();
         default:
             self.responseToDisplay.append(error())
             self.BotResponse.append(error())
@@ -43,6 +45,26 @@ class GreetingDialog:Dialog
         
 
         
+    }
+    
+    func replyThankYou()
+    {
+        let localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en")
+        {
+            self.responseToDisplay.append("Your Welcome");
+            self.BotResponse.append("Your Welcome");
+            print("\(responseToDisplay[0])");
+            brDelegate?.Nurse(response: self);
+        }
+        else{
+            MT.Translate(from: "en", to: localecode, text: "Your Welcome", onComplete: { (convertedText) in
+                self.responseToDisplay.append(convertedText)
+                self.BotResponse.append(convertedText);
+                //print("\(responseToDisplay[0])");
+                self.brDelegate?.Nurse(response: self);
+            })
+        }
     }
     
     func getInfo()

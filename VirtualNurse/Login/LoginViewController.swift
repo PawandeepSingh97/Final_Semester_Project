@@ -37,7 +37,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         super.viewDidAppear(animated);
         
         
-        var username = UserDefaults.standard.value(forKey: "username") as! String?;
+        let username = UserDefaults.standard.value(forKey: "username") as! String?;
         if let un = username{
             usernameTxtField.text = un;
         }
