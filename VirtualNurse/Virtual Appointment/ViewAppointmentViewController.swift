@@ -35,6 +35,7 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
         
     }
     
+    //check if there is appoinment today and if 50 to 10 before appointment will call the notification
     func notify(){
         let currentTime = self.convertTime(self.currentTime())
         let patientNric:String = (patient?.NRIC)!
@@ -50,12 +51,15 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
                     timeList.append(DateStr)
                     let time = self.convertTime(timeList[0])
                     let appointmentTIMES = self.convertStringToTime(time)
-                    let appointmentTIME = appointmentTIMES - 600
-                    let newAppointmentDate = self.convertTimeToString(appointmentTIME)
-                    
-                    if currentTime == newAppointmentDate{
+                    let appointmentTIMEFIFTY = appointmentTIMES - 3000
+                    let appointmentTIMETEN = appointmentTIMES - 600
+
+                    let newAppointmentDateFifty = self.convertTimeToString(appointmentTIMEFIFTY)
+                    let newAppointmentDateTEN = self.convertTimeToString(appointmentTIMETEN)
+                 
+                    if currentTime >= newAppointmentDateFifty || currentTime <= newAppointmentDateTEN{
                         
-                        self.appointmentNotification()
+                       self.appointmentNotification()
                     }
                 }
             }
@@ -63,19 +67,21 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
         
     }
     
+    //Give permission
     func appointmentNotification(){
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             if(settings.authorizationStatus == .authorized){
                 self.scheduleNotifcation()
-  
+                
             }else{
                 UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .badge, .alert], completionHandler: { (granted, error) in
                     if let error = error{
                         print(error)
                     }else{
                         if(granted){
-                           self.scheduleNotifcation()
-                     
+                          self.scheduleNotifcation()
+                            
+                            
                         }
                     }
                 })
@@ -83,21 +89,32 @@ class ViewAppointmentViewController: UIViewController, UICollectionViewDataSourc
         }
     }
     
+    // appointment notifcation message
     func scheduleNotifcation(){
+        let patientNric:String = (patient?.NRIC)!
+        AppointmentDataManager().getAppointmentByNRIC(patientNric) { (Appointment) in
+            
+       if Appointment.date == self.getCurrentDate(){
         let timedNotificationIdentifier = "timedNotificationIdentifier"
         let content = UNMutableNotificationContent()
+        content.badge = 1
+        content.sound = UNNotificationSound.default()
         content.title = "Appointment"
-        content.body = "Your appointment is in 10 minutes time. Please be prepared"
+        content.body = "Your appointment is today from \(Appointment.time). Please be prepared"
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60.0, repeats: false)
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
         let notificationRequest = UNNotificationRequest(identifier: timedNotificationIdentifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(notificationRequest) { (error) in
             if let error = error{
                 print(error)
             }else{
                 print("Notification scheduled")
+                
             }
         }
+       }
+      }
     }
     
     override func viewWillAppear(_ animated: Bool) {
