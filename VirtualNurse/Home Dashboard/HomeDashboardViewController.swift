@@ -404,7 +404,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             chdValue = true
             
             //Set the overallStatus to default
-            self.overallStatus.frame.origin.y += 12
+            self.overallStatus.frame.origin.y += 10
             
             //Animate the UI view when there is a risk
             UIView.animate(withDuration: 1, animations: {
@@ -413,7 +413,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 //self.overallStatus.frame.size.height += 10
             }) { _ in
                 UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
-                    self.overallStatus.frame.origin.y -= 12
+                    self.overallStatus.frame.origin.y -= 10
                 })
             }
         }

@@ -97,17 +97,17 @@ class BMIViewController: UIViewController,UITextFieldDelegate {
                 
                 //Check if heightValue and weightValue is clocked in
                 if (self.heightTextField.text!.isEmpty && self.weightTextField.text!.isEmpty){
-                    self.showAlert(message: "Please check if you have entered height and weight value.")
+                    self.showAlert(message: "Please check if you have entered height and weight values.")
                 }
                 //Check if the textfield are empty
                 else if((self.heightTextField.text?.isEmpty)! || (self.weightTextField.text?.isEmpty)!){
                     //showAlert(message: "Please check your inputs")
-                    self.showAlert(message: "Please check if you have entered height and weight value.")
+                    self.showAlert(message: "Please check if you have entered height and weight values.")
                     self.bmiValue.text = "0"
                 }
                 else if !(self.heightTextField.text?.contains("."))!
                 {
-                    self.showAlert(message: "Please check if you have entered height(meteres)")
+                    self.showAlert(message: "Please check if you have entered your height(meteres)")
                     self.bmiValue.text = "0"
                 }
                 else{
