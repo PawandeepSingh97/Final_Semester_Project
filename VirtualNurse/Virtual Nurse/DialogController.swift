@@ -251,12 +251,12 @@ class DialogController: NSObject {
         md.brDelegate = self;
         md.paDelegate = self;
         
-        var apptdialog = MonitoringDialog(dialogToCall: "Create", patient: patient);
-        apptdialog.brDelegate = self;
-        apptdialog.paDelegate = self;
+        //var apptdialog = MonitoringDialog(dialogToCall: "Create", patient: patient);
+        //apptdialog.brDelegate = self;
+        //apptdialog.paDelegate = self;
         
         md.getDialog();
-        apptdialog.getDialog();
+        //apptdialog.getDialog();
     }
     
     

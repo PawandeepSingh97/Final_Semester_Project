@@ -24,6 +24,7 @@ class ChatSettingsViewController: UIViewController,UIPickerViewDataSource, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
        // languagePickerField.delegate = self;
         let pickerView = UIPickerView();
