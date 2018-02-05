@@ -25,25 +25,31 @@ class ChatSettingsViewController: UIViewController,UIPickerViewDataSource, UIPic
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+       // languagePickerField.delegate = self;
+        let pickerView = UIPickerView();
+        pickerView.delegate = self;
+        languagePickerField.inputView = pickerView;
+        
+        
         let localecode = UserDefaults.standard.value(forKey: "language") as? String;
         if localecode == nil{
             languagePickerField.text = languages[0]
         }
         else {
             
-//            for lng in languages
-//            {
-//                if lng == localecode{
-//                    languagePickerField.text = lng;
-//                }
-//            }
+            for lng in languages
+            {
+                if lng == "en"{
+                    languagePickerField.text = languages[0];
+                }
+                else if lng == "zh-CN"
+                {
+                    languagePickerField.text = languages[1];
+                }
+            }
         }
         
-        languagePickerField.delegate = self;
-        let pickerView = UIPickerView();
-        pickerView.delegate = self;
-        languagePickerField.inputView = pickerView;
+        
         
         //UserDefaults.standard.setValue(username, forKey: "language");
         //print(UserDefaults.standard.value(forKey: "language") as! String);
@@ -96,10 +102,10 @@ class ChatSettingsViewController: UIViewController,UIPickerViewDataSource, UIPic
         
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-       
-            //self.languagePickerField.inputView?.isHidden = false;
-             //languagePickerField.endEditing(true)
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//
+//            //self.languagePickerField.inputView?.isHidden = false;
+//             //languagePickerField.endEditing(true)
+//    }
 
 }

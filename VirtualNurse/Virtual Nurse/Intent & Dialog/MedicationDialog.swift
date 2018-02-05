@@ -34,15 +34,25 @@ class MedicationDialog:Dialog
     {
         self.isPrompt = true;
         
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        
         //prompt question
         let todisplay = "Do you mind taking a picture of your medicine ? I can help check for you.";
         let botReply = todisplay;
+        
+        self.MT.Translate(from: "en", to: localecode, text: todisplay, onComplete: { (convertedText) in
+            self.responseToDisplay.append(convertedText)
+            self.BotResponse.append(convertedText)
+            self.brDelegate?.Nurse(response: self);
+        })
+        
+        
         //no need to call db here
         
-        self.responseToDisplay.append(todisplay)
-        self.BotResponse.append(botReply);
+        //self.responseToDisplay.append(todisplay)
+        //self.BotResponse.append(botReply);
         
-        self.brDelegate?.Nurse(response: self);
+        
     }
     
     
@@ -146,7 +156,7 @@ class MedicationDialog:Dialog
                         
                         
                     
-                        let toDisplay = "Medicine is called \(Medicine.medicineName). \(Medicine.medicineDesc).\nRecommended to \(Medicine.medicineDosage).To consume \(Medicine.consumptionInstructions)";
+                        let toDisplay = "This medicine might be called \(Medicine.medicineName). \(Medicine.medicineDesc).\nRecommended to \(Medicine.medicineDosage).To consume \(Medicine.consumptionInstructions)";
                         let botReply = toDisplay;
                         
                         

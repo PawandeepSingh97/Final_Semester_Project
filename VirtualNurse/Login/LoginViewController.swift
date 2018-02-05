@@ -25,9 +25,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        //REMOVE THIS
-        usernameTxtField.text = "S9738337E";
-        passwordTxtField.text = "Test1234";
 
         usernameTxtField.delegate = self;
         passwordTxtField.delegate = self;

@@ -87,12 +87,13 @@ class ChatViewController: MessagesViewController {
         sttHelper.speechRecognizer?.delegate = self;
         sttHelper.requestSpeechAuthorization();
         sttHelper.delegate = self;
-        let localecode = UserDefaults.standard.value(forKey: "language") as! String;
-        if !(localecode == nil || localecode == "en"){
-            
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String?;
+        if localecode == nil || localecode == "en"{
+            UserDefaults.standard.setValue("en", forKey: "language");
+            changeSpeechLocale(code: "en");
         }
         else{
-            changeSpeechLocale(code: localecode)
+            changeSpeechLocale(code: localecode!)
         }
         
 
@@ -414,7 +415,9 @@ extension ChatViewController:BotResponseDelegate
         
         medDialog = responseDialog;
         if response {
+            medDialog?.imagePickerController.sourceType = .camera
             medDialog?.imagePickerController.delegate = self;
+            
             present((medDialog?.imagePickerController)!, animated: true, completion: nil)
         }
         else{
