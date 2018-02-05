@@ -416,9 +416,40 @@ extension ChatViewController:BotResponseDelegate
         medDialog = responseDialog;
         if response {
             //medDialog?.imagePickerController.sourceType = .camera
-            medDialog?.imagePickerController.delegate = self;
+            //medDialog?.imagePickerController.delegate = self;
             
-            present((medDialog?.imagePickerController)!, animated: true, completion: nil)
+            
+            let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+                if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
+                {
+                    medDialog?.imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+                    medDialog?.imagePickerController.allowsEditing = true
+                    medDialog?.imagePickerController.delegate = self
+                    
+                    self.present(medDialog?.imagePickerController, animated: true, completion: nil)
+                }
+                else
+                {
+                    let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    //imagePickerController.delegate = self
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+                medDialog?.imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                medDialog?.imagePickerController.allowsEditing = true
+                medDialog?.imagePickerController.delegate = self
+                
+                self.present(medDialog?.imagePickerController, animated: true, completion: nil)
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            //present((medDialog?.imagePickerController)!, animated: true, completion: nil)
         }
         else{
             medDialog?.askForSearchNo();

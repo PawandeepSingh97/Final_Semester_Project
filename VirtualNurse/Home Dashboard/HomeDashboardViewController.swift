@@ -105,11 +105,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         let logoutalert = UIAlertController(title: "Logout", message: "Are you sure you want to logout ? ", preferredStyle: UIAlertControllerStyle.alert)
         
         logoutalert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            //if user agrees to touch ID use
-            //set true
-            //var logout = LoginViewController();
-            //self.present(logout, animated: true, completion: nil);
-            
+            UserDefaults.standard.setValue(true, forKey: "hasLogout")
             self.dismiss(animated: true, completion: nil);
             
         }))
