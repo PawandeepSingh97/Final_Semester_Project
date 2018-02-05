@@ -19,7 +19,8 @@ protocol BotResponseDelegate:class
     
     func recievedPromptResponse(responseDialog:Dialog);
     
-    func receivedMedication(responseDialog:MedicationDialog);
+    func receivedMedication(responseDialog:MedicationDialog,response:Bool);
+    
     
     
 }
@@ -34,36 +35,76 @@ class DialogController: NSObject {
     
     //STORES CONVERSATION AND ITS ENTITIES
     var conversationContext = ConversationStack();
-    
+    private var microsoftTranslate = MicrosoftTranslatorHelper();
     
     
     //TALK TO LUIS
-     func query(text:String)
+    func query(text:String,language:String)
     {
-        LUISDataManager.queryLUIS(query: text) { (intent) in
-            //Once determine INTENT FROM LUIS
-            intent.processIntent();//will determine topic and dialog
-            
-            let entity =  intent.processEntity();
-            
-            let topic = intent.topic!;
-            let dialog = intent.dialog!;
-//            let entities = intent.entities;
-            print("topic is \(topic)");
-            print("dialog to call for \(topic) is \(dialog)");
-            
-           // let entities = intent.entities;
-            
-            self.addDialogToConversation(topic, dialogToCall: dialog,entity:entity);
-            let response = self.dialogToRespond();
-            response.paDelegate = self;//set delegate of prompt here
-            response.brDelegate = self;
-            response.getDialog();//this will update the variables in dialog to display in UI or for bot to speak
-          
-            
-
-            //onComplete?(response);
+        print("******* \(language)")
+        //check language
+        //if not en,
+        //convert language to english
+        if language != "en"{
+            //convert language
+            microsoftTranslate.Translate(from: language, to: "en", text: text, onComplete: { (convertedText) in
+                
+                LUISDataManager.queryLUIS(query: convertedText) { (intent) in
+                    //Once determine INTENT FROM LUIS
+                    intent.processIntent();//will determine topic and dialog
+                    
+                    let entity =  intent.processEntity();
+                    
+                    let topic = intent.topic!;
+                    let dialog = intent.dialog!;
+                    //            let entities = intent.entities;
+                    print("topic is \(topic)");
+                    print("dialog to call for \(topic) is \(dialog)");
+                    
+                    // let entities = intent.entities;
+                    
+                    self.addDialogToConversation(topic, dialogToCall: dialog,entity:entity);
+                    let response = self.dialogToRespond();
+                    response.paDelegate = self;//set delegate of prompt here
+                    response.brDelegate = self;
+                    response.getDialog();//this will update the variables in dialog to display in UI or for bot to speak
+                    
+                   
+                    
+                    
+                    
+                    //onComplete?(response);
+                }
+            })
         }
+        else {
+            
+            LUISDataManager.queryLUIS(query: text) { (intent) in
+                //Once determine INTENT FROM LUIS
+                intent.processIntent();//will determine topic and dialog
+                
+                let entity =  intent.processEntity();
+                
+                let topic = intent.topic!;
+                let dialog = intent.dialog!;
+                //            let entities = intent.entities;
+                print("topic is \(topic)");
+                print("dialog to call for \(topic) is \(dialog)");
+                
+                // let entities = intent.entities;
+                
+                self.addDialogToConversation(topic, dialogToCall: dialog,entity:entity);
+                let response = self.dialogToRespond();
+                response.paDelegate = self;//set delegate of prompt here
+                response.brDelegate = self;
+                response.getDialog();//this will update the variables in dialog to display in UI or for bot to speak
+                
+                
+                
+                //onComplete?(response);
+            }
+        }
+        
     }
     
     
@@ -194,13 +235,31 @@ class DialogController: NSObject {
     }
     
     
-//
-//    func defaultGreeting(patient:Patient) -> GreetingDialog
-//    {
-//        var gd = GreetingDialog(dialogToCall: "Info", patient: patient);
-//        gd.getDialog();
-//        return gd
-//    }
+    func defaultGreeting(patient:Patient) -> GreetingDialog
+    {
+        var gd = GreetingDialog(dialogToCall: "Info", patient: patient);
+        
+        //gd.paDelegate = self;//set delegate of prompt here
+        //gd.brDelegate = self;
+        //gd.getDialog();//this will update the variables in dialog to display in UI or for bot to speak
+        return gd;
+    }
+    
+    func alertDialogs(patient:Patient)
+    {
+        var md = MonitoringDialog(dialogToCall: "Alert", patient: patient);
+        md.brDelegate = self;
+        md.paDelegate = self;
+        
+        //var apptdialog = MonitoringDialog(dialogToCall: "Create", patient: patient);
+        //apptdialog.brDelegate = self;
+        //apptdialog.paDelegate = self;
+        
+        md.getDialog();
+        //apptdialog.getDialog();
+    }
+    
+    
     
     
 }
@@ -218,12 +277,20 @@ extension DialogController:PromptAnsweredDelegate
         
         var med = MedicationDialog(dialogToCall: "", patient: patient!);
         let typeOfElement = type(of: med); // get type of dialog to add
+
         
         if rdtype == typeOfElement
         {
             
             let meddialog = dialog as! MedicationDialog;
-            Botdelegate.receivedMedication(responseDialog: meddialog);
+            if hasAnswered == "YES"{
+                Botdelegate.receivedMedication(responseDialog: meddialog,response:true);
+            }
+            else{
+                Botdelegate.receivedMedication(responseDialog: meddialog,response:false);
+            }
+            
+            
             return;
         }
         else
@@ -241,7 +308,12 @@ extension DialogController:BotReplyDelegate
 {
     func Nurse(response: Dialog) {
 
-        Botdelegate.display(response: response);
+  
+                Botdelegate.display(response: response);
+        
+        
+        
+        
         
         
         

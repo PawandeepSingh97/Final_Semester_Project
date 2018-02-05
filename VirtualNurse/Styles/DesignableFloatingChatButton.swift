@@ -137,17 +137,23 @@ class DesignableFloatingChatButton: UIButton {
             
             let x = (Double(bounds.size.width) - 10 + horizontal!)
             let y = -(Double(badgeSize.height) / 2) - 10 + vertical!
-            badgeLabel.frame = CGRect(x: x, y: y, width: width, height: height)
+            badgeLabel.frame = CGRect(x: x-12, y: y+12, width: width, height: height)
         } else {
             let x = self.frame.width - CGFloat((width / 2.0))
             let y = CGFloat(-(height / 2.0))
-            badgeLabel.frame = CGRect(x: x-5, y: y-10, width: CGFloat(width), height: CGFloat(height))
+            badgeLabel.frame = CGRect(x: x-12, y: y+12, width: CGFloat(width), height: CGFloat(height))
         }
         
         badgeLabel.layer.cornerRadius = badgeLabel.frame.height/2
         badgeLabel.layer.masksToBounds = true
         addSubview(badgeLabel)
         badgeLabel.isHidden = badge != nil ? false : true
+    }
+    
+    func removeBadgeButton()
+    {
+        self.willRemoveSubview(badgeLabel);
+        badgeLabel.removeFromSuperview();
     }
     
 
