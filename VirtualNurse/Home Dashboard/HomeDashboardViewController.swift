@@ -435,13 +435,12 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             
             //update badge to have alert
             self.chatBtn?.addBadgeToButon(badge: "!");
+            //Set the overallStatus to default
+            self.overallStatus.frame.origin.y += 12
             
             let chatnav = tabcontroller?.chatView;
             let chat = chatnav?.cvc;
             chat?.isAlertNeeded = true;
-            
-            //Set the overallStatus to default
-            self.overallStatus.frame.origin.y += 12
             
             //Animate the UI view when there is a risk
             UIView.animate(withDuration: 1, animations: {
