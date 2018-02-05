@@ -253,6 +253,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 let CreateAppointmentViewContoller = CreateAppointmentStoryboard.instantiateViewController(withIdentifier: "doctorViewController") as! doctorViewController
                 CreateAppointmentViewContoller.patient = patient
                 self.navigationController?.pushViewController(CreateAppointmentViewContoller, animated: true)
+
             }
             if(indexPath.row == 9){
                 //Navigation Programmitically
@@ -260,6 +261,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 print("viewappointment \(patient)")
                 ViewAppointmentViewController.patient = patient
                 self.navigationController?.pushViewController(ViewAppointmentViewController, animated: true)
+
             }
             if(indexPath.row == 10){
                 //Navigation Programmitically
@@ -601,6 +603,7 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
             let CreateAppointmentViewContoller = CreateAppointmentStoryboard.instantiateViewController(withIdentifier: "doctorViewController") as! doctorViewController
             CreateAppointmentViewContoller.patient = patient
             self.navigationController?.pushViewController(CreateAppointmentViewContoller, animated: true)
+
         }
         if(item!.item == 9){
             //Navigation Programmitically
@@ -608,6 +611,7 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
             print("viewappointment \(patient)")
             ViewAppointmentViewController.patient = patient
             self.navigationController?.pushViewController(ViewAppointmentViewController, animated: true)
+
         }
         if(item!.item == 10){
             //Navigation Programmitically
