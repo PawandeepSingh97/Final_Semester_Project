@@ -29,12 +29,12 @@ class SpeechToTextHelper: NSObject {
     var SpeakingTimer = Timer();//Used to check how long user has spoke or how long it never spoke
     var isUserSpeaking = false; //used to check if user is speaking or not
     var delegate:SpeechDetectionDelegate?
-    var language:String = "en";
+    //var language:String = "en";
     
 
     //let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()//will do actual speech recognition
     //can fail to recognize speech and return nil,best use optional; or for different language
-    let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en"))
+    var speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en"))
     //zh-CN,ms-MY
     
      var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?//handles the speech recognition requests,provides an audio input to the speech recognizer.

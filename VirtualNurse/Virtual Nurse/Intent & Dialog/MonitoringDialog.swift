@@ -30,6 +30,8 @@ class MonitoringDialog:Dialog
         switch self.dialog {
         case "Get":
            checkMonitoring();
+        case "Alert":
+            alertMonitoring();
         default:
             self.responseToDisplay.append(error())
             self.BotResponse.append(error())
@@ -47,32 +49,60 @@ class MonitoringDialog:Dialog
             if loggedcounter == 6
             {
                 message = "Great Job! You have logged all your health.\n Make sure to regulary logged them too.";
-                self.responseToDisplay.append(message)
-                self.BotResponse.append(message)
+                
             }
             else if loggedcounter == 4
             {
                 message = "You have logged most of your readings, your only missing \(itemsNotLogged[0]) and \(itemsNotLogged[1]).\n Don't forget to log them soon.";
-                self.responseToDisplay.append(message)
-                self.BotResponse.append(message)
+       
             }
             else if loggedcounter > 0
             {
                 message = "You haven't logged most of your health intake. Don't forget to update them soon.";
-                self.responseToDisplay.append(message)
-                self.BotResponse.append(message)
+               
             }
             else if loggedcounter == 0 //if never logged at all
             {
                 message = "You haven't log any of your health intake. Don't forget to update them soon.";
-                self.responseToDisplay.append(message)
-                self.BotResponse.append(message)
+            
             }
+        
+        
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en"){
+            localecode = "en";
+        }
+        
+        self.MT.Translate(from: "en", to: localecode, text: message, onComplete: { (convertedText) in
+            self.responseToDisplay.append(convertedText)
+            self.BotResponse.append(convertedText)
+            self.brDelegate?.Nurse(response: self);
+            
+        })
+        
+    
         
         //PASS DIALOG TO DELEGATE
         //DOING CAN DISPLAY MESSAGE AFTER GETTING CONTENT FROM DB
-        brDelegate?.Nurse(response: self);
+    //    brDelegate?.Nurse(response: self);
         
+    }
+    
+    private func alertMonitoring()
+    {
+        var message = "Oh it seems that your reading indicates that there is chance you may have a heart disease.It would be recommended to consult a doctor for this.";
+        
+        var localecode = UserDefaults.standard.value(forKey: "language") as! String;
+        if (localecode == nil || localecode == "en"){
+            localecode = "en";
+        }
+        
+        self.MT.Translate(from: "en", to: localecode, text: message, onComplete: { (convertedText) in
+            self.responseToDisplay.append(convertedText)
+            self.BotResponse.append(convertedText)
+            self.brDelegate?.Nurse(response: self);
+            
+        })
     }
     
 

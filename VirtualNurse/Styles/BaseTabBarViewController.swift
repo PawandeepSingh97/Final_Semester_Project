@@ -16,10 +16,11 @@ protocol PatientDelegate {
 
 class BaseTabBarViewController: UITabBarController {
     //create chat button here
-    private let chatBtn = DesignableFloatingChatButton(type: .custom);
+     let chatBtn = DesignableFloatingChatButton(type: .custom);
     var buttonOrigin : CGPoint = CGPoint(x: 0, y: 0);
     
     var patientDelegate: PatientDelegate?;
+    var alertNeeded:Bool = false;
     
     var chatView = ChatNavigationViewController();
     //make sure pass patient data
@@ -29,7 +30,7 @@ class BaseTabBarViewController: UITabBarController {
 
         chatBtn.setImage(UIImage(named:"Nurse_Logo"), for:.normal);
         chatBtn.frame = CGRect(x: 300, y: 550, width: 75, height: 75);
-        chatBtn.addBadgeToButon(badge: "1");
+        chatBtn.addBadgeToButon(badge: "!");
         view.addSubview(chatBtn);
         
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(buttonDrag(pan:)))
@@ -43,7 +44,13 @@ class BaseTabBarViewController: UITabBarController {
     @objc func buttonAction(sender: UIButton!) {
         var patient = patientDelegate?.getPatient();
         chatView.patient = patient;
+        
         present(chatView, animated: true, completion: nil)
+        if alertNeeded
+        {
+            chatView.cvc?.isAlertNeeded = true
+        }
+        chatBtn.removeBadgeButton();
     }
     
     @objc func buttonDrag(pan: UIPanGestureRecognizer) {
