@@ -415,7 +415,7 @@ extension ChatViewController:BotResponseDelegate
         
         medDialog = responseDialog;
         if response {
-            medDialog?.imagePickerController.sourceType = .camera
+            //medDialog?.imagePickerController.sourceType = .camera
             medDialog?.imagePickerController.delegate = self;
             
             present((medDialog?.imagePickerController)!, animated: true, completion: nil)
