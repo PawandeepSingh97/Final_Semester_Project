@@ -26,7 +26,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     @IBAction func unwindToHome(segue:UIStoryboardSegue) { }
     
     //Declaration of variables
-    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder","Add Appointment","View Appointment","Health Data"]
+    var monitoringData:[String]=["Blood Pressure","Glucose","Heart Rate","Cigarette","BMI","Cholesterol","Medicine Search","Reminder","Appointment"," Appointment","Health Data"]
     var monitoringImages: [String] = ["redBloodPressure","blueGlucose","pinkheart","orangeCig","greenWeight","ruler","medicationIcon","reminderIcon","CreateApp","ViewApp","HealthData"]
     var circleLogo: [String] = ["redOval","blueOval","pinkoval","orangeOval","greenOval","purpleOval"]
     var monitoredTicks: [String] = ["redTick","blueTick","pinkTick","orangeTick","greenTick","purpleTick"]
@@ -89,12 +89,12 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
+        let patientNric:String = (patient?.NRIC)!
         self.navigationController?.navigationBar.topItem?.title = "Home Dashboard"
         
         //reload the collectionView
         checkIfRecordExists()
-        
+       // ViewAppointmentViewController().appointmentNotification(patientNric)
     }
     
     @IBAction func logoutButtonClicked(_ sender: Any) {
@@ -251,13 +251,18 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             }
             if(indexPath.row == 8){
                 //Navigation Programmitically
-//                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-//                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+                let CreateAppointmentViewContoller = CreateAppointmentStoryboard.instantiateViewController(withIdentifier: "doctorViewController") as! doctorViewController
+                CreateAppointmentViewContoller.patient = patient
+                self.navigationController?.pushViewController(CreateAppointmentViewContoller, animated: true)
+
             }
             if(indexPath.row == 9){
                 //Navigation Programmitically
-//                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-//                self.navigationController?.pushViewController(ReminderViewController, animated: true)
+                let ViewAppointmentViewController = ViewAppointmentStoryboard.instantiateViewController(withIdentifier: "ViewAppointmentViewController") as! ViewAppointmentViewController
+                print("viewappointment \(patient)")
+                ViewAppointmentViewController.patient = patient
+                self.navigationController?.pushViewController(ViewAppointmentViewController, animated: true)
+
             }
             if(indexPath.row == 10){
                 //Navigation Programmitically
@@ -437,7 +442,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             //update badge to have alert
             self.chatBtn?.addBadgeToButon(badge: "!");
             //Set the overallStatus to default
-            self.overallStatus.frame.origin.y += 12
+            self.overallStatus.frame.origin.y += 10
             
             let chatnav = tabcontroller?.chatView;
             let chat = chatnav?.cvc;
@@ -450,7 +455,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 //self.overallStatus.frame.size.height += 10
             }) { _ in
                 UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
-                    self.overallStatus.frame.origin.y -= 12
+                    self.overallStatus.frame.origin.y -= 10
                 })
             }
         }
@@ -596,13 +601,18 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         //reminderViewTableViewController
         if(item!.item == 8){
             //Navigation Programmitically
-//            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-//            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+            let CreateAppointmentViewContoller = CreateAppointmentStoryboard.instantiateViewController(withIdentifier: "doctorViewController") as! doctorViewController
+            CreateAppointmentViewContoller.patient = patient
+            self.navigationController?.pushViewController(CreateAppointmentViewContoller, animated: true)
+
         }
         if(item!.item == 9){
             //Navigation Programmitically
-//            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
-//            self.navigationController?.pushViewController(ReminderViewController, animated: true)
+            let ViewAppointmentViewController = ViewAppointmentStoryboard.instantiateViewController(withIdentifier: "ViewAppointmentViewController") as! ViewAppointmentViewController
+            print("viewappointment \(patient)")
+            ViewAppointmentViewController.patient = patient
+            self.navigationController?.pushViewController(ViewAppointmentViewController, animated: true)
+
         }
         if(item!.item == 10){
             //Navigation Programmitically

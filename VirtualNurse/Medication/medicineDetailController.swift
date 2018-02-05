@@ -26,13 +26,27 @@ class medicineDetailController: UIViewController {
     var rowValues : [String] = [String]()
     let loadValues = "Loading..."
     
+    var shareValues : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
          validatorFuncs()
         getMedicineDetails()
         
         shareBtn.layer.cornerRadius = 10.0
-       
+        
+        let btn1 = UIButton(type: .custom)
+        btn1.setImage(UIImage(named: "icons8-share-50 (2)"), for: .normal)
+        btn1.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        btn1.addTarget(self, action: #selector(shareFunc), for: .touchUpInside)
+        let item1 = UIBarButtonItem(customView: btn1)
+        
+        self.navigationItem.setRightBarButton(item1, animated: true)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(shareFunc))
+        
+        
+
 
     }
     
@@ -108,7 +122,7 @@ class medicineDetailController: UIViewController {
     // function which which retrieves medicine object from database via model
     
     func getMedicineDetails() {
-        
+        var names :String = ""
         LoadingIndicatorView.show(loadValues)
         
         MedicineDataManager().getMedicineRecordsByName(medNames) { (Medicine) in
@@ -116,7 +130,7 @@ class medicineDetailController: UIViewController {
             
             print("Meance of Society")
             
-            
+            names = Medicine.medicineName
             self.descriptionLbl.text = Medicine.medicineDesc
             self.dosageLbl.text = Medicine.medicineDosage
             self.precautionLbl.text = Medicine.medicinePrecautions
@@ -126,6 +140,8 @@ class medicineDetailController: UIViewController {
             
             // appends array from medicine objects
             self.rowValues = ["\(Medicine.medicineDesc)","\(Medicine.medicineDosage)","\(Medicine.medicinePrecautions)","\(Medicine.medicineSideEffects)","\(Medicine.consumptionInstructions)"]
+            
+            self.shareValues = "The medicine we have identitifed is called \(names). \(Medicine.medicineDesc). Precautions are  \(Medicine.medicinePrecautions). Side Effects \(Medicine.medicineSideEffects). Consumption Instructions are \(Medicine.consumptionInstructions)"
             
             //testing purposes, please ignore
             print("Imran \(self.rowValues)")
@@ -156,6 +172,23 @@ class medicineDetailController: UIViewController {
         self.present(activityViewController, animated: true, completion: nil)
         
     }
+    
+    @objc func shareFunc() {
+        
+            let textToShare = shareValues
+   //     let textToShare = rowValues
+        let activityViewController = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+    
+    
     
 
 }

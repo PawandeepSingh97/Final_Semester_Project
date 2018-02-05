@@ -1,9 +1,9 @@
 //
-//  LoadingIndicatorView.swift
-//  SwiftLoadingIndicator
+//  medicineDetailController.swift
+//  mediTrack
 //
-//  Created by Vince Chan on 12/2/15.
-//  Copyright © 2015 Vince Chan. All rights reserved.
+//  Created by SURA's MacBookAir on 23/1/18.
+//  Copyright © 2018 SURA's MacBookAir. All rights reserved.
 //
 import UIKit
 

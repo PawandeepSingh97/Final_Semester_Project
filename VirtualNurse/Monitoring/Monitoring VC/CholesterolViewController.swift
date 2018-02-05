@@ -82,7 +82,7 @@ class CholesterolViewController: UIViewController {
                     self.showAlert(message: "Please check whether you entered valid cholesterol value.")
                 }
                     //Check if cholesterol is in healthy range
-                else if (cholesterolValue! > 200){
+                else if (cholesterolValue! > 300){
                     self.showAlert(message: "Please check whether you entered valid cholesterol value.")
                 }
                     //Check if cholesterol is in healthy range
