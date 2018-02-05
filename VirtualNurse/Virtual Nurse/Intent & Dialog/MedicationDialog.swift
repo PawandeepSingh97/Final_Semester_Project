@@ -109,8 +109,7 @@ class MedicationDialog:Dialog
          var localecode = UserDefaults.standard.value(forKey: "language") as! String;
         let imageData = UIImageJPEGRepresentation(image, 0.8)!;
         service.predict(image: imageData) { (result, error) in
-         
-            
+
             if let error = error {
                 //error will be shown here!
                 
@@ -127,6 +126,7 @@ class MedicationDialog:Dialog
             }
             else if let result = result {// displayes results from Custom Vision A.I.
                 // object which contains the predictions for every medication in the custom vision
+                print("success med");
                 for taggers in result.Predictions {
                     
                     // declares varialbe

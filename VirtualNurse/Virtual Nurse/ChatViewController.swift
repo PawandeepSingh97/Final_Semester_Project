@@ -416,9 +416,40 @@ extension ChatViewController:BotResponseDelegate
         medDialog = responseDialog;
         if response {
             //medDialog?.imagePickerController.sourceType = .camera
-            medDialog?.imagePickerController.delegate = self;
+            //medDialog?.imagePickerController.delegate = self;
             
-            present((medDialog?.imagePickerController)!, animated: true, completion: nil)
+            
+            let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+                if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
+                {
+                    self.medDialog?.imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+                    self.medDialog?.imagePickerController.allowsEditing = true
+                    self.medDialog?.imagePickerController.delegate = self
+                    
+                    self.present((self.medDialog?.imagePickerController)!, animated: true, completion: nil)
+                }
+                else
+                {
+                    let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    //imagePickerController.delegate = self
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+                self.medDialog?.imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                self.medDialog?.imagePickerController.allowsEditing = true
+                self.medDialog?.imagePickerController.delegate = self
+                
+                self.present((self.medDialog?.imagePickerController)!, animated: true, completion: nil)
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            //present((medDialog?.imagePickerController)!, animated: true, completion: nil)
         }
         else{
             medDialog?.askForSearchNo();
@@ -818,6 +849,7 @@ extension ChatViewController:UIImagePickerControllerDelegate,UINavigationControl
             self.sendMessage(message: MockMessage(text:"...", sender: self.virtualNurse, messageId: UUID().uuidString, date: Date()));
             self.medDialog?.searchMedicine(image: selectedImage, onComplete: { (md) in
                 //once processed finished
+                print("med process finished");
                 DispatchQueue.main.async {
                     self.messages.removeLast();
                     self.messagesCollectionView.deleteSections([self.messages.count]);

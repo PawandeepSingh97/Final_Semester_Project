@@ -29,14 +29,23 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         usernameTxtField.delegate = self;
         passwordTxtField.delegate = self;
         
+        UserDefaults.standard.setValue(false, forKey: "hasLogout");
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
+        
+        let username = UserDefaults.standard.value(forKey: "username") as! String?;
+        if let un = username{
+            usernameTxtField.text = un;
+        }
+        
         //Checks if user had ask for touchID
         let preferTouchID = UserDefaults.standard.bool(forKey: "hasTouchIDKey");
-        if preferTouchID
+        let haslogout = UserDefaults.standard.bool(forKey: "hasLogout");
+        if preferTouchID && !haslogout
         {
             let touchBool = touchID.canEvaluatePolicy();
             if touchBool { //if touch ID is available
