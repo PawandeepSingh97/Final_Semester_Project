@@ -68,7 +68,6 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         
         tabcontroller?.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
 
-
     }
     
 
@@ -90,7 +89,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
         self.navigationController?.navigationBar.topItem?.title = "Home Dashboard"
         
         //reload the collectionView
@@ -235,8 +234,14 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             }
             if(indexPath.row == 6){
                 //Navigation Programmitically
-                let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
-                self.navigationController?.pushViewController(MedicineViewController, animated: true)
+//                let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
+//                self.navigationController?.pushViewController(MedicineViewController, animated: true)
+                
+                
+                let popUpMedicine = MedicationStoryboard.instantiateViewController(withIdentifier: "popUpMedicine") as! popUpMedicine
+                self.navigationController?.pushViewController(popUpMedicine, animated: true)
+                
+                
             }
             if(indexPath.row == 7){
                 //Navigation Programmitically
@@ -245,16 +250,13 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             }
             if(indexPath.row == 8){
                 //Navigation Programmitically
-                let CreateAppointmentViewContoller = CreateAppointmentStoryboard.instantiateViewController(withIdentifier: "doctorViewController") as! doctorViewController
-                CreateAppointmentViewContoller.patient = patient
-                self.navigationController?.pushViewController(CreateAppointmentViewContoller, animated: true)
+//                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//                self.navigationController?.pushViewController(ReminderViewController, animated: true)
             }
             if(indexPath.row == 9){
                 //Navigation Programmitically
-                let ViewAppointmentViewController = ViewAppointmentStoryboard.instantiateViewController(withIdentifier: "ViewAppointmentViewController") as! ViewAppointmentViewController
-                print("viewappointment \(patient)")
-                ViewAppointmentViewController.patient = patient
-                self.navigationController?.pushViewController(ViewAppointmentViewController, animated: true)
+//                let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//                self.navigationController?.pushViewController(ReminderViewController, animated: true)
             }
             if(indexPath.row == 10){
                 //Navigation Programmitically
@@ -438,6 +440,9 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
             let chat = chatnav?.cvc;
             chat?.isAlertNeeded = true;
             
+            //Set the overallStatus to default
+            self.overallStatus.frame.origin.y += 12
+            
             //Animate the UI view when there is a risk
             UIView.animate(withDuration: 1, animations: {
                 self.overallStatus.backgroundColor = UIColor(hex:0xD50000)
@@ -445,7 +450,7 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
                 //self.overallStatus.frame.size.height += 10
             }) { _ in
                 UIView.animate(withDuration: 1, delay: 0.25, options: [.autoreverse, .repeat], animations: {
-                    self.overallStatus.frame.origin.y -= 20
+                    self.overallStatus.frame.origin.y -= 12
                 })
             }
         }
@@ -576,8 +581,11 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         }
         if(item!.item == 6){
             //Navigation Programmitically
-            let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
-            self.navigationController?.pushViewController(MedicineViewController, animated: true)
+//            let MedicineViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "MedicineViewController") as! MedicineViewController
+//            self.navigationController?.pushViewController(MedicineViewController, animated: true)
+            
+            let popUpMedicine = MedicationStoryboard.instantiateViewController(withIdentifier: "popUpMedicine") as! popUpMedicine
+            self.navigationController?.pushViewController(popUpMedicine, animated: true)
         }
         if (item!.item == 7) {
             
@@ -588,15 +596,13 @@ extension HomeDashboardViewController: HomeDashboardCollectionViewCellDelegate{
         //reminderViewTableViewController
         if(item!.item == 8){
             //Navigation Programmitically
-            let CreateAppointmentViewContoller = CreateAppointmentStoryboard.instantiateViewController(withIdentifier: "doctorViewController") as! doctorViewController
-            CreateAppointmentViewContoller.patient = patient
-            self.navigationController?.pushViewController(CreateAppointmentViewContoller, animated: true)
+//            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//            self.navigationController?.pushViewController(ReminderViewController, animated: true)
         }
         if(item!.item == 9){
             //Navigation Programmitically
-            let ViewAppointmentViewController = ViewAppointmentStoryboard.instantiateViewController(withIdentifier: "ViewAppointmentViewController") as! ViewAppointmentViewController
-            ViewAppointmentViewController.patient = patient
-            self.navigationController?.pushViewController(ViewAppointmentViewController, animated: true)
+//            let ReminderViewController = MedicationStoryboard.instantiateViewController(withIdentifier: "ReminderViewController") as! reminderViewTableViewController
+//            self.navigationController?.pushViewController(ReminderViewController, animated: true)
         }
         if(item!.item == 10){
             //Navigation Programmitically
