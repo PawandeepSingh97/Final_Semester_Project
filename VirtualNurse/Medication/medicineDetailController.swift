@@ -26,6 +26,8 @@ class medicineDetailController: UIViewController {
     var rowValues : [String] = [String]()
     let loadValues = "Loading..."
     
+    var shareValues : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
          validatorFuncs()
@@ -120,7 +122,7 @@ class medicineDetailController: UIViewController {
     // function which which retrieves medicine object from database via model
     
     func getMedicineDetails() {
-        
+        var names :String = ""
         LoadingIndicatorView.show(loadValues)
         
         MedicineDataManager().getMedicineRecordsByName(medNames) { (Medicine) in
@@ -128,7 +130,7 @@ class medicineDetailController: UIViewController {
             
             print("Meance of Society")
             
-            
+            names = Medicine.medicineName
             self.descriptionLbl.text = Medicine.medicineDesc
             self.dosageLbl.text = Medicine.medicineDosage
             self.precautionLbl.text = Medicine.medicinePrecautions
@@ -138,6 +140,8 @@ class medicineDetailController: UIViewController {
             
             // appends array from medicine objects
             self.rowValues = ["\(Medicine.medicineDesc)","\(Medicine.medicineDosage)","\(Medicine.medicinePrecautions)","\(Medicine.medicineSideEffects)","\(Medicine.consumptionInstructions)"]
+            
+            self.shareValues = "The medicine we have identitifed is called \(names). \(Medicine.medicineDesc). Precautions are  \(Medicine.medicinePrecautions). Side Effects \(Medicine.medicineSideEffects). Consumption Instructions are \(Medicine.consumptionInstructions)"
             
             //testing purposes, please ignore
             print("Imran \(self.rowValues)")
@@ -171,8 +175,9 @@ class medicineDetailController: UIViewController {
     
     @objc func shareFunc() {
         
-        let textToShare = rowValues
-        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            let textToShare = shareValues
+   //     let textToShare = rowValues
+        let activityViewController = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // exclude some activity types from the list (optional)

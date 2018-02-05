@@ -157,21 +157,59 @@ UINavigationControllerDelegate {
         
         let imagePickerController = UIImagePickerController()
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-         //   var imagePicker = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = .camera;
-            imagePickerController.allowsEditing = false
-            self.present(imagePickerController, animated: true, completion: nil)
-        }
+     //   let imagePickerController = UIImagePickerController()
         
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-          //  var imagePicker = UIImagePickerController()
-            imagePickerController.delegate = self
-            imagePickerController.sourceType = .photoLibrary;
+        let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
+            {
+                imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+                imagePickerController.allowsEditing = true
+                imagePickerController.delegate = self
+
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+            else
+            {
+                let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                //imagePickerController.delegate = self
+
+                self.present(alert, animated: true, completion: nil)
+                self.scanBtn.isHidden = false
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
             imagePickerController.allowsEditing = true
+            imagePickerController.delegate = self
+
             self.present(imagePickerController, animated: true, completion: nil)
-        }
+        }))
+        
+    //    alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        
+        
+          self.present(alert, animated: true, completion: nil)
+        
+        
+        
+//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//            //   var imagePicker = UIImagePickerController()
+//            imagePickerController.delegate = self
+//            imagePickerController.sourceType = .camera;
+//            imagePickerController.allowsEditing = false
+//            self.present(imagePickerController, animated: true, completion: nil)
+//        }
+//
+//        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+//            //  var imagePicker = UIImagePickerController()
+//            imagePickerController.delegate = self
+//            imagePickerController.sourceType = .photoLibrary;
+//            imagePickerController.allowsEditing = true
+//            self.present(imagePickerController, animated: true, completion: nil)
+//        }
         
    //     imagePickerController.sourceType = .photoLibrary // where the photo is taken from what source
        //   imagePickerController.sourceType = .camera
@@ -207,6 +245,7 @@ UINavigationControllerDelegate {
         
         // image picker is being dismiss
         dismiss(animated: true, completion: nil)
+        scanBtn.isHidden = false
     }
  //  moreInfoBtn.addTarget(self, action: "buttonAction:", for: UIControlEvents.touchUpInside)
 
@@ -361,5 +400,7 @@ UINavigationControllerDelegate {
             infoButtons.isEnabled = true
         }
     }
+    
+    
 }
 
