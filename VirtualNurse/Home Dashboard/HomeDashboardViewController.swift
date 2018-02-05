@@ -105,8 +105,9 @@ class HomeDashboardViewController: UIViewController, UICollectionViewDelegate,UI
         logoutalert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             //if user agrees to touch ID use
             //set true
-            var logout = LoginViewController();
-            self.present(logout, animated: true, completion: nil);
+            //var logout = LoginViewController();
+            //self.present(logout, animated: true, completion: nil);
+            self.dismiss(animated: true, completion: nil);
             
         }))
         
