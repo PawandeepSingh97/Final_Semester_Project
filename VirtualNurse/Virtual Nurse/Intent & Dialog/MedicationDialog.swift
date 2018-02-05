@@ -156,7 +156,7 @@ class MedicationDialog:Dialog
                         
                         
                     
-                        let toDisplay = "This medicine might be called \(Medicine.medicineName). \(Medicine.medicineDesc).\nRecommended to \(Medicine.medicineDosage).To consume \(Medicine.consumptionInstructions)";
+                        let toDisplay = "This medicine might be called \(Medicine.medicineName). \(Medicine.medicineDesc).\nRecommended to \(Medicine.medicineDosage).\nTo consume \(Medicine.consumptionInstructions).";
                         let botReply = toDisplay;
                         
                         
